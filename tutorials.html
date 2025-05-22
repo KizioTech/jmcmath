@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JMC Academic Resources | Tutorials</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      :root {
+        --primary-color: #2c3e50;
+        --secondary-color: #3498db;
+        --accent-color: #e74c3c;
+        --light-color: #ecf0f1;
+        --dark-color: #2c3e50;
+        --text-color: #333;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        color: var(--text-color);
+        background-color: #f9f9f9;
+        line-height: 1.6;
+      }
+
+      /* Header Styles */
+      header {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        color: white;
+        padding: 1rem 0;
+        box-shadow: var(--shadow);
+        position: fixed;
+        width: 100%;
+        z-index: 100;
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .logo h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+
+      .logo span {
+        font-weight: 300;
+        font-size: 1rem;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      nav ul li {
+        margin-left: 1.5rem;
+      }
+
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        padding: 0.5rem 0.8rem;
+        border-radius: 4px;
+      }
+
+      nav ul li a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+
+      .active {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+
+      .mobile-menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+      /* Tutorials Page Specific Styles */
+      .tutorials-hero {
+        padding-top: 8rem;
+        padding-bottom: 4rem;
+        background: linear-gradient(
+            rgba(44, 62, 80, 0.8),
+            rgba(44, 62, 80, 0.8)
+          ),
+          url(images/applications.png) center/cover no-repeat;
+        color: white;
+        text-align: center;
+      }
+
+      .tutorials-hero h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .tutorials-hero p {
+        max-width: 800px;
+        margin: 0 auto 2rem;
+      }
+
+      .tutorials-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 3rem 2rem;
+      }
+
+      .tutorials-filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        align-items: center;
+      }
+
+      .filter-group {
+        display: flex;
+        align-items: center;
+      }
+
+      .filter-group label {
+        margin-right: 0.5rem;
+        font-weight: 500;
+      }
+
+      .filter-group select {
+        padding: 0.5rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+
+      .search-bar {
+        flex-grow: 1;
+        position: relative;
+      }
+
+      .search-bar input {
+        width: 100%;
+        padding: 0.6rem;
+        padding-left: 2.5rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+
+      .search-bar::before {
+        content: "🔍";
+        position: absolute;
+        left: 0.8rem;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .tutorials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2rem;
+      }
+
+      .tutorial-card {
+        background-color: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .tutorial-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .tutorial-image {
+        height: 200px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .tutorial-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .tutorial-card:hover .tutorial-image img {
+        transform: scale(1.1);
+      }
+
+      .tutorial-level {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background-color: rgba(44, 62, 80, 0.9);
+        color: white;
+        padding: 0.3rem 0.8rem;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+
+      .beginner {
+        background-color: #2ecc71;
+      }
+
+      .intermediate {
+        background-color: #f39c12;
+      }
+
+      .advanced {
+        background-color: #e74c3c;
+      }
+
+      .tutorial-content {
+        padding: 1.5rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .tutorial-content h3 {
+        margin-bottom: 0.8rem;
+        color: #2c3e50;
+      }
+
+      .tutorial-meta {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        font-size: 0.85rem;
+        color: #666;
+        margin-bottom: 1rem;
+      }
+
+      .tutorial-meta span {
+        display: flex;
+        align-items: center;
+      }
+
+      .meta-icon {
+        margin-right: 0.4rem;
+      }
+
+      .tutorial-description {
+        margin-bottom: 1.5rem;
+        flex-grow: 1;
+      }
+
+      .tutorial-tags {
+        margin-bottom: 1.2rem;
+      }
+
+      .topic-tag {
+        display: inline-block;
+        padding: 0.3rem 0.8rem;
+        background-color: #ecf0f1;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        color: #2c3e50;
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .tutorial-buttons {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .start-btn {
+        background-color: #3498db;
+        color: white;
+        padding: 0.6rem 1.2rem;
+        border: none;
+        border-radius: 4px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+        flex-grow: 1;
+        text-align: center;
+      }
+
+      .start-btn:hover {
+        background-color: #2980b9;
+      }
+
+      .save-btn {
+        background-color: white;
+        color: #3498db;
+        padding: 0.6rem 1.2rem;
+        border: 1px solid #3498db;
+        border-radius: 4px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .save-btn:hover {
+        background-color: #f8f8f8;
+      }
+
+      .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 3rem;
+        gap: 0.5rem;
+      }
+
+      .pagination button {
+        padding: 0.5rem 1rem;
+        border: 1px solid #ddd;
+        background-color: white;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .pagination button.active {
+        background-color: #3498db;
+        color: white;
+        border-color: #3498db;
+      }
+
+      .pagination button:hover:not(.active) {
+        background-color: #f5f5f5;
+      }
+      /* Footer */
+      footer {
+        background-color: var(--dark-color);
+        color: white;
+        padding: 3rem 2rem 1rem;
+      }
+
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+      }
+
+      .footer-section h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        position: relative;
+        padding-bottom: 0.5rem;
+      }
+
+      .footer-section h3::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 50px;
+        height: 2px;
+        background-color: var(--accent-color);
+      }
+
+      .footer-section ul {
+        list-style: none;
+      }
+
+      .footer-section ul li {
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-section ul li a {
+        color: #bbb;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-section ul li a:hover {
+        color: white;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .social-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .social-links a:hover {
+        background-color: var(--accent-color);
+        transform: translateY(-3px);
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 2rem;
+        margin-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 0.9rem;
+        color: #bbb;
+      }
+      .footer-section form {
+        display: flex;
+        flex-direction: column;
+        gap: 6px; /* Compact spacing between form elements */
+      }
+
+      .footer-section label {
+        font-size: 0.9em;
+        margin-bottom: 2px;
+      }
+
+      .footer-section input,
+      .footer-section select,
+      .footer-section textarea {
+        width: 100%;
+        padding: 6px 8px;
+        font-size: 0.9em;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+      }
+
+      .footer-section textarea {
+        resize: vertical;
+      }
+
+      .footer-section button {
+        margin-top: 6px;
+        padding: 8px;
+        background-color: #e74c3c;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        font-size: 0.9em;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .footer-section button:hover {
+        background-color: #c0392b;
+      }
+      /* Tutorial Viewer Styles */
+      .tutorial-viewer {
+        max-width: 1000px;
+        margin: 3rem auto;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      .tutorial-header {
+        background-color: #2c3e50;
+        color: white;
+        padding: 2rem;
+      }
+
+      .tutorial-header h2 {
+        margin-bottom: 1rem;
+      }
+
+      .tutorial-info {
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .tutorial-info span {
+        display: flex;
+        align-items: center;
+      }
+
+      .tutorial-body {
+        padding: 2rem;
+      }
+
+      .tutorial-navigation {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 2rem;
+        padding: 1rem 2rem;
+        background-color: #f8f8f8;
+      }
+
+      @media screen and (max-width: 768px) {
+        .tutorials-filters {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .search-bar {
+          order: -1;
+          margin-bottom: 1rem;
+        }
+
+        .tutorial-buttons {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="header-container">
+        <div class="logo">
+          <h1>JMC<span> | Mathematics & Academic Resources</span></h1>
+        </div>
+        <button class="mobile-menu-btn">&#9776;</button>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="library.html">Library</a></li>
+            <li><a href="tutorials.html"  class="active">Tutorials</a></li>
+            <li><a href="videos.html">Videos</a></li> 
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Tutorials Hero Section -->
+    <section class="tutorials-hero">
+      <h2>Interactive Mathematics Tutorials</h2>
+      <p>
+        Learn mathematics at your own pace with step-by-step tutorials that
+        break down complex concepts into manageable parts.
+      </p>
+    </section>
+
+    <!-- Tutorials Content -->
+    <section class="tutorials-container">
+      <!-- Filters -->
+      <div class="tutorials-filters">
+        <div class="filter-group">
+          <label for="category">Category:</label>
+          <select id="category">
+            <option value="all">All Categories</option>
+            <option value="calculus">Calculus</option>
+            <option value="algebra">Linear Algebra</option>
+            <option value="statistics">Statistics</option>
+            <option value="discrete">Discrete Mathematics</option>
+            <option value="number-theory">Number Theory</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="level">Level:</label>
+          <select id="level">
+            <option value="all">All Levels</option>
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="sort">Sort By:</label>
+          <select id="sort">
+            <option value="newest">Newest</option>
+            <option value="popularity">Most Popular</option>
+            <option value="a-z">A-Z</option>
+          </select>
+        </div>
+        <div class="search-bar">
+          <input type="text" placeholder="Search tutorials..." />
+        </div>
+      </div>
+
+      <!-- Tutorials Grid -->
+      <div class="tutorials-grid">
+        <!-- Tutorial Card 1 -->
+        <div class="tutorial-card">
+          <div class="tutorial-image">
+            <img
+              src="images/transfuncs.jpg"
+              alt="Calculus Tutorial Preview"
+            />
+            <div class="tutorial-level beginner">CALCULUS II</div>
+          </div>
+          <div class="tutorial-content">
+            <h3>Transcendental Functions</h3>
+            <div class="tutorial-meta">
+              <span><span class="meta-icon">📅</span> May 10, 2025</span>
+              <span><span class="meta-icon">⏱️</span> 45 minutes</span>
+            </div>
+            <p class="tutorial-description">
+              Dive into transcendental functions, including exponential,
+              logarithmic, and trigonometric functions. This tutorial covers
+              their properties, graphs, and applications in calculus.
+            </p>
+            <div class="tutorial-tags">
+              <span class="topic-tag">Calculus</span>
+              <span class="topic-tag">Derivatives</span>
+            </div>
+            <div class="tutorial-buttons">
+              <a href="recources/calculus ii/tutorial1.html" class="start-btn"
+                >View Tutorial</a
+              >
+              <button class="save-btn">Save</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tutorial Card 2 -->
+        <div class="tutorial-card">
+          <div class="tutorial-image">
+            <img
+              src="/api/placeholder/400/200"
+              alt="Linear Algebra Tutorial Preview"
+            />
+            <div class="tutorial-level intermediate">Intermediate</div>
+          </div>
+          <div class="tutorial-content">
+            <h3>Eigenvalues and Eigenvectors</h3>
+            <div class="tutorial-meta">
+              <span><span class="meta-icon">📅</span> April 28, 2025</span>
+              <span><span class="meta-icon">⏱️</span> 60 minutes</span>
+            </div>
+            <p class="tutorial-description">
+              Explore eigenvalues and eigenvectors, their geometric
+              interpretation, and computational methods. Includes hands-on
+              exercises and visualizations.
+            </p>
+            <div class="tutorial-tags">
+              <span class="topic-tag">Linear Algebra</span>
+              <span class="topic-tag">Eigenvectors</span>
+            </div>
+            <div class="tutorial-buttons">
+              <a href="tutorial-eigenvectors.html" class="start-btn"
+                >Start Tutorial</a
+              >
+              <button class="save-btn">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination">
+        <button class="active">1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>Next &raquo;</button>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3>About JMC</h3>
+          <p>
+            Providing high-quality mathematics and academic resources for
+            students and educators to foster a deeper understanding of complex
+            concepts.
+          </p>
+          <div class="social-links">
+            <a href="https://www.facebook.com/josophat.chifundo.makawa"
+              ><span>FB</span></a
+            >
+            <a href="https://www.instagram.com/kiziojosh/"><span>IS</span></a>
+            <a href="https://www.linkedin.com/in/josophat-makawa-abaa21366/"
+              ><span>IN</span></a
+            >
+            <a href="https://www.youtube.com/@jmcmath"><span>YT</span></a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+         <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="library.html">Library</a></li>
+            <li><a href="tutorials.html">Tutorials</a></li>
+            <li><a href="videos.html">Videos</a></li> 
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Send Me a Message</h3>
+          <form
+            action="mailto:makawacean6@gmail.com"
+            method="POST"
+            enctype="text/plain"
+          >
+            <label for="full-name">Full Name</label>
+            <input
+              type="text"
+              id="full-name"
+              name="full-name"
+              placeholder="Your full name"
+              required
+            />
+
+            <label for="email">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Your email address"
+              required
+            />
+
+            <label for="subject">Subject</label>
+            <select id="subject" name="subject" required>
+              <option value="" selected disabled>Select a subject</option>
+              <option value="general">General Inquiry</option>
+              <option value="resources">Resource Request</option>
+              <option value="tutoring">Tutoring Services</option>
+              <option value="feedback">Feedback/Suggestions</option>
+              <option value="collaboration">Collaboration Opportunity</option>
+              <option value="other">Other</option>
+            </select>
+
+            <label for="message">Your Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="3"
+              placeholder="Write your message here..."
+              required
+            ></textarea>
+
+            <button type="submit">Send</button>
+          </form>
+        </div>
+
+        <div class="footer-section">
+          <h3>Contact Info</h3>
+          <ul>
+            <li>
+              Email:
+              <a
+                href="mailto:makawacean6@gmail.com?cc=joshkizio772@gmail.com&bcc=makawa.latexlessons@gmail.com&subject=Add%your%subject%here%please!!!"
+                >makawacean6@gmail.com</a
+              >
+            </li>
+            <li>Phone: <br />+265 999 978 828 <br />+265 899 990 636</li>
+            <li>University of Malawi</li>
+            <li>Zomba, Malawi</li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 Josophat Makawa Chifundo | All Rights Reserved</p>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile Menu Toggle
+      const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
+      const nav = document.querySelector("nav");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        nav.style.display = nav.style.display === "block" ? "none" : "block";
+      });
+
+      // Responsive Navigation
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 576) {
+          nav.style.display = "block";
+        } else {
+          nav.style.display = "none";
+        }
+      });
+
+      // Filter functionality
+      const categorySelect = document.getElementById("category");
+      const levelSelect = document.getElementById("level");
+      const sortSelect = document.getElementById("sort");
+      const searchInput = document.querySelector(".search-bar input");
+
+      function filterTutorials() {
+        // In a real implementation, this would filter the tutorials based on the selected options
+        console.log("Filtering tutorials...");
+        console.log("Category:", categorySelect.value);
+        console.log("Level:", levelSelect.value);
+        console.log("Sort:", sortSelect.value);
+        console.log("Search:", searchInput.value);
+      }
+
+      categorySelect.addEventListener("change", filterTutorials);
+      levelSelect.addEventListener("change", filterTutorials);
+      sortSelect.addEventListener("change", filterTutorials);
+      searchInput.addEventListener("input", filterTutorials);
+
+      // Pagination
+      const paginationButtons = document.querySelectorAll(".pagination button");
+
+      paginationButtons.forEach((button) => {
+        button.addEventListener("click", function () {
+          document
+            .querySelector(".pagination button.active")
+            .classList.remove("active");
+          this.classList.add("active");
+          // In a real implementation, this would load the next page of tutorials
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculus Made Easy | Josophat Makawa Chifundo</title>
+    <style>
+      :root {
+        --primary-color: #2c3e50;
+        --secondary-color: #3498db;
+        --accent-color: #e74c3c;
+        --light-color: #ecf0f1;
+        --dark-color: #2c3e50;
+        --text-color: #333;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        color: var(--text-color);
+        background-color: #f9f9f9;
+        line-height: 1.6;
+      }
+
+      /* Header Styles */
+      header {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        color: white;
+        padding: 1rem 0;
+        box-shadow: var(--shadow);
+        position: fixed;
+        width: 100%;
+        z-index: 100;
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .logo h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+
+      .logo span {
+        font-weight: 300;
+        font-size: 1rem;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      nav ul li {
+        margin-left: 1.5rem;
+      }
+
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        padding: 0.5rem 0.8rem;
+        border-radius: 4px;
+      }
+
+      nav ul li a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+
+      .active {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+
+      .mobile-menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      /* Main Content */
+      .main-content {
+        padding-top: 6rem;
+        padding-bottom: 3rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+
+      .page-title {
+        text-align: center;
+        margin-bottom: 2rem;
+        color: var(--primary-color);
+      }
+
+      .page-title h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .page-title p {
+        color: #666;
+      }
+
+      /* Document Navigation */
+      .document-nav {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .document-nav h2 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--accent-color);
+      }
+
+      .document-nav ul {
+        list-style: none;
+        padding-left: 1rem;
+      }
+
+      .document-nav ul li {
+        margin-bottom: 0.5rem;
+      }
+
+      .document-nav ul li a {
+        color: var(--secondary-color);
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .document-nav ul li a:hover {
+        color: var(--accent-color);
+        text-decoration: underline;
+      }
+
+      /* LaTeX Document Styling */
+      .latex-document {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        padding: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--accent-color);
+      }
+
+      .section-description {
+        margin-bottom: 1.5rem;
+        color: #666;
+      }
+
+      .latex-content {
+        background-color: #f9f9f9;
+        padding: 1.5rem;
+        border-radius: 5px;
+        border-left: 4px solid var(--secondary-color);
+        overflow-x: auto;
+        margin-bottom: 1.5rem;
+      }
+
+      .example {
+        margin-top: 2rem;
+        background-color: #f5f5f5;
+        padding: 1.5rem;
+        border-radius: 5px;
+        border-left: 4px solid var(--accent-color);
+      }
+
+      .example h3 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+
+      /* Pagination */
+      .pagination {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 3rem;
+      }
+
+      .pagination a {
+        display: inline-block;
+        padding: 0.8rem 1.5rem;
+        background-color: var(--secondary-color);
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+        font-weight: 500;
+      }
+
+      .pagination a:hover {
+        background-color: var(--primary-color);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .pagination .next {
+        margin-left: auto;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--dark-color);
+        color: white;
+        padding: 3rem 2rem 1rem;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .footer-section {
+        flex: 1;
+        min-width: 250px;
+        margin-bottom: 2rem;
+        padding-right: 1rem;
+      }
+
+      .footer-section h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        position: relative;
+        padding-bottom: 0.5rem;
+      }
+
+      .footer-section h3::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 50px;
+        height: 2px;
+        background-color: var(--accent-color);
+      }
+
+      .footer-section ul {
+        list-style: none;
+      }
+
+      .footer-section ul li {
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-section ul li a {
+        color: #bbb;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-section ul li a:hover {
+        color: white;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .social-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .social-links a:hover {
+        background-color: var(--accent-color);
+        transform: translateY(-3px);
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 2rem;
+        margin-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 0.9rem;
+        color: #bbb;
+      }
+
+      /* Responsive Styles */
+      @media screen and (max-width: 992px) {
+        .footer-container {
+          flex-direction: column;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        .header-container {
+          flex-direction: column;
+          text-align: center;
+          padding: 1rem;
+        }
+
+        nav {
+          margin-top: 1rem;
+        }
+
+        nav ul {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        nav ul li {
+          margin: 0.5rem 0;
+        }
+      }
+
+      @media screen and (max-width: 576px) {
+        .header-container {
+          flex-direction: row;
+        }
+
+        nav {
+          display: none;
+        }
+
+        .mobile-menu-btn {
+          display: block;
+        }
+      }
+    </style>
+    <!-- MathJax Configuration -->
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.js">
+    </script>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']],
+          processEscapes: true,
+          processEnvironments: true
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        }
+      };
+    </script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="header-container">
+        <div class="logo">
+          <h1>JMC<span> | Mathematics & Academic Resources</span></h1>
+        </div>
+        <button class="mobile-menu-btn">&#9776;</button>
+        <nav>
+          <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/library.html"  class="active">Library</a></li>
+            <li><a href="/tutorials.html">Tutorials</a></li>
+            <li><a href="/videos.html">Videos</a></li> 
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+        </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="page-title">
+        <h1>Worked Examples For Trigonometry</h1>
+        <p>A comprehensive guide to differential and integral calculus with practical examples and problem-solving techniques</p>
+      </div>
+      <div class="latex-content">
+         <p>This page has no content for now. We are working tirelessily to bring back the Contents as soon as possible.</p>
+        <p>
+          Management.
+        </p>
+      </div>
+      
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3>About JMC</h3>
+          <p>
+            Providing high-quality mathematics and academic resources for
+            students and educators to foster a deeper understanding
+            of complex concepts.
+          </p>
+          <div class="social-links">
+            <a href="https://www.facebook.com/josophat.chifundo.makawa"
+              ><span>FB</span></a
+            >
+            <a href="https://www.instagram.com/kiziojosh/"><span>IS</span></a>
+            <a href="https://www.linkedin.com/in/josophat-makawa-abaa21366/"
+              ><span>IN</span></a
+            >
+            <a href="https://www.youtube.com/@jmcmath"><span>YT</span></a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+           <ul>
+            <li><a href="/index.html" >Home</a></li>
+            <li><a href="/library.html">Library</a></li>
+            <li><a href="/tutorials.html">Tutorials</a></li>
+            <li><a href="/videos.html">Videos</a></li> 
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+        </ul>
+        </div>
+        <p>This page has no content for now. We are working tirelessily to bring back the Contents as soon as possible.</p>
+        <p>
+          Management.
+        </p>
+        <div class="footer-section">
+          <h3>Contact Info</h3>
+          <ul>
+            <li>Email: <a href="mailto:makawacean6@gmail.com">makawacean6@gmail.com</a></li>
+            <li>Phone: +265 999 978 828 / +265 899 990 636</li>
+            <li>University of Malawi</li>
+            <li>Zomba, Malawi</li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 Josophat Makawa Chifundo | All Rights Reserved</p>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile Menu Toggle
+      const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
+      const nav = document.querySelector("nav");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        nav.style.display = nav.style.display === "block" ? "none" : "block";
+      });
+
+      // Responsive Navigation
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 576) {
+          nav.style.display = "block";
+        } else {
+          nav.style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>

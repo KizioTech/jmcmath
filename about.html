@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JMC Academic Resources | About Me</title>
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --light-color: #ecf0f1;
+      --dark-color: #2c3e50;
+      --text-color: #333;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      color: var(--text-color);
+      background-color: #f9f9f9;
+      line-height: 1.6;
+    }
+
+    /* Header Styles */
+    header {
+      background: linear-gradient(135deg,
+          var(--primary-color),
+          var(--secondary-color));
+      color: white;
+      padding: 1rem 0;
+      box-shadow: var(--shadow);
+      position: fixed;
+      width: 100%;
+      z-index: 100;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .logo h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .logo span {
+      font-weight: 300;
+      font-size: 1rem;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin-left: 1.5rem;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      padding: 0.5rem 0.8rem;
+      border-radius: 4px;
+    }
+
+    nav ul li a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .active {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* About Hero Section */
+    .about-hero {
+      padding-top: 8rem;
+      padding-bottom: 4rem;
+      background: linear-gradient(rgba(44, 62, 80, 0.8),
+          rgba(44, 62, 80, 0.8)),
+        url(images/kizio\ 1.jpg) center/cover no-repeat;
+      color: white;
+      text-align: center;
+    }
+
+    .about-hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .about-hero p {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+    }
+
+    /* About Content */
+    .about-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .about-section {
+      margin-bottom: 4rem;
+    }
+
+    .about-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .about-section h3 {
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .about-section h3::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 50px;
+      height: 3px;
+      background-color: var(--accent-color);
+    }
+
+    .profile-container {
+      display: flex;
+      gap: 3rem;
+      align-items: flex-start;
+      margin-bottom: 3rem;
+    }
+
+    .profile-image {
+      flex: 0 0 350px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .profile-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .profile-content {
+      flex: 1;
+    }
+
+    .profile-content h3 {
+      margin-top: 0;
+    }
+
+    .profile-content p {
+      margin-bottom: 1.2rem;
+    }
+
+    .profile-content ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .profile-content ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .quote-box {
+      background-color: var(--light-color);
+      padding: 2rem;
+      border-left: 5px solid var(--accent-color);
+      margin: 2rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .quote-box p {
+      font-style: italic;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    .quote-box cite {
+      font-weight: 600;
+      display: block;
+      text-align: right;
+    }
+
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .skill-card {
+      background-color: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .skill-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--secondary-color);
+    }
+
+    .skill-card h4 {
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 900px;
+      margin: 2rem auto;
+    }
+
+    .timeline::after {
+      content: "";
+      position: absolute;
+      width: 6px;
+      background-color: var(--light-color);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -3px;
+    }
+
+    .timeline-item {
+      padding: 10px 40px;
+      position: relative;
+      background-color: inherit;
+      width: 50%;
+    }
+
+    .timeline-item::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: white;
+      border: 4px solid var(--secondary-color);
+      top: 15px;
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    .timeline-left {
+      left: 0;
+    }
+
+    .timeline-right {
+      left: 50%;
+    }
+
+    .timeline-left::after {
+      right: -13px;
+    }
+
+    .timeline-right::after {
+      left: -13px;
+    }
+
+    .timeline-content {
+      padding: 1.5rem;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .timeline-content h4 {
+      margin-bottom: 0.5rem;
+      color: var(--primary-color);
+    }
+
+    .timeline-date {
+      color: var(--secondary-color);
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+
+    .cta-section {
+      background-color: var(--light-color);
+      padding: 4rem 2rem;
+      text-align: center;
+      margin-top: 4rem;
+    }
+
+    .cta-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .cta-container h3 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary-color);
+    }
+
+    .cta-container p {
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      background-color: var(--accent-color);
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .btn:hover {
+      background-color: #c0392b;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .testimonial-container {
+      max-width: 900px;
+      margin: 3rem auto 0;
+    }
+
+    .testimonial-card {
+      background-color: white;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .testimonial-card::before {
+      content: '"';
+      font-size: 5rem;
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      color: rgba(0, 0, 0, 0.05);
+      font-family: Georgia, serif;
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+    }
+
+    .testimonial-author-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 1rem;
+    }
+
+    .testimonial-author-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .testimonial-author-info h4 {
+      margin-bottom: 0.2rem;
+      color: var(--primary-color);
+    }
+
+    .testimonial-author-info span {
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--dark-color);
+      color: white;
+      padding: 3rem 2rem 1rem;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .footer-section h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .footer-section h3::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 50px;
+      height: 2px;
+      background-color: var(--accent-color);
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-section ul li a {
+      color: #bbb;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section ul li a:hover {
+      color: white;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background-color: var(--accent-color);
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+      color: #bbb;
+    }
+
+    .footer-section form {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      /* Compact spacing between form elements */
+    }
+
+    .footer-section label {
+      font-size: 0.9em;
+      margin-bottom: 2px;
+    }
+
+    .footer-section input,
+    .footer-section select,
+    .footer-section textarea {
+      width: 100%;
+      padding: 6px 8px;
+      font-size: 0.9em;
+      border-radius: 3px;
+      border: 1px solid #ccc;
+    }
+
+    .footer-section textarea {
+      resize: vertical;
+    }
+
+    .footer-section button {
+      margin-top: 6px;
+      padding: 8px;
+      background-color: #e74c3c;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 0.9em;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .footer-section button:hover {
+      background-color: #c0392b;
+    }
+
+    /* Responsive Styles */
+    @media screen and (max-width: 992px) {
+      .profile-container {
+        flex-direction: column;
+      }
+
+      .profile-image {
+        max-width: 400px;
+        margin: 0 auto 2rem;
+      }
+
+      .timeline::after {
+        left: 31px;
+      }
+
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+
+      .timeline-right {
+        left: 0;
+      }
+
+      .timeline-left::after,
+      .timeline-right::after {
+        left: 18px;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+      }
+
+      nav {
+        margin-top: 1rem;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav ul li {
+        margin: 0.5rem 0;
+      }
+
+      .about-hero h2 {
+        font-size: 2rem;
+      }
+
+      .skills-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media screen and (max-width: 576px) {
+      .header-container {
+        flex-direction: row;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .about-section h3 {
+        font-size: 1.5rem;
+      }
+
+      .quote-box {
+        padding: 1.5rem;
+      }
+
+      .timeline-content {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <h1>JMC<span> | Mathematics & Academic Resources</span></h1>
+      </div>
+      <button class="mobile-menu-btn">&#9776;</button>
+      <nav>
+        <ul>
+            <li><a href="index.html" >Home</a></li>
+            <li><a href="library.html">Library</a></li>
+            <li><a href="tutorials.html">Tutorials</a></li>
+            <li><a href="videos.html">Videos</a></li> 
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- About Hero Section -->
+  <section class="about-hero">
+    <h2>About Josophat Makawa Chifundo</h2>
+    <p>Mathematics Student, Academic Writer, and Mathematics Tutor</p>
+  </section>
+
+  <!-- About Content -->
+  <div class="about-container">
+    <!-- Personal Profile Section -->
+    <div class="about-section">
+      <div class="profile-container">
+        <div class="profile-image">
+          <img src="images/kizio.jpg" alt="Josophat Makawa Chifundo" />
+        </div>
+        <div class="profile-content">
+          <h3>My Journey</h3>
+          <p>
+            Hello! I'm Josophat Makawa Chifundo, a passionate Mathematics
+            student at the University of Malawi. My academic journey has been
+            driven by a deep curiosity about mathematical concepts and their
+            applications in solving real-world problems.
+          </p>
+
+          <p>
+            From a young age, I discovered my love for writing, which has
+            evolved into creating academic resources that break down complex
+            mathematical topics into understandable content. This dual passion
+            for mathematics and writing has shaped my educational path and
+            personal mission.
+          </p>
+
+          <div class="quote-box">
+            <p>
+              "Mathematics is not about numbers, equations, computations, or
+              algorithms: it is about understanding."
+            </p>
+            <cite>— William Paul Thurston</cite>
+          </div>
+
+          <p>
+            Through my academic journey, I've realized that many students
+            struggle with mathematical concepts not because the subjects are
+            inherently difficult, but because they lack resources that present
+            the material in an accessible way. This realization inspired me to
+            create this platform, where I share my academic materials,
+            tutorials, and resources designed to help students master
+            mathematical concepts with confidence.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mission & Vision Section -->
+    <div class="about-section">
+      <h3>My Mission</h3>
+      <p>
+        My mission is to democratize access to quality mathematics education
+        by creating comprehensive, accessible, and engaging resources that
+        help students at all levels develop a deeper understanding of
+        mathematical concepts. I believe that with the right resources and
+        guidance, anyone can excel in mathematics.
+      </p>
+
+      <h3>My Vision</h3>
+      <p>
+        I envision a world where mathematical literacy is widespread, where
+        students approach mathematics with curiosity rather than fear, and
+        where quality educational resources are accessible to everyone
+        regardless of their background or circumstances.
+      </p>
+    </div>
+
+    <!-- Skills & Expertise Section -->
+    <div class="about-section">
+      <h3>Skills & Expertise</h3>
+      <p>
+        Over the years, I've developed expertise in various areas of
+        mathematics and academic content creation:
+      </p>
+
+      <div class="skills-container">
+        <div class="skill-card">
+          <div class="skill-icon">📊</div>
+          <h4>Mathematical Analysis</h4>
+          <p>
+            Specialized in calculus, differential equations, and analytical
+            problem-solving, with a focus on practical applications.
+          </p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">📝</div>
+          <h4>Academic Writing</h4>
+          <p>
+            Experienced in creating clear, concise, and comprehensive
+            educational content including presentations, tutorials, and
+            problem sets.
+          </p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">👨‍🏫</div>
+          <h4>Mathematics Tutoring</h4>
+          <p>
+            Skilled in explaining complex concepts using intuitive examples
+            and analogies tailored to different learning styles.
+          </p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">💻</div>
+          <h4>Technical Skills</h4>
+          <p>
+            Knowledge of programming languages including Java, HTML, CSS, and
+            Python, which I use to create interactive learning materials.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Education & Experience Timeline -->
+    <div class="about-section">
+      <h3>Education & Experience</h3>
+
+      <div class="timeline">
+        <div class="timeline-item timeline-left">
+          <div class="timeline-content">
+            <h4>Bachelor of Science in Mathematics</h4>
+            <div class="timeline-date">2022 - Present</div>
+            <p>University of Malawi, Zomba</p>
+            <p>
+              Focusing on pure and applied mathematics with emphasis on
+              analytical methods and computational applications.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item timeline-right">
+          <div class="timeline-content">
+            <h4>Mathematics Tutor</h4>
+            <div class="timeline-date">2023 - Present</div>
+            <p>
+              Providing one-on-one and group tutoring sessions for university
+              and high school students in various mathematics subjects.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item timeline-left">
+          <div class="timeline-content">
+            <h4>Academic Content Creator</h4>
+            <div class="timeline-date">2022 - Present</div>
+            <p>
+              Developing comprehensive mathematics resources including
+              presentations, notes, and problem sets shared on platforms like
+              SlideShare.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item timeline-right">
+          <div class="timeline-content">
+            <h4>High School Diploma</h4>
+            <div class="timeline-date">2021</div>
+            <p>
+              Graduated with distinction, excelling in mathematics and science
+              subjects while developing a passion for academic writing.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonials Section -->
+    <div class="about-section">
+      <h3>What My Students Say</h3>
+
+      <div class="testimonial-container">
+        <div class="testimonial-card">
+          <p class="testimonial-text">
+            Josophat's calculus explanations made a world of difference for
+            me. His step-by-step approach and clear examples helped me grasp
+            concepts I had struggled with for months.
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-author-img">
+              <img src="/api/placeholder/100/100" alt="Student" />
+            </div>
+            <div class="testimonial-author-info">
+              <h4>Chimwemwe Banda</h4>
+              <span>Engineering Student, University of Malawi</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <p class="testimonial-text">
+            The resources Josophat creates are incredible. His presentations
+            on linear algebra transformed my understanding of the subject. He
+            has a gift for making complex topics accessible without
+            oversimplifying them.
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-author-img">
+              <img src="/api/placeholder/100/100" alt="Student" />
+            </div>
+            <div class="testimonial-author-info">
+              <h4>Takondwa Mwale</h4>
+              <span>Mathematics Student, Chancellor College</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Call to Action Section -->
+  <section class="cta-section">
+    <div class="cta-container">
+      <h3>Let's Connect</h3>
+      <p>
+        Whether you're looking for tutoring, academic resources, or
+        collaboration opportunities, I'd love to hear from you. Together, we
+        can make mathematics more accessible and enjoyable.
+      </p>
+      <a href="contact.html" class="btn">Get In Touch</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>About JMC</h3>
+        <p>Providing high-quality mathematics and academic resources for students and educators to foster a deeper
+          understanding of complex concepts.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/josophat.chifundo.makawa"><span>FB</span></a>
+          <a href="https://www.instagram.com/kiziojosh/"><span>IS</span></a>
+          <a href="https://www.linkedin.com/in/josophat-makawa-abaa21366/"><span>IN</span></a>
+          <a href="https://www.youtube.com/@jmcmath"><span>YT</span></a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="library.html">Library</a></li>
+            <li><a href="tutorials.html">Tutorials</a></li>
+            <li><a href="videos.html">Videos</a></li> 
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Send Me a Message</h3>
+        <form action="mailto:josophat@example.com" method="POST" enctype="text/plain">
+          <label for="full-name">Full Name</label>
+          <input type="text" id="full-name" name="full-name" placeholder="Your full name" required>
+
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="Your email address" required>
+
+          <label for="subject">Subject</label>
+          <select id="subject" name="subject" required>
+            <option value="" selected disabled>Select a subject</option>
+            <option value="general">General Inquiry</option>
+            <option value="resources">Resource Request</option>
+            <option value="tutoring">Tutoring Services</option>
+            <option value="feedback">Feedback/Suggestions</option>
+            <option value="collaboration">Collaboration Opportunity</option>
+            <option value="other">Other</option>
+          </select>
+
+          <label for="message">Your Message</label>
+          <textarea id="message" name="message" rows="3" placeholder="Write your message here..." required></textarea>
+
+          <button type="submit">Send</button>
+        </form>
+      </div>
+
+
+      <div class="footer-section">
+        <h3>Contact Info</h3>
+        <ul>
+          <li>
+            Email:
+            <a
+              href="mailto:makawacean6@gmail.com?cc=joshkizio772@gmail.com&bcc=makawa.latexlessons@gmail.com&subject=Add%your%subject%here%please!!!">makawacean6@gmail.com</a>
+          </li>
+          <li>Phone: <br />+265 999 978 828 <br />+265 899 990 636</li>
+          <li>University of Malawi</li>
+          <li>Zomba, Malawi</li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Josophat Makawa Chifundo | All Rights Reserved</p>
+    </div>
+  </footer>
+
+
+  <script>
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
+    const nav = document.querySelector("nav");
+
+    mobileMenuBtn.addEventListener("click", () => {
+      nav.style.display = nav.style.display === "block" ? "none" : "block";
+    });
+
+    // Responsive Navigation
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 576) {
+        nav.style.display = "block";
+      } else {
+        nav.style.display = "none";
+      }
+    });
+  </script>
+</body>
+
+</html>

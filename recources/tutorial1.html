@@ -1,0 +1,1844 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        CALCULUS II: Transcendental Functions | Josophat Makawa Chifundo
+    </title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        .main-content {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: #2c3e50;
+        }
+
+        .page-title h2 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-title p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .tutorial-problem {
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.07);
+        }
+
+        .tutorial-problem h3 {
+            color: #3498db;
+            margin-top: 0;
+            font-size: 1.4rem;
+            border-bottom: 2px solid #e74c3c;
+            padding-bottom: 0.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .question p,
+        .solution p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .solution {
+            display: none;
+            /* Hidden by default */
+            background-color: #eaf6ff;
+            /* Softer blue background for solution */
+            border-left: 5px solid #3498db;
+            padding: 1.2rem;
+            margin-top: 1.2rem;
+            border-radius: 5px;
+        }
+
+        .solution h4 {
+            margin-top: 0;
+            color: #2980b9;
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .toggle-solution-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-top: 0.5rem;
+        }
+
+        .toggle-solution-btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg,
+                    var(--primary-color),
+                    var(--secondary-color));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo span {
+            font-weight: 300;
+            font-size: 1rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding-top: 8rem;
+            padding-bottom: 5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+
+        .page-title h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-title p {
+            color: #666;
+        }
+
+        /* LaTeX Document Styling */
+        .latex-document {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        .section-description {
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+
+        .latex-content {
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 5px;
+            border-left: 4px solid var(--secondary-color);
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+        }
+
+        .example {
+            margin-top: 2rem;
+            background-color: #f5f5f5;
+            padding: 1.5rem;
+            border-radius: 5px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .example h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Updated Pagination Styles */
+        .pagination {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            gap: 1rem;
+        }
+
+        .pagination a {
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+            display: inline-block;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        .pagination a:hover {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .pagination a.prev:before {
+            content: "←  ";
+        }
+
+        .pagination a.next:after {
+            content: "  →";
+        }
+
+
+        /* Enhanced MathJax Styling */
+        .equation-container {
+            width: 100%;
+            overflow-x: auto;
+            text-align: center;
+            margin: 2em 0;
+            padding: 0.8em 0;
+            position: relative;
+            background: rgba(249, 250, 251, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .MJX-TEX {
+            font-size: 115% !important;
+        }
+
+        mjx-container {
+            padding: 12px 0;
+        }
+
+        mjx-container[display="true"] {
+            margin: 1.8em 0 !important;
+        }
+
+        mjx-container:not([display="true"]) {
+            display: inline-flex !important;
+            align-items: center;
+            margin: 0 0.2em;
+        }
+
+        /* Make important elements stand out */
+        .highlight-box {
+            border: 2px solid var(--accent-color);
+            border-radius: 8px;
+            padding: 1em 1.2em;
+            background-color: rgba(231, 76, 60, 0.05);
+            margin: 1.5em 0;
+            position: relative;
+        }
+
+        .note {
+            background-color: rgba(52, 152, 219, 0.1);
+            border-left: 4px solid var(--secondary-color);
+            padding: 1em;
+            margin: 1.5em 0;
+            border-radius: 4px;
+        }
+
+       footer {
+        background-color: var(--dark-color);
+        color: white;
+        padding: 3rem 2rem 1rem;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .footer-section h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        position: relative;
+        padding-bottom: 0.5rem;
+      }
+
+      .footer-section h3::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 50px;
+        height: 2px;
+        background-color: var(--accent-color);
+      }
+
+      .footer-section ul {
+        list-style: none;
+      }
+
+      .footer-section ul li {
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-section ul li a {
+        color: #bbb;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-section ul li a:hover {
+        color: white;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .social-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .social-links a:hover {
+        background-color: var(--accent-color);
+        transform: translateY(-3px);
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 2rem;
+        margin-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 0.9rem;
+        color: #bbb;
+      }
+      .footer-section form {
+        display: flex;
+        flex-direction: column;
+        gap: 6px; /* Compact spacing between form elements */
+      }
+
+      .footer-section label {
+        font-size: 0.9em;
+        margin-bottom: 2px;
+      }
+
+      .footer-section input,
+      .footer-section select,
+      .footer-section textarea {
+        width: 100%;
+        padding: 6px 8px;
+        font-size: 0.9em;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+      }
+
+      .footer-section textarea {
+        resize: vertical;
+      }
+
+      .footer-section button {
+        margin-top: 6px;
+        padding: 8px;
+        background-color: #e74c3c;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        font-size: 0.9em;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .footer-section button:hover {
+        background-color: #c0392b;
+      }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 992px) {
+            .about-container {
+                flex-direction: column;
+            }
+
+            .about-img,
+            .about-content {
+                width: 100%;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem;
+            }
+
+            nav {
+                margin-top: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .update-item {
+                flex-direction: column;
+            }
+
+            .update-date {
+                padding: 1rem;
+                flex-direction: row;
+                justify-content: center;
+                min-width: 100%;
+            }
+
+            .update-date .day {
+                margin-right: 0.5rem;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .header-container {
+                flex-direction: row;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .resources-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <!-- Enhanced MathJax Configuration -->
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-svg.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [
+                    ["$", "$"],
+                    ["\\(", "\\)"],
+                ],
+                displayMath: [
+                    ["$$", "$$"],
+                    ["\\[", "\\]"],
+                ],
+                processEscapes: true,
+                processEnvironments: true,
+                tags: 'ams',
+                packages: { '[+]': ['ams', 'noerrors', 'physics', 'color', 'boldsymbol', 'cancel'] },
+                macros: {
+                    // Add custom macros here
+                    RR: "{\\mathbb{R}}",
+                    bold: ["{\\bf #1}", 1],
+                    boxed: ["{\\bbox[border: 1px solid #e74c3c, 5px, background-color: rgba(231,76,60,0.05)]{#1}}", 1]
+                }
+            },
+            svg: {
+                fontCache: 'global',
+                scale: 1.12,
+            },
+            options: {
+                skipHtmlTags: ["script", "noscript", "style", "textarea", "pre"],
+                enableMenu: true,
+                renderActions: {
+                    addMenu: [25, '', ''],
+                    checkLoading: [30, '', '']
+                }
+            },
+            startup: {
+                ready: function () {
+                    MathJax.startup.defaultReady();
+                    // Create equation containers for displayed math
+                    setTimeout(function () {
+                        document.querySelectorAll('mjx-container[display="true"]').forEach(el => {
+                            if (!el.parentNode.classList.contains('equation-container')) {
+                                const container = document.createElement('div');
+                                container.classList.add('equation-container');
+                                el.parentNode.insertBefore(container, el);
+                                container.appendChild(el);
+                            }
+                        });
+                    }, 500);
+                }
+            }
+        };
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                tags: 'ams', // numbering for equations
+                packages: { '[+]': ['ams', 'noerrors', 'physics', 'color', 'boldsymbol', 'cancel'] },
+                macros: {
+                    RR: "{\\mathbb{R}}",
+                    bold: ["{\\bf #1}", 1],
+                    boxed: ["{\\bbox[border: 1px solid #e74c3c, 5px, background-color: rgba(231,76,60,0.05)]{#1}}", 1]
+                }
+            },
+            svg: {
+                fontCache: 'global',
+                scale: 1.12, // Adjust scale as needed
+            },
+            options: {
+                skipHtmlTags: ["script", "noscript", "style", "textarea", "pre"],
+                enableMenu: true, // Allows right-click context menu on MathJax elements
+            }
+        };
+
+        function toggleSolution(button) {
+            const solutionDiv = button.nextElementSibling; // Assumes the solution div is immediately after the button
+            if (solutionDiv.style.display === "none" || solutionDiv.style.display === "") {
+                solutionDiv.style.display = "block";
+                button.textContent = "Hide Solution";
+            } else {
+                solutionDiv.style.display = "none";
+                button.textContent = "Show Solution";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>JMC<span> | Mathematics & Academic Resources</span></h1>
+            </div>
+            <button class="mobile-menu-btn">&#9776;</button>
+            <nav>
+          <ul>
+            <li><a href="/index.html" >Home</a></li>
+            <li><a href="/library.html">Library</a></li>
+            <li><a href="/tutorials.html"  class="active">Tutorials</a></li>
+            <li><a href="/videos.html">Videos</a></li> 
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+        </ul>
+            </nav>
+        </div>
+    </header>
+<section>
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="page-title">
+            <h1>TUTORIAL 1</h1>
+            <h2>Calculus II: Transcendental Functions Tutorials</h2>
+            <p>
+                This tutorial covers the basics of transcendental functions, including
+                exponential and logarithmic functions, as well as inverse trigonometric
+                functions. It provides a comprehensive overview of the concepts,
+                properties, and applications of these functions in calculus.
+                The tutorial is designed to help students understand the fundamental
+                principles of transcendental functions and their significance in
+                calculus. It includes examples, problems, and solutions to reinforce
+                learning and enhance problem-solving skills.
+            </p>
+            <div style="text-align:center; margin: 1.5rem 0;">
+        <a id="download-pdf-btn" href="uploads/transcendentalfunctions.pdf" download class="pagination" style="
+            display:inline-block;
+            padding:0.8rem 1.5rem;
+            background:linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color:white;
+            border-radius:4px;
+            font-weight:500;
+            text-decoration:none;
+            box-shadow:var(--shadow);
+            transition:all 0.3s;
+            cursor:pointer;
+            min-width: 120px;
+            text-align: center;
+          " onmousedown="this.style.background='linear-gradient(135deg, var(--primary-color), var(--accent-color))';"
+          onmouseup="this.style.background='linear-gradient(135deg, var(--secondary-color), var(--primary-color))';"
+          onmouseleave="this.style.background='linear-gradient(135deg, var(--secondary-color), var(--primary-color))';">
+          Download PDF
+        </a>
+      </div>
+      <script>
+        // Change text to "Downloading..." when clicked, revert after short delay
+        const downloadBtn = document.getElementById('download-pdf-btn');
+        downloadBtn.addEventListener('click', function (e) {
+          const originalText = this.textContent;
+          this.textContent = 'Downloading...';
+          setTimeout(() => {
+            this.textContent = originalText;
+          }, 2000);
+        });
+        // Add hover effect via JS for inline style
+        downloadBtn.addEventListener('mouseenter', function () {
+          this.style.background = 'linear-gradient(135deg, var(--primary-color), var(--accent-color))';
+          this.style.transform = 'translateY(-2px)';
+          this.style.boxShadow = '0 6px 12px rgba(0,0,0,0.15)';
+        });
+        downloadBtn.addEventListener('mouseleave', function () {
+          this.style.background = 'linear-gradient(135deg, var(--secondary-color), var(--primary-color))';
+          this.style.transform = 'none';
+          this.style.boxShadow = 'var(--shadow)';
+        });
+      </script>
+        </div>
+        <!-- Document Navigation -->
+        <div class="note">
+            <h2>Contents</h2>
+            <ul>
+                <li>
+                    <a href="#logdiff">Logarithimic Differentiation</a>
+                </li>
+                <li><a href="#logint">Logarithmic Integration</li>
+                <li>
+                    <a href="#inversetrig">Derivatives of Inverse Trigonometric Functions</a>
+                </li>
+                <li><a href="#inversetrigint">Integrals Involving Inverse Trig Functions</a></li>
+            </ul>
+        </div>
+
+        <div id="logdiff" class="latex-document">
+            <h2 class="section-title">Logarithimic Differentiation</h2>
+            <p class="section-description">
+
+                Logarithmic differentiation is a technique used to differentiate
+                functions that are products or quotients of variables raised to
+                variable powers. It is particularly useful when dealing with functions
+                of the form $y = f(x)^{g(x)}$, where both $f(x)$ and $g(x)$ are
+                functions of $x$. By taking the natural logarithm of both sides, we
+                can simplify the differentiation process.
+            </p>
+        </div>
+            <div class="tutorial-problem">
+                <h3>Problem 1:</h3>
+                <div class="question">
+                    <p>Differentiate the function $y = x^x$ with respect to $x$.</p>
+                </div>
+                <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+                <div class="solution">
+                    <h4>Solution:</h4>
+                    <p>Given the function $y = x^x$.</p>
+                    <p>Since both the base and the exponent involve the variable $x$, we use logarithmic
+                        differentiation.</p>
+                    <p><strong>Step 1:</strong> Take the natural logarithm of both sides of the equation.</p>
+                    <div class="equation-container">
+                        $$ \ln y = \ln(x^x) $$
+                    </div>
+                    <p><strong>Step 2:</strong> Apply the logarithm property $\ln(a^b) = b \ln a$ to the right side.</p>
+                    <div class="equation-container">
+                        $$ \ln y = x \ln x $$
+                    </div>
+                    <p><strong>Step 3:</strong> Differentiate both sides with respect to $x$. The left side, $\ln y$,
+                        requires implicit differentiation. The right side, $x \ln x$, requires the product rule, where
+                        $(uv)' = u'v + uv'$. Let $u=x$ and $v=\ln x$.</p>
+                    <div class="equation-container">
+                        $$ \frac{d}{dx}(\ln y) = \frac{d}{dx}(x \ln x) $$
+                    </div>
+                    <div class="equation-container">
+                        $$ \frac{1}{y} \cdot \frac{dy}{dx} = \left(\frac{d}{dx}(x)\right) \ln x + x
+                        \left(\frac{d}{dx}(\ln x)\right) $$
+                    </div>
+                    <div class="equation-container">
+                        $$ \frac{1}{y} \frac{dy}{dx} = (1) \cdot \ln x + x \cdot \left(\frac{1}{x}\right) $$
+                    </div>
+                    <div class="equation-container">
+                        $$ \frac{1}{y} \frac{dy}{dx} = \ln x + 1 $$
+                    </div>
+                    <p><strong>Step 4:</strong> Solve for $\frac{dy}{dx}$ by multiplying both sides by $y$.</p>
+                    <div class="equation-container">
+                        $$ \frac{dy}{dx} = y (\ln x + 1) $$
+                    </div>
+                    <p><strong>Step 5:</strong> Substitute the original expression for $y$ (which is $y=x^x$) back into
+                        the equation.</p>
+                    <div class="equation-container">
+                        $$ \frac{dy}{dx} = x^x (\ln x + 1) $$
+                    </div>
+                    <p>Thus, the derivative of $y=x^x$ is $x^x(1 + \ln x)$.</p>
+                </div>
+            </div>
+            <div class="tutorial-problem">
+                <h3>Problem 2:</h3>
+                <div class="question">
+                    <p>Find $\displaystyle \frac{dy}{dx}$ if $y = \ln(x^2 + 1)^{\sin x}$.</p>
+                </div>
+                <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+                <div class="solution">
+                    <h4>Solution:</h4>
+                    <p>Let $y = \ln(x^2 + 1)^{\sin x}$. Take the natural logarithm of both sides:</p>
+                    <div class="equation-container">
+                        $$ \ln y = \sin x \cdot \ln(x^2 + 1) $$
+                    </div>
+                    <p>Differentiate both sides with respect to $x$:</p>
+                    <div class="equation-container">
+                        $$ \frac{1}{y} \frac{dy}{dx} = \cos x \cdot \ln(x^2 + 1) + \sin x \cdot \frac{2x}{x^2 + 1} $$
+                    </div>
+                    <p>Multiply both sides by $y$ and substitute $y = (x^2 + 1)^{\sin x}$:</p>
+                    <div class="equation-container">
+                        $$ \frac{dy}{dx} = (x^2 + 1)^{\sin x} \left[ \cos x \cdot \ln(x^2 + 1) + \sin x
+                        \cdot \frac{2x}{x^2 + 1} \right] $$
+                    </div>
+                </div>
+            </div>
+            <div class="tutorial-problem">
+                <h3>Problem 3:</h3>
+                <div class="question">
+                    <p>Differentiate the function $y = (x^2 + 1)^{\tan x}$ with respect to $x$.</p>
+                </div>
+                <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+                <div class="solution">
+                    <h4>Solution:</h4>
+                    <p>Let $y = (x^2 + 1)^{\tan x}$. Take the natural logarithm of both sides:</p>
+                    <div class="equation-container">
+                        $$ \ln y = \tan x \cdot \ln(x^2 + 1) $$
+                    </div>
+                    <p>Differentiate both sides with respect to $x$:</p>
+                    <div class="equation-container">
+                        $$ \frac{1}{y} \frac{dy}{dx} = \sec^2 x \cdot \ln(x^2 + 1) + \tan x \cdot \frac{2x}{x^2 + 1} $$
+                    </div>
+                    <p>Multiply both sides by $y$ and substitute $y = (x^2 + 1)^{\tan x}$:</p>
+                    <div class="equation-container">
+                        $$ \frac{dy}{dx} = (x^2 + 1)^{\tan x} \left[ \sec^2 x \cdot \ln(x^2 + 1) + \tan x \cdot \frac{2x}{x^2 + 1} \right] $$
+                    </div>
+                </div>
+            </div>
+
+            <div class="tutorial-problem">
+                <h3>Problem 4:</h3>
+                <div class="question">
+                    <p>Find $\displaystyle \frac{dy}{dx}$ if $y = \frac{(x^2 + 3)^5}{(2x - 1)^4}$.</p>
+                </div>
+                <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+                <div class="solution">
+                    <h4>Solution:</h4>
+                    <p>Let $y = \frac{(x^2 + 3)^5}{(2x - 1)^4}$. Take the natural logarithm of both sides:</p>
+                    <div class="equation-container">
+                        $$ \ln y = 5 \ln(x^2 + 3) - 4 \ln(2x - 1) $$
+                    </div>
+                    <p>Differentiate both sides with respect to $x$:</p>
+                    <div class="equation-container">
+                        $$ \frac{1}{y} \frac{dy}{dx} = 5 \cdot \frac{2x}{x^2 + 3} - 4 \cdot \frac{2}{2x - 1} $$
+                    </div>
+                    <div class="equation-container">
+                        $$ \frac{1}{y} \frac{dy}{dx} = \frac{10x}{x^2 + 3} - \frac{8}{2x - 1} $$
+                    </div>
+                    <p>Multiply both sides by $y$:</p>
+                    <div class="equation-container">
+                        $$ \frac{dy}{dx} = \frac{(x^2 + 3)^5}{(2x - 1)^4} \left( \frac{10x}{x^2 + 3} - \frac{8}{2x - 1} \right) $$
+                    </div>
+                </div>
+            </div>
+
+            <div class="tutorial-problem">
+                <h3>Problem 5:</h3>
+                <div class="question">
+                    <p>Differentiate $y = x^2 \sqrt{x+1} \, e^{3x}$ with respect to $x$.</p>
+                </div>
+                <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+                <div class="solution">
+                    <h4>Solution:</h4>
+                    <p>Let $y = x^2 \sqrt{x+1} \, e^{3x}$. Take the natural logarithm of both sides:</p>
+                    <div class="equation-container">
+                        $$ \ln y = 2\ln x + \frac{1}{2}\ln(x+1) + 3x $$
+                    </div>
+                    <p>Differentiate both sides with respect to $x$:</p>
+                    <div class="equation-container">
+                        $$ \frac{1}{y} \frac{dy}{dx} = \frac{2}{x} + \frac{1}{2(x+1)} + 3 $$
+                    </div>
+                    <p>Multiply both sides by $y$:</p>
+                    <div class="equation-container">
+                        $$ \frac{dy}{dx} = x^2 \sqrt{x+1} \, e^{3x} \left( \frac{2}{x} + \frac{1}{2(x+1)} + 3 \right) $$
+                    </div>
+                </div>
+            </div>
+            <div class="tutorial-problem">
+            <h3>Problem 6:</h3>
+            <div class="question">
+                <p>Find $\displaystyle \frac{dy}{dx}$ if $y = (x^{\sin x})^{\cos x}$.</p>
+            </div>
+            <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+            <div class="solution">
+                <h4>Solution:</h4>
+                <p>Let $y = (x^{\sin x})^{\cos x}$. Take the natural logarithm of both sides:</p>
+                <div class="equation-container">
+                    $$ \ln y = \cos x \cdot \ln(x^{\sin x}) = \cos x \cdot \sin x \cdot \ln x $$
+                </div>
+                <p>Differentiate both sides with respect to $x$:</p>
+                <div class="equation-container">
+                    $$ \frac{1}{y} \frac{dy}{dx} = \frac{d}{dx}[\cos x \cdot \sin x \cdot \ln x] $$
+                </div>
+                <p>Let $u = \cos x$, $v = \sin x$, $w = \ln x$. Use the product rule:</p>
+                <div class="equation-container">
+                    $$ \frac{d}{dx}(uvw) = u'vw + uv'w + uvw' $$
+                </div>
+                <div class="equation-container">
+                    $$ u' = -\sin x,\quad v' = \cos x,\quad w' = \frac{1}{x} $$
+                </div>
+                <div class="equation-container">
+                    $$ \frac{1}{y} \frac{dy}{dx} = (-\sin x)\sin x \ln x + \cos x \cos x \ln x + \cos x \sin x \cdot \frac{1}{x} $$
+                </div>
+                <div class="equation-container">
+                    $$ = -\sin^2 x \ln x + \cos^2 x \ln x + \frac{\cos x \sin x}{x} $$
+                </div>
+                 <p>Multiply both sides by $y$:</p>
+                <div class="equation-container">
+                    $$ \frac{dy}{dx} = (x^{\sin x})^{\cos x} \left[ (\cos^2 x - \sin^2 x)\ln x + \frac{\cos x \sin x}{x} \right] $$
+                </div>
+            </div>
+        </div>
+
+        
+
+        <div class="tutorial-problem">
+            <h3>Problem 8: </h3>
+            <div class="question">
+                <p>Find $\displaystyle \frac{dy}{dx}$ if $y = e^{x \ln x}$.</p>
+            </div>
+            <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+            <div class="solution">
+                <h4>Solution:</h4>
+                <p>Rewrite $y = e^{x \ln x} = x^x$.</p>
+                <p>We have already differentiated $y = x^x$ in Problem 1, but let's show the steps:</p>
+                <div class="equation-container">
+                    $$ \ln y = x \ln x $$
+                </div>
+                <div class="equation-container">
+                    $$ \frac{1}{y} \frac{dy}{dx} = \ln x + 1 $$
+                </div>
+                <div class="equation-container">
+                    $$ \frac{dy}{dx} = x^x (\ln x + 1) $$
+                </div>
+            </div>
+        </div>
+
+        <div class="tutorial-problem">
+            <h3>Problem 9: </h3>
+            <div class="question">
+                <p>Find $\displaystyle \frac{dy}{dx}$ if $y = \ln(x^2 + 1)^{\sin x}$.</p>
+            </div>
+            <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+            <div class="solution">
+                <h4>Solution:</h4>
+                <p>Let $y = \ln(x^2 + 1)^{\sin x}$. Take the natural logarithm of both sides:</p>
+                <div class="equation-container">
+                    $$ \ln y = \sin x \cdot \ln(x^2 + 1) $$
+                </div>
+                <p>Differentiate both sides with respect to $x$:</p>
+                <div class="equation-container">
+                    $$ \frac{1}{y} \frac{dy}{dx} = \cos x \cdot \ln(x^2 + 1) + \sin x \cdot \frac{2x}{x^2 + 1} $$
+                </div>
+                <p>Multiply both sides by $y$ and substitute $y = (x^2 + 1)^{\sin x}$:</p>
+                <div class="equation-container">
+                    $$ \frac{dy}{dx} = (x^2 + 1)^{\sin x} \left[ \cos x \cdot \ln(x^2 + 1) + \sin x \cdot \frac{2x}{x^2 + 1} \right] $$
+                </div>
+            </div>
+        </div>
+        <div class="tutorial-problem">
+            <h3>Problem 10:</h3>
+            <div class="question">
+                <p>Find $\displaystyle \frac{dy}{dx}$ if $y = \ln(\sin(\ln x))$.</p>
+            </div>
+            <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+            <div class="solution">
+                <h4>Solution:</h4>
+                <p>Let $y = \ln(\sin(\ln x))$.</p>
+                <p>By the chain rule:</p>
+                <div class="equation-container">
+                    $$ \frac{dy}{dx} = \frac{1}{\sin(\ln x)} \cdot \cos(\ln x) \cdot \frac{1}{x} $$
+                </div>
+                <div class="equation-container">
+                    $$ = \frac{\cos(\ln x)}{x \sin(\ln x)} $$
+                </div>
+            </div>
+        </div>
+        <div class="pagination">
+        <a href="#logdiff" class="prev">Previous: Log Differentiation</a>
+        <a href="#logint" class="next">Next: Log Integration</a>
+    </div>
+    <div id="logint" class="latex-document">
+            <h2 class="section-title">Logarithimic Integration</h2>
+            <p class="section-description">
+
+                Logarithmic integration is a technique used to evaluate integrals that
+                involve logarithmic functions. It is particularly useful when dealing
+                with integrals of the form $\int \frac{f(x)}{g(x)} \, dx$, where $f(x)$
+                and $g(x)$ are functions of $x$. By using integration by parts or
+                substitution, we can simplify the integral and find its value.
+            </p>
+    </div>
+    
+        <div class="tutorial-problem">
+            <h3>Problem 1:</h3>
+            <div class="question">
+                <p>Evaluate the integral $\displaystyle \int \frac{1}{x} \, dx$.</p>
+            </div>
+            <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+            <div class="solution">
+                <h4>Solution:</h4>
+                <p>We can use the property of logarithmic integration:</p>
+                <div class="equation-container">
+                    $$ \int \frac{1}{x} \, dx = \ln |x| + C $$
+                </div>
+            </div>
+        </div>
+
+    <div class="tutorial-problem">
+        <h3>Problem 2:</h3>
+        <div class="question">
+            <p>Evaluate the integral $\displaystyle \int \frac{2x}{x^2 + 1} \, dx$.</p>
+        </div>
+        <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+        <div class="solution">
+            <h4>Solution:</h4>
+            <p>Let $u = x^2 + 1$, so $du = 2x\,dx$.</p>
+            <div class="equation-container">
+                $$ \int \frac{2x}{x^2 + 1} \, dx = \int \frac{1}{u} \, du = \ln|u| + C = \ln|x^2 + 1| + C $$
+            </div>
+        </div>
+    </div>
+
+    <div class="tutorial-problem">
+        <h3>Problem 3:</h3>
+        <div class="question">
+            <p>Evaluate the integral $\displaystyle \int \frac{1}{3x+2} \, dx$.</p>
+        </div>
+        <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+        <div class="solution">
+            <h4>Solution:</h4>
+            <p>Let $u = 3x + 2$, so $du = 3\,dx$, $dx = \frac{du}{3}$.</p>
+            <div class="equation-container">
+                $$ \int \frac{1}{3x+2} \, dx = \int \frac{1}{u} \cdot \frac{du}{3} = \frac{1}{3} \ln|u| + C = \frac{1}{3} \ln|3x+2| + C $$
+            </div>
+        </div>
+    </div>
+
+    <div class="tutorial-problem">
+        <h3>Problem 4:</h3>
+        <div class="question">
+            <p>Evaluate the integral $\displaystyle \int \frac{5}{2x-7} \, dx$.</p>
+        </div>
+        <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+        <div class="solution">
+            <h4>Solution:</h4>
+            <p>Let $u = 2x - 7$, so $du = 2\,dx$, $dx = \frac{du}{2}$.</p>
+            <div class="equation-container">
+                $$ \int \frac{5}{2x-7} \, dx = 5 \int \frac{1}{u} \cdot \frac{du}{2} = \frac{5}{2} \ln|u| + C = \frac{5}{2} \ln|2x-7| + C $$
+            </div>
+        </div>
+    </div>
+
+    <div class="tutorial-problem">
+        <h3>Problem 5:</h3>
+        <div class="question">
+            <p>Evaluate the integral $\displaystyle \int \frac{1}{x^2-4} \, dx$.</p>
+        </div>
+        <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+        <div class="solution">
+            <h4>Solution:</h4>
+            <p>Factor denominator: $x^2-4 = (x-2)(x+2)$. Use partial fractions:</p>
+            <div class="equation-container">
+                $$ \frac{1}{x^2-4} = \frac{A}{x-2} + \frac{B}{x+2} $$
+            </div>
+            <p>Solve for $A$ and $B$:</p>
+            <div class="equation-container">
+                $$ 1 = A(x+2) + B(x-2) $$
+            </div>
+            <p>Let $x=2$: $1 = A(4) \implies A = \frac{1}{4}$<br>
+            Let $x=-2$: $1 = B(-4) \implies B = -\frac{1}{4}$</p>
+            <div class="equation-container">
+                $$ \int \frac{1}{x^2-4} dx = \frac{1}{4} \int \frac{1}{x-2} dx - \frac{1}{4} \int \frac{1}{x+2} dx $$
+            </div>
+            <div class="equation-container">
+                $$ = \frac{1}{4} \ln|x-2| - \frac{1}{4} \ln|x+2| + C $$
+            </div>
+        </div>
+    </div>
+
+    <div class="tutorial-problem">
+        <h3>Problem 6:</h3>
+        <div class="question">
+            <p>Evaluate the integral $\displaystyle \int \frac{3x+5}{x^2+5x+6} \, dx$.</p>
+        </div>
+        <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+        <div class="solution">
+            <h4>Solution:</h4>
+            <p>Factor denominator: $x^2+5x+6 = (x+2)(x+3)$. Use partial fractions:</p>
+            <div class="equation-container">
+                $$ \frac{3x+5}{(x+2)(x+3)} = \frac{A}{x+2} + \frac{B}{x+3} $$
+            </div>
+            <p>Multiply both sides by $(x+2)(x+3)$:</p>
+            <div class="equation-container">
+                $$ 3x+5 = A(x+3) + B(x+2) $$
+            </div>
+            <p>Let $x=-3$: $3(-3)+5 = A(0) + B(-1) \implies -9+5 = -B \implies B = 4$<br>
+            Let $x=-2$: $3(-2)+5 = A(1) + B(0) \implies -6+5 = A \implies A = -1$</p>
+            <div class="equation-container">
+                $$ \int \frac{3x+5}{x^2+5x+6} dx = \int \frac{-1}{x+2} dx + \int \frac{4}{x+3} dx $$
+            </div>
+            <div class="equation-container">
+                $$ = -\ln|x+2| + 4\ln|x+3| + C $$
+            </div>
+        </div>
+    </div>
+
+    <div class="tutorial-problem">
+        <h3>Problem 7:</h3>
+        <div class="question">
+            <p>Evaluate the integral $\displaystyle \int \frac{2x+1}{x^2+x} \, dx$.</p>
+        </div>
+        <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+        <div class="solution">
+            <h4>Solution:</h4>
+            <p>Factor denominator: $x^2+x = x(x+1)$. Use partial fractions:</p>
+            <div class="equation-container">
+                $$ \frac{2x+1}{x(x+1)} = \frac{A}{x} + \frac{B}{x+1} $$
+            </div>
+            <p>Multiply both sides by $x(x+1)$:</p>
+            <div class="equation-container">
+                $$ 2x+1 = A(x+1) + Bx $$
+            </div>
+            <p>Let $x=0$: $1 = A(1) \implies A=1$<br>
+            Let $x=-1$: $2(-1)+1 = B(-1) \implies -2+1 = -B \implies B=1$</p>
+            <div class="equation-container">
+                $$ \int \frac{2x+1}{x^2+x} dx = \int \frac{1}{x} dx + \int \frac{1}{x+1} dx $$
+            </div>
+            <div class="equation-container">
+                $$ = \ln|x| + \ln|x+1| + C $$
+            </div>
+        </div>
+    </div>
+
+    <div class="tutorial-problem">
+        <h3>Problem 8:</h3>
+        <div class="question">
+            <p>Evaluate the integral $\displaystyle \int \frac{4x-1}{2x^2-x} \, dx$.</p>
+        </div>
+        <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+        <div class="solution">
+            <h4>Solution:</h4>
+            <p>Factor denominator: $2x^2-x = x(2x-1)$. Use partial fractions:</p>
+            <div class="equation-container">
+                $$ \frac{4x-1}{x(2x-1)} = \frac{A}{x} + \frac{B}{2x-1} $$
+            </div>
+            <p>Multiply both sides by $x(2x-1)$:</p>
+            <div class="equation-container">
+                $$ 4x-1 = A(2x-1) + Bx $$
+            </div>
+            <p>Let $x=0$: $-1 = A(-1) \implies A=1$<br>
+            Let $x=\frac{1}{2}$: $4(\frac{1}{2})-1 = B(\frac{1}{2}) \implies 2-1 = \frac{B}{2} \implies B=2$</p>
+            <div class="equation-container">
+                $$ \int \frac{4x-1}{2x^2-x} dx = \int \frac{1}{x} dx + \int \frac{2}{2x-1} dx $$
+            </div>
+            <div class="equation-container">
+                $$ = \ln|x| + \int \frac{2}{2x-1} dx $$
+            </div>
+            <p>Let $u=2x-1$, $du=2dx$, so $dx = du/2$:</p>
+            <div class="equation-container">
+                $$ \int \frac{2}{2x-1} dx = \int \frac{2}{u} \cdot \frac{du}{2} = \int \frac{1}{u} du = \ln|u| + C = \ln|2x-1| + C $$
+            </div>
+            <div class="equation-container">
+                $$ \int \frac{4x-1}{2x^2-x} dx = \ln|x| + \ln|2x-1| + C $$
+            </div>
+        </div>
+    </div>
+
+    <div class="tutorial-problem">
+        <h3>Problem 9:</h3>
+        <div class="question">
+            <p>Evaluate the integral $\displaystyle \int \frac{1}{x^2+4x+3} \, dx$.</p>
+        </div>
+        <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+        <div class="solution">
+            <h4>Solution:</h4>
+            <p>Factor denominator: $x^2+4x+3 = (x+1)(x+3)$. Use partial fractions:</p>
+            <div class="equation-container">
+                $$ \frac{1}{(x+1)(x+3)} = \frac{A}{x+1} + \frac{B}{x+3} $$
+            </div>
+            <p>Multiply both sides by $(x+1)(x+3)$:</p>
+            <div class="equation-container">
+                $$ 1 = A(x+3) + B(x+1) $$
+            </div>
+            <p>Let $x=-3$: $1 = A(0) + B(-2) \implies B = -\frac{1}{2}$<br>
+            Let $x=-1$: $1 = A(2) + B(0) \implies A = \frac{1}{2}$</p>
+            <div class="equation-container">
+                $$ \int \frac{1}{x^2+4x+3} dx = \frac{1}{2} \int \frac{1}{x+1} dx - \frac{1}{2} \int \frac{1}{x+3} dx $$
+            </div>
+            <div class="equation-container">
+                $$ = \frac{1}{2} \ln|x+1| - \frac{1}{2} \ln|x+3| + C $$
+            </div>
+        </div>
+    </div>
+
+    <div class="tutorial-problem">
+        <h3>Problem 10:</h3>
+        <div class="question">
+            <p>Evaluate the integral $\displaystyle \int \frac{2x+3}{x^2+3x+2} \, dx$.</p>
+        </div>
+        <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+        <div class="solution">
+            <h4>Solution:</h4>
+            <p>Factor denominator: $x^2+3x+2 = (x+1)(x+2)$. Use partial fractions:</p>
+            <div class="equation-container">
+                $$ \frac{2x+3}{(x+1)(x+2)} = \frac{A}{x+1} + \frac{B}{x+2} $$
+            </div>
+            <p>Multiply both sides by $(x+1)(x+2)$:</p>
+            <div class="equation-container">
+                $$ 2x+3 = A(x+2) + B(x+1) $$
+            </div>
+            <p>Let $x=-2$: $2(-2)+3 = A(0) + B(-1) \implies -4+3 = -B \implies B=1$<br>
+            Let $x=-1$: $2(-1)+3 = A(1) + B(0) \implies -2+3 = A \implies A=1$</p>
+            <div class="equation-container">
+                $$ \int \frac{2x+3}{x^2+3x+2} dx = \int \frac{1}{x+1} dx + \int \frac{1}{x+2} dx $$
+            </div>
+            <div class="equation-container">
+                $$ = \ln|x+1| + \ln|x+2| + C $$
+            </div>
+        </div>
+    </div>
+
+    <div class="tutorial-problem">
+        <h3>Problem 11:</h3>
+        <div class="question">
+            <p>Evaluate the integral $\displaystyle \int \frac{1}{x^2-2x} \, dx$.</p>
+        </div>
+        <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+        <div class="solution">
+            <h4>Solution:</h4>
+            <p>Factor denominator: $x^2-2x = x(x-2)$. Use partial fractions:</p>
+            <div class="equation-container">
+                $$ \frac{1}{x(x-2)} = \frac{A}{x} + \frac{B}{x-2} $$
+            </div>
+            <p>Multiply both sides by $x(x-2)$:</p>
+            <div class="equation-container">
+                $$ 1 = A(x-2) + Bx $$
+            </div>
+            <p>Let $x=0$: $1 = A(-2) \implies A = -\frac{1}{2}$<br>
+            Let $x=2$: $1 = B(2) \implies B = \frac{1}{2}$</p>
+            <div class="equation-container">
+                $$ \int \frac{1}{x^2-2x} dx = -\frac{1}{2} \int \frac{1}{x} dx + \frac{1}{2} \int \frac{1}{x-2} dx $$
+            </div>
+            <div class="equation-container">
+                $$ = -\frac{1}{2} \ln|x| + \frac{1}{2} \ln|x-2| + C $$
+            </div>
+        </div>
+    </div>
+
+    <div class="tutorial-problem">
+        <h3>Problem 12:</h3>
+        <div class="question">
+            <p>Evaluate the integral $\displaystyle \int \frac{3x+2}{x^2+2x} \, dx$.</p>
+        </div>
+        <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+        <div class="solution">
+            <h4>Solution:</h4>
+            <p>Factor denominator: $x^2+2x = x(x+2)$. Use partial fractions:</p>
+            <div class="equation-container">
+                $$ \frac{3x+2}{x(x+2)} = \frac{A}{x} + \frac{B}{x+2} $$
+            </div>
+            <p>Multiply both sides by $x(x+2)$:</p>
+            <div class="equation-container">
+                $$ 3x+2 = A(x+2) + Bx $$
+            </div>
+            <p>Let $x=0$: $2 = A(2) \implies A=1$<br>
+            Let $x=-2$: $3(-2)+2 = B(-2) \implies -6+2 = -2B \implies B=2$</p>
+            <div class="equation-container">
+                $$ \int \frac{3x+2}{x^2+2x} dx = \int \frac{1}{x} dx + \int \frac{2}{x+2} dx $$
+            </div>
+            <div class="equation-container">
+                $$ = \ln|x| + 2\ln|x+2| + C $$
+            </div>
+        </div>
+        <div class="tutorial-problem">
+            <h3>Problem 13:</h3>
+            <div class="question">
+                <p>Evaluate the definite integral $\displaystyle \int_{1}^{e} \frac{1}{x} \, dx$.</p>
+            </div>
+            <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+            <div class="solution">
+                <h4>Solution:</h4>
+                <p>
+                    The antiderivative is $\ln|x|$. Thus,
+                </p>
+                <div class="equation-container">
+                    $$ \int_{1}^{e} \frac{1}{x} \, dx = \left[ \ln|x| \right]_{1}^{e} = \ln e - \ln 1 = 1 - 0 = 1 $$
+                </div>
+            </div>
+        </div>
+
+        <div class="tutorial-problem">
+            <h3>Problem 14:</h3>
+            <div class="question">
+                <p>Evaluate the definite integral $\displaystyle \int_{0}^{1} \frac{2}{x+2} \, dx$.</p>
+            </div>
+            <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+            <div class="solution">
+                <h4>Solution:</h4>
+                <p>
+                    Let $u = x+2$, $du = dx$. The antiderivative is $2\ln|x+2|$.
+                </p>
+                <div class="equation-container">
+                    $$ \int_{0}^{1} \frac{2}{x+2} \, dx = \left[ 2\ln|x+2| \right]_{0}^{1} = 2\ln 3 - 2\ln 2 = 2\ln\left(\frac{3}{2}\right) $$
+                </div>
+            </div>
+        </div>
+
+        <div class="tutorial-problem">
+            <h3>Problem 15:</h3>
+            <div class="question">
+                <p>Evaluate the definite integral $\displaystyle \int_{1}^{2} \frac{1}{x^2} \, dx$.</p>
+            </div>
+            <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+            <div class="solution">
+                <h4>Solution:</h4>
+                <p>
+                    The antiderivative is $-\frac{1}{x}$.
+                </p>
+                <div class="equation-container">
+                    $$ \int_{1}^{2} \frac{1}{x^2} \, dx = \left[ -\frac{1}{x} \right]_{1}^{2} = -\frac{1}{2} - (-1) = 1 - \frac{1}{2} = \frac{1}{2} $$
+                </div>
+            </div>
+        </div>
+    </div>
+            
+    <!-- Pagination -->
+    <div class="pagination">
+        <a href="#logint" class="prev">Previous: Integrals of Log Functions</a>
+        <a href="#inversetrig" class="next">Next: Derivatives of Inverse Trig Functions</a>
+    </div>
+    <div id="inversetrig" class="latex-document">
+            <h2 class="section-title">Derivatives of Inverse Trig Functions</h2>
+            <p class="section-description">
+                The derivatives of inverse trigonometric functions are important in
+                calculus and have various applications in mathematics and physics.
+                Below are some problems and solutions related to the derivatives of
+                inverse trigonometric functions for your practice.
+            </p>
+     </div>
+    <div class="tutorial-problem">
+        <h3>Problem 1:</h3>
+        <div class="question">
+            <p>Find $\displaystyle \frac{d}{dx} \arcsin(2x)$.</p>
+        </div>
+        <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+        <div class="solution">
+            <h4>Solution:</h4>
+            <p>Let $y = \arcsin(2x)$. By the chain rule:</p>
+            <div class="equation-container">
+                $$ \frac{dy}{dx} = \frac{1}{\sqrt{1-(2x)^2}} \cdot 2 = \frac{2}{\sqrt{1-4x^2}} $$
+            </div>
+        </div>
+    </div>
+
+    <div class="tutorial-problem">
+        <h3>Problem 2:</h3>
+        <div class="question">
+            <p>Differentiate $y = x \arctan x$ with respect to $x$.</p>
+        </div>
+        <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+        <div class="solution">
+            <h4>Solution:</h4>
+            <p>Use the product rule:</p>
+            <div class="equation-container">
+                $$ \frac{dy}{dx} = \arctan x + x \cdot \frac{1}{1+x^2} $$
+            </div>
+            <p>So,</p>
+            <div class="equation-container">
+                $$ \frac{dy}{dx} = \arctan x + \frac{x}{1+x^2} $$
+            </div>
+        </div>
+    </div>
+
+    <div class="tutorial-problem">
+        <h3>Problem 3:</h3>
+        <div class="question">
+            <p>Find $\displaystyle \frac{d}{dx} \arccos(\sqrt{x})$ for $0 &lt; x &lt; 1$.</p>
+        </div>
+        <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+        <div class="solution">
+            <h4>Solution:</h4>
+            <p>Let $y = \arccos(\sqrt{x})$. By the chain rule:</p>
+            <div class="equation-container">
+                $$ \frac{dy}{dx} = -\frac{1}{\sqrt{1-(\sqrt{x})^2}} \cdot \frac{1}{2\sqrt{x}} = -\frac{1}{2\sqrt{x}\sqrt{1-x}} $$
+            </div>
+        </div>
+    </div>
+
+    <div class="tutorial-problem">
+        <h3>Problem 4:</h3>
+        <div class="question">
+            <p>Differentiate $y = \arctan\left(\frac{1}{x}\right)$ for $x &gt; 0$.</p>
+        </div>
+        <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+        <div class="solution">
+            <h4>Solution:</h4>
+            <p>Let $y = \arctan\left(\frac{1}{x}\right)$. By the chain rule:</p>
+            <div class="equation-container">
+                $$ \frac{dy}{dx} = \frac{1}{1+\left(\frac{1}{x}\right)^2} \cdot \left(-\frac{1}{x^2}\right) = \frac{-1}{x^2 + 1} $$
+            </div>
+        </div>
+    </div>
+
+    <div class="tutorial-problem">
+        <h3>Problem 5:</h3>
+        <div class="question">
+            <p>Find $\displaystyle \frac{d}{dx} \left[ x^2 \arcsin x \right]$.</p>
+        </div>
+        <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+        <div class="solution">
+            <h4>Solution:</h4>
+            <p>Use the product rule:</p>
+            <div class="equation-container">
+                $$ \frac{d}{dx} \left[ x^2 \arcsin x \right] = 2x \arcsin x + x^2 \cdot \frac{1}{\sqrt{1-x^2}} $$
+            </div>
+        </div>
+    </div>
+
+    <div class="tutorial-problem">
+        <h3>Problem 6:</h3>
+        <div class="question">
+            <p>Differentiate $y = \arccos(3x^2)$ for $|x| &lt; \frac{1}{\sqrt{3}}$.</p>
+        </div>
+        <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+        <div class="solution">
+            <h4>Solution:</h4>
+            <p>Let $y = \arccos(3x^2)$. By the chain rule:</p>
+            <div class="equation-container">
+                $$ \frac{dy}{dx} = -\frac{1}{\sqrt{1-(3x^2)^2}} \cdot 6x = -\frac{6x}{\sqrt{1-9x^4}} $$
+            </div>
+        </div>
+    </div>
+
+    <div class="tutorial-problem">
+        <h3>Problem 7:</h3>
+        <div class="question">
+            <p>Find $\displaystyle \frac{d}{dx} \arctan(e^x)$.</p>
+        </div>
+        <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+        <div class="solution">
+            <h4>Solution:</h4>
+            <p>Let $y = \arctan(e^x)$. By the chain rule:</p>
+            <div class="equation-container">
+                $$ \frac{dy}{dx} = \frac{1}{1+(e^x)^2} \cdot e^x = \frac{e^x}{1+e^{2x}} $$
+            </div>
+        </div>
+    </div>
+    <div class="pagination">
+        <a href="#inversetrig" class="prev">Previous: Derivatives of Inverse Trig Functions</a>
+        <a href="#inversetrigint" class="next">Next: Integrals Involving Inverse Trig Functions </a>
+    </div>
+    <div id="inversetrigint" class="latex-document">
+            <h2 class="section-title">Integrals Involving Inverse Trig Functions</h2>
+            <p class="section-description">
+                The integrals involving inverse trigonometric functions are important
+                in calculus and have various applications in mathematics and physics.
+                Below are some problems and solutions related to the integrals
+                involving inverse trigonometric functions for your practice.
+            </p>
+     </div>
+     
+    <div class="tutorial-problem">
+        <h3>Problem 1:</h3>
+        <div class="question">
+            <p>Evaluate the integral $\displaystyle \int \frac{1}{\sqrt{1-x^2}} \, dx$.</p>
+        </div>
+        <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+        <div class="solution">
+            <h4>Solution:</h4>
+            <p>
+                This is a standard integral involving the inverse sine function:
+            </p>
+            <div class="equation-container">
+                $$ \int \frac{1}{\sqrt{1-x^2}} \, dx = \arcsin x + C $$
+            </div>
+        </div>
+    </div>
+
+    <div class="tutorial-problem">
+        <h3>Problem 2:</h3>
+        <div class="question">
+            <p>Evaluate the integral $\displaystyle \int \frac{1}{1+x^2} \, dx$.</p>
+        </div>
+        <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+        <div class="solution">
+            <h4>Solution:</h4>
+            <p>
+                This is a standard integral involving the inverse tangent function:
+            </p>
+            <div class="equation-container">
+                $$ \int \frac{1}{1+x^2} \, dx = \arctan x + C $$
+            </div>
+        </div>
+    </div>
+
+    <div class="tutorial-problem">
+        <h3>Problem 3:</h3>
+        <div class="question">
+            <p>Evaluate the integral $\displaystyle \int \frac{1}{|x|\sqrt{x^2-1}} \, dx$ for $|x| > 1$.</p>
+        </div>
+        <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+        <div class="solution">
+            <h4>Solution:</h4>
+            <p>
+                This is a standard integral involving the inverse secant function:
+            </p>
+            <div class="equation-container">
+                $$ \int \frac{1}{|x|\sqrt{x^2-1}} \, dx = \arcsec |x| + C $$
+            </div>
+        </div>
+    </div>
+
+    <div class="tutorial-problem">
+        <h3>Problem 4:</h3>
+        <div class="question">
+            <p>Evaluate the integral $\displaystyle \int \frac{2}{4 + x^2} \, dx$.</p>
+        </div>
+        <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+        <div class="solution">
+            <h4>Solution:</h4>
+            <p>
+                Rewrite $4 + x^2 = 2^2 + x^2$ and use the formula $\int \frac{1}{a^2 + x^2} dx = \frac{1}{a} \arctan\left(\frac{x}{a}\right) + C$:
+            </p>
+            <div class="equation-container">
+                $$ \int \frac{2}{4 + x^2} dx = 2 \cdot \frac{1}{2} \arctan\left(\frac{x}{2}\right) + C = \arctan\left(\frac{x}{2}\right) + C $$
+            </div>
+        </div>
+    </div>
+
+    <div class="tutorial-problem">
+        <h3>Problem 5:</h3>
+        <div class="question">
+            <p>Evaluate the integral $\displaystyle \int_0^{1/2} \frac{1}{\sqrt{1-x^2}} \, dx$.</p>
+        </div>
+        <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+        <div class="solution">
+            <h4>Solution:</h4>
+            <p>
+                The antiderivative is $\arcsin x$. Thus,
+            </p>
+            <div class="equation-container">
+                $$ \int_0^{1/2} \frac{1}{\sqrt{1-x^2}} dx = \arcsin\left(\frac{1}{2}\right) - \arcsin(0) = \frac{\pi}{6} - 0 = \frac{\pi}{6} $$
+            </div>
+        </div>
+    </div>
+
+    <div class="tutorial-problem">
+        <h3>Problem 6:</h3>
+        <div class="question">
+            <p>Evaluate the integral $\displaystyle \int \frac{1}{\sqrt{9 - x^2}} \, dx$.</p>
+        </div>
+        <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+        <div class="solution">
+            <h4>Solution:</h4>
+            <p>
+                Let $a = 3$, so use $\int \frac{1}{\sqrt{a^2 - x^2}} dx = \arcsin\left(\frac{x}{a}\right) + C$:
+            </p>
+            <div class="equation-container">
+                $$ \int \frac{1}{\sqrt{9 - x^2}} dx = \arcsin\left(\frac{x}{3}\right) + C $$
+            </div>
+        </div>
+    </div>
+
+    <div class="tutorial-problem">
+        <h3>Problem 7:</h3>
+        <div class="question">
+            <p>Evaluate the integral $\displaystyle \int \frac{1}{x^2 + 6x + 10} \, dx$.</p>
+        </div>
+        <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+        <div class="solution">
+            <h4>Solution:</h4>
+            <p>
+                Complete the square: $x^2 + 6x + 10 = (x+3)^2 + 1$.
+            </p>
+            <div class="equation-container">
+                $$ \int \frac{1}{(x+3)^2 + 1} dx = \arctan(x+3) + C $$
+            </div>
+        </div>
+    </div>
+
+    <div class="tutorial-problem">
+        <h3>Problem 8:</h3>
+        <div class="question">
+            <p>Evaluate the integral $\displaystyle \int \frac{1}{\sqrt{4x - x^2}} \, dx$ for $0 &lt; x &lt; 4$.</p>
+        </div>
+        <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+        <div class="solution">
+            <h4>Solution:</h4>
+            <p>
+                Complete the square: $4x - x^2 = -(x^2 - 4x) = -(x^2 - 4x + 4 - 4) = -[(x-2)^2 - 4] = 4 - (x-2)^2$.
+            </p>
+            <div class="equation-container">
+                $$ \int \frac{1}{\sqrt{4x - x^2}} dx = \int \frac{1}{\sqrt{4 - (x-2)^2}} dx $$
+            </div>
+            <p>
+                Let $u = x-2$, $du = dx$:
+            </p>
+            <div class="equation-container">
+                $$ = \arcsin\left(\frac{x-2}{2}\right) + C $$
+            </div>
+        </div>
+    </div>
+
+    <div class="tutorial-problem">
+        <h3>Problem 9:</h3>
+        <div class="question">
+            <p>Evaluate the integral $\displaystyle \int \frac{1}{x^2 - 4x + 5} \, dx$.</p>
+        </div>
+        <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+        <div class="solution">
+            <h4>Solution:</h4>
+            <p>
+                Complete the square: $x^2 - 4x + 5 = (x-2)^2 + 1$.
+            </p>
+            <div class="equation-container">
+                $$ \int \frac{1}{(x-2)^2 + 1} dx = \arctan(x-2) + C $$
+            </div>
+        </div>
+    </div>
+
+    <div class="tutorial-problem">
+        <h3>Problem 10:</h3>
+        <div class="question">
+            <p>Evaluate the definite integral $\displaystyle \int_0^1 \frac{1}{1 + x^2} \, dx$.</p>
+        </div>
+        <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+        <div class="solution">
+            <h4>Solution:</h4>
+            <p>
+                The antiderivative is $\arctan x$:
+            </p>
+            <div class="equation-container">
+                $$ \int_0^1 \frac{1}{1 + x^2} dx = \arctan(1) - \arctan(0) = \frac{\pi}{4} - 0 = \frac{\pi}{4} $$
+            </div>
+        </div>
+    </div>
+    <div class="tutorial-problem">
+        <h3>Problem 11:</h3>
+        <div class="question">
+            <p>Evaluate the definite integral $\displaystyle \int_1^2 \frac{1}{\sqrt{4 - x^2}} \, dx$.</p>
+        </div>
+        <button class="toggle-solution-btn" onclick="toggleSolution(this)">Show Solution</button>
+        <div class="solution">
+            <h4>Solution:</h4>
+            <p>
+                The antiderivative is $\arcsin\left(\frac{x}{2}\right)$:
+            </p>
+            <div class="equation-container">
+                $$ \int_1^2 \frac{1}{\sqrt{4 - x^2}} dx = \arcsin(1) - \arcsin\left(\frac{1}{2}\right) = \frac{\pi}{2} - \frac{\pi}{6} = \frac{\pi}{3} $$
+            </div>
+        </div>
+    </div>
+
+     <!-- Pagination -->
+    <div class="pagination">
+        <a href="/recources/transcendental functions.html" class="prev">Notes</a>
+        <a href="tutorials.html" class="next">Tutorials</a>
+    </div>
+
+</div>
+</section>
+    <!-- Footer -->
+        <footer>
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3>About JMC</h3>
+          <p>
+            Providing high-quality and <br> academic resources for
+            students <br>and educators to foster a deeper <br>
+            understandingbr of complex concepts.
+          </p>
+          <div class="social-links">
+            <a href="https://www.facebook.com/josophat.chifundo.makawa"
+              ><span>FB</span></a
+            >
+            <a href="https://www.instagram.com/kiziojosh/"><span>IS</span></a>
+            <a href="https://www.linkedin.com/in/josophat-makawa-abaa21366/"
+              ><span>IN</span></a
+            >
+            <a href="https://www.youtube.com/@jmcmath"><span>YT</span></a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+           <ul>
+            <li><a href="/index.html" >Home</a></li>
+            <li><a href="/library.html">Library</a></li>
+            <li><a href="/tutorials.html">Tutorials</a></li>
+            <li><a href="/videos.html">Videos</a></li> 
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+        </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Send Me a Message</h3>
+          <form
+            action="mailto:makawacean6@gmail.com"
+            method="POST"
+            enctype="text/plain"
+          >
+            <label for="full-name">Full Name</label>
+            <input
+              type="text"
+              id="full-name"
+              name="full-name"
+              placeholder="Your full name"
+              required
+            />
+
+            <label for="email">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Your email address"
+              required
+            />
+
+            <label for="subject">Subject</label>
+            <select id="subject" name="subject" required>
+              <option value="" selected disabled>Select a subject</option>
+              <option value="general">General Inquiry</option>
+              <option value="resources">Resource Request</option>
+              <option value="tutoring">Tutoring Services</option>
+              <option value="feedback">Feedback/Suggestions</option>
+              <option value="collaboration">Collaboration Opportunity</option>
+              <option value="other">Other</option>
+            </select>
+
+            <label for="message">Your Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="3"
+              placeholder="Write your message here..."
+              required
+            ></textarea>
+
+            <button type="submit">Send</button>
+          </form>
+        </div>
+
+        <div class="footer-section">
+          <h3>Contact Info</h3>
+          <ul>
+            <li>
+              Email:
+              <a
+                href="mailto:makawacean6@gmail.com?cc=joshkizio772@gmail.com&bcc=makawa.latexlessons@gmail.com&subject=Add%your%subject%here%please!!!"
+                >makawacean6@gmail.com</a
+              >
+            </li>
+            <li>Phone: <br />+265 999 978 828 <br />+265 899 990 636</li>
+            <li>University of Malawi</li>
+            <li>Zomba, Malawi</li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 Josophat Makawa Chifundo | All Rights Reserved</p>
+      </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
+        const nav = document.querySelector("nav");
+
+        mobileMenuBtn.addEventListener("click", () => {
+            nav.style.display = nav.style.display === "block" ? "none" : "block";
+        });
+
+        // Responsive Navigation
+        window.addEventListener("resize", () => {
+            if (window.innerWidth > 576) {
+                nav.style.display = "block";
+            } else {
+                nav.style.display = "none";
+            }
+        });
+
+        // Additional script to enhance MathJax rendering
+        document.addEventListener("DOMContentLoaded", function () {
+            // Add equation containers to all display equations
+            function enhanceEquations() {
+                const displayMath = document.querySelectorAll('.MJXc-display');
+                displayMath.forEach(function (el) {
+                    if (!el.parentNode.classList.contains('equation-container')) {
+                        // Wrap with equation container if not already wrapped
+                        const container = document.createElement('div');
+                        container.className = 'equation-container';
+                        el.parentNode.insertBefore(container, el);
+                        container.appendChild(el);
+                    }
+                });
+            }
+
+            // If MathJax has already loaded
+            if (typeof MathJax !== 'undefined' && MathJax.Hub) {
+                MathJax.Hub.Queue(enhanceEquations);
+            }
+
+            // If MathJax loads later
+            window.addEventListener('load', function () {
+                if (typeof MathJax !== 'undefined') {
+                    if (MathJax.Hub) {
+                        MathJax.Hub.Queue(enhanceEquations);
+                    } else {
+                        // For MathJax v3
+                        setTimeout(enhanceEquations, 1000);
+                    }
+                }
+            });
+        });
+        // Additional script to enhance MathJax rendering
+        document.addEventListener("DOMContentLoaded", function () {
+            // Function to create equation containers
+            function enhanceEquations() {
+                const displayMath = document.querySelectorAll('mjx-container[display="true"]');
+                displayMath.forEach(function (el) {
+                    if (!el.parentNode.classList.contains('equation-container')) {
+                        // Wrap with equation container if not already wrapped
+                        const container = document.createElement('div');
+                        container.className = 'equation-container';
+                        el.parentNode.insertBefore(container, el);
+                        container.appendChild(el);
+                    }
+                });
+            }
+
+            // Run enhancement after a short delay to ensure MathJax has processed equations
+            setTimeout(enhanceEquations, 1000);
+
+            // Run again after window load
+            window.addEventListener('load', function () {
+                setTimeout(enhanceEquations, 1500);
+            });
+        });
+    </script>
+</body>
+
+</html>

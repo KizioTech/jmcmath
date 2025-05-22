@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    CALCULUS II: Transcendental Functions | Josophat Makawa Chifundo
+  </title>
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --light-color: #ecf0f1;
+      --dark-color: #2c3e50;
+      --text-color: #333;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      color: var(--text-color);
+      background-color: #f9f9f9;
+      line-height: 1.6;
+    }
+
+    /* Header Styles */
+    header {
+      background: linear-gradient(135deg,
+          var(--primary-color),
+          var(--secondary-color));
+      color: white;
+      padding: 1rem 0;
+      box-shadow: var(--shadow);
+      position: fixed;
+      width: 100%;
+      z-index: 100;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .logo h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .logo span {
+      font-weight: 300;
+      font-size: 1rem;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin-left: 1.5rem;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      padding: 0.5rem 0.8rem;
+      border-radius: 4px;
+    }
+
+    nav ul li a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .active {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Main Content */
+    .main-content {
+      padding-top: 8rem;
+      padding-bottom: 5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    .page-title {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--primary-color);
+    }
+
+    .page-title h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .page-title p {
+      color: #666;
+    }
+
+    /* LaTeX Document Styling */
+    .latex-document {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--accent-color);
+    }
+
+    .section-description {
+      margin-bottom: 1.5rem;
+      color: #666;
+    }
+
+    .latex-content {
+      background-color: #f9f9f9;
+      padding: 1.5rem;
+      border-radius: 5px;
+      border-left: 4px solid var(--secondary-color);
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+    }
+
+    .example {
+      margin-top: 2rem;
+      background-color: #f5f5f5;
+      padding: 1.5rem;
+      border-radius: 5px;
+      border-left: 4px solid var(--accent-color);
+    }
+
+    .example h3 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    /* Updated Pagination Styles */
+    .pagination {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 3rem;
+      gap: 1rem;
+    }
+
+    .pagination a {
+      padding: 0.8rem 1.5rem;
+      background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow);
+      display: inline-block;
+      min-width: 120px;
+      text-align: center;
+    }
+
+    .pagination a:hover {
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .pagination a.prev:before {
+      content: "←  ";
+    }
+
+    .pagination a.next:after {
+      content: "  →";
+    }
+
+
+    /* Enhanced MathJax Styling */
+    .equation-container {
+      width: 100%;
+      overflow-x: auto;
+      text-align: center;
+      margin: 2em 0;
+      padding: 0.8em 0;
+      position: relative;
+      background: rgba(249, 250, 251, 0.8);
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .MJX-TEX {
+      font-size: 115% !important;
+    }
+
+    mjx-container {
+      padding: 12px 0;
+    }
+
+    mjx-container[display="true"] {
+      margin: 1.8em 0 !important;
+    }
+
+    mjx-container:not([display="true"]) {
+      display: inline-flex !important;
+      align-items: center;
+      margin: 0 0.2em;
+    }
+
+    /* Make important elements stand out */
+    .highlight-box {
+      border: 2px solid var(--accent-color);
+      border-radius: 8px;
+      padding: 1em 1.2em;
+      background-color: rgba(231, 76, 60, 0.05);
+      margin: 1.5em 0;
+      position: relative;
+    }
+
+    .note {
+      background-color: rgba(52, 152, 219, 0.1);
+      border-left: 4px solid var(--secondary-color);
+      padding: 1em;
+      margin: 1.5em 0;
+      border-radius: 4px;
+    }
+
+    footer {
+      background-color: var(--dark-color);
+      color: white;
+      padding: 3rem 2rem 1rem;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .footer-section h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .footer-section h3::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 50px;
+      height: 2px;
+      background-color: var(--accent-color);
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-section ul li a {
+      color: #bbb;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section ul li a:hover {
+      color: white;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background-color: var(--accent-color);
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+      color: #bbb;
+    }
+
+    .footer-section form {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      /* Compact spacing between form elements */
+    }
+
+    .footer-section label {
+      font-size: 0.9em;
+      margin-bottom: 2px;
+    }
+
+    .footer-section input,
+    .footer-section select,
+    .footer-section textarea {
+      width: 100%;
+      padding: 6px 8px;
+      font-size: 0.9em;
+      border-radius: 3px;
+      border: 1px solid #ccc;
+    }
+
+    .footer-section textarea {
+      resize: vertical;
+    }
+
+    .footer-section button {
+      margin-top: 6px;
+      padding: 8px;
+      background-color: #e74c3c;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 0.9em;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .footer-section button:hover {
+      background-color: #c0392b;
+    }
+
+    /* Responsive Styles */
+    @media screen and (max-width: 992px) {
+      .about-container {
+        flex-direction: column;
+      }
+
+      .about-img,
+      .about-content {
+        width: 100%;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+      }
+
+      nav {
+        margin-top: 1rem;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav ul li {
+        margin: 0.5rem 0;
+      }
+
+      .hero h2 {
+        font-size: 2rem;
+      }
+
+      .update-item {
+        flex-direction: column;
+      }
+
+      .update-date {
+        padding: 1rem;
+        flex-direction: row;
+        justify-content: center;
+        min-width: 100%;
+      }
+
+      .update-date .day {
+        margin-right: 0.5rem;
+      }
+    }
+
+    @media screen and (max-width: 576px) {
+      .header-container {
+        flex-direction: row;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .resources-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <!-- Enhanced MathJax Configuration -->
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-svg.js"></script>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [
+          ["$", "$"],
+          ["\\(", "\\)"],
+        ],
+        displayMath: [
+          ["$$", "$$"],
+          ["\\[", "\\]"],
+        ],
+        processEscapes: true,
+        processEnvironments: true,
+        tags: 'ams',
+        packages: { '[+]': ['ams', 'noerrors', 'physics', 'color', 'boldsymbol', 'cancel'] },
+        macros: {
+          // Add custom macros here
+          RR: "{\\mathbb{R}}",
+          bold: ["{\\bf #1}", 1],
+          boxed: ["{\\bbox[border: 1px solid #e74c3c, 5px, background-color: rgba(231,76,60,0.05)]{#1}}", 1]
+        }
+      },
+      svg: {
+        fontCache: 'global',
+        scale: 1.12,
+      },
+      options: {
+        skipHtmlTags: ["script", "noscript", "style", "textarea", "pre"],
+        enableMenu: true,
+        renderActions: {
+          addMenu: [25, '', ''],
+          checkLoading: [30, '', '']
+        }
+      },
+      startup: {
+        ready: function () {
+          MathJax.startup.defaultReady();
+          // Create equation containers for displayed math
+          setTimeout(function () {
+            document.querySelectorAll('mjx-container[display="true"]').forEach(el => {
+              if (!el.parentNode.classList.contains('equation-container')) {
+                const container = document.createElement('div');
+                container.classList.add('equation-container');
+                el.parentNode.insertBefore(container, el);
+                container.appendChild(el);
+              }
+            });
+          }, 500);
+        }
+      }
+    };
+  </script>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <h1>JMC<span> | Mathematics & Academic Resources</span></h1>
+      </div>
+      <button class="mobile-menu-btn">&#9776;</button>
+      <nav>
+        <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/library.html"  class="active">Library</a></li>
+            <li><a href="/tutorials.html">Tutorials</a></li>
+            <li><a href="/videos.html">Videos</a></li> 
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="page-title">
+      <h1>CALCULUS II: Transcendental Functions</h1>
+      <p>
+        This document is a comprehensive guide to transcendental functions, including exponential, logarithmic, and
+        inverse trigonometric functions, along with their derivatives and integrals.
+      </p>
+      <div style="text-align:center; margin: 1.5rem 0;">
+        <a id="download-pdf-btn" href="uploads/dcuments/transcendentalfunctions.pdf" download class="pagination" style="
+            display:inline-block;
+            padding:0.8rem 1.5rem;
+            background:linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color:white;
+            border-radius:4px;
+            font-weight:500;
+            text-decoration:none;
+            box-shadow:var(--shadow);
+            transition:all 0.3s;
+            cursor:pointer;
+            min-width: 120px;
+            text-align: center;
+          " onmousedown="this.style.background='linear-gradient(135deg, var(--primary-color), var(--accent-color))';"
+          onmouseup="this.style.background='linear-gradient(135deg, var(--secondary-color), var(--primary-color))';"
+          onmouseleave="this.style.background='linear-gradient(135deg, var(--secondary-color), var(--primary-color))';">
+          Download PDF
+        </a>
+      </div>
+      <script>
+        // Change text to "Downloading..." when clicked, revert after short delay
+        const downloadBtn = document.getElementById('download-pdf-btn');
+        downloadBtn.addEventListener('click', function (e) {
+          const originalText = this.textContent;
+          this.textContent = 'Downloading...';
+          setTimeout(() => {
+            this.textContent = originalText;
+          }, 2000);
+        });
+        // Add hover effect via JS for inline style
+        downloadBtn.addEventListener('mouseenter', function () {
+          this.style.background = 'linear-gradient(135deg, var(--primary-color), var(--accent-color))';
+          this.style.transform = 'translateY(-2px)';
+          this.style.boxShadow = '0 6px 12px rgba(0,0,0,0.15)';
+        });
+        downloadBtn.addEventListener('mouseleave', function () {
+          this.style.background = 'linear-gradient(135deg, var(--secondary-color), var(--primary-color))';
+          this.style.transform = 'none';
+          this.style.boxShadow = 'var(--shadow)';
+        });
+      </script>
+    </div>
+
+    <!-- Document Navigation -->
+    <div class="note">
+      <h2>Contents</h2>
+      <ul>
+        <li>
+          <a href="#introduction">Introduction to Exponential and Logarithimic Functions</a>
+        </li>
+        <li><a href="#logdiff">Logarithmic Differentiation</li>
+        <li><a href="#logintegration">Logarithimic Integration</a></li>
+        <li>
+          <a href="#inversetrig">Inverse Trigonometric Functions</a>
+        </li>
+        <li><a href="#inversetrigint">Integrals Involving Inverse Trig Functions</a></li>
+      </ul>
+    </div>
+    <!-- Logarithmic Differentiation Section -->
+    <div id="introduction" class="latex-document">
+      <h2 class="section-title">Introduction to Logarithmic and Exponential Functions</h2>
+      <p class="section-description">
+        A review of the fundamental properties and calculus rules for logarithmic and exponential functions.
+      </p>
+
+      <div class="latex-content">
+        <p>
+          Firstly, it is well known that Exponential and Logarithmic Functions are inverses of each other. That is, they
+          satisfy the fact that:
+        </p>
+        <div class="equation-container">
+          $$f(f^{-1}(x))=f^{-1}(f(x))=x$$
+        </div>
+
+        <p>That means,</p>
+        <div class="equation-container">
+          $$\log_{a} (a^{x}) = a^{\log_{a}(x)}=x$$
+        </div>
+        <p>as long as the base $a$ remains constant throughout.</p>
+
+        <p>In addition, we also know how to change logarithms from one base to the other. For example, if you want to
+          change a logarithm of $x$ in base $a$ to base $b$, we use:</p>
+        <div class="highlight-box">
+          $$\log_{a}x=\frac{\log_{b}x}{\log_{b}a}$$
+        </div>
+      </div>
+
+      <div class="latex-content">
+        <p>In MAT121, we looked at the differentiation and integration of the basic exponential and logarithmic
+          functions. Here, we discussed that:</p>
+        <ul>
+          <li>The derivative of an exponential function $y=e^x$ is $e^x$. When the base is $e$, it is called
+            <strong>Natural Exponential Function</strong>.
+          </li>
+          <li>For any other base $a$, we found the derivative of the function $y=a^x$ to be $a^x \ln a$.</li>
+          <li>For logarithms, we discussed that the natural logarithmic function of x is present as $\ln x$ as a short
+            form of $\log_{e} x$.</li>
+          <li>We also discussed that the derivative of the function $y=\ln x$ is $\frac{1}{x}$. And for any other
+            general base $a$ we first change it to base $e$ and then differentiate which yielded the derivative of
+            $y=\log_{a} x$ as $\frac{1}{x \ln a}$.</li>
+          <li>On <strong>Integration</strong>, we found the reverse processes of the above derivatives. And for most
+            questions we used <strong>integration by substitution</strong> to solve them.</li>
+        </ul>
+      </div>
+
+      <div class="note">
+        <h3><strong>SUMMARY</strong></h3>
+        <p><strong>Derivatives:</strong></p>
+        <div class="equation-container">
+          $$\begin{aligned}
+          & \frac{d}{dx}\left(e^{u(x)}\right)=e^{u(x)}\times \frac{du}{dx}\\
+          &\frac{d}{dx}\left( a^{u(x)}\right) = a^{u(x)}\ln a\times\frac{du}{dx} \\
+          & \frac{d}{dx}\left( \ln u(x)\right) = \frac{1}{u(x)}\times \frac{du}{dx}\\
+          &\frac{d}{dx}\left( \log_{a}u(x)\right)=\frac{1}{u(x)\ln a}\times\frac{du}{dx}
+          \end{aligned}$$
+        </div>
+        <p><strong>Integrals:</strong></p>
+        <div class="equation-container">
+          $$\begin{aligned}
+          &\int e^{u(x)} \, du=e^u+c\\
+          &\int a^{u(x)} \, du=\frac{a^{u(x)}}{\ln a}+c\\
+          &\int \frac{1}{u(x)}\, du = \ln |u(x)|+c
+          \end{aligned}$$
+        </div>
+      </div>
+    </div>
+    <!-- Logarithmic Differentiation Section -->
+    <div id="logdiff" class="latex-document">
+      <h2 class="section-title">Logarithmic Differentiation</h2>
+      <p class="section-description">
+        The technique of logarithmic differentiation simplifies complex functions by using logarithms to transform
+        products, quotients, and exponents into simpler expressions.
+      </p>
+
+      <div class="latex-content">
+        <p>
+          The other thing that we looked at in MAT121 is the <strong>Quotient Rule</strong> which dealt with the
+          differentiation of rational functions. However, some rational functions are so complicated such that using the
+          quotient rule seems almost impossible.
+        </p>
+        <p>
+          For example, consider the function below:
+        </p>
+        <div class="equation-container">
+          \[y=\frac{x^5}{(1-10x)\sqrt{x^2+2}}\]
+        </div>
+        <p>
+          The above function can be solved using the quotient rule but the process will be very complicated to follow.
+          Therefore we will be using <strong>Logarithmic Differentiation</strong>.
+        </p>
+        <p>
+          In this process of differentiation, we will be introducing natural logarithms on both sides and solve the
+          function implicitly (<em>Check <strong>Implicit differentiation</strong> too</em>).
+        </p>
+      </div>
+
+      <div class="latex-content">
+        <p>Given \(y=\frac{x^5}{(1-10x)\sqrt{x^2+2}}\), introduce natural logarithms both sides.</p>
+        <div class="equation-container">
+          \[\ln (y)=\ln \left(\frac{x^5}{(1-10x)\sqrt{x^2+2}} \right)\]
+        </div>
+
+        <p>We then apply the rules of indices and logarithms where we know that:</p>
+        <ul>
+          <li>If expressions are multiplying, then their logs are adding</li>
+          <li>If expressions are dividing, then their logs are subtracting</li>
+          <li>A power is a product of a log</li>
+        </ul>
+
+        <div class="equation-container">
+          \[\ln y = \ln x^5 - \ln\left((1-10x)\sqrt{x^2+2} \right) =\ln x^5 - \left[ \ln(1-10x)+\ln
+          (x^2+2)^{\frac{1}{2}} \right]\]
+        </div>
+
+        <div class="equation-container">
+          \[\ln y = \ln x^5 -\ln(1-10x)-\frac{1}{2}\ln (x^2+2)\]
+        </div>
+
+        <p>After this, we will differentiate implicitly; each term on its own using the derivative formula where in
+          simplified terms, for \(y=\ln u \text{, } y'=\frac{u'}{u}\).</p>
+      </div>
+
+      <div class="latex-content">
+        <p>Let's now use implicit differentiation to differentiate \(\ln y = \ln x^5 -\ln(1-10x)-\ln \sqrt{x^2 +2}\)
+          term by term as follows:</p>
+        <div class="equation-container">
+          \[\begin{aligned}
+          &\frac{d}{dx}(\ln y)=\frac{1}{y}\times\frac{dy}{dx}=\frac{y'}{y} \text{ since }\frac{dy}{dx}=y'\\
+          &\frac{d}{dx}(\ln x^5)=\frac{5x^4}{x^5}=\frac{5}{x}\\
+          &\frac{d}{dx}(\ln(1-10x))=\frac{-10}{1-10x}\\
+          &\frac{d}{dx}\left( \frac{1}{2}\ln (x^2+2)\right) =\frac{1}{2}\times \frac{2x}{x^2+2}=\frac{x}{x^2+2}
+          \end{aligned}\]
+        </div>
+
+        <p>From here, we just need to combine everything and simplify if possible.</p>
+      </div>
+      <p>For example, consider the function below;
+        \[
+        y=\frac{x^5}{(1-10x)\sqrt{x^2+2}}
+        \]
+        The above function can be solved using the quotient rule but the process will be very complicated to follow.
+        Therefore we will be using the <strong>Logarithimic Differentiation </strong></p>>
+      <p>The other thing that we looked at in MAT121 is the <strong>Quotient Rule</strong> which dealt with the
+        differentiation of rational functions.
+        However, some rational functions are so complicated such that using the quotient seems almost impossible.</p>
+
+      <div class="latex-content">
+        <p>Therefore, the derivative of \(y=\frac{x^5}{(1-10x)\sqrt{x^2+2}}\) is:</p>
+        <div class="equation-container">
+          \[\frac{y'}{y}=\frac{5}{x}-\left( \frac{-10}{1-10x}\right) - \frac{x}{x^2 + 2}=\frac{5}{x}+\frac{10}{1-10x} -
+          \frac{x}{x^2 + 2}\]
+        </div>
+
+        <p>If we multiply by \(y\) on both sides:</p>
+        <div class="equation-container">
+          \[y'=\left( \frac{5}{x}+ \frac{10}{1-10x}- \frac{x}{x^2 + 2}\right) \times y\]
+        </div>
+
+        <p>But \(y=\frac{x^5}{(1-10x)\sqrt{x^2+2}}\), if we substitute we get the final derivative of \(y\) as:</p>
+        <div class="equation-container">
+          \[\frac{dy}{dx}=\left( \frac{5}{x}+ \frac{10}{1-10x}- \frac{x}{x^2 + 2}\right) \left(
+          \frac{x^5}{(1-10x)\sqrt{x^2+2}}\right) \]
+        </div>
+      </div>
+
+      <div class="latex-content">
+        <p>We can see here that it's slightly simpler to do the differentiation using logarithms than it would be if we
+          had used the product and quotient rules. In addition, the answers are also simplified which improves our
+          understanding of the process.</p>
+        <p>The same approach is also used to differentiate expressions in which functions are raised to other functions.
+          Thus:</p>
+        <div class="equation-container">
+          \[\text{If } y=f(x)^{g(x)} \text{, then, } \ln y = \ln \left( f(x)^{g(x)}\right)=g(x)\ln f(x)\]
+        </div>
+        <p>Then, we apply <strong>implicit differentiation</strong> and use the product rule on the right hand side to
+          finish the differentiation process.</p>
+      </div>
+
+      <div class="example">
+        <h3>Example 1: Differentiate \(y=x^x\)</h3>
+        <p><strong>Solution</strong></p>
+        <ul>
+          <li>Firstly, we can happily see that both power rule \(y'=nx^{n-1}\) and the exponential differentiation
+            \(y'=a^x \ln a\) won't work. So, let's introduce the logarithms.</li>
+        </ul>
+        <div class="equation-container">
+          \[\ln y = \ln x^x = x\ln x\]
+        </div>
+        <ul>
+          <li>Here, we will differentiate \(\ln y\) implicitly and \(x\ln x\) using the product rule.</li>
+        </ul>
+        <div class="equation-container">
+          \[\frac{1}{y}\cdot \frac{dy}{dx}=1\cdot\ln x + x\cdot\left( \frac{1}{x}\right) =\ln x + 1\]
+        </div>
+        <ul>
+          <li>Multiplying by \(y\) both sides yields:</li>
+        </ul>
+        <div class="equation-container">
+          $$\frac{dy}{dx}=(\ln x + 1)x^x$$
+        </div>
+      </div>
+
+      <div class="example">
+        <h3>Example 2: Given that \(y=(1-3x)^{\cos(x)}\), find \(\frac{dy}{dx}\)</h3>
+        <p><strong>Solution</strong></p>
+        <ul>
+          <li>Introduce logarithms:</li>
+        </ul>
+        <div class="equation-container">
+          \[\ln y = \ln \left[(1-3x)^{\cos(x)}\right] = \cos(x)\ln (1-3x)\]
+        </div>
+        <ul>
+          <li>Differentiate:</li>
+        </ul>
+        <div class="equation-container">
+          \[\frac{1}{y}\cdot\frac{dy}{dx}=-\sin
+          (x)\cdot\ln(1-3x)+\cos(x)\cdot\frac{-3}{(1-3x)}=-\sin(x)\ln(1-3x)-\frac{3\cos(x)}{(1-3x)}\]
+        </div>
+        <div class="equation-container">
+          $$\therefore \frac{dy}{dx}=-\left[\sin(x)\ln(1-3x)+\frac{3\cos(x)}{(1-3x)} \right]\left[(1-3x)^{\cos(x)}
+          \right]$$
+        </div>
+      </div>
+
+      <div class="latex-content">
+        <p>Before we look at more examples, let's revise some of the basic differentiation formulas to avoid confusion.
+        </p>
+        <table style="width:100%; border-collapse: collapse; margin: 20px 0;">
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #ddd;">\(\frac{d}{dx}(c)=0\)</td>
+            <td style="padding: 8px; border-bottom: 1px solid #ddd;">Constant Differentiation</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #ddd;">\(\frac{d}{dx}(x^n)=nx^{n-1}\)</td>
+            <td style="padding: 8px; border-bottom: 1px solid #ddd;">Power Rule</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #ddd;">\(\frac{d}{dx}(a^x)=a^x\ln a\)</td>
+            <td style="padding: 8px; border-bottom: 1px solid #ddd;">Derivative of an Exponential Function</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #ddd;">\(\frac{d}{dx}(x^x)=x^x(1+\ln x)\)</td>
+            <td style="padding: 8px; border-bottom: 1px solid #ddd;">Logarithmic Differentiation</td>
+          </tr>
+        </table>
+        <p>It's very useful to keep an eye on the theorems we use to avoid costly mistakes since a lot of things look
+          similar but are mathematically different.</p>
+      </div>
+
+      <div class="example">
+        <h3>Example 3: Differentiate \(f(x)=(5-3x^2)^7\sqrt{6x^2+8x-12}\)</h3>
+        <p><strong>Solution</strong></p>
+        <ul>
+          <li>Introduce logarithms both sides</li>
+          $$\ln f(x)=\ln\left[(5-3x^2)^7\sqrt{6x^2+8x-12} \right]$$
+          $$=\ln(5-3x^2)^7+\ln(6x^2+8x-12)^{\frac{1}{2}}$$
+          <li>Simplify this using rules of Indices and logarithms</li>
+          $$\ln f(x)=7\ln(5-3x^2)+\frac{1}{2}\ln(6x^2+8x-12)$$
+          <li>Now, we have to differentiate both side implicitly.</li>
+          $$\frac{f'(x)}{f(x)}=7\left(\frac{-6x}{5-3x^2} \right) +\frac{1}{2}\left( \frac{12x+8}{6x^2+8x-12} \right)$$
+          <li>Simplify</li>
+          $$f'(x)=f(x)\left( \frac{-42x}{5-3x^2}+\frac{6x+4}{6x^2+8x-12}\right) $$
+          $$\therefore f'(x)=(5-3x^2)^7\sqrt{6x^2+8x-12}\left[ \frac{-42x}{5-3x^2}+\frac{6x+4}{6x^2+8x-12}\right]$$
+
+        </ul>
+      </div>
+    </div>
+
+    <div class="example">
+      <h3>Example 4: Differentiate \(y=(2x-e^{8x})^{\sin 2x}\)</h3>
+      <p><strong>Solution</strong></p>
+      <div class="equation-container">
+        $$\ln y = \ln \left(2x-e^{8x} \right)^{\sin 2x}=\sin 2x \ln(2x-e^{8x})$$
+        $$\frac{y'}{y} = (2\cos 2x)\cdot\ln(2x-e^{8x})+\sin 2x\cdot\left(\frac{2-8e^{8x}}{2x-e^{8x}} \right)$$
+        $$y'=\left(2\cos 2x\ln(2x-e^{8x})+\frac{\sin 2x(2-8e^{8x})}{2x-e^{8x}} \right) \times y$$
+        $$\therefore y'=\left[2\cos 2x\ln(2x-e^{8x})+\frac{\sin 2x(2-8e^{8x})}{2x-e^{8x}} \right]\left[
+        (2x-e^{8x})^{\sin 2x}\right]$$
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination">
+      <a href="#introduction" class="mobile-menu-btn">Previous: Introduction</a>
+      <a href="#logintegration" class="mobile-menu-btn">Next: Logarithmic Integration</a>
+    </div>
+    <diV id="logarithmic-integration" class="latex-document">
+      <h2 class="section-title">Logarithmic Integration</h2>
+      <p class="section-description">
+        Understanding how to use logarithms in integration problems.
+      </p>
+      <div class="latex-content">
+        <p>
+          So far, we have seen that the derivative of \(\ln x\) is \(\frac{1}{x}\). And let's say we want to integrate
+          \(\frac{1}{x}\) using the power rule: \(\int x^n \, dx = \frac{x^{n+1}}{n+1}+c\).
+        </p>
+        <p>
+          Firstly we will write \(\frac{1}{x}\) as \(x^{-1}\) using the rules of indices. If we apply the power rule
+          here:
+        </p>
+        <div class="equation-container">
+          \[\int x^{-1}\, dx = \frac{x^{-1+1}}{-1+1}=\frac{x^0}{0}=\frac{1}{0}\]
+        </div>
+        <p>which is undefined.</p>
+        <p>
+          Now, knowing the fact that the integral is an antiderivative of a given function, we can happily conclude that
+          \(\ln x\) is an antiderivative of $\frac{1}{x}$ on the interval \((-\infty,0)\cup(0,\infty)\) that doesn't
+          contain \(0\). Therefore:
+        </p>
+        <div class="equation-container">
+          \[\int \frac{1}{u} \, du = \ln |u|+C\]
+        </div>
+      </div>
+
+      <div class="example">
+        <h3>Example 1: Evaluate \(\int\limits_1^e \frac{1}{x} \, dx\)</h3>
+        <p><strong>Solution</strong></p>
+        <ul>
+          <li>We will firstly find the indefinite integral then handle the limits later. Thus:</li>
+        </ul>
+        <div class="equation-container">
+          \[\int \frac{1}{x} \, dx = \ln |x| + C\]
+        </div>
+        <ul>
+          <li>Bringing the limits in:</li>
+        </ul>
+        <div class="equation-container">
+          \[\int\limits_1^e \frac{1}{x}\, dx = [\ln x]_1^e=\ln e - \ln 1=1-0=1\]
+        </div>
+        <p>From rules of logarithms, we know that \(\ln e = \log_{e}e = 1\text{ and } \ln 1 = 0\).</p>
+      </div>
+
+      <div class="example">
+        <h3>Example 2: Evaluate \(\int \frac{3x^2}{x^3 +5}\, dx\)</h3>
+        <p><strong>Solution</strong></p>
+        <ul>
+          <li>We will be using <strong>Integration by Substitution</strong>. The idea is to eliminate a certain part of
+            the expression by substituting a derivative of another part of the given expression. Here, let \(u=x^3+5\),
+            after differentiating \(\frac{du}{dx}=3x^2\). Making \(dx\) a subject of the formula, we get
+            \(dx=\frac{du}{3x^2}\). Hence we will substitute \(u \text{ and } dx\):</li>
+        </ul>
+        <div class="equation-container">
+          \[\int \frac{3x^2}{u}\cdot\frac{du}{3x^2}=\int \frac{1}{u}du=\ln |u| +C\]
+        </div>
+        <ul>
+          <li>And substituting \(u\) back yields:</li>
+        </ul>
+        <div class="equation-container">
+          \[\int \frac{3x^2}{x^3 +5}\, dx = \ln |x^3+5|+C\]
+        </div>
+      </div>
+
+      <div class="example">
+        <h3>Example 3: Evaluate \(\int \tan x \, dx\)</h3>
+        <p><strong>Solution</strong></p>
+        <ul>
+          <li>Here, we will first have to apply the trig identity, \(\tan x = \frac{\sin x}{\cos x}\).</li>
+        </ul>
+        <div class="equation-container">
+          \[\int \tan x \, dx = \int \frac{\sin x}{\cos x}\, dx\]
+        </div>
+        <p>Let \(u=\cos x\) and \(du=-\sin x \, dx\)</p>
+        <ul>
+          <li>Thus:</li>
+        </ul>
+        <div class="equation-container">
+          \[\int \frac{\sin x}{\cos x} \, dx =-\int \frac{du}{u} = -\ln |u| + C\]
+        </div>
+        <ul>
+          <li>Substituting \(u\) back:</li>
+        </ul>
+        <div class="equation-container">
+          \[\int \tan x \, dx = - \ln |\cos x | + C\]
+        </div>
+      </div>
+
+      <div class="example">
+        <h3>Example 4: Integrate \(\int \frac{dx}{x\ln x}\)</h3>
+        <p><strong>Solution</strong></p>
+        <ul>
+          <li>Firstly, we need to make a choice of \(u\) that will eliminate \(dx\) as shown:</li>
+        </ul>
+        <div class="equation-container">
+          \[\text{Let } u = \ln x \text{; Then }du =\frac{1}{x}\, dx\]
+        </div>
+        <ul>
+          <li>Integrating the resulting expression yields the following:</li>
+        </ul>
+        <div class="equation-container">
+          \[\int \frac{dx}{x\ln x} = \int \frac{du}{u} = \ln |u|+C\]
+        </div>
+        <ul>
+          <li>Substituting \(u\) back:</li>
+        </ul>
+        <div class="equation-container">
+          \[\int \frac{dx}{x\ln x}= \ln |\ln x|+C\]
+        </div>
+      </div>
+
+      <div class="example">
+        <h3>Example 5: Evaluate \(\int \frac{\sin 3\theta}{1+\cos 3\theta}\, d\theta\)</h3>
+        <p><strong>Solution</strong></p>
+        <div class="equation-container">
+          \[u=1+\cos 3\theta \quad \quad du = -\sin 3\theta \, d\theta\]
+        </div>
+        <div class="equation-container">
+          \[\int \frac{\sin 3\theta}{1+\cos 3\theta}\, d\theta = -\int \frac{du}{u}=-\ln |u|+C\]
+        </div>
+        <div class="equation-container">
+          \[\therefore \int \frac{\sin 3\theta}{1+\cos 3\theta}\, d\theta = -\ln |1+\cos 3\theta| +C\]
+        </div>
+      </div>
+
+      <div class="example">
+        <h3>Example 6: Evaluate \(\int \cot x \, dx\)</h3>
+        <p><strong>Solution</strong></p>
+        <div class="equation-container">
+          \[\cot x = \frac{\cos x}{\sin x} \quad \quad u= \sin x \text{, and } du = \cos x \, dx\]
+        </div>
+        <div class="equation-container">
+          \[\int \cot x \, dx = \int \frac{\cos x}{\sin x} \, dx = \int \frac{du}{u} = \ln |\sin x| + C\]
+        </div>
+      </div>
+    </diV>
+
+    <!-- Pagination -->
+    <div class="pagination">
+      <a href="#logintegration" class="prev">Previous: Logarithmic Integration</a>
+      <a href="#inversetrig" class="next">Next: Inverse Trigonometric Functions</a>
+    </div>
+    <!-- Inverse Trig Functions Section -->
+    <div id="inversetrig" class="latex-document">
+      <h2 class="section-title">Inverse Trigonometric Functions</h2>
+      <p class="section-description">
+        Understanding the derivatives of inverse trigonometric functions and their applications.
+      </p>
+      <div class="latex-content">
+        <p>
+          Mathematically, the six basic trigonometric functions do not have inverses because their graphs repeat
+          periodically and do not pass the horizontal line test.
+        </p>
+        <p>
+          However, inverses of trigonometric functions are widely used in finding angles associated with specific
+          ratios. These inverses usually give angles in the range \(-\frac{\pi}{2} \leq \theta \leq \frac{\pi}{2}\). For
+          example:
+        </p>
+        <div class="equation-container">
+          \[sin x = \frac{1}{2}; \quad x = \sin^{-1}\left( \frac{1}{2} \right) = 30^\circ\]
+        </div>
+        <p>
+          When differentiating inverse trigonometric functions, careful attention must be taken as they behave
+          differently from regular inverse functions.
+        </p>
+
+        <p>To derive the derivative of an inverse function, we use the identity:</p>
+        <div class="equation-container">
+          \[g'(x) = \frac{1}{f'(g(x))}\]
+        </div>
+
+        <p>This identity holds if \(f(x)\) and \(g(x)\) are inverse functions: \(f(g(x)) = x\) and \(g(f(x)) = x\).</p>
+
+        <p><strong>Note:</strong> \(\sin^{-1}x = \arcsin x\), and similar for other functions.</p>
+
+        <h3 class="section-title">Derivative of \(\arcsin x\)</h3>
+        <p>
+          Let \(y = \arcsin x\), then \(x = \sin y\). Differentiating implicitly:
+        </p>
+        <div class="equation-container">
+          \[\frac{dy}{dx} = \frac{1}{\cos y} = \frac{1}{\cos(\arcsin x)} = \frac{1}{\sqrt{1 - x^2}}\]
+        </div>
+        <p>
+          Thus,
+        </p>
+        <div class="equation-container">
+          \[frac{d}{dx}(\arcsin x) = \frac{1}{\sqrt{1 - x^2}}\]
+        </div>
+
+        <h3 class="section-title">Derivative of \(\arccos x\)</h3>
+        <p>
+          Let \(y = \arccos x\), so \(x = \cos y\). Differentiating implicitly:
+        </p>
+        <div class="equation-container">
+          \[\frac{dy}{dx} = -\frac{1}{\sin y} = -\frac{1}{\sqrt{1 - x^2}}\]
+        </div>
+        <div class="equation-container">
+          \[\frac{d}{dx}(\arccos x) = -\frac{1}{\sqrt{1 - x^2}}\]
+        </div>
+
+        <h3 class="section-title">Derivative of \(\arctan x\)</h3>
+        <p>
+          Let \(y = \arctan x\), so \(x = \tan y\). Then:
+        </p>
+        <div class="equation-container">
+          \[\frac{dy}{dx} = \frac{1}{\sec^2 y} = \frac{1}{1 + x^2}\]
+        </div>
+        <div class="equation-container">
+          \[\frac{d}{dx}(\arctan x) = \frac{1}{1 + x^2}\]
+        </div>
+
+        <h3 class="section-title">Summary of All Inverse Trig Derivatives</h3>
+        <div class="equation-container">
+
+          $$\begin{aligned}
+          &\frac{d}{dx}(\sin^{-1} u) = \frac{1}{\sqrt{1 - u^2}} \cdot \frac{du}{dx},\quad
+          &&\frac{d}{dx}(\cos^{-1} u) = -\frac{1}{\sqrt{1 - u^2}} \cdot \frac{du}{dx} \\
+          &\frac{d}{dx}(\tan^{-1} u) = \frac{1}{1 + u^2} \cdot \frac{du}{dx},\quad
+          &&\frac{d}{dx}(\cot^{-1} u) = -\frac{1}{1 + u^2} \cdot \frac{du}{dx} \\
+          &\frac{d}{dx}(\sec^{-1} u) = \frac{1}{|u|\sqrt{u^2 - 1}} \cdot \frac{du}{dx},\quad
+          &&\frac{d}{dx}(\csc^{-1} u) = -\frac{1}{|u|\sqrt{u^2 - 1}} \cdot \frac{du}{dx}
+          \end{aligned}
+          $$
+        </div>
+      </div>
+      <div class="latex-content">
+        <h3 class="section-title">Examples: Derivatives of Inverse Trig Functions</h3>
+
+        <p><strong>Example 1:</strong> Differentiate \(y = \sin^{-1}(x^3)\)</p>
+        <p>Let \(u = x^3\), so that \(\frac{du}{dx} = 3x^2\)</p>
+        <div class="equation-container">
+          \[
+          \frac{dy}{dx} = \frac{1}{\sqrt{1 - u^2}} \cdot \frac{du}{dx} = \frac{3x^2}{\sqrt{1 - x^6}}
+          \]
+        </div>
+        <div class="equation-container">
+          \[\frac{d}{dx}(\sin^{-1}(x^3)) = \frac{3x^2}{\sqrt{1 - x^6}}\]
+        </div>
+
+        <p><strong>Example 2:</strong> Differentiate \(y = \sec^{-1}(e^x)\)</p>
+        <p>Let \(u = e^x\), so that \(\frac{du}{dx} = e^x\)</p>
+        <div class="equation-container">
+          \[
+          \frac{d}{dx}(\sec^{-1}(e^x)) = \frac{1}{|e^x|\sqrt{(e^x)^2 - 1}} \cdot e^x = \frac{1}{\sqrt{e^{2x} - 1}}
+          \]
+        </div>
+        <div class="equation-container">
+          \[\frac{d}{dx}(\sec^{-1}(e^x)) = \frac{1}{\sqrt{e^{2x} - 1}}\]
+        </div>
+
+        <p><strong>Example 3:</strong> Differentiate \(y = x^2(\sin^{-1}x)^3\)</p>
+        <p>Let \(u = \sin^{-1}x\), so that \(\frac{du}{dx} = \frac{1}{\sqrt{1 - x^2}}\)</p>
+        <div class="equation-container">
+          \[
+          \frac{dy}{dx} = 2x u^3 + 3x^2 u^2 \cdot \frac{du}{dx}
+          \]
+        </div>
+        <div class="equation-container">
+          \[
+          \frac{dy}{dx} = 2x(\sin^{-1}x)^3 + 3x^2(\sin^{-1}x)^2 \cdot \frac{1}{\sqrt{1 - x^2}}
+          \]
+        </div>
+      </div>
+      <!-- Pagination -->
+      <div class="pagination">
+        <a href="#inversetrig" class="prev">Derivatives of Inverse Trig Functions</a>
+        <a href="#inversetrigint" class="next">Next: Integrals Involving Inverse Trig Functions</a>
+      </div>
+    </div>
+    <div id="inversetrigint" class="latex-document">
+      <h2 class="section-title">Integrals Involving Inverse Trig Functions</h2>
+      <!-- Paste the above snippet here -->
+    </div>
+    <p>We can also use the derivatives of inverse trig functions to find their integrals. The following integrals are
+      derived from the derivatives of inverse trig functions:</p>
+
+    <div class="equation-container">
+      \[
+
+      \begin{aligned}
+      &\int \frac{1}{\sqrt{1 - u^2}} \, du = \sin^{-1} u + C \\
+      &\int \frac{1}{1 + u^2} \, du = \tan^{-1} u + C \\
+      &\int \frac{1}{|u|\sqrt{u^2 - 1}} \, du = \sec^{-1} u + C
+      \end{aligned}
+
+      \]
+    </div>
+
+
+    <p><strong>Example 4:</strong> Evaluate \(\int \frac{e^x}{\sqrt{1 - e^{2x}}} \, dx\)</p>
+    <strong>Solution</strong>
+    <p>We can use the substitution \(u = e^x\) to simplify the integral.</p>
+    <p>Let \(u = e^x\), then \(du = e^x dx\)</p>
+    <p>Thus, we can rewrite the integral as:</p>
+    <div class="equation-container">
+      \[
+      \int \frac{e^x}{\sqrt{1 - e^{2x}}} dx = \int \frac{1}{\sqrt{1 - u^2}} du = \sin^{-1}(u) + C
+      \]
+    </div>
+    <p>Substituting \(u\) back gives:</p>
+    <div class="equation-container">
+      \[\int \frac{e^x}{\sqrt{1 - e^{2x}}} dx = \sin^{-1}(e^x) + C\]
+    </div>
+
+    <p><strong>Example 5:</strong> Evaluate \(\int \frac{1}{1 + 3x^2} \, dx\)</p>
+    <p>Let \(u = \sqrt{3}x \Rightarrow dx = \frac{du}{\sqrt{3}}\)</p>
+    <div class="equation-container">
+      \[
+      \int \frac{1}{1 + 3x^2} dx = \frac{1}{\sqrt{3}} \int \frac{1}{1 + u^2} du = \frac{1}{\sqrt{3}} \tan^{-1}(u) + C
+      \]
+    </div>
+    <div class="equation-container">
+      \[\int \frac{1}{1 + 3x^2} dx = \frac{1}{\sqrt{3}} \tan^{-1}(\sqrt{3}x) + C\]
+    </div>
+
+    <p><strong>Example 6:</strong> Evaluate \(\int \frac{dx}{a^2 + x^2}\)</p>
+    <p>Use substitution \(u = \frac{x}{a}, \quad dx = a du\)</p>
+    <div class="equation-container">
+      \[
+      \int \frac{1}{a^2 + x^2} dx = \frac{1}{a} \int \frac{1}{1 + u^2} du = \frac{1}{a} \tan^{-1} \left(\frac{x}{a}
+      \right) + C
+      \]
+    </div>
+    <div class="equation-container">
+      \[\int \frac{dx}{a^2 + x^2} = \frac{1}{a} \tan^{-1} \left( \frac{x}{a} \right) + C\]
+    </div>
+
+    <p><strong>General Integrals for Constant \(a \neq 1\)</strong></p>
+    <div class="equation-container">
+      \[
+      \begin{aligned}
+      &\int \frac{du}{\sqrt{a^2 - u^2}} = \sin^{-1} \left(\frac{u}{a} \right) + C \\
+      &\int \frac{du}{a^2 + u^2} = \frac{1}{a} \tan^{-1} \left( \frac{u}{a} \right) + C \\
+      &\int \frac{du}{u \sqrt{u^2 - a^2}} = \frac{1}{a} \sec^{-1} \left| \frac{u}{a} \right| + C
+      \end{aligned}
+      \]
+    </div>
+
+    <p><strong>Example 7:</strong> Evaluate \(\int \frac{dx}{\sqrt{2 - x^2}}\)</p>
+    <div class="equation-container">
+      \[\int \frac{dx}{\sqrt{2 - x^2}} = \sin^{-1} \left( \frac{x}{\sqrt{2}} \right) + C\]
+    </div>
+
+    <p><strong>Example 8:</strong> Evaluate \(\int \frac{dx}{\sqrt{9 - x^2}}\)</p>
+    <p>Let \(u = \frac{x}{3}, dx = 3du\)</p>
+    <div class="equation-container">
+      \[
+      \int \frac{dx}{\sqrt{9 - x^2}} = \int \frac{3 du}{3 \sqrt{1 - u^2}} = \int \frac{du}{\sqrt{1 - u^2}} =
+      \sin^{-1}(u) + C
+      \]
+    </div>
+    <div class="equation-container">
+      \[\int \frac{dx}{\sqrt{9 - x^2}} = \sin^{-1} \left( \frac{x}{3} \right) + C\]
+    </div>
+
+    <p><strong>Example 9:</strong> Evaluate \(\int \frac{dy}{y \sqrt{5y^2 - 3}}\)</p>
+    <p>Let \(u = \frac{\sqrt{5}y}{\sqrt{3}}\)</p>
+    <div class="equation-container">
+      \[
+      \int \frac{dy}{y \sqrt{5y^2 - 3}} = \frac{1}{\sqrt{3}} \int \frac{du}{u \sqrt{u^2 - 1}} = \frac{1}{\sqrt{3}}
+      \sec^{-1} \left| \frac{\sqrt{5}y}{\sqrt{3}} \right| + C
+      \]
+    </div>
+    <div class="equation-container">
+      \[\int \frac{dy}{y \sqrt{5y^2 - 3}} = \frac{1}{\sqrt{3}} \sec^{-1} \left| \frac{\sqrt{5}y}{\sqrt{3}} \right| + C\]
+    </div>
+    <div class="pagination">
+      <a href="index.html" class="prev">HOME</a>
+      <a href="/recources/tutorial1.html" class="next">Tutorial 1</a>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>About JMC</h3>
+        <p>
+          Providing high-quality mathematics <br />and academic resources for
+          <br />students and educators to <br />foster a deeper
+          understandingbr <br />of complex concepts.
+        </p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/josophat.chifundo.makawa"><span>FB</span></a>
+          <a href="https://www.instagram.com/kiziojosh/"><span>IS</span></a>
+          <a href="https://www.linkedin.com/in/josophat-makawa-abaa21366/"><span>IN</span></a>
+          <a href="https://www.youtube.com/@jmcmath"><span>YT</span></a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="/library.html">Library</a></li>
+          <li><a href="/tutorials.html">Tutorials</a></li>
+          <li><a href="/videos.html">Videos</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Send Me a Message</h3>
+        <form action="mailto:josophat@example.com" method="POST" enctype="text/plain">
+          <label for="full-name">Full Name</label>
+          <input type="text" id="full-name" name="full-name" placeholder="Your full name" required />
+
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="Your email address" required />
+
+          <label for="subject">Subject</label>
+          <select id="subject" name="subject" required>
+            <option value="" selected disabled>Select a subject</option>
+            <option value="general">General Inquiry</option>
+            <option value="resources">Resource Request</option>
+            <option value="tutoring">Tutoring Services</option>
+            <option value="feedback">Feedback/Suggestions</option>
+            <option value="collaboration">Collaboration Opportunity</option>
+            <option value="other">Other</option>
+          </select>
+
+          <label for="message">Your Message</label>
+          <textarea id="message" name="message" rows="3" placeholder="Write your message here..." required></textarea>
+
+          <button type="submit">Send</button>
+        </form>
+      </div>
+
+      <div class="footer-section">
+        <h3>Contact Info</h3>
+        <ul>
+          <li>
+            Email:
+            <a
+              href="mailto:makawacean6@gmail.com?cc=joshkizio772@gmail.com&bcc=makawa.latexlessons@gmail.com&subject=Add%your%subject%here%please!!!">makawacean6@gmail.com</a>
+          </li>
+          <li>Phone: <br />+265 999 978 828 <br />+265 899 990 636</li>
+          <li>University of Malawi</li>
+          <li>Zomba, Malawi</li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Josophat Makawa Chifundo | All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
+    const nav = document.querySelector("nav");
+
+    mobileMenuBtn.addEventListener("click", () => {
+      nav.style.display = nav.style.display === "block" ? "none" : "block";
+    });
+
+    // Responsive Navigation
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 576) {
+        nav.style.display = "block";
+      } else {
+        nav.style.display = "none";
+      }
+    });
+
+    // Additional script to enhance MathJax rendering
+    document.addEventListener("DOMContentLoaded", function () {
+      // Add equation containers to all display equations
+      function enhanceEquations() {
+        const displayMath = document.querySelectorAll('.MJXc-display');
+        displayMath.forEach(function (el) {
+          if (!el.parentNode.classList.contains('equation-container')) {
+            // Wrap with equation container if not already wrapped
+            const container = document.createElement('div');
+            container.className = 'equation-container';
+            el.parentNode.insertBefore(container, el);
+            container.appendChild(el);
+          }
+        });
+      }
+
+      // If MathJax has already loaded
+      if (typeof MathJax !== 'undefined' && MathJax.Hub) {
+        MathJax.Hub.Queue(enhanceEquations);
+      }
+
+      // If MathJax loads later
+      window.addEventListener('load', function () {
+        if (typeof MathJax !== 'undefined') {
+          if (MathJax.Hub) {
+            MathJax.Hub.Queue(enhanceEquations);
+          } else {
+            // For MathJax v3
+            setTimeout(enhanceEquations, 1000);
+          }
+        }
+      });
+    });
+    // Additional script to enhance MathJax rendering
+    document.addEventListener("DOMContentLoaded", function () {
+      // Function to create equation containers
+      function enhanceEquations() {
+        const displayMath = document.querySelectorAll('mjx-container[display="true"]');
+        displayMath.forEach(function (el) {
+          if (!el.parentNode.classList.contains('equation-container')) {
+            // Wrap with equation container if not already wrapped
+            const container = document.createElement('div');
+            container.className = 'equation-container';
+            el.parentNode.insertBefore(container, el);
+            container.appendChild(el);
+          }
+        });
+      }
+
+      // Run enhancement after a short delay to ensure MathJax has processed equations
+      setTimeout(enhanceEquations, 1000);
+
+      // Run again after window load
+      window.addEventListener('load', function () {
+        setTimeout(enhanceEquations, 1500);
+      });
+    });
+  </script>
+</body>
+
+</html>
