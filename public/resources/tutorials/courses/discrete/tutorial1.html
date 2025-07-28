@@ -1,0 +1,1664 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8NVMG0WLL7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-8NVMG0WLL7');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="JMC Math & Academics - Discrete Mathematics Tutorial 1: Counting Techniques.">  
+    <meta name="keywords" content="Discrete Mathematics, Counting Techniques, JMC Mathematics, Math Tutorials">
+    <link rel="icon" type="image/png" href="/assets/images/favicon.ico">
+    <title>JMC Math & Academics - Discrete Mathematics Tutorial 1</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/tutorial.css">
+
+    <!-- MathJax Configuration -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
+
+</head>
+
+<body>
+    <div id="navbar"></div>
+
+
+
+    <!-- Tutorial Header -->
+    <header class="tutorial-header">
+        <h1>DISCRETE MATHEMATICS WITH APPLICATIONS</h1>
+        <h2>Tutorial 1 | Counting Techniques</h2>
+        <p>In this tutorial, we will explore the concept of counting techniques and how to solve them
+            product rule, sum rule, permutations, combinations, and principle of inclusion-exclusion.</p>
+
+        <div class="tutorial-meta">
+            <div class="meta-item">
+                <i class="fas fa-clock"></i>
+                <span>120 minutes</span>
+            </div>
+            <div class="meta-item">
+                <i class="fas fa-signal"></i>
+                <span>Intermediate</span>
+            </div>
+            <div class="meta-item">
+                <i class="fas fa-calculator"></i>
+                <span>Discrete Mathematics</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Tutorial Content -->
+    <section class="tutorial-container">
+        <div class="tutorial-content">
+            <div class="tutorial-toc">
+                <h2>Contents</h2>
+                <ul>
+                    <li>
+                        <a href="#productrule">Product Rule</a>
+                    </li>
+                    <li><a href="#sumrule">Sum Rule</a></li>
+                    <li><a href="#combinations">Combinations and Permutations</a></li>
+                    <li> <a href="#inclusion">Inclusion and Exclusion Principle</a></li>
+                    <li><a href="#summary">Summary</a></li>
+                </ul>
+            </div>
+            <!-- Navigation -->
+            <nav class="tutorial-nav">
+                <button class="nav-btn" disabled>
+                    <i class="fas fa-chevron-left"></i>
+                    Previous Tutorial
+                </button>
+                <span class="progress-indicator">Tutorial 1 Begins</span>
+                <button class="nav-btn" onclick="window.location.href='tutorial2.html'">
+                    Next Tutorial
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </nav>
+
+            <!-- Introduction Section -->
+            <section class="tutorial-section">
+                <h2 class="section-title">
+                    <div class="section-icon">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    Introduction
+                </h2>
+                <div class="section-content">
+                    <p>Counting techniques are a class of functions that are not algebraic, meaning they cannot be
+                        expressed as a finite combination of algebraic operations. These functions are essential in
+                        discrete mathematics and have many applications in various fields. In this tutorial, we will
+                        explore the
+                        properties and applications of counting techniques, including product rule, sum rule,
+                        permutations,
+                        combinations, and principle of inclusion-exclusion.</p>
+                    <div class="highlight-box">
+                        <strong>Key Point:</strong> Transcendental functions are essential in calculus and have many
+                        applications in various fields.
+                    </div>
+                </div>
+            </section>
+            <!-- Method 1: Factoring -->
+            <section class="tutorial-section">
+                <div class="tutorial-subsection">
+                    <h2 class="section-title" id="productrule">
+                        <div class="section-icon">
+                            <i class="fas fa-puzzle-piece"></i>
+                        </div>
+                        PRODUCT RULE
+                    </h2>
+                    <p>The product rule is a fundamental counting technique that allows us to count the number of ways
+                        to
+                        choose two or more items from a set. It is used to count the number of ways to choose two items
+                        from a set,
+                        the number of ways to choose three items from a set, and so on.</p>
+                    <div class="highlight-box success">
+                        <strong>Key Point:</strong> The product rule is a fundamental counting technique that allows us
+                        to count the number of ways to
+                        choose two or more items from a set.
+                    </div>
+                </div>
+
+                <div class="section-content">
+
+                    <div class="problem-container">
+                        <div class="problem-header">
+                            <i class="fas fa-question-circle"></i>
+                            Problem 1
+                        </div>
+                        <div class="problem-content">
+                            <div class="problem-statement">
+                                Calculate the number of 3-digit numbers that one can form using the odd digits.
+                            </div>
+                            <div class="solution-container">
+                                <button class="solution-toggle" onclick="toggleSolution(this)">
+                                    <i class="fas fa-chevron-down"></i>
+                                    Show Solution
+                                </button>
+                                <div class="solution-content">
+                                    <ol class="solution-steps">
+                                        <li>
+                                            <strong>Identify the set of digits:</strong> The odd digits are 1, 3, 5, 7,
+                                            9. There are 5 possible digits.
+                                        </li>
+                                        <li>
+                                            <strong>Determine constraints for a 3-digit number:</strong> The first digit
+                                            (hundreds place) cannot be zero. Since all odd digits are non-zero, this
+                                            condition is automatically satisfied.
+                                        </li>
+                                        <li>
+                                            <strong>Repetition is allowed:</strong> The problem does not specify
+                                            distinct digits, so digits can be repeated. Each digit position (hundreds,
+                                            tens, units) can be filled with any of the 5 odd digits.
+                                        </li>
+                                        <li>
+                                            <strong>Calculate the total number:</strong>
+                                            <div class="math-block">
+                                                \[
+                                                \text{Number of choices} = 5 \times 5 \times 5 = 5^3 = 125
+                                                \]
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Conclusion:</strong> There are 125 possible 3-digit numbers.
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="problem-container">
+                        <div class="problem-header">
+                            <i class="fas fa-question-circle"></i>
+                            Problem 2
+                        </div>
+                        <div class="problem-content">
+                            <div class="problem-statement">
+                                Calculate the number of ways of choosing 2 boys from 6 boys and 3 girls from 7 girls.
+
+                            </div>
+                            <div class="solution-container">
+                                <button class="solution-toggle" onclick="toggleSolution(this)">
+                                    <i class="fas fa-chevron-down"></i>
+                                    Show Solution
+                                </button>
+
+                                <div class="solution-content">
+                                    <ol class="solution-steps">
+                                        <div class="highlight-box">
+                                            <div class="box-title">Is this a product rule question?</div>
+                                            <em>Yes! This problem is a classic example of the <b>product rule</b> in
+                                                discrete
+                                                mathematics. The product rule states that if one event can occur in $m$
+                                                ways and
+                                                a second independent event can occur in $n$ ways, then the two events
+                                                together
+                                                can occur in $m \times n$ ways. Here, choosing boys and choosing girls
+                                                are
+                                                independent choices, so we multiply the number of ways for each.</em>
+                                        </div>
+                                        <li>
+                                            <strong>Choosing boys:</strong> The number of ways to choose 2 boys from 6
+                                            boys is given by the combination formula, as order does not matter.
+                                            <div class="math-block">
+                                                \[
+                                                \binom{6}{2} = \frac{6!}{2!(6-2)!} = \frac{6 \times 5}{2 \times 1} = 15
+                                                \]
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Choosing girls:</strong> The number of ways to choose 3 girls from 7
+                                            girls is similarly calculated using combinations.
+                                            <div class="math-block">
+                                                \[
+                                                \binom{7}{3} = \frac{7!}{3!(7-3)!} = \frac{7 \times 6 \times 5}{3 \times
+                                                2 \times 1} = 35
+                                                \]
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Combine choices (Product Rule):</strong> Since the choices of boys
+                                            and girls are
+                                            independent, the total number of ways is the product.
+                                            <div class="math-block">
+                                                \[
+                                                \binom{6}{2} \times \binom{7}{3} = 15 \times 35 = 525
+                                                \]
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Conclusion:</strong> There are 525 possible ways.
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="problem-container">
+                        <div class="problem-header">
+                            <i class="fas fa-question-circle"></i>
+                            Problem 3
+                        </div>
+                        <div class="problem-content">
+                            <div class="problem-statement">
+                                Calculate the number of 6-letter words (not necessarily meaningful words) that one can
+                                form using the English alphabet such that the word has <strong>exactly two
+                                    vowels</strong>.
+                            </div>
+                            <div class="solution-container">
+                                <button class="solution-toggle" onclick="toggleSolution(this)">
+                                    <i class="fas fa-chevron-down"></i>
+                                    Show Solution
+                                </button>
+                                <div class="solution-content">
+                                    <ol class="solution-steps">
+                                        <li>
+                                            <strong>Understand the alphabet:</strong> The English alphabet has 26
+                                            letters.
+                                            Among them, 5 are vowels (a, e, i, o, u), and the remaining 21 are
+                                            consonants.
+                                            Since repetition is allowed, any letter can appear more than once in a word.
+                                        </li>
+                                        <li>
+                                            <strong>Choose vowel positions (Product Rule Step 1):</strong>
+                                            To ensure the word has exactly 2 vowels, we first select 2 out of the 6
+                                            positions
+                                            where vowels will be placed. This can be done in:
+                                            <div class="math-block">
+                                                \[
+                                                \binom{6}{2} = \frac{6!}{2!(6-2)!} = \frac{6 \times 5}{2 \times 1} = 15
+                                                \text{ ways}
+                                                \]
+                                            </div>
+                                            <div class="highlight-box">
+                                                <div class="box-title">Why do we need this step?</div>
+                                                Even though repetition is allowed and we don’t care about unique
+                                                letters,
+                                                we must still choose the <em>positions</em> where the vowels go. That’s
+                                                because different
+                                                arrangements of the same letters (like "AEBCDF" vs "EABCDF") count as
+                                                different 6-letter words.
+                                                So choosing which two of the six positions will contain vowels is
+                                                essential to count
+                                                all valid arrangements accurately. <strong>But if your
+                                                    lecturer/instructor
+                                                    tells you to ignore this fact, Remember to always follow.
+                                                </strong>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Fill vowel positions (Product Rule Step 2):</strong>
+                                            For each of the 2 vowel positions, any of the 5 vowels can be used (with
+                                            repetition).
+                                            So:
+                                            <div class="math-block">
+                                                \[
+                                                \text{Vowel choices} = 5 \times 5 = 5^2 = 25 \text{ ways}
+                                                \]
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Fill consonant positions (Product Rule Step 3):</strong>
+                                            The remaining 4 positions must be consonants. Each position can be filled
+                                            with any
+                                            of the 21 consonants (again, repetition allowed), so:
+                                            <div class="math-block">
+                                                \[
+                                                \text{Consonant choices} = 21 \times 21 \times 21 \times 21 = 21^4
+                                                \]
+                                                \[
+                                                21^2 = 441,\quad 21^4 = (21^2)^2 = 441^2 = 194481
+                                                \]
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Apply the product rule:</strong>
+                                            The total number of valid words is the product of all these independent
+                                            choices:
+                                            <div class="math-block">
+                                                \[
+                                                \text{Total} = \binom{6}{2} \times 5^2 \times 21^4 = 15 \times 25 \times
+                                                194481
+                                                \]
+                                            </div>
+                                            Compute step by step:
+                                            <div class="math-block">
+                                                \[
+                                                15 \times 25 = 375,\quad 375 \times 194481 = 72,930,375
+                                                \]
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Final Answer:</strong>
+                                            <span>
+                                                There are exactly 72,930,375 different 6-letter words with exactly two
+                                                vowels.
+                                            </span>
+                                        </li>
+                                    </ol>
+                                    <div class="highlight-box">
+                                        <strong>Note:</strong> If the problem asked for <em>at least</em> two vowels, or
+                                        <em>distinct</em> vowels only,
+                                        or no repetition, then additional cases and more advanced techniques would be
+                                        needed.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="problem-container">
+                        <div class="problem-header">
+                            <i class="fas fa-question-circle"></i>
+                            Problem 4
+                        </div>
+                        <div class="problem-content">
+                            <div class="problem-statement">
+                                A four-digit positive integer is formed using the digits 1, 2, 3, 5, 6, 7 and 9.
+                                Calculate the total number of four-digit positive even integers that can be formed.
+                            </div>
+                            <div class="solution-container">
+                                <button class="solution-toggle" onclick="toggleSolution(this)">
+                                    <i class="fas fa-chevron-down"></i>
+                                    Show Solution
+                                </button>
+                                <div class="solution-content">
+                                    <ol class="solution-steps">
+                                        <li>
+                                            <strong>Digits available:</strong> The digits are 1, 2, 3, 5, 6, 7, 9. All
+                                            are non-zero and distinct. The problem implies no repetition, as it
+                                            specifies "using the digits" without mentioning repetition.
+                                        </li>
+                                        <li>
+                                            <strong>Even integer constraint:</strong> A number is even if its last digit
+                                            (units place) is even. The even digits in the set are 2 and 6. Thus, there
+                                            are 2 choices for the units place.
+                                        </li>
+                                        <li>
+                                            <strong>First digit constraint:</strong> The first digit (thousands place)
+                                            cannot be zero, but since no digit is zero, any remaining digit can be used.
+                                        </li>
+                                        <li>
+                                            <strong>Assign digits after fixing the units place:</strong> After choosing
+                                            the units digit, 6 digits remain for the thousands, hundreds, and tens
+                                            places. Since order matters, we assign digits sequentially. <br>
+                                            <br>
+                                            1. Thousands place: 6 choices (any of the remaining 6 digits). <br>
+                                            2. Hundreds place: 5 choices (any of the remaining 5 digits). <br>
+                                            3. Tens place: 4 choices (any of the remaining 4 digits).
+
+                                        </li>
+                                        <li>
+                                            <strong>Total even numbers:</strong>
+                                            <div class="math-block">
+                                                \[
+                                                \text{Choices} = (\text{Even}) \times (\text{thousands}) \times
+                                                (\text{hundreds}) \times (\text{tens})
+                                                \]
+                                                \[= 2 \times (7-1) \times (7-2) \times (7-3) = 2\times 6\times \times 5
+                                                \times 4 = 240\]
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Conclusion:</strong> There are 240 possible four-digit even
+                                            integers.
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="problem-container">
+                        <div class="problem-header">
+                            <i class="fas fa-question-circle"></i>
+                            Problem 5
+                        </div>
+                        <div class="problem-content">
+                            <div class="problem-statement">
+                                MTL Company uses 8-digit telephone numbers where each telephone number is designated to
+                                start with the two digits <strong>01</strong>.
+                                How many 8-digit telephone numbers are possible?
+                                <span class="mark" style="margin-left: 5px;">[4 marks]</span>
+                            </div>
+                            <div class="solution-container">
+                                <button class="solution-toggle" onclick="toggleSolution(this)">
+                                    <i class="fas fa-chevron-down"></i>
+                                    Show Solution
+                                </button>
+                                <div class="solution-content">
+                                    <ol class="solution-steps">
+                                        <li>
+                                            <strong>Understand the structure:</strong>
+                                            An 8-digit telephone number that starts with <code>01</code> looks like
+                                            this:
+                                            <code>01XXXXXX</code>, where each <code>X</code> is a digit (0–9).
+                                            The first two digits are fixed as <code>0</code> and <code>1</code>.
+                                        </li>
+                                        <li>
+                                            <strong>Remaining digits:</strong>
+                                            After fixing the first two digits, we are left with <strong>6
+                                                positions</strong> to fill.
+                                            Each of these 6 positions can be filled by any of the digits from 0 to 9.
+                                            That gives:
+                                            <div class="math-block">
+                                                \[
+                                                10 \times 10 \times 10 \times 10 \times 10 \times 10 = 10^6 = 1,000,000
+                                                \]
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Apply the multiplication principle:</strong>
+                                            Since the choices for each of the remaining 6 digits are independent, we
+                                            multiply:
+                                            <div class="math-block">
+                                                \[
+                                                \text{Total Numbers} = 1 \times 10^6 = 1,000,000
+                                                \]
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Final Answer:</strong>
+                                            <span>
+                                                There are exactly 1,000,000 different 8-digit telephone numbers that
+                                                start with 01.
+                                            </span>
+                                        </li>
+                                    </ol>
+                                    <div class="highlight-box">
+                                        <div class="box-title">Note:</div> If the question had asked for all possible
+                                        8-digit
+                                        numbers (without restriction),
+                                        the total would have been <code>10^8 = 100,000,000</code>. But because the first
+                                        two digits are fixed,
+                                        we only count combinations for the last 6 digits.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="problem-container">
+                        <div class="problem-header">
+                            <i class="fas fa-question-circle"></i>
+                            Problem 6
+                        </div>
+                        <div class="problem-content">
+                            <div class="problem-statement">
+                                Suppose we have seven different courses offered in the morning and five different
+                                courses offered in the afternoon for those willing to do a Diploma in Statistics course
+                                at Chancellor College. How many choices would one student have if he/she wishes to
+                                enroll in one course in the morning and one in the afternoon?
+                            </div>
+                            <div class="solution-container">
+                                <button class="solution-toggle" onclick="toggleSolution(this)">
+                                    <i class="fas fa-chevron-down"></i>
+                                    Show Solution
+                                </button>
+                                <div class="solution-content">
+                                    <ol class="solution-steps">
+                                        <li>
+                                            <strong>Morning courses:</strong> There are 7 different courses, so the
+                                            number of choices for the morning course is 7.
+                                        </li>
+                                        <li>
+                                            <strong>Afternoon courses:</strong> There are 5 different courses, so the
+                                            number of choices for the afternoon course is 5.
+                                        </li>
+                                        <li>
+                                            <strong>Combine choices:</strong> Since the student chooses one course from
+                                            each time slot independently, the total number of choices is the product.
+                                            <div class="math-block">
+                                                \[
+                                                \text{Total choices} = 7 \times 5 = 35
+                                                \]
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Conclusion:</strong> The student has 35 possible choices.
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tutorial-subsection">
+                        <h2 class="section-title" id="sumrule">
+                            <div class="section-icon">
+                                <i class="fas fa-plus-square"></i>
+                            </div>
+                            SUM RULE
+                        </h2>
+                        <p>
+                            The <strong>sum rule</strong> (also called the addition principle) is a basic counting
+                            technique used when a task can be done in one of several <em>distinct</em> ways. If there
+                            are <strong>n</strong> ways to do task A and <strong>m</strong> ways to do task B, and the
+                            two tasks cannot both occur at the same time, then there are <strong>n + m</strong> ways to
+                            do either task A or task B.
+                        </p>
+                        <div class="highlight-box success">
+                            <strong>Key Point:</strong> The sum rule is used when you have a choice between mutually
+                            exclusive options: if one task can be done in <strong>n</strong> ways and another in
+                            <strong>m</strong> ways (with no overlap), then there are <strong>n + m</strong> ways to do
+                            one or the other.
+                        </div>
+                    </div>
+                    <div class="problem-container">
+                        <div class="problem-header">
+                            <i class="fas fa-question-circle"></i>
+                            Problem 1
+                        </div>
+                        <div class="problem-content">
+                            <div class="problem-statement">
+                                A cafeteria offers 3 types of sandwiches and 2 types of salads. If you can choose either
+                                a sandwich <em>or</em> a salad, how many choices do you have?
+                            </div>
+                            <div class="solution-container">
+                                <button class="solution-toggle" onclick="toggleSolution(this)">
+                                    <i class="fas fa-chevron-down"></i>
+                                    Show Solution
+                                </button>
+                                <div class="solution-content">
+                                    <ol class="solution-steps">
+                                        <li>
+                                            <strong>Count the number of sandwiches:</strong> 3
+                                        </li>
+                                        <li>
+                                            <strong>Count the number of salads:</strong> 2
+                                        </li>
+                                        <li>
+                                            <strong>Apply the sum rule:</strong>
+                                            <div class="math-block">
+                                                \[
+                                                \text{Total choices} = 3 + 2 = 5
+                                                \]
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Conclusion:</strong> There are 5 possible choices if you can pick
+                                            either a sandwich or a salad.
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="problem-container">
+                        <div class="problem-header">
+                            <i class="fas fa-question-circle"></i>
+                            Problem 2
+                        </div>
+                        <div class="problem-content">
+                            <div class="problem-statement">
+                                Suppose we have seven different courses offered in the morning and five different
+                                courses offered in the afternoon for those willing to do a Diploma in Statistics course
+                                at Chancellor College. How many choices would one student have if he/she wishes to
+                                enroll in <strong>one course only, either in the morning or in the afternoon</strong>?
+                            </div>
+                            <div class="solution-container">
+                                <button class="solution-toggle" onclick="toggleSolution(this)">
+                                    <i class="fas fa-chevron-down"></i>
+                                    Show Solution
+                                </button>
+                                <div class="solution-content">
+                                    <ol class="solution-steps">
+                                        <li>
+                                            <strong>Morning courses:</strong> There are 7 different courses offered in
+                                            the morning,
+                                            so the number of morning choices is 7.
+                                        </li>
+                                        <li>
+                                            <strong>Afternoon courses:</strong> There are 5 different courses offered in
+                                            the afternoon,
+                                            so the number of afternoon choices is 5.
+                                        </li>
+                                        <li>
+                                            <strong>Combine choices (Sum Rule):</strong>
+                                            Since the student is to choose <em>only one course total</em>, and it can be
+                                            from either the
+                                            morning or afternoon (but not both), we apply the <strong>Sum Rule</strong>.
+                                            <div class="math-block">
+                                                \[
+                                                \text{Total choices} = 7 + 5 = 12
+                                                \]
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Final Answer:</strong>
+                                            <span>
+                                                The student has 12 possible choices in total.
+                                            </span>
+                                        </li>
+                                    </ol>
+                                    <div class="highlight-box"
+                                        style="background-color:#f9f9f9; border-left:4px solid #cc6600; padding:10px; margin-top:15px;">
+                                        <strong>Note:</strong> This problem uses the <strong>Sum Rule</strong>, since
+                                        the student
+                                        selects one course from <em>either</em> the morning session <em>or</em> the
+                                        afternoon session —
+                                        but not both. The choices are mutually exclusive, so we add the counts: 7 + 5 =
+                                        12.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="problem-container">
+                        <div class="problem-header">
+                            <i class="fas fa-question-circle"></i>
+                            Problem 3
+                        </div>
+                        <div class="problem-content">
+                            <div class="problem-statement">
+                                A student can choose to take either a Mathematics course or a Statistics course. If
+                                there
+                                are 4 Mathematics courses and 3 Statistics courses available, how many choices does the
+                                student have?
+                            </div>
+                            <div class="solution-container">
+                                <button class="solution-toggle" onclick="toggleSolution(this)">
+                                    <i class="fas fa-chevron-down"></i>
+                                    Show Solution
+                                </button>
+                                <div class="solution-content">
+                                    <ol class="solution-steps">
+                                        <li>
+                                            <strong>Mathematics courses:</strong> There are 4 different Mathematics
+                                            courses.
+                                        </li>
+                                        <li>
+                                            <strong>Statistics courses:</strong> There are 3 different Statistics
+                                            courses.
+                                        </li>
+                                        <li>
+                                            <strong>Apply the sum rule:</strong>
+                                            Since the student can choose either a Mathematics course or a Statistics
+                                            course, we add the two counts:
+                                            <div class="math-block">
+                                                \[
+                                                \text{Total choices} = 4 + 3 = 7
+                                                \]
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Conclusion:</strong> The student has 7 possible choices in total.
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="tutorial-subsection">
+                        <h2 class="section-title" id="combinations">
+                            <div class="section-icon">
+                                <i class="fas fa-plus-square"></i>
+                            </div>
+                            Combinations and Permutations
+                        </h2>
+                        <p>
+                            <strong>Combinations</strong> and <strong>permutations</strong> are two of the most
+                            important ideas in counting problems, but they answer different questions:
+                        </p>
+                        <ul>
+                            <li>
+                                <strong>Permutations</strong> are used when you want to know how many ways you can
+                                <em>arrange</em> a set of objects, where the <strong>order matters</strong>. For
+                                example, arranging 3 books on a shelf: placing Book A, then Book B, then Book C is
+                                different from placing Book C, then Book B, then Book A. Every different order counts as
+                                a different permutation.
+                            </li>
+                            <li>
+                                <strong>Combinations</strong> are used when you want to know how many ways you can
+                                <em>choose</em> a group of objects, where the <strong>order does not matter</strong>.
+                                For example, if you are picking 3 students from a class to form a team, it does not
+                                matter in which order you pick them—choosing Alice, Bob, and Carol is the same as
+                                choosing Carol, Bob, and Alice. All that matters is who is chosen, not the order.
+                            </li>
+                        </ul>
+                        <p>
+                            In summary: <strong>permutations</strong> count arrangements (order matters), while
+                            <strong>combinations</strong> count selections (order does not matter).
+                        </p>
+
+                    </div>
+
+                    <div class="subtitle-box">Combinations and Permutaions</div>
+
+                    <div class="problem-container">
+                        <div class="problem-header">
+                            <i class="fas fa-question-circle"></i>
+                            Problem 1
+                        </div>
+                        <div class="problem-content">
+                            <div class="problem-statement">
+                                In how many ways can we place three balls coloured red, blue, and white in ten boxes
+                                numbered 1 through 10 if each box can hold only one ball at a time?
+                            </div>
+                            <div class="solution-container">
+                                <button class="solution-toggle" onclick="toggleSolution(this)">
+                                    <i class="fas fa-chevron-down"></i>
+                                    Show Solution
+                                </button>
+                                <div class="solution-content">
+                                    <ol class="solution-steps">
+                                        <li>
+                                            <strong>Identify the problem type:</strong> We need to arrange 3 distinct
+                                            balls in 10 distinct boxes, where order matters.
+                                            <div class="formula-explanation">
+                                                This is a permutation problem: selecting and arranging 3 objects from 10
+                                                positions.
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Apply the permutation formula:</strong>
+                                            <div class="permutation-formula">
+                                                \[P(n,r) = \frac{n!}{(n-r)!}\]
+                                                where \(n = 10\) (boxes) and \(r = 3\) (balls)
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Calculate the permutation:</strong>
+                                            <div class="math-block">
+                                                \[P(10,3) = \frac{10!}{(10-3)!} = \frac{10!}{7!} = 10 \times 9 \times 8
+                                                = 720\]
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Alternative approach (step-by-step):</strong>
+                                            <br>
+                                            $\to$ Choose a box for the red ball: 10 choices<br>
+                                            $\to$ Choose a box for the blue ball: 9 remaining choices<br>
+                                            $\to$ Choose a box for the white ball: 8 remaining choices<br>
+                                            $\to$ Total: \(10 \times 9 \times 8 = 720\)<br>
+
+                                        </li>
+                                        <li>
+                                            <div class="conclusion">
+                                                <strong>Conclusion:</strong> There are 720 ways to place the balls.
+                                            </div>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="problem-container">
+                        <div class="problem-header">
+                            <i class="fas fa-question-circle"></i>
+                            Problem 2
+                        </div>
+                        <div class="problem-content">
+                            <div class="problem-statement">
+                                In how many ways can three examinations be scheduled within a five-day period so that no
+                                two examinations are scheduled on the same day?
+                            </div>
+                            <div class="solution-container">
+                                <button class="solution-toggle" onclick="toggleSolution(this)">
+                                    <i class="fas fa-chevron-down"></i>
+                                    Show Solution
+                                </button>
+                                <div class="solution-content">
+                                    <ol class="solution-steps">
+                                        <li>
+                                            <strong>Identify the problem type:</strong> We need to schedule 3 distinct
+                                            exams on 5 different days, where order matters.
+                                            <div class="formula-explanation">
+                                                This is a permutation problem: selecting and arranging 3 days from 5
+                                                available days.
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Apply the permutation formula:</strong>
+                                            <div class="permutation-formula">
+                                                \[P(n,r) = \frac{n!}{(n-r)!}\]
+                                                where \(n = 5\) (days) and \(r = 3\) (exams)
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Calculate the permutation:</strong>
+                                            <div class="math-block">
+                                                \[P(5,3) = \frac{5!}{(5-3)!} = \frac{5!}{2!} = 5 \times 4 \times 3 =
+                                                60\]
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Alternative approach (step-by-step):</strong>
+                                            <br>
+                                            $\to$ Choose a day for exam 1: 5 choices<br>
+                                            $\to$ Choose a day for exam 2: 4 remaining choices<br>
+                                            $\to$ Choose a day for exam 3: 3 remaining choices<br>
+                                            $\to$ Total: \(5 \times 4 \times 3 = 60\)
+
+                                        </li>
+                                        <li>
+                                            <div class="conclusion">
+                                                <strong>Conclusion:</strong> There are 60 ways to schedule the
+                                                examinations.
+                                            </div>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="problem-container">
+                        <div class="problem-header">
+                            <i class="fas fa-question-circle"></i>
+                            Problem 3
+                        </div>
+                        <div class="problem-content">
+                            <div class="problem-statement">
+                                Determine the number of four-digit decimal numbers that contain no repeated digits.
+                            </div>
+                            <div class="solution-container">
+                                <button class="solution-toggle" onclick="toggleSolution(this)">
+                                    <i class="fas fa-chevron-down"></i>
+                                    Show Solution
+                                </button>
+                                <div class="solution-content">
+                                    <ol class="solution-steps">
+                                        <li>
+                                            <strong>Identify the problem type:</strong> We need to form 4-digit numbers
+                                            using distinct digits, where position matters.
+                                            <div class="formula-explanation">
+                                                This is a permutation problem with restrictions: the first digit cannot
+                                                be 0.
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Handle the restriction:</strong><br>
+
+                                            $\to$ First digit (thousands place): 9 choices (1-9, cannot be 0)<br>
+                                            $\to$ Remaining three digits: Choose 3 from the remaining 9 digits
+                                            (including 0)
+                                        </li>
+
+                                        </li>
+                                        <li>
+                                            <strong>Apply permutation for remaining positions:</strong>
+                                            <div class="permutation-formula">
+                                                After choosing the first digit, we have \(P(9,3)\) ways to arrange the
+                                                remaining 3 digits
+                                            </div>
+                                            <div class="math-block">
+                                                \[P(9,3) = \frac{9!}{(9-3)!} = \frac{9!}{6!} = 9 \times 8 \times 7 =
+                                                504\]
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Calculate the total:</strong>
+                                            <div class="math-block">
+                                                \[\text{Total} = 9 \times P(9,3) = 9 \times 504 = 4536\]
+                                            </div>
+                                            <div class="formula-explanation">
+                                                Alternatively: \(9 \times 9 \times 8 \times 7 = 4536\)
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="conclusion">
+                                                <strong>Conclusion:</strong> There are 4536 four-digit numbers with no
+                                                repeated digits.
+                                            </div>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="problem-container">
+                        <div class="problem-header">
+                            <i class="fas fa-question-circle"></i>
+                            Problem 4
+                        </div>
+                        <div class="problem-content">
+                            <div class="problem-statement">
+                                Suppose that we have seven rooms and want to assign four of them to four programmers as
+                                offices and use the remaining three rooms for computer terminals. In how many ways can
+                                you carry out such an assignment procedure?
+                            </div>
+                            <div class="solution-container">
+                                <button class="solution-toggle" onclick="toggleSolution(this)">
+                                    <i class="fas fa-chevron-down"></i>
+                                    Show Solution
+                                </button>
+                                <div class="solution-content">
+                                    <ol class="solution-steps">
+                                        <li>
+                                            <strong>Identify the problem type:</strong> We need to assign 4 specific
+                                            programmers to 4 out of 7 rooms, where order matters.
+                                            <div class="formula-explanation">
+                                                This is a permutation problem: selecting and arranging 4 rooms from 7
+                                                available rooms for distinct programmers.
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Apply the permutation formula:</strong>
+                                            <div class="permutation-formula">
+                                                \[P(n,r) = \frac{n!}{(n-r)!}\]
+                                                where \(n = 7\) (rooms) and \(r = 4\) (programmers)
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Calculate the permutation:</strong>
+                                            <div class="math-block">
+                                                \[P(7,4) = \frac{7!}{(7-4)!} = \frac{7!}{3!} = 7 \times 6 \times 5
+                                                \times 4 = 840\]
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Alternative approach (step-by-step):</strong> <br>
+
+                                            $\to$ Choose a room for programmer 1: 7 choices<br>
+                                            $\to$ Choose a room for programmer 2: 6 remaining choices<br>
+                                            $\to$ Choose a room for programmer 3: 5 remaining choices<br>
+                                            $\to$ Choose a room for programmer 4: 4 remaining choices<br>
+                                            $\to$ The remaining 3 rooms are automatically assigned to terminals
+
+                                        </li>
+                                        <li>
+                                            <div class="conclusion">
+                                                <strong>Conclusion:</strong> There are 840 ways to carry out the
+                                                assignment.
+                                            </div>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="problem-container">
+                        <div class="problem-header">
+                            <i class="fas fa-question-circle"></i>
+                            Problem 5
+                        </div>
+                        <div class="problem-content">
+                            <div class="problem-statement">
+                                In how many ways can one make up strings of four distinct letters followed by three
+                                distinct digits?
+                            </div>
+                            <div class="solution-container">
+                                <button class="solution-toggle" onclick="toggleSolution(this)">
+                                    <i class="fas fa-chevron-down"></i>
+                                    Show Solution
+                                </button>
+                                <div class="solution-content">
+                                    <ol class="solution-steps">
+                                        <li>
+                                            <strong>Identify the problem type:</strong> We need to create strings with
+                                            two parts: 4 distinct letters and 3 distinct digits.
+                                            <div class="formula-explanation">
+                                                This involves two independent permutation problems that we multiply
+                                                together.
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Calculate permutations for the letter part:</strong>
+                                            <div class="permutation-formula">
+                                                Choose and arrange 4 letters from 26 available letters:
+                                                \[P(26,4) = \frac{26!}{(26-4)!} = \frac{26!}{22!}\]
+                                            </div>
+                                            <div class="math-block">
+                                                \[P(26,4) = 26 \times 25 \times 24 \times 23 = 358,800\]
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Calculate permutations for the digit part:</strong>
+                                            <div class="permutation-formula">
+                                                Choose and arrange 3 digits from 10 available digits (0-9):
+                                                \[P(10,3) = \frac{10!}{(10-3)!} = \frac{10!}{7!}\]
+                                            </div>
+                                            <div class="math-block">
+                                                \[P(10,3) = 10 \times 9 \times 8 = 720\]
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Apply the multiplication principle:</strong>
+                                            <div class="math-block">
+                                                \[\text{Total} = P(26,4) \times P(10,3) = 358,800 \times 720 =
+                                                258,336,000\]
+                                            </div>
+                                            <div class="formula-explanation">
+                                                Since the letter and digit selections are independent, we multiply the
+                                                permutations.
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="conclusion">
+                                                <strong>Conclusion:</strong> There are 258,336,000 such strings.
+                                            </div>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="problem-container">
+                        <div class="problem-header">
+                            <i class="fas fa-question-circle"></i>
+                            Problem 6
+                        </div>
+                        <div class="problem-content">
+                            <div class="problem-statement">
+                                In how many ways can one make up strings of four distinct letters followed by three
+                                distinct digits?
+                            </div>
+                            <div class="solution-container">
+                                <button class="solution-toggle" onclick="toggleSolution(this)">
+                                    <i class="fas fa-chevron-down"></i>
+                                    Show Solution
+                                </button>
+                                <div class="solution-content">
+                                    <ol class="solution-steps">
+                                        <li>
+                                            <strong>String Structure:</strong> The string is formed by two parts:
+                                            <ul>
+                                                <li>4 distinct letters (positions 1–4)</li>
+                                                <li>3 distinct digits (positions 5–7)</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <strong>Letter part:</strong>
+                                            <ul>
+                                                <li>There are 26 letters in the English alphabet.</li>
+                                                <li>We choose 4 distinct letters in order:
+                                                    <ul>
+                                                        <li>Position 1: 26 choices</li>
+                                                        <li>Position 2: 25 choices</li>
+                                                        <li>Position 3: 24 choices</li>
+                                                        <li>Position 4: 23 choices</li>
+                                                    </ul>
+                                                </li>
+                                                <li>Total arrangements:
+                                                    <div class="math-block">
+                                                        \[
+                                                        26 \times 25 \times 24 \times 23 = 358,\!800
+                                                        \]
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <strong>Digit part:</strong>
+                                            <ul>
+                                                <li>There are 10 digits (0–9).</li>
+                                                <li>We choose 3 distinct digits in order:
+                                                    <ul>
+                                                        <li>Position 5: 10 choices</li>
+                                                        <li>Position 6: 9 choices</li>
+                                                        <li>Position 7: 8 choices</li>
+                                                    </ul>
+                                                </li>
+                                                <li>Total arrangements:
+                                                    <div class="math-block">
+                                                        \[
+                                                        10 \times 9 \times 8 = 720
+                                                        \]
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <strong>Total strings (by product rule):</strong>
+                                            <div class="math-block">
+                                                \[
+                                                358,\!800 \times 720 = 258,\!336,\!000
+                                                \]
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Conclusion:</strong> There are <strong>258,336,000</strong> such
+                                            strings.
+                                        </li>
+                                        <li>
+                                            <strong>Alternative notation:</strong>
+                                            <div class="math-block">
+                                                \[
+                                                P(26,4) \times P(10,3)
+                                                \]
+                                            </div>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="problem-container">
+                        <div class="problem-header">
+                            <i class="fas fa-question-circle"></i>
+                            Problem 7
+                        </div>
+                        <div class="problem-content">
+                            <div class="problem-statement">
+                                In how many ways can one make up strings of four distinct letters followed by three
+                                distinct digits?
+                            </div>
+                            <div class="solution-container">
+                                <button class="solution-toggle" onclick="toggleSolution(this)">
+                                    <i class="fas fa-chevron-down"></i>
+                                    Show Solution
+                                </button>
+                                <div class="solution-content">
+                                    <ol class="solution-steps">
+                                        <li>
+                                            The string has two parts: four letters followed by three digits. These two
+                                            sections are independent of each other.
+                                        </li>
+                                        <li>
+                                            <strong>Letter section:</strong> There are 26 letters in the English
+                                            alphabet. Since the letters must be distinct and order matters, the number
+                                            of ways to select and arrange 4 letters is:
+                                            <div class="math-block">
+                                                \[
+                                                26 \times 25 \times 24 \times 23 = 358,\!800
+                                                \]
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Digit section:</strong> There are 10 digits (0–9). The digits must
+                                            also be distinct and ordered. So, the number of ways to select and arrange 3
+                                            digits is:
+                                            <div class="math-block">
+                                                \[
+                                                10 \times 9 \times 8 = 720
+                                                \]
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Final Calculation:</strong> By the product rule, the total number of
+                                            such strings is:
+                                            <div class="math-block">
+                                                \[
+                                                358,\!800 \times 720 = 258,\!336,\!000
+                                                \]
+                                            </div>
+                                            This means there are <strong>258,336,000</strong> valid strings.
+                                        </li>
+                                        <li>
+                                            This can also be expressed using permutation notation:
+                                            <div class="math-block">
+                                                \[
+                                                P(26,4) \times P(10,3)
+                                                \]
+                                            </div>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="problem-container">
+                        <div class="problem-header">
+                            <i class="fas fa-question-circle"></i>
+                            Problem 8
+                        </div>
+                        <div class="problem-content">
+                            <div class="problem-statement">
+                                Calculate the number of four-digit positive integers using the digits 1, 2, 3, 5, 6, 7,
+                                and 9 (no repetition allowed). The condition "even or odd" is always satisfied.
+                            </div>
+                            <div class="solution-container">
+                                <button class="solution-toggle" onclick="toggleSolution(this)">
+                                    <i class="fas fa-chevron-down"></i>
+                                    Show Solution
+                                </button>
+                                <div class="solution-content">
+                                    <ol class="solution-steps">
+                                        <li>
+                                            <strong>Identify the problem type:</strong> We need to form four-digit
+                                            numbers with distinct digits from a set of 7 non-zero digits. The condition
+                                            "even or odd" imposes no restrictions.
+                                            <div class="formula-explanation">
+                                                This is a permutation problem since order matters and digits are
+                                                distinct.
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Apply the permutation formula:</strong>
+                                            <div class="permutation-formula">
+                                                \[P(n,r) = \frac{n!}{(n-r)!}\]
+                                                where \(n = 7\) (digits) and \(r = 4\) (positions)
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Calculate the permutation:</strong>
+                                            <div class="math-block">
+                                                \[P(7,4) = 7 \times 6 \times 5 \times 4 = 840\]
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="conclusion">
+                                                <strong>Conclusion:</strong> There are 840 such four-digit integers.
+                                            </div>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="problem-container">
+                        <div class="problem-header">
+                            <i class="fas fa-question-circle"></i>
+                            Problem 8
+                        </div>
+                        <div class="problem-content">
+                            <div class="problem-statement">
+                                Determine the number of six-letter sequences from the set \(\{A, B, C, D, E, F, G\}\) (7
+                                distinct letters) such that either the substring "BD" or "BG" appears in order.
+                            </div>
+                            <div class="solution-container">
+                                <button class="solution-toggle" onclick="toggleSolution(this)">
+                                    <i class="fas fa-chevron-down"></i>
+                                    Show Solution
+                                </button>
+                                <div class="solution-content">
+                                    <ol class="solution-steps">
+                                        <li>
+                                            <strong>Identify the problem type:</strong> We form sequences using 6
+                                            distinct letters from 7 (omitting one). The substring "BD" or "BG" must
+                                            appear consecutively.
+                                            <div class="formula-explanation">
+                                                We treat "BD" or "BG" as a single block and use permutations with case
+                                                analysis.
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Case analysis:</strong>
+                                            <ul>
+                                                <li><strong>Case 1: Omit D</strong> → Letters: \(\{A, B, C, E, F,
+                                                    G\}\)<br>
+                                                    Only "BG" can appear. Treat "BG" as one block → 5 entities to
+                                                    arrange: \(5! = 120\)</li>
+                                                <li><strong>Case 2: Omit G</strong> → Letters: \(\{A, B, C, D, E,
+                                                    F\}\)<br>
+                                                    Only "BD" can appear. Treat "BD" as one block → 5 entities: \(5! =
+                                                    120\)</li>
+                                                <li><strong>Case 3: Omit A, C, E, or F</strong> (4 choices) → Letters
+                                                    include both D and G.<br>
+                                                    <div class="subcase">
+                                                        ∙ Arrangements with "BD": \(5! = 120\) (treat "BD" as block)<br>
+                                                        ∙ Arrangements with "BG": \(5! = 120\) (treat "BG" as block)<br>
+                                                        ∙ Total for one omission: \(120 + 120 = 240\)<br>
+                                                        ∙ For 4 omissions: \(4 \times 240 = 960\)
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <strong>Sum all cases:</strong>
+                                            <div class="math-block">
+                                                \[\text{Total} = 120 + 120 + 960 = 1200\]
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="conclusion">
+                                                <strong>Conclusion:</strong> There are 1200 such sequences.
+                                            </div>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="problem-container">
+                        <div class="problem-header">
+                            <i class="fas fa-question-circle"></i>
+                            Problem 9
+                        </div>
+                        <div class="problem-content">
+                            <div class="problem-statement">
+                                A class has 10 girls and 8 boys. Two winners of the same sex are chosen for a prize
+                                (unordered pair).
+                            </div>
+                            <div class="solution-container">
+                                <button class="solution-toggle" onclick="toggleSolution(this)">
+                                    <i class="fas fa-chevron-down"></i>
+                                    Show Solution
+                                </button>
+                                <div class="solution-content">
+                                    <ol class="solution-steps">
+                                        <li>
+                                            <strong>Identify the problem type:</strong> We need combinations of two
+                                            girls or two boys (mutually exclusive cases).
+                                        </li>
+                                        <li>
+                                            <strong>Calculate combinations:</strong>
+                                            <div class="math-block">
+                                                \[
+                                                \begin{align*}
+                                                \text{Two girls:} & \quad \binom{10}{2} = \frac{10 \times 9}{2} = 45 \\
+                                                \text{Two boys:} & \quad \binom{8}{2} = \frac{8 \times 7}{2} = 28
+                                                \end{align*}
+                                                \]
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Apply the addition principle:</strong>
+                                            <div class="math-block">
+                                                \[\text{Total} = 45 + 28 = 73\]
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="conclusion">
+                                                <strong>Conclusion:</strong> There are 73 ways to choose the winners.
+                                            </div>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="problem-container">
+                        <div class="problem-header">
+                            <i class="fas fa-question-circle"></i>
+                            Problem 10
+                        </div>
+                        <div class="problem-content">
+                            <div class="problem-statement">
+                                A student enrolls in exactly one course from 7 morning courses or 5 afternoon courses.
+                            </div>
+                            <div class="solution-container">
+                                <button class="solution-toggle" onclick="toggleSolution(this)">
+                                    <i class="fas fa-chevron-down"></i>
+                                    Show Solution
+                                </button>
+                                <div class="solution-content">
+                                    <ol class="solution-steps">
+                                        <li>
+                                            <strong>Identify the problem type:</strong> Choices are mutually exclusive
+                                            (morning or afternoon).
+                                        </li>
+                                        <li>
+                                            <strong>Count choices:</strong>
+                                            <div class="math-block">
+                                                \[
+                                                \begin{align*}
+                                                \text{Morning courses:} & \quad 7 \\
+                                                \text{Afternoon courses:} & \quad 5
+                                                \end{align*}
+                                                \]
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Apply the addition principle:</strong>
+                                            <div class="math-block">
+                                                \[\text{Total} = 7 + 5 = 12\]
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="conclusion">
+                                                <strong>Conclusion:</strong> The student has 12 choices.
+                                            </div>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="problem-container">
+                        <div class="problem-header">
+                            <i class="fas fa-question-circle"></i>
+                            Problem 11
+                        </div>
+                        <div class="problem-content">
+                            <div class="problem-statement">
+                                Select one junior representative (from 52 students) and one senior representative (from
+                                49 students). Roles are distinct.
+                            </div>
+                            <div class="solution-container">
+                                <button class="solution-toggle" onclick="toggleSolution(this)">
+                                    <i class="fas fa-chevron-down"></i>
+                                    Show Solution
+                                </button>
+                                <div class="solution-content">
+                                    <ol class="solution-steps">
+                                        <li>
+                                            <strong>Identify the problem type:</strong> Independent choices for distinct
+                                            roles.
+                                        </li>
+                                        <li>
+                                            <strong>Count choices:</strong>
+                                            <div class="math-block">
+                                                \[
+                                                \begin{align*}
+                                                \text{Junior rep:} & \quad 52 \\
+                                                \text{Senior rep:} & \quad 49
+                                                \end{align*}
+                                                \]
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Apply the multiplication principle:</strong>
+                                            <div class="math-block">
+                                                \[\text{Total} = 52 \times 49 = 2548\]
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="conclusion">
+                                                <strong>Conclusion:</strong> There are 2548 ways to select the
+                                                representatives.
+                                            </div>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="subtitle-box">Binomial and Multinomial Coefficients</div>
+                    <div class="problem-container">
+                        <div class="problem-header">
+                            <i class="fas fa-question-circle"></i>
+                            Problem 12
+                        </div>
+                        <div class="problem-content">
+                            <div class="problem-statement">
+                                Calculate the coeffitient of \(x^3y^2\) in the expansion of \((2x + 3y)^5\).
+                            </div>
+                            <div class="solution-container">
+                                <button class="solution-toggle" onclick="toggleSolution(this)">
+                                    <i class="fas fa-chevron-down"></i>
+                                    Show Solution
+                                </button>
+                                <div class="solution-content">
+                                    <ol class="solution-steps">
+                                        <li>
+                                            <strong>Identify the binomial expansion:</strong> The general term in the
+                                            expansion of \((a + b)^n\) is given by:
+                                            \[
+                                            T_k = \binom{n}{k} a^{n-k} b^k
+                                            \]
+                                        </li>
+                                        <li>
+                                            <strong>Set parameters:</strong> Here, \(a = 2x\), \(b = 3y\), and \(n =
+                                            5\).
+                                        </li>
+                                        <li>
+                                            <strong>Find \(k\) for \(x^3y^2\):</strong> We need \(n-k = 3\) and \(k =
+                                            2\).
+                                        </li>
+                                        <li>
+                                            <strong>Calculate the coefficient:</strong>
+                                            \[
+                                            T_2 = \binom{5}{2} (2x)^3 (3y)^2
+                                            \]
+                                            Calculate each part:
+                                            \[
+                                            \binom{5}{2} = 10, \quad (2x)^3 = 8x^3, \quad (3y)^2 = 9y^2
+                                            \]
+                                        </li>
+                                        <li>
+                                            <strong>Combine results:</strong>
+                                            \[
+                                            T_2 = 10 \cdot 8x^3 \cdot 9y^2 = 720x^3y^2
+                                            \]
+                                        </li>
+                                        <li>
+                                            <div class="conclusion
+                                                ">
+                                                <strong>Conclusion:</strong> The coefficient of \(x^3y^2\) is
+                                                <strong>720</strong>.
+                                            </div>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="problem-container">
+                        <div class="problem-header">
+                            <i class="fas fa-question-circle"></i>
+                            Problem 13
+                        </div>
+                        <div class="problem-content">
+                            <div class="problem-statement">
+                                Calculate the coefficient of \(x^2y^3z^4\) in the expansion of \((x + 2y + 3z)^9\).
+                            </div>
+                            <div class="solution-container">
+                                <button class="solution-toggle" onclick="toggleSolution(this)">
+                                    <i class="fas fa-chevron-down"></i>
+                                    Show Solution
+                                </button>
+                                <div class="solution-content">
+                                    <ol class="solution-steps">
+                                        <li>
+                                            The multinomial expansion is given by:
+                                            \[
+                                            (x_1 + x_2 + \ldots + x_k)^n = \sum_{k_1 + k_2 + \ldots + k_k = n}
+                                            \frac{n!}{k_1! k_2! \ldots k_k!} x_1^{k_1} x_2^{k_2} \ldots x_k^{k_k}
+                                            \]
+                                        </li>
+                                        <li>
+                                            Here, \(n = 9\), \(x_1 = x\), \(x_2 = 2y\), \(x_3 = 3z\), and we need
+                                            \(k_1 = 2\), \(k_2 = 3\), \(k_3 = 4\).
+                                        </li>
+                                        <li>
+                                            The coefficient is:
+                                            \[
+                                            \frac{9!}{2!3!4!} (2^3)(3^4)
+                                            \]
+                                        </li>
+                                        <li>
+                                            Calculate each part:
+                                            \[
+                                            9! = 362880, \quad 2! = 2, \quad 3! = 6, \quad 4! = 24
+                                            \]
+                                        </li>
+                                        <li>
+                                            The multinomial coefficient is:
+                                            \[
+                                            \frac{362880}{2 \cdot 6 \cdot 24} = 1260
+                                            \]
+                                        </li>
+                                        <li>
+                                            The numerical part is:
+                                            \[
+                                            (2^3)(3^4) = 8
+                                            \cdot 81 = 648
+                                            \]
+                                        </li>
+                                        <li>
+                                            The final coefficient is:
+                                            \[
+                                            1260 \cdot 648 = 816480
+                                            \]
+                                        </li>
+                                        <li>
+                                            <div class="conclusion">
+                                                <strong>Conclusion:</strong> The coefficient of \(x^2y^3z^4\) is
+                                                <strong>816480</strong>.
+                                            </div>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+            </section>
+            <section class="tutorial-section" id="summary">
+                <div class="section-container">
+                    <h2 class="section-title">
+                        <div class="section-icon">
+                            <i class="fas fa-pencil-ruler"></i>
+                        </div>
+                        Summary
+                    </h2>
+
+                    <p>In this tutorial, we covered the main methods for solving transcendental equations:</p>
+
+                    <div class="highlight-box">
+                        <strong>Key Takeaways:</strong>
+                        <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                            <li><strong>Inverse Trigonometric Functions:</strong> Quick when the transcendental
+                                functions are
+                                inverses of each other</li>
+                            <li><strong>Trigonometric Substitution:</strong> Useful for understanding vertex form
+                            </li>
+                        </ul>
+                    </div>
+
+                    <p>Practice these methods with different types of transcendental equations to build your confidence
+                        and
+                        fluency.
+                    </p>
+            </section>
+        </div>
+
+    </section>
+
+
+
+    <!-- Navigation -->
+    <nav class="tutorial-nav">
+        <button class="nav-btn" disabled>
+            <i class="fas fa-chevron-left"></i>
+            Previous
+        </button>
+        <span class="progress-indicator">Tutorial Complete</span>
+        <button class="nav-btn" onclick="window.location.href='tutorial2.html'">
+            Next Tutorial
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </nav>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+    <script src="/assets/js/loader.js"></script>
+    <script src="/assets/js/tutorial.js"></script>
+    <script src="/assets/js/navbar.js"></script>
+
+
+</html>

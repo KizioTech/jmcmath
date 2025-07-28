@@ -1,0 +1,473 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f9fafb;
+}
+
+/* Header Styles */
+.tutorial-header {
+  font-family: "Times New Roman", Times, serif;
+  background: linear-gradient(135deg, #111827, #374151);
+  color: white;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+.tutorial-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("/assets/images/mathematics-numbers-and-mathematical-data-ftjn425sx2rnifuk.svg");
+  opacity: 0.1;
+}
+
+.tutorial-header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.tutorial-header h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.tutorial-header p {
+  font-size: 1.125rem;
+  color: #d1d5db;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.tutorial-meta {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  backdrop-filter: blur(10px);
+}
+
+.meta-item i {
+  color: #fbbf24;
+}
+
+/* Main Content */
+.tutorial-container {
+  font-family: "Times New Roman", Times, serif;
+  max-width: 900px;
+  margin: -2rem auto 0;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 10;
+}
+
+.tutorial-content {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Navigation */
+.tutorial-nav {
+  background: #374151;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-btn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-btn:hover {
+  background: #dc2626;
+}
+
+.nav-btn:disabled {
+  background: #6b7280;
+  cursor: not-allowed;
+}
+
+.progress-indicator {
+  font-family: "Times New Roman", Times, serif;
+  color: white;
+  font-weight: 500;
+}
+
+/* Section Styles */
+.tutorial-section {
+  padding: 2rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.tutorial-section:last-child {
+  border-bottom: none;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.section-icon {
+  width: 32px;
+  height: 32px;
+  background: #fef2f2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ef4444;
+}
+
+.section-content {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #374151;
+}
+
+.section-content p {
+  margin-bottom: 1rem;
+}
+
+.highlight-box {
+  background: #eff6ff;
+  border-left: 4px solid #2563eb;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  border-radius: 0.5rem;
+}
+
+.highlight-box.warning {
+  background: #fef3cd;
+  border-left-color: #f59e0b;
+}
+
+.highlight-box.success {
+  background: #f0fdf4;
+  border-left-color: #10b981;
+}
+
+.box-title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.highlight-box .box-title {
+  color: #1e40af;
+}
+
+/* Problem Styles */
+.problem-container {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  margin: 2rem 0;
+  overflow: hidden;
+}
+
+.problem-header {
+  background: #ef4444;
+  color: white;
+  padding: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.problem-content {
+  padding: 1.5rem;
+}
+
+.problem-statement {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: #1f2937;
+}
+
+/* Solution Styles */
+.solution-container {
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+.solution-toggle {
+  background: #374151;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  width: fit-content;
+  min-width: 150px;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.solution-toggle:hover {
+  background: #1f2937;
+  transform: translateY(-1px);
+}
+
+.solution-toggle i {
+  transition: transform 0.2s;
+}
+
+.solution-toggle.expanded i {
+  transform: rotate(180deg);
+}
+
+.solution-content {
+  display: none;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  animation: slideDown 0.3s ease-out;
+  width: 100%;
+}
+
+.solution-content.show {
+  display: block;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.solution-steps {
+  list-style: none;
+  counter-reset: step-counter;
+}
+
+.solution-steps li {
+  counter-increment: step-counter;
+  margin-bottom: 1rem;
+  position: relative;
+  padding-left: 2.5rem;
+}
+
+.solution-steps li::before {
+  content: counter(step-counter);
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #10b981;
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+/* Mathematical expressions styling */
+.mjx-chtml {
+  font-size: 1.1em !important;
+}
+
+.math-block {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1rem 0;
+  text-align: center;
+  overflow-x: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .tutorial-header h1 {
+    font-size: 2rem;
+  }
+
+  .tutorial-meta {
+    gap: 1rem;
+  }
+
+  .tutorial-section {
+    padding: 1.5rem;
+  }
+
+  .tutorial-nav {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .problem-content {
+    padding: 1rem;
+  }
+}
+
+/* Back to tutorials link */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #047857;
+  text-decoration: none;
+  font-weight: 500;
+  margin: 2rem 0 1rem;
+  transition: all 0.2s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+}
+
+.back-link:hover {
+  color: #059669;
+  background: #dcfce7;
+  transform: translateX(-5px);
+}
+
+.tutorial-toc {
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin: 2rem 0 0 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid #bbf7d0;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
+
+.tutorial-toc h2 {
+  color: #166534;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.tutorial-toc ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tutorial-toc li {
+  margin: 0.75rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.tutorial-toc li::before {
+  content: "•";
+  color: #10b981;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+.tutorial-toc a {
+  color: #047857;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  display: inline-block;
+  padding: 0.25rem 0;
+  border-bottom: 2px solid transparent;
+}
+
+.tutorial-toc a:hover {
+  color: #059669;
+  border-bottom-color: #059669;
+  transform: translateX(5px);
+}
+
+.tutorial-subsection {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: #ffe1ab;
+  border: 1px solid #bbf7d0;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.breadcrumb {
+  padding: 1rem 2rem;
+  background: #f8f9fa;
+  border-radius: 4px;
+  margin-bottom: 2rem;
+}
+
+.breadcrumb a {
+  color: #666;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  color: #ef4444;
+}
+
+.breadcrumb span {
+  margin: 0 0.5rem;
+  color: #999;
+}
+.subtitle-box {
+  border-left: 4px solid #eb2525;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+}

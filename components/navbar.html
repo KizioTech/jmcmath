@@ -1,0 +1,78 @@
+<!-- Header -->
+<header class="header">
+    <div class="header-container">
+        <!-- Logo -->
+        <div class="logo">
+            <a href="/public/index.html" class="home-link">JMC<span class="logo-subtitle">| Math & Academics</span></a>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <nav class="nav">
+            <a href="/public/index.html" data-page="home" class="nav-link home-link">Home</a>
+            <div class="dropdown">
+                <button class="dropdown-trigger nav-link" data-page="resources">
+                    Resources <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="/public/resources/library/library.html" data-page="library" class="dropdown-item">Library</a>
+                    <a href="/public/resources/tutorials/tutorials.html" data-page="tutorials" class="dropdown-item">Tutorials</a>
+                </div>
+            </div>
+            <a href="/public/courses.html" data-page="courses" class="nav-link">Courses</a>
+            <a href="/public/contact.html" data-page="contact" class="nav-link">Contact</a>
+        </nav>
+
+        <!-- Search and Actions -->
+        <div class="header-actions">
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" placeholder="Search......." id="searchInput">
+                <div class="search-results" id="searchResults"></div>
+            </div>
+            <a href="/public/jmcplus.html" class="btn-primary no-underline nav-link" data-page="jmcplus">
+                <i class="fas fa-crown"></i> JMC Plus
+            </a>
+            <a href="/public/auth.html" class="btn-secondary no-underline">
+                <i class="fas fa-user"></i> Sign In
+            </a>
+        </div>
+
+        <!-- Mobile menu button -->
+        <button class="mobile-menu-btn" id="mobile-menu-btn">
+            <i class="fas fa-bars" id="menu-icon"></i>
+        </button>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="search-container">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" class="search-input" placeholder="Search......." id="mobileSearchInput">
+            <div class="search-results" id="mobileSearchResults"></div>
+        </div>
+        <nav class="mobile-nav">
+            <a href="/public/index.html" data-page="home" class="nav-link home-link">Home</a>
+            <button class="mobile-dropdown-trigger nav-link" id="mobile-dropdown-trigger" data-page="resources">
+                Resources <i class="fas fa-chevron-down" id="mobile-dropdown-icon"></i>
+            </button>
+            <div class="mobile-dropdown-content" id="mobile-dropdown">
+                <a href="/public/resources/library/library.html" data-page="library" class="dropdown-item">Library</a>
+                <a href="/public/resources/tutorials/tutorials.html" data-page="tutorials" class="dropdown-item">Tutorials</a>
+            </div>
+            <a href="/public/courses.html" data-page="courses" class="nav-link">Courses</a>
+            <a href="/public/contact.html" data-page="contact" class="nav-link">Contact</a>
+        </nav>
+        <div class="mobile-actions">
+            <a href="/public/jmcplus.html" data-page="jmcplus" class="nav-link">
+                <button class="btn-primary">
+                    <i class="fas fa-crown"></i> JMC Plus
+                </button>
+            </a>
+            <a href="/public/auth.html">
+                <button class="btn-secondary">
+                    <i class="fas fa-user"></i> Sign In
+                </button>
+            </a>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8NVMG0WLL7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-8NVMG0WLL7');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="JMC Mathematics - Your go-to platform for structured and effective math learning materials.">
+    <meta name="keywords" content="Math, Education, Learning, Courses, Resources, JMC Mathematics">
+    <link rel="icon" type="image/png" href="/assets/images/favicon.ico">
+    <title>Course Notes - Discrete Mathematics</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/notes.css">
+    <link rel="stylesheet" href="/assets/css/tutorial.css">
+
+    <!-- MathJax Configuration -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                packages: { '[+]': ['ams', 'newcommand', 'configMacros'] }
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+</head>
+
+<body>
+    <div id="navbar"></div>
+
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+    <!-- Main Container -->
+    <div class="notes-container">
+        <!-- Navigation Sidebar -->
+        <nav class="notes-nav-sidebar" id="notes-nav-sidebar">
+            <div class="notes-nav-content">
+                <div class="notes-nav-section">
+                    <a href="counting.html" class="notes-nav-section-title">Counting Techniques</a>
+
+                </div>
+                <div class="notes-nav-section">
+                    <a href="pigeionhole.html" class="notes-nav-section-title"> The Pigeonhole Principle</a>
+
+                </div>
+                <div class="notes-nav-section">
+                    <a href="recurrence.html" class="notes-nav-section-title">Recurrence Relations</a>
+                    <ul class="notes-nav-list">
+                        <li class="notes-nav-item">
+                            <a href="#introduction" class="notes-nav-link active">Introduction</a>
+                        </li>
+
+                        <li class="notes-nav-item">
+                            <a href="#fomulation" class="notes-nav-link">Formulating Recurrence Relations</a>
+                        </li>
+                        <li class="notes-nav-item has-submenu">
+                            <a href="#solving" class="notes-nav-link">Solving Recurrence
+                                Relations</a>
+                            <ul class="notes-nav-submenu">
+                                <li class="notes-nav-subitem">
+                                    <a href="#iteration" class="notes-nav-link">Iteration Method </a>
+                                </li>
+                                <li class="notes-nav-subitem">
+                                    <a href="#root" class="notes-nav-link">Root Method</a>
+                                </li>
+                                <li class="notes-nav-subitem">
+                                    <a href="#generating" class="notes-nav-link">Generating Functions</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="notes-nav-section">
+                    <a href="graphtheory.html" class="notes-nav-section-title">Intro to Graph Theory</a>
+
+                </div>
+            </div>
+        </nav>
+        <!-- Add this below the navbar -->
+        <div class="push-toggle" id="push-toggle">
+            <i class="fas fa-chevron-right"></i>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-wrapper">
+                <div class="content">
+                    <div class="notes-header">
+                        <h1 id="introduction">Discrete Mathematics with Applications</h1>
+
+                        <p>Discrete Mathematics is the branch of mathematics that focuses on countable and distinct
+                            objects
+                            rather than continuous ones. It has applications in various fields, including computer
+                            science,
+                            cryptography, logic, and more.</p>
+                    </div>
+                    <div class="definition-box">
+                        <div class="box-title">Key Concepts</div>
+                        <p>Discrete mathematics deals with concepts like:</p>
+                        <ul>
+                            <li>Sets and relations</li>
+                            <li>Functions and graphs</li>
+                            <li>Combinatorics (counting and arranging objects)</li>
+                            <li>Logic and proofs</li>
+                            <li>Algorithms and complexity</li>
+                        </ul>
+                    </div>
+
+                    <nav class="notes-section-nav">
+                        <button href="pigeionhole.html" class="notes-nav-btn">
+                            <i class="fas fa-chevron-left"></i>
+                            Previous
+                        </button>
+                        <span class="progress-indicator">Chapter 3: Recurrence Relations</span>
+                        <button href="graphtheory.html" class="notes-nav-btn">
+                            Next
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </nav>
+                    <!-- Recurrence Relations Chapter Content -->
+                    <h1 id="recurrencerelations">Chapter 3: Recurrence Relations</h1>
+
+                    <div class="theorem-box">
+                        <div class="box-title">Key Concepts</div>
+                        <p>Recurrence relations are equations that define sequences based on rules giving the next term
+                            as a function of previous terms. Key methods for solving include:</p>
+                        <ul>
+                            <li>Iteration Method</li>
+                            <li>Root Method</li>
+                            <li>Generating Function Method</li>
+                        </ul>
+                    </div>
+
+                    <h1 id="formulation">Formulation of Recurrence Relations</h1>
+                    <div class="definition-box">
+                        <div class="box-title">Definition</div>
+                        <p>A recurrence relation defines a sequence where each term depends on previous terms. The
+                            simplest form is \( a_n = f(a_{n-1}) \) where the current term depends on the immediately
+                            previous term.</p>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="box-title">Example: Permutations</div>
+                        <p>How many ways can \( n \) distinct items be placed in \( n \) distinct positions?</p>
+                        <p><strong>Solution:</strong></p>
+                        <div class="math-block">
+                            Let \( P(n) \) = number of ways to arrange \( n \) items in \( n \) positions<br>
+                            For the last position, we have \( n \) choices<br>
+                            After placing one item, we have \( P(n-1) \) ways for remaining items<br>
+                            Therefore: \( P(n) = n \cdot P(n-1) \) with \( P(1) = 1 \)<br>
+                            Solution: \( P(n) = n! \)
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="box-title">Example: Tower of Hanoi</div>
+                        <p>Find the minimum number of moves to transfer \( n \) discs from rod A to rod C via rod B,
+                            where larger discs cannot be placed on smaller ones.</p>
+                        <p><strong>Solution:</strong></p>
+                        <div class="math-block">
+                            Let \( H(n) \) = minimum moves for \( n \) discs<br>
+                            To move \( n \) discs:<br>
+                            1. Move top \( n-1 \) discs to intermediate rod: \( H(n-1) \) moves<br>
+                            2. Move largest disc to destination: 1 move<br>
+                            3. Move \( n-1 \) discs from intermediate to destination: \( H(n-1) \) moves<br>
+                            Therefore: \( H(n) = 2H(n-1) + 1 \) with \( H(1) = 1 \)<br>
+                            Solution: \( H(n) = 2^n - 1 \)
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="box-title">Example: Binary Sequences</div>
+                        <p>Find the number of \( n \)-bit binary sequences with no two consecutive 0s.</p>
+                        <p><strong>Solution:</strong></p>
+                        <div class="math-block">
+                            Let \( a_n \) = number of valid \( n \)-bit sequences<br>
+                            Case 1: Sequence ends with 1 → first \( n-1 \) bits form valid sequence of length \( n-1
+                            \)<br>
+                            Case 2: Sequence ends with 0 → previous bit must be 1, so first \( n-2 \) bits form valid
+                            sequence<br>
+                            Therefore: \( a_n = a_{n-1} + a_{n-2} \) with \( a_1 = 2, a_2 = 3 \)<br>
+                            This gives the Fibonacci-like sequence: 2, 3, 5, 8, 13, ...
+                        </div>
+                    </div>
+
+                    <h1 id="iteration">Iteration Method</h1>
+                    <div class="theorem-box">
+                        <div class="box-title">Iteration Method</div>
+                        <p>Solve recurrence relations by repeatedly applying the recurrence relation until a pattern
+                            emerges.</p>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="box-title">Example: Solving \( a_n = 3a_{n-1} \)</div>
+                        <p>Solve \( a_n = 3a_{n-1} \) with \( a_0 = 1 \).</p>
+                        <p><strong>Solution:</strong></p>
+                        <div class="math-block">
+                            \( a_1 = 3a_0 = 3 \cdot 1 = 3 \)<br>
+                            \( a_2 = 3a_1 = 3 \cdot 3 = 3^2 \)<br>
+                            \( a_3 = 3a_2 = 3 \cdot 3^2 = 3^3 \)<br>
+                            Pattern: \( a_n = 3^n \)
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="box-title">Example: Tower of Hanoi Solution</div>
+                        <p>Solve \( H(n) = 2H(n-1) + 1 \) with \( H(1) = 1 \).</p>
+                        <p><strong>Solution:</strong></p>
+                        <div class="math-block">
+                            \( H(1) = 1 \)<br>
+                            \( H(2) = 2 \cdot 1 + 1 = 3 \)<br>
+                            \( H(3) = 2 \cdot 3 + 1 = 7 \)<br>
+                            \( H(4) = 2 \cdot 7 + 1 = 15 \)<br>
+                            Pattern: \( H(n) = 2^n - 1 \)
+                        </div>
+                    </div>
+
+                    <h1 id="rootmethod">Root Method</h1>
+                    <div class="theorem-box">
+                        <div class="box-title">Root Method</div>
+                        <p>For homogeneous linear recurrence relations of the form \( a_n = c_1a_{n-1} + c_2a_{n-2} +
+                            \cdots + c_ka_{n-k} \), assume solution \( a_n = r^n \) and solve the characteristic
+                            equation.</p>
+                    </div>
+
+                    <div class="definition-box">
+                        <div class="box-title">Homogeneous Linear Recurrence</div>
+                        <p>An equation of the form \( a_n = c_1a_{n-1} + c_2a_{n-2} + \cdots + c_ka_{n-k} \) where all
+                            coefficients are constants.</p>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="box-title">Example: Fibonacci Sequence</div>
+                        <p>Solve \( F_n = F_{n-1} + F_{n-2} \) with \( F_0 = 0, F_1 = 1 \).</p>
+                        <p><strong>Solution:</strong></p>
+                        <div class="math-block">
+                            Assume \( F_n = r^n \), then \( r^n = r^{n-1} + r^{n-2} \)<br>
+                            Divide by \( r^{n-2} \): \( r^2 = r + 1 \)<br>
+                            Characteristic equation: \( r^2 - r - 1 = 0 \)<br>
+                            Solutions: \( r = \frac{1 \pm \sqrt{5}}{2} \)<br>
+                            Let \( \phi = \frac{1 + \sqrt{5}}{2}, \psi = \frac{1 - \sqrt{5}}{2} \)<br>
+                            General solution: \( F_n = A\phi^n + B\psi^n \)<br>
+                            Using initial conditions: \( A = \frac{1}{\sqrt{5}}, B = -\frac{1}{\sqrt{5}} \)<br>
+                            Therefore: \( F_n = \frac{1}{\sqrt{5}}(\phi^n - \psi^n) \)
+                        </div>
+                    </div>
+
+                    <div class="theorem-box">
+                        <div class="box-title">Theorem (Distinct Roots)</div>
+                        <p>If the characteristic equation \( r^k - c_1r^{k-1} - c_2r^{k-2} - \cdots - c_k = 0 \) has \(
+                            k \) distinct roots \( r_1, r_2, \ldots, r_k \), then the general solution is:</p>
+                        <div class="math-block">
+                            \( a_n = A_1r_1^n + A_2r_2^n + \cdots + A_kr_k^n \)
+                        </div>
+                    </div>
+
+                    <div class="theorem-box">
+                        <div class="box-title">Theorem (Repeated Roots)</div>
+                        <p>If root \( r \) has multiplicity \( m \), then the corresponding terms in the general
+                            solution are:</p>
+                        <div class="math-block">
+                            \( (A_1 + A_2n + A_3n^2 + \cdots + A_mn^{m-1})r^n \)
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="box-title">Example: Repeated Roots</div>
+                        <p>Solve \( a_n = 4a_{n-1} - 4a_{n-2} \) with \( a_0 = 1, a_1 = 3 \).</p>
+                        <p><strong>Solution:</strong></p>
+                        <div class="math-block">
+                            Characteristic equation: \( r^2 - 4r + 4 = 0 \)<br>
+                            \( (r - 2)^2 = 0 \) → double root \( r = 2 \)<br>
+                            General solution: \( a_n = (A + Bn)2^n \)<br>
+                            Using initial conditions:<br>
+                            \( a_0 = A = 1 \)<br>
+                            \( a_1 = 2A + 2B = 3 \) → \( B = \frac{1}{2} \)<br>
+                            Therefore: \( a_n = (1 + \frac{n}{2})2^n = 2^n + n \cdot 2^{n-1} \)
+                        </div>
+                    </div>
+
+                    <h1 id="generating">Generating Function Method</h1>
+                    <div class="definition-box">
+                        <div class="box-title">Generating Function</div>
+                        <p>For sequence \( \{a_n\} \), the generating function is \( G(x) = \sum_{n=0}^{\infty} a_n x^n
+                            \).</p>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="box-title">Example: Fibonacci Generating Function</div>
+                        <p>Find the generating function for \( F_n = F_{n-1} + F_{n-2} \) with \( F_0 = 0, F_1 = 1 \).
+                        </p>
+                        <p><strong>Solution:</strong></p>
+                        <div class="math-block">
+                            Let \( G(x) = \sum_{n=0}^{\infty} F_n x^n \)<br>
+                            From recurrence: \( F_n = F_{n-1} + F_{n-2} \) for \( n \geq 2 \)<br>
+                            Multiply by \( x^n \) and sum:<br>
+                            \( \sum_{n=2}^{\infty} F_n x^n = \sum_{n=2}^{\infty} F_{n-1} x^n + \sum_{n=2}^{\infty}
+                            F_{n-2} x^n \)<br>
+                            \( G(x) - F_0 - F_1 x = x \sum_{n=2}^{\infty} F_{n-1} x^{n-1} + x^2 \sum_{n=2}^{\infty}
+                            F_{n-2} x^{n-2} \)<br>
+                            \( G(x) - x = x(G(x) - F_0) + x^2 G(x) \)<br>
+                            \( G(x) - x = xG(x) + x^2G(x) \)<br>
+                            \( G(x)(1 - x - x^2) = x \)<br>
+                            \( G(x) = \frac{x}{1 - x - x^2} \)
+                        </div>
+                    </div>
+
+                    <div class="theorem-box">
+                        <div class="box-title">Theorem (Coefficient Extraction)</div>
+                        <p>If \( G(x) = \sum_{n=0}^{\infty} a_n x^n \), then \( a_n = \frac{1}{n!} G^{(n)}(0) \), where
+                            \( G^{(n)}(0) \) is the \( n \)-th derivative of \( G(x) \) evaluated at \( x = 0 \).</p>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="box-title">Example: Coloring Problem</div>
+                        <p>How many ways can one color \( n \) squares using 3 colors (black, blue, white) such that
+                            white appears at least once?</p>
+                        <p><strong>Solution:</strong></p>
+                        <div class="math-block">
+                            Total colorings without restriction: \( 3^n \)<br>
+                            Colorings without white: \( 2^n \)<br>
+                            Colorings with white at least once: \( 3^n - 2^n \)<br><br>
+                            Using generating functions:<br>
+                            Black: \( 1 + x + x^2 + \cdots = \frac{1}{1-x} \)<br>
+                            Blue: \( 1 + x + x^2 + \cdots = \frac{1}{1-x} \)<br>
+                            White (at least once): \( x + x^2 + x^3 + \cdots = \frac{x}{1-x} \)<br>
+                            Combined: \( \frac{1}{1-x} \cdot \frac{1}{1-x} \cdot \frac{x}{1-x} = \frac{x}{(1-x)^3}
+                            \)<br>
+                            Coefficient of \( x^n \): \( \binom{n+2}{2} \) when \( n \geq 1 \)
+                        </div>
+                    </div>
+
+                    <!-- Practice Activities -->
+                    <h2>Practice Activities</h2>
+                    <div class="definition-box">
+                        <div class="box-title">Activity 3a</div>
+                        <ol type="a">
+                            <li>A rectangle is formed from joining \( 1 \times 2 \) squares. How many ways can one cover
+                                a \( 2 \times n \) rectangle with \( 1 \times 2 \) tiles?</li>
+                            <li>Find sequences of \( n \) digits from \( \{0, 1, 2\} \) with no consecutive identical
+                                digits.</li>
+                            <li>Prove that \( b_n = 2b_{n-1} \) for sequences of \( n \) binary digits.</li>
+                            <li>Show derangement formula: \( D_n = (n-1)(D_{n-1} + D_{n-2}) \).</li>
+                            <li>Bacteria doubles every second. Formulate recurrence for half-bottle filling time.</li>
+                        </ol>
+                    </div>
+
+                    <div class="definition-box">
+                        <div class="box-title">Activity 3b</div>
+                        <ol type="a">
+                            <li>Solve \( a_n = 5a_{n-1} - 6a_{n-2} \) with \( a_0 = 1, a_1 = 0 \)</li>
+                            <li>Find solution to \( f(n) = 2f(n-1) + 1 \) with \( f(0) = 1 \)</li>
+                            <li>Solve \( a_n = 6a_{n-1} - 9a_{n-2} \) with \( a_0 = 1, a_1 = 6 \)</li>
+                            <li>Use iteration for \( T(n) = 2T(n-1) + n \) with \( T(1) = 1 \)</li>
+                            <li>Find solution to \( a_n = a_{n-1} + 2a_{n-2} \)</li>
+                        </ol>
+                    </div>
+
+                    <div class="definition-box">
+                        <div class="box-title">Activity 3c</div>
+                        <ol type="a">
+                            <li>Solve \( B_n - 8B_{n-1} + 16B_{n-2} = 0 \) with \( B_0 = 2, B_1 = 20 \)</li>
+                            <li>Find solution to \( A_m = 6A_{m-1} - 9A_{m-2} \) with \( A_0 = 1, A_2 = 2 \)</li>
+                            <li>Solve \( a_n = 5a_{n-1} - 6a_{n-2} \) with given initial conditions</li>
+                            <li>Find Fibonacci sequence solution: \( C_k = 2C_{k-1} - C_{k-2} \) with \( C_0 = 0, C_1 =
+                                1 \)</li>
+                            <li>Solve \( a_n = 4a_{n-1} - 4a_{n-2} \) with appropriate conditions</li>
+                        </ol>
+                    </div>
+
+                    <div class="definition-box">
+                        <div class="box-title">Activity 3d</div>
+                        <ol type="a">
+                            <li>Find derivatives of generating functions and their coefficients</li>
+                            <li>Apply generating function to solve \( a_k - 5a_{k-1} = 0 \) with \( a_0 = 1 \)</li>
+                            <li>Rewrite recurrence relations using generating function notation</li>
+                            <li>Color 10 rectangular blocks with 2 colors, color 1 appears at least twice</li>
+                            <li>Use generating functions to solve \( B_n - B_{n-1} - 2B_{n-2} = 0 \)</li>
+                            <li>Color \( n \) squares of chessboard with black, red, white under various constraints
+                            </li>
+                        </ol>
+                    </div>
+
+
+                    <nav class="notes-section-nav">
+                        <button href="pigeionhole.html" class="notes-nav-btn">
+                            <i class="fas fa-chevron-left"></i>
+                            Previous
+                        </button>
+                        <span class="progress-indicator">Chapter 4: Introduction to Graph Theory</span>
+                        <button href="graphtheory.html" class="notes-nav-btn">
+                            Next
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </nav>
+
+
+                    <div class="theorem-box">
+                        <div class="box-title">REFERENCES</div>
+                        <p>Levin O. (2019). Discrete Mathematics: An open Introduction, 3rd Edition. University of
+                            Northern Colorado. <a class="hyperlink" href="http://math.oscarlevin.com/"
+                                target="_blank">http://math.oscarlevin.com/</a></p>
+                        <p>Keller M. T. & Trotter W. T. (2023). Applied Combinatorics. Libre Texts</p>
+                        <p>Susanna S. Epp. (2010). Discrete Mathematics with Applications, 4th Edition. Brooks/Cole.
+                            DePaul University</p>
+                        <p>Rosen K. H. (2019). Discrete Mathematics with Applications, 8th Edition. McGraw Hill</p>
+                        <p>Hammack R. (n.d). Elements of Discrete Mathematics. Virginia Commonwealth University</p>
+                        <p>Levin O. (2023). Discrete Mathematics. University of Northern Colorado. Libre Texts.</p>
+
+                    </div>
+                    <nav class="notes-section-nav">
+                        <a href="/public/resources/library/library.html" class="notes-nav-btn">
+                            <i class="fas fa-book"></i>
+                            Library
+                        </a>
+                        <span class="progress-indicator">End of Chapter 3: Recurrence Relations</span>
+                        <a href="/public/resources/tutorials/tutorials.html" class="notes-nav-btn">
+                            <i class="fas fa-graduation-cap"></i>
+                            Tutorials
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="/assets/js/loader.js"></script>
+    <script src="/assets/js/navbar.js"></script>
+    <script src="/assets/js/notes.js"></script>
+</body>
+
+</html>
