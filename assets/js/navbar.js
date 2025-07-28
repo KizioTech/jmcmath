@@ -2,36 +2,36 @@
 const pageData = [
   {
     title: "Home",
-    url: "/public/index.html",
+    url: "/index.html",
     description: "Welcome to JMC Math & Academics - Your gateway to mathematical excellence"
   },
   {
     title: "Library",
-    url: "/public/resources/library/library.html",
+    url: "/resources/library/library.html",
     description: "Comprehensive mathematical resources and reference materials",
     keywords: ["library", "resources", "books", "references", "math books", "textbooks", "study materials", "equations", "formulas", "theorems"]
   },
   {
     title: "Tutorials",
-    url: "/public/resources/tutorials/tutorials.html",
+    url: "/resources/tutorials/tutorials.html",
     description: "Step-by-step tutorials for all mathematical topics",
     keywords: ["tutorials", "lessons", "step-by-step", "guides", "how-to", "learning", "instruction", "examples", "practice", "exercises"]
   },
   {
     title: "Courses",
-    url: "/public/courses.html",
+    url: "/courses.html",
     description: "Structured mathematics courses for all levels",
     keywords: ["courses", "classes", "curriculum", "syllabus", "program", "degree", "certification", "online courses", "math courses"]
   },
   {
     title: "Contact",
-    url: "/public/contact.html",
+    url: "/contact.html",
     description: "Get in touch with JMC Math & Academics team",
     keywords: ["contact", "support", "help", "email", "phone", "address", "team", "staff", "faculty", "instructors"]
   },
   {
     title: "JMC Plus",
-    url: "/public/jmcplus.html",
+    url: "/jmcplus.html",
     description: "Premium membership for advanced mathematical resources",
     keywords: ["jmc plus", "premium", "membership", "advanced", "exclusive", "subscription", "pro", "upgrade", "benefits"]
   }
@@ -39,97 +39,92 @@ const pageData = [
 
 // Search mappings for direct navigation to specific content
 const searchMappings = {
-  "algebra": "/public/resources/library/library.html#algebra",
-  "calculus": "/public/resources/library/library.html#calculus",
-  "geometry": "/public/resources/library/library.html#geometry",
-  "trigonometry": "/public/resources/library/library.html#trigonometry",
-  "statistics": "/public/resources/library/library.html#statistics",
-  "probability": "/public/resources/library/library.html#probability",
-  "linear algebra": "/public/resources/library/library.html#linear-algebra",
-  "differential equations": "/public/resources/library/library.html#differential-equations",
-  "number theory": "/public/resources/library/library.html#number-theory",
-  "discrete math": "/public/resources/library/library.html#discrete-math",
+  "algebra": "resources/library/library.html#algebra",
+  "calculus": "resources/library/library.html#calculus",
+  "geometry": "resources/library/library.html#geometry",
+  "trigonometry": "resources/library/library.html#trigonometry",
+  "statistics": "resources/library/library.html#statistics",
+  "probability": "resources/library/library.html#probability",
+  "linear algebra": "resources/library/library.html#linear-algebra",
+  "differential equations": "resources/library/library.html#differential-equations",
+  "number theory": "resources/library/library.html#number-theory",
+  "discrete math": "resources/library/library.html#discrete-math",
 
   // Tutorial specific mappings
-  "basic math": "/public/resources/tutorials/tutorials.html#basic-math",
-  "advanced math": "/public/resources/tutorials/tutorials.html#advanced-math",
-  "math fundamentals": "/public/resources/tutorials/tutorials.html#fundamentals",
-  "problem solving": "/public/resources/tutorials/tutorials.html#problem-solving",
-  "math problems": "/public/resources/tutorials/tutorials.html#problems",
-  "solutions": "/public/resources/tutorials/tutorials.html#solutions",
-  "step by step": "/public/resources/tutorials/tutorials.html#step-by-step",
+  "basic math": "resources/tutorials/tutorials.html#basic-math",
+  "advanced math": "resources/tutorials/tutorials.html#advanced-math",
+  "math fundamentals": "resources/tutorials/tutorials.html#fundamentals",
+  "problem solving": "resources/tutorials/tutorials.html#problem-solving",
+  "math problems": "resources/tutorials/tutorials.html#problems",
+  "solutions": "resources/tutorials/tutorials.html#solutions",
+  "step by step": "resources/tutorials/tutorials.html#step-by-step",
 
   // Course mappings
-  "beginner courses": "/public/courses.html#beginner",
-  "intermediate courses": "/public/courses.html#intermediate",
-  "advanced courses": "/public/courses.html#advanced",
-  "online learning": "/public/courses.html#online",
-  "certification": "/public/courses.html#certification",
+  "beginner courses": "courses.html#beginner",
+  "intermediate courses": "courses.html#intermediate",
+  "advanced courses": "courses.html#advanced",
+  "online learning": "courses.html#online",
+  "certification": "courses.html#certification",
 
   // General academic terms
-  "homework help": "/public/resources/tutorials/tutorials.html#homework",
-  "exam preparation": "/public/resources/library/library.html#exam-prep",
-  "study guide": "/public/resources/library/library.html#study-guides",
-  "formulas": "/public/resources/library/library.html#formulas",
-  "equations": "/public/resources/library/library.html#equations",
-  "theorems": "/public/resources/library/library.html#theorems",
-  "proofs": "/public/resources/library/library.html#proofs",
+  "homework help": "resources/tutorials/tutorials.html#homework",
+  "exam preparation": "resources/library/library.html#exam-prep",
+  "study guide": "resources/library/library.html#study-guides",
+  "formulas": "resources/library/library.html#formulas",
+  "equations": "resources/library/library.html#equations",
+  "theorems": "resources/library/library.html#theorems",
+  "proofs": "resources/library/library.html#proofs",
 
   // Contact related
-  "help": "/public/contact.html#help",
-  "support": "/public/contact.html#support",
-  "tutor": "/public/contact.html#tutoring",
-  "instructor": "/public/contact.html#instructors",
+  "help": "contact.html#help",
+  "support": "contact.html#support",
+  "tutor": "contact.html#tutoring",
+  "instructor": "contact.html#instructors",
 
   // Premium content
-  "premium": "/public/jmcplus.html",
-  "membership": "/public/jmcplus.html#membership",
-  "subscription": "/public/jmcplus.html#subscription",
-  "advanced resources": "/public/jmcplus.html#advanced"
+  "premium": "jmcplus.html",
+  "membership": "jmcplus.html#membership",
+  "subscription": "jmcplus.html#subscription",
+  "advanced resources": "jmcplus.html#advanced"
 };
 
 // Function to get the correct relative path based on current location
 function getRelativePath(targetPath) {
-  const currentPath = window.location.pathname;
-  console.log('Current path:', currentPath);
-  console.log('Target path:', targetPath);
-
-  // If target is an absolute URL (starts with http), return as is
+  // If target is an absolute URL, return as is
   if (targetPath.startsWith('http')) {
     return targetPath;
   }
-
-  // If target doesn't start with /, it's already relative
+  
+  // If target is already relative, return it
   if (!targetPath.startsWith('/')) {
     return targetPath;
   }
-
-  // Calculate directory depth of current page
-  let currentDir = currentPath;
-  if (currentDir.endsWith('.html')) {
-    currentDir = currentDir.substring(0, currentDir.lastIndexOf('/'));
-  }
-  if (currentDir.endsWith('/')) {
-    currentDir = currentDir.slice(0, -1);
-  }
-
-  // Count directory levels (excluding root)
-  const currentLevels = currentDir === '' ? 0 : currentDir.split('/').length - 1;
-  console.log('Current levels:', currentLevels);
-
+  
+  // Calculate the base path relative to root
+  const currentPath = window.location.pathname;
+  const pathSegments = currentPath.split('/');
+  const depth = pathSegments.length - 2; // Adjust for trailing slash
+  
   // Create relative path
-  let relativePath = '';
-
-  if (currentLevels === 0) {
-    // We're at root level
-    relativePath = '.' + targetPath;
+  if (depth <= 0) {
+    return '.' + targetPath;
   } else {
-    // We're in a subdirectory, need to go up
-    relativePath = '../'.repeat(currentLevels) + targetPath.substring(1);
+    return '../'.repeat(depth) + targetPath.substring(1);
   }
+}
 
-  console.log('Relative path:', relativePath);
-  return relativePath;
+// Function to resolve paths for navigation
+function resolvePath(targetPath) {
+  if (targetPath.startsWith('http') || !targetPath.startsWith('/')) {
+    return targetPath;
+  }
+  
+  // Handle site root
+  if (targetPath === '/') {
+    return 'index.html';
+  }
+  
+  return targetPath.substring(1);
 }
 
 // Function to fix navigation paths based on current page location
@@ -137,22 +132,20 @@ function fixNavigationPaths() {
   console.log('Fixing navigation paths...');
 
   // Update all navigation links
-  document.querySelectorAll('a[href^="/"]').forEach(link => {
-    const originalHref = link.getAttribute('href');
-    if (originalHref && originalHref.startsWith('/') && !originalHref.startsWith('//')) {
-      const relativePath = getRelativePath(originalHref);
+  document.querySelectorAll('a').forEach(link => {
+    const href = link.getAttribute('href');
+    if (href && !href.startsWith('http') && !href.startsWith('#')) {
+      const relativePath = getRelativePath(href);
       link.setAttribute('href', relativePath);
-      console.log(`Updated link: ${originalHref} -> ${relativePath}`);
     }
   });
 
   // Also update form actions if any
-  document.querySelectorAll('form[action^="/"]').forEach(form => {
-    const originalAction = form.getAttribute('action');
-    if (originalAction && originalAction.startsWith('/') && !originalAction.startsWith('//')) {
-      const relativePath = getRelativePath(originalAction);
+  document.querySelectorAll('form').forEach(form => {
+    const action = form.getAttribute('action');
+    if (action && !action.startsWith('http') && !action.startsWith('#')) {
+      const relativePath = getRelativePath(action);
       form.setAttribute('action', relativePath);
-      console.log(`Updated form action: ${originalAction} -> ${relativePath}`);
     }
   });
 }
@@ -161,39 +154,33 @@ function fixNavigationPaths() {
 window.navigateToPage = function (url) {
   console.log('Navigating to:', url);
 
-  // Convert to relative path if needed
-  const targetUrl = url.startsWith('/') ? getRelativePath(url) : url;
-  console.log('Target URL:', targetUrl);
+  // Resolve path to relative format
+  const targetUrl = url.startsWith('/') ? getRelativePath(resolvePath(url)) : getRelativePath(url);
 
   // Handle anchor links
   if (targetUrl.includes('#')) {
     const [baseUrl, anchor] = targetUrl.split('#');
-
-    // If it's the same page, just scroll to anchor
-    if (baseUrl === '' || baseUrl === window.location.pathname) {
+    const currentPagePath = window.location.pathname;
+    
+    // Check if baseUrl matches current page
+    if (baseUrl === currentPagePath || baseUrl === '' || baseUrl === '.') {
+      // Same page: scroll to anchor
       const element = document.getElementById(anchor);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
+        hideSearch();
         return;
       }
     }
-
-    // Navigate to different page with anchor
-    window.location.href = targetUrl;
-
-    // Wait for page to load, then scroll to anchor
-    setTimeout(() => {
-      const element = document.getElementById(anchor);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    }, 500);
-  } else {
-    // Regular navigation
-    window.location.href = targetUrl;
   }
+  
+  // Regular navigation
+  window.location.href = targetUrl;
+  hideSearch();
+};
 
-  // Hide search results
+function hideSearch() {
+  // Hide search results and clear inputs
   const searchResults = document.getElementById('searchResults');
   const mobileSearchResults = document.getElementById('mobileSearchResults');
   const searchInput = document.getElementById('searchInput');
@@ -203,7 +190,7 @@ window.navigateToPage = function (url) {
   if (mobileSearchResults) mobileSearchResults.style.display = 'none';
   if (searchInput) searchInput.value = '';
   if (mobileSearchInput) mobileSearchInput.value = '';
-};
+}
 
 function initNavbar() {
   console.log('Initializing navbar...');
@@ -270,37 +257,58 @@ function initNavbar() {
   }
 
   function displayResults(results, container) {
-    container.innerHTML = ''; // Clear old results first
-
-    container.innerHTML = results.map(result => `
-      <div class="search-result-item" onclick="window.navigateToPage('${result.url}')">
+    container.innerHTML = '';
+    
+    results.forEach(result => {
+      const resultItem = document.createElement('div');
+      resultItem.className = 'search-result-item';
+      resultItem.innerHTML = `
         <div class="result-title">${result.title}</div>
         <div class="result-description">${result.description}</div>
         <div class="result-url">${result.url}</div>
-      </div>
-    `).join('');
-
+      `;
+      resultItem.addEventListener('click', () => {
+        window.navigateToPage(result.url);
+      });
+      container.appendChild(resultItem);
+    });
+    
     container.style.display = 'block';
   }
 
   function displayWebSearchOption(query, container) {
-    container.innerHTML = ''; // Clear old results first
-
-    container.innerHTML = `
-      <div class="search-result-item">
-        <div class="result-title">No results found for "${query}"</div>
-        <div class="result-description">Try adjusting your keywords or explore other sections.</div>
-      </div>
-      <div class="search-result-item" onclick="window.navigateToPage('/public/resources/library/library.html')">
-        <div class="result-title">📚 Browse Library</div>
-        <div class="result-description">Explore all mathematical resources and materials</div>
-      </div>
-      <div class="search-result-item" onclick="performWebSearch('${query}')">
-        <div class="result-title">🌐 Search Web</div>
-        <div class="result-description">Search the web for "${query}"</div>
-      </div>
+    container.innerHTML = '';
+    
+    const noResults = document.createElement('div');
+    noResults.className = 'search-result-item';
+    noResults.innerHTML = `
+      <div class="result-title">No results found for "${query}"</div>
+      <div class="result-description">Try adjusting your keywords or explore other sections.</div>
     `;
-
+    container.appendChild(noResults);
+    
+    const browseItem = document.createElement('div');
+    browseItem.className = 'search-result-item';
+    browseItem.innerHTML = `
+      <div class="result-title">📚 Browse Library</div>
+      <div class="result-description">Explore all mathematical resources and materials</div>
+    `;
+    browseItem.addEventListener('click', () => {
+      window.navigateToPage('resources/library/library.html');
+    });
+    container.appendChild(browseItem);
+    
+    const webSearch = document.createElement('div');
+    webSearch.className = 'search-result-item';
+    webSearch.innerHTML = `
+      <div class="result-title">🌐 Search Web</div>
+      <div class="result-description">Search the web for "${query}"</div>
+    `;
+    webSearch.addEventListener('click', () => {
+      performWebSearch(query);
+    });
+    container.appendChild(webSearch);
+    
     container.style.display = 'block';
   }
 
@@ -344,12 +352,21 @@ function initNavbar() {
   }
 
   function displaySuggestions(suggestions, container) {
-    container.innerHTML = suggestions.map(suggestion => `
-      <div class="search-result-item suggestion" onclick="window.navigateToPage('${suggestion.url}')">
+    container.innerHTML = '';
+    
+    suggestions.forEach(suggestion => {
+      const suggestionItem = document.createElement('div');
+      suggestionItem.className = 'search-result-item suggestion';
+      suggestionItem.innerHTML = `
         <div class="result-title">${suggestion.title}</div>
         <div class="result-type">${suggestion.type === 'direct' ? '🎯 Direct Match' : '📄 Page Match'}</div>
-      </div>
-    `).join('');
+      `;
+      suggestionItem.addEventListener('click', () => {
+        window.navigateToPage(suggestion.url);
+      });
+      container.appendChild(suggestionItem);
+    });
+    
     container.style.display = 'block';
   }
 
@@ -357,10 +374,7 @@ function initNavbar() {
     // Open Google search in new tab
     const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(query + ' site:jmcmath.com')}`;
     window.open(searchUrl, '_blank');
-    if (searchResults) searchResults.style.display = 'none';
-    if (mobileSearchResults) mobileSearchResults.style.display = 'none';
-    if (searchInput) searchInput.value = '';
-    if (mobileSearchInput) mobileSearchInput.value = '';
+    hideSearch();
   };
 
   // Desktop search event listeners
@@ -415,6 +429,11 @@ function initNavbar() {
         menuIcon.classList.toggle('fa-bars');
         menuIcon.classList.toggle('fa-times');
       }
+      // Clear mobile search when closing menu
+      if (!mobileMenu.classList.contains('active')) {
+        if (mobileSearchInput) mobileSearchInput.value = '';
+        if (mobileSearchResults) mobileSearchResults.style.display = 'none';
+      }
     });
   }
 
@@ -468,19 +487,22 @@ function initNavbar() {
 
     navLinks.forEach(link => {
       link.classList.remove('active');
-      const dataPage = link.getAttribute('data-page');
       const href = link.getAttribute('href');
-
-      // Check for exact matches or partial matches
-      if (currentPath === href ||
-        (href !== '/' && currentPath.includes(href.replace(/^.*\//, ''))) ||
-        (currentPath === '/' && dataPage === 'home') ||
-        (currentPath.includes('/resources/') && dataPage === 'resources') ||
-        (currentPath.includes('/library') && dataPage === 'library') ||
-        (currentPath.includes('/tutorials') && dataPage === 'tutorials') ||
-        (currentPath.includes('/courses') && dataPage === 'courses') ||
-        (currentPath.includes('/contact') && dataPage === 'contact') ||
-        (currentPath.includes('/jmcplus') && dataPage === 'jmcplus')) {
+      
+      if (!href) return;
+      
+      // Get absolute path of the link
+      const linkPath = new URL(href, window.location.href).pathname;
+      
+      // Check for exact matches
+      if (currentPath === linkPath) {
+        link.classList.add('active');
+        return;
+      }
+      
+      // Check for partial matches in subdirectories
+      const currentDir = currentPath.substring(0, currentPath.lastIndexOf('/'));
+      if (linkPath.startsWith(currentDir) || currentPath.startsWith(linkPath)) {
         link.classList.add('active');
       }
     });
