@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8NVMG0WLL7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-8NVMG0WLL7');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="JMC Plus - Premium membership for exclusive access to all courses and resources.">
+    <meta name="keywords" content="JMC Plus, Premium Membership, Math Courses, Resources, JMC Mathematics">
+    <link rel="icon" type="image/png" href="/assets/images/favicon.ico">
+    <title>JMC Plus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <style>
+        /* Hero Section */
+        .page-hero {
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+            color: white;
+            padding: 8rem 1rem 12rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('/assets/images/mathematics-numbers-and-mathematical-data-ftjn425sx2rnifuk.svg');
+            opacity: 0.3;
+
+        }
+
+        .page-hero-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f3f4f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-hero p {
+            font-size: 1.25rem;
+            color: #d1d5db;
+            line-height: 1.7;
+            margin-bottom: 0;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Pricing Container */
+        .pricing-container {
+            padding: 0 1rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-top: -8rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #f3f4f6;
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ef4444 0%, #dc2626 100%);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .pricing-card.featured {
+            border: 2px solid #ef4444;
+            box-shadow: 0 25px 50px rgba(239, 68, 68, 0.2);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured::before {
+            height: 6px;
+            background: linear-gradient(90deg, #ef4444 0%, #dc2626 50%, #fbbf24 100%);
+        }
+
+        .pricing-card.featured::after {
+            content: "Most Popular";
+            position: absolute;
+            top: 1.5rem;
+            right: -2.5rem;
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+            padding: 0.5rem 3rem;
+            transform: rotate(45deg);
+            font-size: 0.875rem;
+            font-weight: 600;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .package-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .package-header i {
+            font-size: 3rem;
+            color: #ef4444;
+            margin-bottom: 1.5rem;
+            display: block;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .package-header h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 0.75rem;
+        }
+
+        .package-header p {
+            color: #6b7280;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .package-price {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+            border-radius: 1rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .package-price .price {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #111827;
+            display: block;
+            line-height: 1;
+        }
+
+        .package-price .period {
+            color: #6b7280;
+            font-size: 1.125rem;
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+
+        .package-features {
+            list-style: none;
+            margin-bottom: 2.5rem;
+            padding: 0;
+        }
+
+        .package-features li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+            color: #4b5563;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .package-features li i {
+            color: #10b981;
+            font-size: 1.125rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .pricing-card .btn-primary {
+            width: 100%;
+            justify-content: center;
+            font-size: 1.125rem;
+            padding: 1rem;
+            font-weight: 600;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .pricing-card .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .pricing-card .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .pricing-footer {
+            text-align: center;
+            color: #6b7280;
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e5e7eb;
+        }
+
+        .pricing-footer p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .pricing-footer p:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-link {
+            color: #ef4444;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .contact-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ef4444;
+            transition: width 0.3s ease;
+        }
+
+        .contact-link:hover::after {
+            width: 100%;
+        }
+
+        .contact-link:hover {
+            color: #dc2626;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .page-hero {
+                padding: 6rem 1rem 8rem;
+            }
+
+            .page-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .page-hero p {
+                font-size: 1.125rem;
+            }
+
+            .pricing-container {
+                margin-top: -6rem;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+            }
+
+            .package-price .price {
+                font-size: 2.5rem;
+            }
+
+            .pricing-card {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+
+            .pricing-card {
+                padding: 1.5rem;
+            }
+
+            .package-header i {
+                font-size: 2.5rem;
+            }
+
+            .package-price .price {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navbar"></div>
+    <section class="page-hero">
+        <div class="page-hero-container">
+            <h1>
+                JMC Plus
+            </h1>
+            <p>
+                JMC Plus is a premium membership that gives you access to all of our courses and resources.
+            </p>
+        </div>
+    </section>
+    <div class="pricing-container">
+        <div class="pricing-grid">
+            <!-- Starter Package -->
+            <div class="pricing-card">
+                <div class="package-header">
+                    <i class="fas fa-rocket"></i>
+                    <h2>Starter</h2>
+                    <p>Perfect for students beginning their math journey</p>
+                </div>
+                <div class="package-price">
+                    <span class="price">MWK3,000</span>
+                    <div class="period">/month</div>
+                </div>
+                <ul class="package-features">
+                    <li><i class="fas fa-check"></i> Access to basic video tutorials</li>
+                    <li><i class="fas fa-check"></i> Practice problems with solutions</li>
+                    <li><i class="fas fa-check"></i> Progress tracking</li>
+                    <li><i class="fas fa-check"></i> Mobile app access</li>
+                </ul>
+                <button class="btn-primary">Get Started <i class="fas fa-arrow-right"></i></button>
+            </div>
+
+            <!-- Growth Package -->
+            <div class="pricing-card featured">
+                <div class="package-header">
+                    <i class="fas fa-chart-line"></i>
+                    <h2>Growth</h2>
+                    <p>For dedicated learners seeking comprehensive support</p>
+                </div>
+                <div class="package-price">
+                    <span class="price">MWK9,000</span>
+                    <div class="period">/3 months</div>
+                </div>
+                <ul class="package-features">
+                    <li><i class="fas fa-check"></i> All Starter features</li>
+                    <li><i class="fas fa-check"></i> Live weekly Q&A sessions</li>
+                    <li><i class="fas fa-check"></i> Downloadable study materials</li>
+                    <li><i class="fas fa-check"></i> Practice tests with detailed solutions</li>
+                    <li><i class="fas fa-check"></i> Email support</li>
+                </ul>
+                <button class="btn-primary">Subscribe Now <i class="fas fa-crown"></i></button>
+            </div>
+
+            <!-- Pro Package -->
+            <div class="pricing-card">
+                <div class="package-header">
+                    <i class="fas fa-star"></i>
+                    <h2>Pro</h2>
+                    <p>Ultimate package for serious math achievers</p>
+                </div>
+                <div class="package-price">
+                    <span class="price">MWK18,000</span>
+                    <div class="period">/year</div>
+                </div>
+                <ul class="package-features">
+                    <li><i class="fas fa-check"></i> All Growth features</li>
+                    <li><i class="fas fa-check"></i> 1-on-1 mentorship sessions</li>
+                    <li><i class="fas fa-check"></i> Advanced problem sets</li>
+                    <li><i class="fas fa-check"></i> Exam preparation modules</li>
+                    <li><i class="fas fa-check"></i> Priority support</li>
+                    <li><i class="fas fa-check"></i> Custom study plans</li>
+                </ul>
+                <button class="btn-primary">Upgrade to Pro <i class="fas fa-graduation-cap"></i></button>
+            </div>
+        </div>
+
+        <div class="pricing-footer">
+            <p>All packages include a 7-day free trial. Cancel anytime.</p>
+            <p>Need help choosing? <a href="#" class="contact-link">Contact our team</a></p>
+        </div>
+    </div>
+    <div id="footer"></div>
+
+    <script src="/assets/js/loader.js"></script>
+    <script src="/assets/js/navbar.js"></script>
+</body>
+
+</html>

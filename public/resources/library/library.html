@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8NVMG0WLL7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-8NVMG0WLL7');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore our comprehensive digital library of mathematical resources, including lecture notes, past exams, and practice materials.">
+    <meta name="keywords" content="Math, Education, Learning, Courses, Resources, JMC Mathematics">
+    <link rel="icon" type="image/png" href="/assets/images/favicon.ico">
+    <title>JMC Math & Academics - Library</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <style>
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #111827;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            color: white;
+            transition: opacity 0.3s ease;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #374151;
+            border-top: 3px solid #ef4444;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Navbar Placeholder */
+        #navbar {
+            height: 64px;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 1rem 0;
+            background: white;
+            margin-top: 64px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .breadcrumb-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .breadcrumb a {
+            color: #6b7280;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: #ef4444;
+        }
+
+        .breadcrumb span {
+            margin: 0 0.5rem;
+            color: #9ca3af;
+        }
+
+        .breadcrumb .active {
+            color: #ef4444;
+            font-weight: 500;
+        }
+
+        /* Page Hero */
+        .page-hero {
+            background: linear-gradient(135deg, #111827 0%, #1f2937 50%, #461515 100%);
+            color: white;
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('/assets/images/mathematics-numbers-and-mathematical-data-ftjn425sx2rnifuk.svg');
+            opacity: 0.1;
+        }
+
+        .page-hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f3f4f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 4rem 0;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Search Bar */
+        .search-bar {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 1rem;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            border-color: #ef4444;
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+        }
+
+        .search-bar i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6b7280;
+            font-size: 1.1rem;
+        }
+
+        /* Category Filters */
+        .category-filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .category-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #ef4444;
+            border-radius: 50px;
+            background: white;
+            color: #ef4444;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .category-btn.active,
+        .category-btn:hover {
+            background: #ef4444;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+        }
+
+        /* PDF Grid */
+        .pdf-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .pdf-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid #f1f5f9;
+        }
+
+        .pdf-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .pdf-preview {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pdf-preview::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(239, 68, 68, 0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .pdf-preview i {
+            font-size: 48px;
+            color: #ef4444;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pdf-info {
+            padding: 1.5rem;
+        }
+
+        .pdf-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+            display: -webkit-box;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .pdf-meta {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-bottom: 1.5rem;
+        }
+
+        .pdf-actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .pdf-btn {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .view-btn {
+            background: #ef4444;
+            color: white;
+        }
+
+        .view-btn:hover {
+            background: #dc2626;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+        }
+
+        .download-btn {
+            background: #f8fafc;
+            color: #374151;
+            border: 1px solid #e5e7eb;
+        }
+
+        .download-btn:hover {
+            background: #e5e7eb;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Footer Placeholder */
+        #footer {
+            margin-top: 4rem;
+            background: #111827;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+
+            .page-hero p {
+                font-size: 1rem;
+            }
+
+            .section-container {
+                padding: 0 1rem;
+            }
+
+            .pdf-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .category-filters {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 0.5rem;
+            }
+
+            .category-btn {
+                flex-shrink: 0;
+            }
+
+            .pdf-actions {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .pdf-btn {
+                flex: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .breadcrumb-container,
+            .page-hero-container {
+                padding: 0 1rem;
+            }
+
+            .page-hero {
+                padding: 2rem 0;
+            }
+
+            .content-section {
+                padding: 2rem 0;
+            }
+        }
+
+        /* Animation for cards appearing */
+        .pdf-card {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .pdf-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .pdf-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .pdf-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .pdf-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .pdf-card:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .pdf-card:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .pdf-card:nth-child(7) {
+            animation-delay: 0.7s;
+        }
+
+        .pdf-card:nth-child(8) {
+            animation-delay: 0.8s;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hide loading screen after page loads */
+        body.loaded #loading-screen {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navbar"></div>
+
+
+
+    <section class="page-hero">
+        <div class="page-hero-container">
+            <h1>Digital Library</h1>
+            <p>Access our collection of mathematical resources, lecture notes, and practice materials.</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="section-container">
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" id="pdfSearch" placeholder="Search for resources...">
+            </div>
+
+            <!-- Category Filters -->
+            <div class="category-filters">
+                <button class="category-btn active" data-category="all">All Resources</button>
+                <button class="category-btn" data-category="lectures">Lecture Notes</button>
+                <button class="category-btn" data-category="exams">Past Exams</button>
+                <button class="category-btn" data-category="practice">Practice Materials</button>
+                <button class="category-btn" data-category="textbooks">Textbooks</button>
+            </div>
+
+            <!-- PDF Grid -->
+            <div class="pdf-grid">
+                <!-- Lecture Notes -->
+                <div class="pdf-card" data-category="lectures">
+                    <div class="pdf-preview">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="pdf-info">
+                        <h3 class="pdf-title">Introduction to Calculus</h3>
+                        <p class="pdf-meta">Introduction to Calculus</p>
+                        <div class="pdf-actions">
+                            <a href="../library/introtocalc.html" class="pdf-btn view-btn">
+                                <i class="fas fa-eye"></i>
+                                View
+                            </a>
+                            <button class="pdf-btn download-btn" onclick="buyPdf()">
+                                <i class="fas fa-shopping-cart"></i>
+                                Buy PDF
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pdf-card" data-category="lectures">
+                    <div class="pdf-preview">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="pdf-info">
+                        <h3 class="pdf-title">CALCULUS II</h3>
+                        <p class="pdf-meta">Transcendental Functions</p>
+                        <div class="pdf-actions">
+                            <a href="../library/transcendental functions.html" class="pdf-btn view-btn">
+                                <i class="fas fa-eye"></i>
+                                View
+                            </a>
+                            <button class="pdf-btn download-btn" onclick="buyPdf()">
+                                <i class="fas fa-shopping-cart"></i>
+                                Buy PDF
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pdf-card" data-category="lectures">
+                    <div class="pdf-preview">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="pdf-info">
+                        <h3 class="pdf-title">DISCRETE MATHEMATICS WITH APPLICATIONS</h3>
+                        <p class="pdf-meta">Counting Techniques, Pigeonhole Principle, recurrence relations
+                            and Graph theory
+                        </p>
+                        <div class="pdf-actions">
+                            <a href="../library/discrete/counting.html" class="pdf-btn view-btn">
+                                <i class="fas fa-eye"></i>
+                                View
+                            </a>
+                            <button class="pdf-btn download-btn" onclick="buyPdf()">
+                                <i class="fas fa-shopping-cart"></i>
+                                Buy PDF
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Past Exams -->
+                <div class="pdf-card" data-category="exams">
+                    <div class="pdf-preview">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="pdf-info">
+                        <h3 class="pdf-title">MAT221 End Semester 2 (2014)</h3>
+                        <p class="pdf-meta">Past Exam Paper</p>
+                        <div class="pdf-actions">
+                            <a href="../../../assets/pdfs/2014_Mat221_End_Semester2.pdf" class="pdf-btn view-btn"
+                                target="_blank">
+                                <i class="fas fa-eye"></i>
+                                View
+                            </a>
+                            <a href="../../../assets/pdfs/2014_Mat221_End_Semester2.pdf" class="pdf-btn download-btn"
+                                download>
+                                <i class="fas fa-download"></i>
+                                Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Materials -->
+                <div class="pdf-card" data-category="practice">
+                    <div class="pdf-preview">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="pdf-info">
+                        <h3 class="pdf-title">MAT221 Practice Questions</h3>
+                        <p class="pdf-meta">Tutorial 3 • 135 KB</p>
+                        <div class="pdf-actions">
+                            <a href="../../../assets/pdfs/Mat221_practice_Questions_tutorial3[1].pdf"
+                                class="pdf-btn view-btn" target="_blank">
+                                <i class="fas fa-eye"></i>
+                                View
+                            </a>
+                            <a href="../../../assets/pdfs/Mat221_practice_Questions_tutorial3[1].pdf"
+                                class="pdf-btn download-btn" download>
+                                <i class="fas fa-download"></i>
+                                Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Textbooks -->
+                <div class="pdf-card" data-category="textbooks">
+                    <div class="pdf-preview">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="pdf-info">
+                        <h3 class="pdf-title">Calculus by James Stewart</h3>
+                        <p class="pdf-meta">Textbook • Brooks Cole (2015)</p>
+                        <div class="pdf-actions">
+                            <a href="../../../assets/pdfs/James Stewart - Calculus-Brooks Cole (2015).pdf"
+                                class="pdf-btn view-btn" target="_blank">
+                                <i class="fas fa-eye"></i>
+                                View
+                            </a>
+                            <a href="../../../assets/pdfs/James Stewart - Calculus-Brooks Cole (2015).pdf"
+                                class="pdf-btn download-btn" download>
+                                <i class="fas fa-download"></i>
+                                Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Topic Materials -->
+                <div class="pdf-card" data-category="lectures">
+                    <div class="pdf-preview">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="pdf-info">
+                        <h3 class="pdf-title">Exponential and Logarithmic Functions</h3>
+                        <p class="pdf-meta">Topic Notes • 592 KB</p>
+                        <div class="pdf-actions">
+                            <a href="../../../assets/pdfs/Exp and Log.pdf" class="pdf-btn view-btn" target="_blank">
+                                <i class="fas fa-eye"></i>
+                                View
+                            </a>
+                            <a href="../../../assets/pdfs/Exp and Log.pdf" class="pdf-btn download-btn" download>
+                                <i class="fas fa-download"></i>
+                                Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pdf-card" data-category="lectures">
+                    <div class="pdf-preview">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="pdf-info">
+                        <h3 class="pdf-title">Inverse Trigonometric Functions</h3>
+                        <p class="pdf-meta">Topic Notes • 628 KB</p>
+                        <div class="pdf-actions">
+                            <a href="../../../assets/pdfs/Inverse Trig. Functions.pdf" class="pdf-btn view-btn"
+                                target="_blank">
+                                <i class="fas fa-eye"></i>
+                                View
+                            </a>
+                            <a href="../../../assets/pdfs/Inverse Trig. Functions.pdf" class="pdf-btn download-btn"
+                                download>
+                                <i class="fas fa-download"></i>
+                                Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer"></div>
+    <div id="payment"></div>
+    <script src="/assets/js/loader.js"></script>
+    <script src="/assets/js/navbar.js"></script>
+    <script>
+        // Hide loading screen when page loads
+        window.addEventListener('load', function () {
+            document.body.classList.add('loaded');
+        });
+
+        // PDF filtering and search functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const pdfCards = document.querySelectorAll('.pdf-card');
+            const searchInput = document.getElementById('pdfSearch');
+
+            // Category filtering
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Update active button
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    const category = btn.dataset.category;
+
+                    // Show/hide cards based on category
+                    pdfCards.forEach(card => {
+                        if (category === 'all' || card.dataset.category === category) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Search functionality
+            searchInput.addEventListener('input', function () {
+                const searchTerm = this.value.toLowerCase();
+                let visibleCards = 0;
+
+                pdfCards.forEach(card => {
+                    const title = card.querySelector('.pdf-title').textContent.toLowerCase();
+                    const meta = card.querySelector('.pdf-meta').textContent.toLowerCase();
+
+                    if (title.includes(searchTerm) || meta.includes(searchTerm)) {
+                        card.style.display = 'block';
+                        visibleCards++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // Optional: Show "no results" message if no cards are visible
+                if (visibleCards === 0 && searchTerm) {
+                    // You could add a "no results" message here
+                    console.log('No results found for:', searchTerm);
+                }
+            });
+        });
+
+        // Buy PDF function
+        function buyPdf() {
+            // You can implement your payment logic here
+            alert('Payment system integration coming soon!');
+        }
+
+        // Optional: Add smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8NVMG0WLL7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-8NVMG0WLL7');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore our comprehensive range of tutorials designed to help you master mathematics and academics.">
+    <meta name="keywords" content="Math, Education, Learning, Courses, Resources, JMC Mathematics">
+    <link rel="icon" type="image/png" href="/assets/images/favicon.ico">
+    <title>JMC Math & Academics - Calculus II Tutorial 2</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/tutorial.css">
+
+    <!-- MathJax Configuration -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
+
+</head>
+
+<body>
+    <div id="navbar"></div>
+
+
+
+    <!-- Tutorial Header -->
+    <header class="tutorial-header">
+        <h1>CALCULUS II</h1>
+        <h2>Tutorial 2 | Indeterminate Forms & Improper Integrals</h2>
+        <p>In this tutorial, we will explore the concept of indeterminate forms and how to solve them using L'Hôpital's
+            rule.</p>
+
+        <div class="tutorial-meta">
+            <div class="meta-item">
+                <i class="fas fa-clock"></i>
+                <span>120 minutes</span>
+            </div>
+            <div class="meta-item">
+                <i class="fas fa-signal"></i>
+                <span>Intermediate</span>
+            </div>
+            <div class="meta-item">
+                <i class="fas fa-calculator"></i>
+                <span>Calculus</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Tutorial Content -->
+    <section class="tutorial-container">
+        <div class="tutorial-content">
+            <div class="tutorial-toc">
+                <h2>Contents</h2>
+                <ul>
+                    <li>
+                        <a href="#">Title 1</a>
+                    </li>
+                    <li><a href="#">Title 2</li>
+                    <li><a href="#">Title 3</a></li>
+                    <li> <a href="#">Title 4</a></li>
+                    <li><a href="#summary">Summary</a></li>
+                </ul>
+            </div>
+            <!-- Navigation -->
+            <nav class="tutorial-nav">
+                <button class="nav-btn" onclick="window.location.href='transcendental1.html'">
+                    <i class="fas fa-chevron-left"></i>
+                    Previous
+                </button>
+                <span class="progress-indicator">Section 2 of 4</span>
+                <button class="nav-btn">
+                    Next
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </nav>
+
+            <!-- Introduction Section -->
+            <section class="tutorial-section">
+                <h2 class="section-title">
+                    <div class="section-icon">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    Introduction
+                </h2>
+                <div class="section-content">
+                    <p>Transcendental functions are a class of functions that are not algebraic, meaning they cannot be
+                        expressed as a finite combination of algebraic operations. These functions are essential in
+                        calculus and have many applications in various fields. In this tutorial, we will explore the
+                        properties and applications of transcendental functions, including exponential functions,
+                        logarithmic functions, and inverse trigonometric functions.</p>
+
+                    <div class="math-block">
+                        $$y = e^x$$
+                    </div>
+
+                    <p>where $e$ is the base of the natural logarithm. In this tutorial, we'll explore three main
+                        types of transcendental functions:</p>
+
+                    <ul style="margin-left: 2rem; margin-top: 1rem;">
+                        <li>Exponential Functions</li>
+                        <li>Logarithmic Functions</li>
+                        <li>Inverse Trigonometric Functions</li>
+                        <li>Reduction Formulas</li>
+                        <li>Hyperbolic Functions</li>
+                    </ul>
+
+                    <div class="highlight-box">
+                        <strong>Key Point:</strong> Transcendental functions are essential in calculus and have many
+                        applications in various fields.
+                    </div>
+                </div>
+            </section>
+            <!-- Method 1: Factoring -->
+            <section class="tutorial-section">
+                <h2 class="section-title" id="exp">
+                    <div class="section-icon">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    Exponential and Logarithmic Functions
+                </h2>
+                <d class="section-content">
+                    <p>Exponential functions are of the form $y = e^x$, where $e$ is the base of the natural logarithm.
+                        Logarithmic functions are the inverses of exponential functions, of the form $y = \ln(x)$.</p>
+                    <div class="highlight-box success">
+                        <strong>Key Point:</strong> Exponential functions are essential in calculus and have many
+                        applications in various fields. Logarithmic functions are the inverses of exponential functions,
+                        of the form $y = \ln(x)$.
+                    </div>
+                    <div class="tutorial-subsection">
+                        <h3 class="subsection-title">
+                            Logarithmic Differentiation
+                        </h3>
+                        <div class="section-content">
+                            <p>Logarithmic differentiation is a technique used to differentiate functions that are
+                                expressed as powers of other functions. It is particularly useful when the function is a
+                                product or quotient of two or more functions, or when the function is a power of a
+                                function.</p>
+                            <p>The technique involves taking the natural logarithm of both sides of the equation and
+                                then differentiating both sides with respect to the variable. This allows us to avoid
+                                using the product rule or quotient rule, which can be complex and time-consuming.</p>
+                            <p>Here are the steps for logarithmic differentiation:</p>
+                            <ol>
+                                <li>Take the natural logarithm of both sides of the equation.</li>
+                                <li>Differentiate both sides with respect to the variable.</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <!-- Problem 1 -->
+                    <div class="problem-container">
+                        <div class="problem-header">
+                            <i class="fas fa-question-circle"></i>
+                            Problem 1
+                        </div>
+                        <div class="problem-content">
+                            <div class="problem-statement">
+                                Differentiate the function $y = x^x$ with respect to $x$.
+                            </div>
+
+                            <div class="solution-container">
+                                <button class="solution-toggle" onclick="toggleSolution(this)">
+                                    <i class="fas fa-chevron-down"></i>
+                                    Show Solution
+                                </button>
+                                <div class="solution-content">
+                                    <p>Since both the base and the exponent involve the variable $x$, we use logarithmic
+                                        differentiation.</p>
+                                    <ol class="solution-steps">
+                                        <li>
+                                            <strong>Take the natural logarithm of both sides of the equation.:</strong>
+                                            <div class="math-block">
+                                                $$ \ln y = \ln(x^x) $$
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Apply the logarithm property $\ln(a^b) = b \ln a$ to the right
+                                                side.</strong>
+                                            <div class="math-block">
+                                                $$ \ln y = x \ln x $$
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Differentiate both sides with respect to $x$. The left side, $\ln
+                                                y$,
+                                                requires implicit differentiation. The right side, $x \ln x$, requires
+                                                the
+                                                product rule, where
+                                                $(uv)' = u'v + uv'. Let $u=x$ and $v=\ln x$.</strong>
+                                            <div class="math-block">
+                                                $$ \frac{d}{dx}(\ln y) = \frac{d}{dx}(x \ln x) $$
+
+                                                $$ \frac{1}{y} \cdot \frac{dy}{dx} = \left(\frac{d}{dx}(x)\right) \ln x
+                                                + x
+                                                \left(\frac{d}{dx}(\ln x)\right) $$
+
+                                                $$ \frac{1}{y} \frac{dy}{dx} = (1) \cdot \ln x + x \cdot
+                                                \left(\frac{1}{x}\right) $$
+
+                                                $$ \frac{1}{y} \frac{dy}{dx} = \ln x + 1 $$
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Solve for $\frac{dy}{dx}$ by multiplying both sides by $y$.</strong>
+                                            <div class="math-block">
+                                                $$ \frac{dy}{dx} = y (\ln x + 1) $$
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Substitute the original expression for $y$ (which is $y=x^x$) back
+                                                into the equation.</strong>
+                                            <div class="math-block">
+                                                $$\therefore \frac{dy}{dx} = x^x (\ln x + 1) $$
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Thus, the derivative of $y=x^x$ is $x^x(1 + \ln x)$.</strong>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Problem 2 -->
+                    <div class="problem-container">
+                        <div class="problem-header">
+                            <i class="fas fa-question-circle"></i>
+                            Problem 2
+                        </div>
+                        <div class="problem-content">
+                            <div class="problem-statement">
+                                Find $\displaystyle \frac{dy}{dx}$ if $y = \ln(x^2 + 1)^{\sin x}$.
+                            </div>
+
+                            <div class="solution-container">
+                                <button class="solution-toggle" onclick="toggleSolution(this)">
+                                    <i class="fas fa-chevron-down"></i>
+                                    Show Solution
+                                </button>
+                                <div class="solution-content">
+                                    <ol class="solution-steps">
+                                        <li>
+                                            <strong>Let $y = \ln(x^2 + 1)^{\sin x}$. Take the natural logarithm of both
+                                                sides:</strong>
+                                            <div class="math-block">
+                                                $$ \ln y = \sin x \cdot \ln(x^2 + 1) $$
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Differentiate both sides with respect to $x$:</strong>
+                                            <div class="math-block">
+                                                $$ \frac{1}{y} \frac{dy}{dx} = \cos x \cdot \ln(x^2 + 1) + \sin x \cdot
+                                                \frac{2x}{x^2 + 1} $$
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Multiply both sides by $y$ and substitute $y = (x^2 + 1)^{\sin
+                                                x}$:</strong>
+                                            <div class="math-block">
+                                                $$ \therefore \frac{dy}{dx} = (x^2 + 1)^{\sin x} \left[ \cos x \cdot
+                                                \ln(x^2
+                                                + 1) + \sin x
+                                                \cdot \frac{2x}{x^2 + 1} \right] $$
+                                            </div>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+            <section class="tutorial-section" id="summary">
+                <div class="section-container">
+                    <h2 class="section-title">
+                        <div class="section-icon">
+                            <i class="fas fa-pencil-ruler"></i>
+                        </div>
+                        Summary
+                    </h2>
+
+                    <p>In this tutorial, we covered the main methods for solving transcendental equations:</p>
+
+                    <div class="highlight-box">
+                        <strong>Key Takeaways:</strong>
+                        <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                            <li><strong>Inverse Trigonometric Functions:</strong> Quick when the transcendental
+                                functions are
+                                inverses of each other</li>
+                            <li><strong>Trigonometric Substitution:</strong> Useful for understanding vertex form
+                            </li>
+                        </ul>
+                    </div>
+
+                    <p>Practice these methods with different types of transcendental equations to build your confidence
+                        and
+                        fluency.
+                    </p>
+            </section>
+        </div>
+    </section>
+
+
+
+    <!-- Navigation -->
+    <nav class="tutorial-nav">
+        <button class="nav-btn" disabled>
+            <i class="fas fa-chevron-left"></i>
+            Previous
+        </button>
+        <span class="progress-indicator">Tutorial Complete</span>
+        <button class="nav-btn">
+            Next Tutorial
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </nav>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+    <script src="/assets/js/loader.js"></script>
+    <script src="/assets/js/tutorial.js"></script>
+    <script src="/assets/js/navbar.js"></script>
+
+
+</html>

@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8NVMG0WLL7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-8NVMG0WLL7');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore our comprehensive range of tutorials designed to help you master mathematics and academics.">
+    <meta name="keywords" content="Math, Education, Learning, Courses, Resources, JMC Mathematics">
+    <link rel="icon" type="image/png" href="/assets/images/favicon.ico">
+    <title>JMC Math & Academics - Tutorials</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <style>
+        .page-hero {
+            background: linear-gradient(135deg, #111827 0%, #1f2937 50%, #461515 100%);
+            color: white;
+            padding: 4rem 0 6rem 0;
+            /* Increased bottom padding for overlap space */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('/assets/images/mathematics-numbers-and-mathematical-data-ftjn425sx2rnifuk.svg');
+            opacity: 0.1;
+        }
+
+        .page-hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f3f4f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+        }
+
+        .content-section {
+            margin-top: -4rem;
+            /* Negative margin to create overlap */
+            position: relative;
+            z-index: 2;
+            /* Ensure content appears above hero */
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .resource-card {
+            background: #fff;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            padding: 1.5rem;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .resource-type {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #ef4444;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.75rem;
+            display: inline-block;
+            background: #fef2f2;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.375rem;
+            align-self: flex-start;
+        }
+
+        .resource-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.75rem;
+            color: #111827;
+            line-height: 1.4;
+        }
+
+        .resource-description {
+            font-size: 1rem;
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .resource-date {
+            font-size: 0.875rem;
+            color: #9ca3af;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .resource-button {
+            background-color: #ef4444;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            margin-top: auto;
+        }
+
+        .resource-button:hover {
+            background-color: #dc2626;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+        }
+
+        .resource-button:active {
+            transform: translateY(0);
+        }
+
+        /* Related Pages Section */
+        .related-pages {
+            background: #f9fafb;
+            padding: 4rem 1rem;
+            margin-top: 2rem;
+        }
+
+        .related-pages h2 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #111827;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .related-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .related-link {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+        }
+
+        .related-link:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-color: #ef4444;
+        }
+
+        .related-link h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 0.75rem;
+        }
+
+        .related-link p {
+            color: #6b7280;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .related-link:hover h3 {
+            color: #ef4444;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .page-hero {
+                padding: 3rem 1rem 5rem 1rem;
+                margin-top: 60px;
+            }
+
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+
+            .page-hero p {
+                font-size: 1rem;
+            }
+
+            .content-section {
+                margin-top: -3rem;
+            }
+
+            .section-container {
+                padding: 0 1rem;
+            }
+
+            .resource-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .resource-card {
+                padding: 1.25rem;
+            }
+
+            .related-pages {
+                padding: 3rem 1rem;
+            }
+
+            .related-pages h2 {
+                font-size: 1.75rem;
+            }
+
+            .related-links {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .related-link {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-hero {
+                padding: 2rem 1rem 4rem 1rem;
+            }
+
+            .page-hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .content-section {
+                margin-top: -2rem;
+            }
+
+            .resource-card {
+                padding: 1rem;
+            }
+
+            .resource-button {
+                padding: 0.75rem 1rem;
+                font-size: 0.825rem;
+            }
+
+            .related-link {
+                padding: 1.25rem;
+            }
+        }
+
+        /* Loading states */
+        .resource-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .resource-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .resource-card:hover::before {
+            left: 100%;
+        }
+
+        /* Focus styles for accessibility */
+        .resource-button:focus,
+        .related-link:focus {
+            outline: 2px solid #ef4444;
+            outline-offset: 2px;
+        }
+
+        /* Animation for cards */
+        .resource-card {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .resource-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .resource-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .resource-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .resource-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navbar"></div>
+
+    <section class="page-hero">
+        <div class="page-hero-container">
+            <h1>Tutorials</h1>
+            <p>Explore our comprehensive range of tutorials designed to help you master mathematics and academics.</p>
+        </div>
+    </section>
+
+    <!-- Tutorials Content Section -->
+    <section class="content-section">
+        <div class="section-container">
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <span class="resource-type">Video Tutorial</span>
+                    <h3 class="resource-title">Introduction to Calculus</h3>
+                    <p class="resource-description">Learn the fundamentals of calculus with this comprehensive video
+                        guide covering limits, derivatives, and basic integration techniques.</p>
+                    <p class="resource-date">Duration: 45 minutes</p>
+                    <a href="#" class="resource-button">View Tutorial</a>
+                </div>
+
+                <div class="resource-card">
+                    <span class="resource-type">Practice Tutorial</span>
+                    <h3 class="resource-title">Calculus II</h3>
+                    <p class="resource-description">Learn about integration techniques, series, and more advanced
+                        calculus concepts with hands-on practice problems.</p>
+                    <p class="resource-date">Duration: 120 minutes</p>
+                    <a href="/public/resources/tutorials/courses/calculus/transcendental1.html"
+                        class="resource-button">View
+                        Tutorial</a>
+                </div>
+
+                <div class="resource-card">
+                    <span class="resource-type">Practice Tutorial</span>
+                    <h3 class="resource-title">Discrete Mathematics with Applications</h3>
+                    <p class="resource-description">Comprehensive guide to counting techniques, pigeonhole principle,
+                        recurrence relations and graph theory with real-world applications.</p>
+                    <p class="resource-date">Duration: 60 minutes</p>
+                    <a href="../tutorials/courses/discrete/tutorial1.html" class="resource-button">View Tutorial</a>
+                </div>
+
+                <div class="resource-card">
+                    <span class="resource-type">Practice Tutorial</span>
+                    <h3 class="resource-title">Trigonometry Basics</h3>
+                    <p class="resource-description">Master the basics of trigonometry with this interactive tutorial
+                        covering sine, cosine, tangent, and their applications.</p>
+                    <p class="resource-date">Duration: 40 minutes</p>
+                    <a href="#" class="resource-button">View Tutorial</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Pages Section -->
+    <section class="related-pages">
+        <div class="section-container">
+            <h2>Related Resources</h2>
+            <div class="related-links">
+                <a href="/public/resources/library/library.html" class="related-link">
+                    <h3><i class="fas fa-book"></i> Library</h3>
+                    <p>Access our collection of mathematical resources and reference materials to supplement your
+                        learning.</p>
+                </a>
+                <a href="/public/jmcplus.html" class="related-link">
+                    <h3><i class="fas fa-crown"></i> JMC Plus</h3>
+                    <p>Get premium access to all our tutorials and resources with exclusive content and personalized
+                        support.</p>
+                </a>
+                <a href="/public/contact.html" class="related-link">
+                    <h3><i class="fas fa-envelope"></i> Contact Us</h3>
+                    <p>Need help? Get in touch with our academic team for personalized assistance and guidance.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer"></div>
+    <script>
+        // Function to setup navigation
+        function setupNavigation() {
+            // Mobile menu functionality
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const mobileDropdownTrigger = document.getElementById('mobile-dropdown-trigger');
+            const mobileDropdown = document.getElementById('mobile-dropdown');
+            const mobileDropdownIcon = document.getElementById('mobile-dropdown-icon');
+
+            // Desktop dropdown functionality
+            const dropdownTrigger = document.querySelector('.dropdown-trigger');
+            const dropdown = document.querySelector('.dropdown');
+
+            // Toggle desktop dropdown
+            if (dropdownTrigger && dropdown) {
+                dropdownTrigger.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    dropdown.classList.toggle('show');
+                });
+
+                // Close dropdown when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!dropdown.contains(e.target)) {
+                        dropdown.classList.remove('show');
+                    }
+                });
+            }
+
+            // Toggle mobile menu
+            mobileMenuBtn?.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+                menuIcon.classList.toggle('fa-bars');
+                menuIcon.classList.toggle('fa-times');
+            });
+
+            // Toggle mobile dropdown
+            mobileDropdownTrigger?.addEventListener('click', () => {
+                mobileDropdown.classList.toggle('show');
+                mobileDropdownTrigger.classList.toggle('show');
+                mobileDropdownIcon.style.transform = mobileDropdown.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0)';
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (mobileMenu?.classList.contains('active') &&
+                    !mobileMenu.contains(e.target) &&
+                    !mobileMenuBtn.contains(e.target)) {
+                    mobileMenu.classList.remove('active');
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                }
+            });
+
+            // Set active navigation item for tutorials page
+            document.querySelector('[data-page="resources"]')?.classList.add('active');
+            document.querySelectorAll('[data-page="tutorials"]').forEach(el => {
+                el.classList.add('active');
+            });
+        }
+
+        // Initialize navigation when DOM is loaded
+        document.addEventListener('DOMContentLoaded', setupNavigation);
+    </script>
+    <script src="/assets/js/navbar.js"></script>
+    <script src="/assets/js/loader.js"></script>
+</body>
+
+</html>

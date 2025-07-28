@@ -1,0 +1,200 @@
+>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Goes here
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8NVMG0WLL7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-8NVMG0WLL7');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="JMC Mathematics - Your go-to platform for structured and effective math learning materials.">
+    <meta name="keywords" content="Math, Education, Learning, Courses, Resources, JMC Mathematics">
+    <link rel="icon" type="image/png" href="/assets/images/favicon.ico">
+    <title>Course Notes - Discrete Mathematics</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/notes.css">
+    <link rel="stylesheet" href="/assets/css/tutorial.css">
+
+    <!-- MathJax Configuration -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                packages: { '[+]': ['ams', 'newcommand', 'configMacros'] }
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+</head>
+
+<body>
+    <div id="navbar"></div>
+
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+    <!-- Main Container -->
+    <div class="notes-container">
+        <!-- Navigation Sidebar -->
+        <nav class="notes-nav-sidebar" id="notes-nav-sidebar">
+            <div class="notes-nav-content">
+                <div class="notes-nav-section">
+                    <a href="counting.html" class="notes-nav-section-title">Counting Techniques</a>
+                    <ul class="notes-nav-list">
+                        <li class="notes-nav-item">
+                            <a href="#introduction" class="notes-nav-link active">Introduction</a>
+                        </li>
+                        <li class="notes-nav-item">
+                            <a href="#productrule" class="notes-nav-link">The Product Rule</a>
+                        </li>
+                        <li class="notes-nav-item">
+                            <a href="#sumrule" class="notes-nav-link">The Sum Rule</a>
+                        </li>
+                        <li class="notes-nav-item has-submenu">
+                            <a href="#combinationsandpermutations" class="notes-nav-link">Combinations &
+                                Permutations</a>
+                            <ul class="notes-nav-submenu">
+                                <li class="notes-nav-subitem">
+                                    <a href="#permutations" class="notes-nav-link">Permutations</a>
+                                </li>
+                                <li class="notes-nav-subitem">
+                                    <a href="#combinations" class="notes-nav-link">Combinations</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="notes-nav-item">
+                            <a href="#multinomialtheorem" class="notes-nav-link">Multinomial Theorem</a>
+                        </li>
+                        <li class="notes-nav-item">
+                            <a href="#inclusionandexclusion" class="notes-nav-link">Inclusion-Exclusion Principle</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="notes-nav-section">
+                    <a href="pigeionhole.html" class="notes-nav-section-title"> The Pegionhole Principle</a>
+
+                </div>
+                <div class="notes-nav-section">
+                    <a href="recurrence.html" class="notes-nav-section-title">Recurrence Relations</a>
+
+                </div>
+                <div class="notes-nav-section">
+                    <a href="graphtheory.html" class="notes-nav-section-title">Intro to Graph Theory</a>
+
+                </div>
+            </div>
+        </nav>
+        <!-- Add this below the navbar -->
+        <div class="push-toggle" id="push-toggle">
+            <i class="fas fa-chevron-right"></i>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-wrapper">
+                <div class="content">
+                    <div class="notes-header">
+                        <h1 id="introduction">Discrete Mathematics with Applications</h1>
+
+                        <p>Discrete Mathematics is the branch of mathematics that focuses on countable and distinct
+                            objects
+                            rather than continuous ones. It has applications in various fields, including computer
+                            science,
+                            cryptography, logic, and more.</p>
+                    </div>
+                    <div class="definition-box">
+                        <div class="box-title">Key Concepts</div>
+                        <p>Discrete mathematics deals with concepts like:</p>
+                        <ul>
+                            <li>Sets and relations</li>
+                            <li>Functions and graphs</li>
+                            <li>Combinatorics (counting and arranging objects)</li>
+                            <li>Logic and proofs</li>
+                            <li>Algorithms and complexity</li>
+                        </ul>
+                    </div>
+
+                    <nav class="notes-section-nav">
+                        <button href="recurrence.html" class="notes-nav-btn">
+                            <i class="fas fa-chevron-left"></i>
+                            Previous
+                        </button>
+                        <span class="progress-indicator">Chapter 2: pigeonhole Principle</span>
+                        <button href="pigeionhole.html" class="notes-nav-btn" disabled>
+                            Next
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </nav>
+                    <h1 id="recurrence">Chapter 4: Introduction to Graph Theory</h1>
+                    <nav class="notes-section-nav">
+                        <button href="recurrence.html" class="notes-nav-btn">
+                            <i class="fas fa-chevron-left"></i>
+                            Previous
+                        </button>
+                        <span class="progress-indicator"></span>
+                        <button href="pigeionhole.html" class="notes-nav-btn" disabled>
+                            Next
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </nav>
+
+
+                    <div class="theorem-box">
+                        <div class="box-title">REFERENCES</div>
+                        <p>Levin O. (2019). Discrete Mathematics: An open Introduction, 3rd Edition. University of
+                            Northern Colorado. <a class="hyperlink" href="http://math.oscarlevin.com/"
+                                target="_blank">http://math.oscarlevin.com/</a></p>
+                        <p>Keller M. T. & Trotter W. T. (2023). Applied Combinatorics. Libre Texts</p>
+                        <p>Susanna S. Epp. (2010). Discrete Mathematics with Applications, 4th Edition. Brooks/Cole.
+                            DePaul University</p>
+                        <p>Rosen K. H. (2019). Discrete Mathematics with Applications, 8th Edition. McGraw Hill</p>
+                        <p>Hammack R. (n.d). Elements of Discrete Mathematics. Virginia Commonwealth University</p>
+                        <p>Levin O. (2023). Discrete Mathematics. University of Northern Colorado. Libre Texts.</p>
+
+                    </div>
+                    <nav class="notes-section-nav">
+                        <a href="/public/resources/library/library.html" class="notes-nav-btn">
+                            <i class="fas fa-book"></i>
+                            Library
+                        </a>
+                        <span class="progress-indicator">End of Document</span>
+                        <a href="/public/resources/tutorials/tutorials.html" class="notes-nav-btn">
+                            <i class="fas fa-graduation-cap"></i>
+                            Tutorials
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="/assets/js/loader.js"></script>
+    <script src="/assets/js/navbar.js"></script>
+    <script src="/assets/js/notes.js"></script>
+</body>
+
+</html>

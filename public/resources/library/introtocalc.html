@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8NVMG0WLL7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-8NVMG0WLL7');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="JMC Mathematics - Your go-to platform for structured and effective math learning materials.">
+    <meta name="keywords" content="Math, Education, Learning, Courses, Resources, JMC Mathematics">
+    <link rel="icon" type="image/png" href="/assets/images/favicon.ico">
+    <title>Course Notes - Advanced Calculus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- MathJax Configuration -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                packages: { '[+]': ['ams', 'newcommand', 'configMacros'] }
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/notes.css">
+</head>
+
+<body>
+    <div id="navbar"></div>
+
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+
+    <!-- Main Container -->
+    <div class="notes-container">
+        <!-- Navigation Sidebar -->
+        <nav class="notes-nav-sidebar" id="notes-nav-sidebar">
+            <div class="notes-nav-content">
+                <div class="notes-nav-section">
+                    <h3 class="notes-nav-section-title">Chapter 1: Limits</h3>
+                    <ul class="notes-nav-list">
+                        <li class="notes-nav-item">
+                            <a href="#introduction" class="notes-nav-link active">1.1 Introduction to Limits</a>
+                        </li>
+                        <li class="notes-nav-item">
+                            <a href="#formal-definition" class="notes-nav-link">1.2 Formal Definition</a>
+                        </li>
+                        <li class="notes-nav-item">
+                            <a href="#limit-laws" class="notes-nav-link">1.3 Limit Laws</a>
+                        </li>
+                        <li class="notes-nav-item">
+                            <a href="#continuity" class="notes-nav-link">1.4 Continuity</a>
+                        </li>
+                        <li class="notes-nav-item">
+                            <a href="#examples" class="notes-nav-link sub-item">Examples</a>
+                        </li>
+                        <li class="notes-nav-item">
+                            <a href="#exercises" class="notes-nav-link sub-item">Practice Exercises</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="notes-nav-section">
+                    <h3 class="notes-nav-section-title">Chapter 2: Derivatives</h3>
+                    <ul class="notes-nav-list">
+                        <li class="notes-nav-item">
+                            <a href="#derivative-intro" class="notes-nav-link">2.1 Introduction to Derivatives</a>
+                        </li>
+                        <li class="notes-nav-item">
+                            <a href="#derivative-rules" class="notes-nav-link">2.2 Derivative Rules</a>
+                        </li>
+                        <li class="notes-nav-item">
+                            <a href="#chain-rule" class="notes-nav-link">2.3 Chain Rule</a>
+                        </li>
+                        <li class="notes-nav-item">
+                            <a href="#applications" class="notes-nav-link">2.4 Applications</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="notes-nav-section">
+                    <h3 class="notes-nav-section-title">Chapter 3: Integrals</h3>
+                    <ul class="notes-nav-list">
+                        <li class="notes-nav-item">
+                            <a href="#integral-intro" class="notes-nav-link">3.1 Introduction to Integrals</a>
+                        </li>
+                        <li class="notes-nav-item">
+                            <a href="#fundamental-theorem" class="notes-nav-link">3.2 Fundamental Theorem</a>
+                        </li>
+                        <li class="notes-nav-item">
+                            <a href="#integration-techniques" class="notes-nav-link">3.3 Integration Techniques</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-wrapper">
+                <div class="content">
+                    <h1 id="introduction">Introduction to Limits</h1>
+
+                    <p>The concept of a limit is fundamental to calculus and mathematical analysis. Intuitively, the
+                        limit of a function describes the behavior of that function near a particular input.</p>
+
+                    <div class="definition-box">
+                        <div class="box-title">Definition: Limit</div>
+                        <p>We say that the limit of $f(x)$ as $x$ approaches $a$ is $L$, written as:</p>
+                        <div class="math-block">
+                            $$\lim_{x \to a} f(x) = L$$
+                        </div>
+                        <p>if for every $\varepsilon > 0$, there exists a $\delta > 0$ such that whenever $0 < |x - a| <
+                                \delta$, we have $|f(x) - L| < \varepsilon$.</p>
+                    </div>
+
+                    <h2 id="formal-definition">Formal Definition of Limits</h2>
+
+                    <p>The formal definition of limits, known as the epsilon-delta definition, provides a rigorous
+                        mathematical framework for understanding limits.</p>
+
+                    <div class="theorem-box">
+                        <div class="box-title">Theorem: Epsilon-Delta Definition</div>
+                        <p>Let $f$ be a function defined on some open interval that contains the number $a$, except
+                            possibly at $a$ itself. Then we say that the limit of $f(x)$ as $x$ approaches $a$ is $L$,
+                            and we write:</p>
+                        <div class="math-block">
+                            $$\lim_{x \to a} f(x) = L$$
+                        </div>
+                        <p>if for every number $\varepsilon > 0$ there is a number $\delta > 0$ such that:</p>
+                        <div class="math-block">
+                            $$\text{if } 0 < |x - a| < \delta \text{ then } |f(x) - L| < \varepsilon$$ </div>
+                        </div>
+
+                        <h2 id="limit-laws">Limit Laws</h2>
+
+                        <p>The following laws allow us to compute limits of complicated functions in terms of limits of
+                            simpler functions.</p>
+
+                        <div class="theorem-box">
+                            <div class="box-title">Theorem: Basic Limit Laws</div>
+                            <p>Suppose that $\lim_{x \to a} f(x) = L$ and $\lim_{x \to a} g(x) = M$. Then:</p>
+                            <ol>
+                                <li>$\lim_{x \to a} [f(x) + g(x)] = L + M$ (Sum Law)</li>
+                                <li>$\lim_{x \to a} [f(x) - g(x)] = L - M$ (Difference Law)</li>
+                                <li>$\lim_{x \to a} [cf(x)] = cL$ where $c$ is a constant (Constant Multiple Law)</li>
+                                <li>$\lim_{x \to a} [f(x) \cdot g(x)] = L \cdot M$ (Product Law)</li>
+                                <li>$\lim_{x \to a} \frac{f(x)}{g(x)} = \frac{L}{M}$ if $M \neq 0$ (Quotient Law)</li>
+                            </ol>
+                        </div>
+
+                        <div class="example-box">
+                            <div class="box-title">Example 1</div>
+                            <p>Find $\lim_{x \to 2} (3x^2 + 2x - 1)$.</p>
+                            <p><strong>Solution:</strong></p>
+                            <p>Using the limit laws:</p>
+                            <div class="math-block">
+                                \begin{align}
+                                \lim_{x \to 2} (3x^2 + 2x - 1) &= \lim_{x \to 2} 3x^2 + \lim_{x \to 2} 2x - \lim_{x \to
+                                2} 1 \\
+                                &= 3 \lim_{x \to 2} x^2 + 2 \lim_{x \to 2} x - 1 \\
+                                &= 3(2)^2 + 2(2) - 1 \\
+                                &= 12 + 4 - 1 \\
+                                &= 15
+                                \end{align}
+                            </div>
+                        </div>
+
+                        <h2 id="continuity">Continuity</h2>
+
+                        <p>A function is continuous at a point if the limit exists and equals the function value at that
+                            point.</p>
+
+                        <div class="definition-box">
+                            <div class="box-title">Definition: Continuity at a Point</div>
+                            <p>A function $f$ is continuous at a number $a$ if:</p>
+                            <div class="math-block">
+                                $$\lim_{x \to a} f(x) = f(a)$$
+                            </div>
+                            <p>This definition implicitly requires three things:</p>
+                            <ol>
+                                <li>$f(a)$ is defined</li>
+                                <li>$\lim_{x \to a} f(x)$ exists</li>
+                                <li>$\lim_{x \to a} f(x) = f(a)$</li>
+                            </ol>
+                        </div>
+
+                        <div class="warning-box">
+                            <div class="box-title">Important Note</div>
+                            <p>If any of the three conditions for continuity fail, then the function is discontinuous at
+                                that point. Common types of discontinuities include removable discontinuities, jump
+                                discontinuities, and infinite discontinuities.</p>
+                        </div>
+
+                        <h3 id="examples">Additional Examples</h3>
+
+                        <div class="example-box">
+                            <div class="box-title">Example 2: One-Sided Limits</div>
+                            <p>Consider the function $f(x) = \frac{|x|}{x}$. Find the left and right limits as $x$
+                                approaches 0.</p>
+                            <p><strong>Solution:</strong></p>
+                            <p>For $x > 0$: $|x| = x$, so $f(x) = \frac{x}{x} = 1$</p>
+                            <p>For $x < 0$: $|x|=-x$, so $f(x)=\frac{-x}{x}=-1$</p>
+                                    <div class="math-block">
+                                        \begin{align}
+                                        \lim_{x \to 0^+} f(x) &= 1 \\
+                                        \lim_{x \to 0^-} f(x) &= -1
+                                        \end{align}
+                                    </div>
+                                    <p>Since the left and right limits are different, $\lim_{x \to 0} f(x)$ does not
+                                        exist.</p>
+                        </div>
+
+                        <h3 id="exercises">Practice Exercises</h3>
+
+                        <p>Work through these exercises to test your understanding:</p>
+
+                        <ol>
+                            <li>Find $\lim_{x \to 3} \frac{x^2 - 9}{x - 3}$</li>
+                            <li>Evaluate $\lim_{x \to 0} \frac{\sin x}{x}$</li>
+                            <li>Determine if $f(x) = \begin{cases} x^2 & \text{if } x \leq 1 \\ 2x - 1 & \text{if } x >
+                                1 \end{cases}$ is continuous at $x = 1$</li>
+                        </ol>
+
+                        <div class="warning-box">
+                            <div class="box-title">Hint for Exercise 1</div>
+                            <p>Factor the numerator and simplify before taking the limit. Remember that $x^2 - 9 =
+                                (x-3)(x+3)$.</p>
+                        </div>
+                    </div>
+                </div>
+        </main>
+    </div>
+    <div id="footer"></div>
+    <script src="/assets/js/notes.js"></script>
+    <script src="/assets/js/loader.js"></script>
+    <script src="/assets/js/navbar.js"></script>
+</body>
+
+</html>
