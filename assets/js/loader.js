@@ -1,79 +1,94 @@
-// loader.js - Updated version
-async function loadNavbar() {
+// loader.js - Enhanced version for GitHub Pages/Netlify
+async function loadComponent(url, containerIds, elementSelector) {
     try {
-        const response = await fetch('/components/navbar.html');
+        const response = await fetch(url);
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        const navbarHTML = await response.text();
+        const html = await response.text();
         
         const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = navbarHTML;
-        const navbar = tempDiv.querySelector('.header');
+        tempDiv.innerHTML = html;
+        const element = tempDiv.querySelector(elementSelector);
         
-        if (navbar) {
-            // Look for existing containers in this order
-            let targetContainer = document.getElementById('navbar-container') || 
-                                 document.getElementById('navbar') || 
-                                 document.querySelector('header');
-            
-            if (!targetContainer) {
-                // Create a new container at top of body
-                targetContainer = document.createElement('div');
-                targetContainer.id = 'navbar-container';
-                document.body.insertBefore(targetContainer, document.body.firstChild);
+        if (element) {
+            // Find or create container
+            let targetContainer = null;
+            for (const id of containerIds) {
+                targetContainer = document.getElementById(id);
+                if (targetContainer) break;
             }
             
-            // Only replace navbar content
-            targetContainer.innerHTML = '';
-            targetContainer.appendChild(navbar);
+            if (!targetContainer) {
+                targetContainer = document.querySelector(elementSelector);
+                if (!targetContainer) {
+                    // Create new container
+                    targetContainer = document.createElement('div');
+                    targetContainer.id = containerIds[0];
+                    elementSelector === '.header' 
+                        ? document.body.insertBefore(targetContainer, document.body.firstChild)
+                        : document.body.appendChild(targetContainer);
+                }
+            }
             
-            // Load navbar.js
-            const script = document.createElement('script');
-            script.src = '/assets/js/navbar.js';
-            script.onload = () => {
-                console.log('Navbar loaded');
-                if (window.initNavbar) window.initNavbar();
-            };
-            document.head.appendChild(script);
+            // Replace container content
+            targetContainer.innerHTML = '';
+            targetContainer.appendChild(element);
+            return true;
         } else {
-            console.error('Navbar element not found');
+            console.error(`${elementSelector} element not found in ${url}`);
+            return false;
         }
     } catch (error) {
-        console.error('Error loading navbar:', error);
+        console.error(`Error loading ${elementSelector}:`, error);
+        return false;
+    }
+}
+
+async function loadNavbar() {
+    // Use relative path for GitHub Pages compatibility
+    const loaded = await loadComponent('components/navbar.html', 
+        ['navbar-container', 'navbar'], '.header');
+    
+    if (loaded) {
+        const script = document.createElement('script');
+        // Use relative path for assets
+        script.src = 'assets/js/navbar.js';
+        script.onload = () => {
+            console.log('Navbar script loaded');
+            if (window.initNavbar) window.initNavbar();
+        };
+        script.onerror = () => console.error('Error loading navbar.js');
+        document.head.appendChild(script);
     }
 }
 
 async function loadFooter() {
-    try {
-        const response = await fetch('/components/footer.html');
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        const footerHTML = await response.text();
-        
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = footerHTML;
-        const footer = tempDiv.querySelector('.footer');
-        
-        if (footer) {
-            // Look for existing containers
-            let targetContainer = document.getElementById('footer-container') || 
-                                 document.getElementById('footer') || 
-                                 document.querySelector('footer');
-            
-            if (!targetContainer) {
-                // Create new container at bottom
-                targetContainer = document.createElement('div');
-                targetContainer.id = 'footer-container';
-                document.body.appendChild(targetContainer);
-            }
-            
-            targetContainer.innerHTML = '';
-            targetContainer.appendChild(footer);
-        }
-    } catch (error) {
-        console.error('Error loading footer:', error);
-    }
+    // Use relative path for GitHub Pages compatibility
+    await loadComponent('components/footer.html', 
+        ['footer-container', 'footer'], '.footer');
 }
 
+// Improved DOMContentLoaded handler
 document.addEventListener('DOMContentLoaded', () => {
-    loadNavbar();
-    loadFooter();
+    // Load navbar first then footer
+    loadNavbar().then(loadFooter).catch(err => {
+        console.error('Component loading error:', err);
+    });
+    
+    // Fallback in case components take too long
+    setTimeout(() => {
+        if (!document.querySelector('.header')) loadNavbar();
+        if (!document.querySelector('.footer')) loadFooter();
+    }, 1000);
+});
+
+// Retry loading if elements not found after initial load
+window.addEventListener('load', () => {
+    if (!document.querySelector('.header')) {
+        console.warn('Navbar not found after load, retrying...');
+        loadNavbar();
+    }
+    if (!document.querySelector('.footer')) {
+        console.warn('Footer not found after load, retrying...');
+        loadFooter();
+    }
 });
