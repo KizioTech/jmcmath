@@ -8,7 +8,6 @@
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-8NVMG0WLL7');
     </script>
     <meta charset="UTF-8">
@@ -21,6 +20,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/styles.css">
     <style>
+        /* GLOBAL RESET AND FIXES */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            overflow-x: hidden;
+        }
+        
         .particles {
             position: fixed;
             top: 0;
@@ -58,7 +65,7 @@
             }
         }
 
-        /* Enhanced Hero Section */
+        /* Enhanced Hero Section - FIXED WIDTH ISSUE */
         .hero {
             background: linear-gradient(135deg, #111827 0%, #1f2937 50%, #374151 100%);
             color: white;
@@ -67,6 +74,8 @@
             position: relative;
             overflow: hidden;
             z-index: 1;
+            width: 100%; /* Added to fix width issue */
+            box-sizing: border-box; /* Added to prevent overflow */
         }
 
         .hero::before {
@@ -96,6 +105,8 @@
             margin: 0 auto;
             position: relative;
             z-index: 1;
+            padding: 0 20px; /* Added padding for mobile */
+            box-sizing: border-box; /* Added */
         }
 
         .hero h1 {
@@ -128,6 +139,8 @@
             max-width: 768px;
             margin: 0 auto 3rem;
             animation: fadeInUp 1s ease-out 0.5s both;
+            padding: 0 20px; /* Added padding for mobile */
+            box-sizing: border-box; /* Added */
         }
 
         @keyframes fadeInUp {
@@ -148,6 +161,8 @@
             justify-content: center;
             flex-wrap: wrap;
             animation: fadeInUp 1s ease-out 1s both;
+            padding: 0 20px; /* Added padding for mobile */
+            box-sizing: border-box; /* Added */
         }
 
         .hero-btn {
@@ -884,6 +899,8 @@
             border-radius: 25px;
             position: relative;
             overflow: hidden;
+            width: calc(100% - 40px); /* Added to prevent overflow */
+            box-sizing: border-box; /* Added */
         }
 
         .premium-section::before {
@@ -936,10 +953,14 @@
             }
         }
 
-        /* Responsive Design */
+        /* Responsive Design - Enhanced */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
             }
 
             .hero-buttons {
@@ -965,6 +986,59 @@
 
             .newsletter-input {
                 min-width: auto;
+                width: 100%;
+            }
+            
+            .premium-section {
+                margin: 20px 10px; /* Adjusted for mobile */
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .features-header h2,
+            .testimonials-header h2,
+            .path-header h2 {
+                font-size: 2rem;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .hero-btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .course-card {
+                max-width: 100%;
+            }
+            
+            .testimonial-text {
+                font-size: 1rem;
+            }
+            
+            .premium-section {
+                margin: 10px;
+                border-radius: 15px;
             }
         }
 

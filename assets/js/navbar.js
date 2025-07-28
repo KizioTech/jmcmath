@@ -94,17 +94,17 @@ function getRelativePath(targetPath) {
   if (targetPath.startsWith('http')) {
     return targetPath;
   }
-  
+
   // If target is already relative, return it
   if (!targetPath.startsWith('/')) {
     return targetPath;
   }
-  
+
   // Calculate the base path relative to root
   const currentPath = window.location.pathname;
   const pathSegments = currentPath.split('/');
   const depth = pathSegments.length - 2; // Adjust for trailing slash
-  
+
   // Create relative path
   if (depth <= 0) {
     return '.' + targetPath;
@@ -118,12 +118,12 @@ function resolvePath(targetPath) {
   if (targetPath.startsWith('http') || !targetPath.startsWith('/')) {
     return targetPath;
   }
-  
+
   // Handle site root
   if (targetPath === '/') {
     return 'index.html';
   }
-  
+
   return targetPath.substring(1);
 }
 
@@ -161,7 +161,7 @@ window.navigateToPage = function (url) {
   if (targetUrl.includes('#')) {
     const [baseUrl, anchor] = targetUrl.split('#');
     const currentPagePath = window.location.pathname;
-    
+
     // Check if baseUrl matches current page
     if (baseUrl === currentPagePath || baseUrl === '' || baseUrl === '.') {
       // Same page: scroll to anchor
@@ -173,7 +173,7 @@ window.navigateToPage = function (url) {
       }
     }
   }
-  
+
   // Regular navigation
   window.location.href = targetUrl;
   hideSearch();
@@ -258,7 +258,7 @@ function initNavbar() {
 
   function displayResults(results, container) {
     container.innerHTML = '';
-    
+
     results.forEach(result => {
       const resultItem = document.createElement('div');
       resultItem.className = 'search-result-item';
@@ -272,13 +272,13 @@ function initNavbar() {
       });
       container.appendChild(resultItem);
     });
-    
+
     container.style.display = 'block';
   }
 
   function displayWebSearchOption(query, container) {
     container.innerHTML = '';
-    
+
     const noResults = document.createElement('div');
     noResults.className = 'search-result-item';
     noResults.innerHTML = `
@@ -286,7 +286,7 @@ function initNavbar() {
       <div class="result-description">Try adjusting your keywords or explore other sections.</div>
     `;
     container.appendChild(noResults);
-    
+
     const browseItem = document.createElement('div');
     browseItem.className = 'search-result-item';
     browseItem.innerHTML = `
@@ -297,7 +297,7 @@ function initNavbar() {
       window.navigateToPage('resources/library/library.html');
     });
     container.appendChild(browseItem);
-    
+
     const webSearch = document.createElement('div');
     webSearch.className = 'search-result-item';
     webSearch.innerHTML = `
@@ -308,7 +308,7 @@ function initNavbar() {
       performWebSearch(query);
     });
     container.appendChild(webSearch);
-    
+
     container.style.display = 'block';
   }
 
@@ -353,7 +353,7 @@ function initNavbar() {
 
   function displaySuggestions(suggestions, container) {
     container.innerHTML = '';
-    
+
     suggestions.forEach(suggestion => {
       const suggestionItem = document.createElement('div');
       suggestionItem.className = 'search-result-item suggestion';
@@ -366,7 +366,7 @@ function initNavbar() {
       });
       container.appendChild(suggestionItem);
     });
-    
+
     container.style.display = 'block';
   }
 
@@ -481,31 +481,61 @@ function initNavbar() {
   }
 
   // Function to set active navigation based on current page
+  // Function to set active navigation based on current page
   function setActiveNav() {
     const currentPath = window.location.pathname;
     const navLinks = document.querySelectorAll('.nav-link');
 
+    // Remove active class from all links
+    navLinks.forEach(link => link.classList.remove('active'));
+
+    // Find the best matching link
+    let bestMatch = null;
+    let bestMatchLength = 0;
+
     navLinks.forEach(link => {
-      link.classList.remove('active');
       const href = link.getAttribute('href');
-      
       if (!href) return;
-      
+
+      // Skip anchor links
+      if (href.startsWith('#')) return;
+
       // Get absolute path of the link
-      const linkPath = new URL(href, window.location.href).pathname;
-      
-      // Check for exact matches
+      const linkPath = new URL(href, window.location.origin).pathname;
+
+      // Check if current path matches link exactly
       if (currentPath === linkPath) {
         link.classList.add('active');
         return;
       }
-      
-      // Check for partial matches in subdirectories
+
+      // Check for partial matches
       const currentDir = currentPath.substring(0, currentPath.lastIndexOf('/'));
-      if (linkPath.startsWith(currentDir) || currentPath.startsWith(linkPath)) {
-        link.classList.add('active');
+      const linkDir = linkPath.substring(0, linkPath.lastIndexOf('/'));
+
+      // Calculate match score (length of matching path segment)
+      const matchLength = Math.min(currentPath.length, linkPath.length);
+      let score = 0;
+
+      for (let i = 0; i < matchLength; i++) {
+        if (currentPath[i] === linkPath[i]) {
+          score++;
+        } else {
+          break;
+        }
+      }
+
+      // If this link has a better match score than previous best
+      if (score > bestMatchLength) {
+        bestMatch = link;
+        bestMatchLength = score;
       }
     });
+
+    // If we found a best match, mark it as active
+    if (bestMatch) {
+      bestMatch.classList.add('active');
+    }
   }
 
   // Initialize active nav on page load
