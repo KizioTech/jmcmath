@@ -43,6 +43,43 @@
 
 <body>
     <div id="navbar"></div>
+    <div class="mobile-warning-overlay" id="mobileWarning">
+        <div class="mobile-warning-popup">
+            <button class="close-btn" onclick="closeMobileWarning()">&times;</button>
+
+            <div class="warning-icon"><i class="fas fa-mobile-alt"></i></div>
+
+            <div class="warning-title">Better Equation Viewing</div>
+
+            <div class="warning-message">
+                Mathematical equations on this page may appear cut off or difficult to read on mobile devices in portrait mode.
+            </div>
+
+            <div class="warning-suggestions">
+                <div class="suggestion-item">
+                    <span class="suggestion-icon"><i class="fas fa-sync-alt"></i></span>
+                    <span>Rotate your device to landscape mode</span>
+                </div>
+                <div class="suggestion-item">
+                    <span class="suggestion-icon"><i class="fas fa-desktop"></i></span>
+                    <span>Enable "Desktop Site" in your browser</span>
+                </div>
+                <div class="suggestion-item">
+                    <span class="suggestion-icon"><i class="fas fa-search-minus"></i></span>
+                    <span>Zoom out to see full equations</span>
+                </div>
+            </div>
+            
+            <div class="warning-buttons">
+                <button class="warning-btn btn-primary" onclick="closeMobileWarning()">
+                    Got it!
+                </button>
+                <button class="warning-btn btn-secondary" onclick="dontShowAgain()">
+                    Don't show again
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- Mobile Overlay -->
     <div class="mobile-overlay" id="mobile-overlay"></div>
@@ -453,9 +490,18 @@
         </main>
     </div>
     <div id="footer"></div>
+    
+    <!-- Mobile Orientation Alert -->
+    <div id="mobile-orientation-alert" class="mobile-alert">
+        <div class="mobile-alert-content">
+            <span class="close-alert-btn">&times;</span>
+            <i class="fas fa-mobile-alt"></i>
+            <h3>For the Best Experience</h3>
+            <p>Some equations may not display correctly in portrait mode. Please rotate your device to landscape or switch to "Desktop site" view.</p>
+        </div>
+    </div>
 
-    <script src="/assets/js/notes.js">
-    </script>
+    <script src="/assets/js/notes.js"></script>
     <script src="/assets/js/loader.js"></script>
     <script src="/assets/js/navbar.js"></script>
 </body>

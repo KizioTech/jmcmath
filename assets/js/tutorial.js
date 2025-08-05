@@ -63,3 +63,90 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+// Mobile Detection and Warning System
+function isMobileDevice() {
+  return (
+    typeof window.orientation !== "undefined" ||
+    navigator.userAgent.indexOf("IEMobile") !== -1
+  );
+}
+
+function isPortraitMode() {
+  return window.innerHeight > window.innerWidth;
+}
+
+function shouldShowWarning() {
+  // Check if user has dismissed the warning permanently
+  const dontShow = localStorage.getItem("hideMobileEquationWarning");
+  if (dontShow === "true") {
+    return false;
+  }
+
+  // Show warning if on mobile device
+  return isMobileDevice();
+}
+
+function showMobileWarning() {
+  const overlay = document.getElementById("mobileWarning");
+  if (overlay) {
+    overlay.style.display = "flex";
+    document.body.style.overflow = "hidden"; // Prevent background scrolling
+  }
+}
+
+function closeMobileWarning() {
+  const overlay = document.getElementById("mobileWarning");
+  if (overlay) {
+    overlay.style.display = "none";
+    document.body.style.overflow = ""; // Restore scrolling
+  }
+}
+
+function dontShowAgain() {
+  localStorage.setItem("hideMobileEquationWarning", "true");
+  closeMobileWarning();
+}
+
+function resetWarningPreference() {
+  localStorage.removeItem("hideMobileEquationWarning");
+  alert(
+    "Warning preference reset! The mobile warning will show again on mobile devices."
+  );
+}
+
+// Auto-show warning on page load for mobile devices
+document.addEventListener("DOMContentLoaded", function () {
+  if (shouldShowWarning()) {
+    // Small delay to ensure page is fully loaded
+    setTimeout(showMobileWarning, 1000);
+  }
+});
+
+// Optional: Show warning when rotating to portrait mode
+window.addEventListener("orientationchange", function () {
+  setTimeout(function () {
+    if (
+      isMobileDevice() &&
+      isPortraitMode() &&
+      !localStorage.getItem("hideMobileEquationWarning")
+    ) {
+      showMobileWarning();
+    }
+  }, 500);
+});
+
+// Close warning when clicking outside the popup
+document
+  .getElementById("mobileWarning")
+  .addEventListener("click", function (e) {
+    if (e.target === this) {
+      closeMobileWarning();
+    }
+  });
+
+// Close warning with Escape key
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape") {
+    closeMobileWarning();
+  }
+});

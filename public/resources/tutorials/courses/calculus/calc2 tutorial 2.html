@@ -44,7 +44,43 @@
 <body>
     <div id="navbar"></div>
 
+<div class="mobile-warning-overlay" id="mobileWarning">
+        <div class="mobile-warning-popup">
+            <button class="close-btn" onclick="closeMobileWarning()">&times;</button>
 
+            <div class="warning-icon"><i class="fas fa-mobile-alt"></i></div>
+
+            <div class="warning-title">Better Equation Viewing</div>
+
+            <div class="warning-message">
+                Mathematical equations on this page may appear cut off or difficult to read on mobile devices in portrait mode.
+            </div>
+
+            <div class="warning-suggestions">
+                <div class="suggestion-item">
+                    <span class="suggestion-icon"><i class="fas fa-sync-alt"></i></span>
+                    <span>Rotate your device to landscape mode</span>
+                </div>
+                <div class="suggestion-item">
+                    <span class="suggestion-icon"><i class="fas fa-desktop"></i></span>
+                    <span>Enable "Desktop Site" in your browser</span>
+                </div>
+                <div class="suggestion-item">
+                    <span class="suggestion-icon"><i class="fas fa-search-minus"></i></span>
+                    <span>Zoom out to see full equations</span>
+                </div>
+            </div>
+            
+            <div class="warning-buttons">
+                <button class="warning-btn btn-primary" onclick="closeMobileWarning()">
+                    Got it!
+                </button>
+                <button class="warning-btn btn-secondary" onclick="dontShowAgain()">
+                    Don't show again
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- Tutorial Header -->
     <header class="tutorial-header">
