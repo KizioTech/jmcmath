@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Equation Warning Demo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Mobile Warning Popup Styles */
+        .mobile-warning-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(4px);
+            z-index: 10000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: scroll; /* Always allow scrolling on the overlay */
+        }
+
+        .mobile-warning-popup {
+            background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+            border: 1px solid #374151;
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 400px;
+            width: 100%;
+            color: white;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: popupSlideIn 0.4s ease-out;
+        }
+
+        @keyframes popupSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .warning-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .warning-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .warning-message {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .warning-suggestions {
+            background: rgba(55, 65, 81, 0.5);
+            border: 1px solid #374151;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .suggestion-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+        }
+
+        .suggestion-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .suggestion-icon {
+            font-size: 1.2rem;
+            margin-right: 12px;
+            min-width: 25px;
+        }
+
+        .warning-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .warning-btn {
+            flex: 1;
+            min-width: 120px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: #ef4444;
+            color: white;
+            border: 2px solid #ef4444;
+        }
+
+        .btn-primary:hover {
+            background: #dc2626;
+            border-color: #dc2626;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #d1d5db;
+            border: 2px solid #374151;
+        }
+
+        .btn-secondary:hover {
+            background: #374151;
+            border-color: #4b5563;
+            color: white;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: #9ca3af;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: white;
+            background: #374151;
+        }
+
+        /* Demo content styles */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f9fafb;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .demo-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+        }
+
+        .demo-equation {
+            background: #f9fafb;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+            overflow-x: auto;
+            border-left: 4px solid #ef4444;
+            font-family: 'Courier New', monospace;
+        }
+
+        .test-button {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin: 10px 5px;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+
+        .test-button:hover {
+            background: #dc2626;
+            transform: translateY(-1px);
+        }
+
+        /* Hide warning on desktop by default */
+        @media (min-width: 769px) {
+            .mobile-warning-overlay {
+                display: none !important;
+            }
+        }
+
+        /* Responsive adjustments for very small screens */
+        @media (max-width: 480px) {
+            .mobile-warning-popup {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            .warning-title {
+                font-size: 1.3rem;
+            }
+            
+            .warning-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile Warning Overlay -->
+    <div class="mobile-warning-overlay" id="mobileWarning">
+        <div class="mobile-warning-popup">
+            <button class="close-btn" onclick="closeMobileWarning()">&times;</button>
+
+            <div class="warning-icon"><i class="fas fa-mobile-alt"></i></div>
+
+            <div class="warning-title">Better Equation Viewing</div>
+
+            <div class="warning-message">
+                Mathematical equations on this page may appear cut off or difficult to read on mobile devices in portrait mode.
+            </div>
+
+            <div class="warning-suggestions">
+                <div class="suggestion-item">
+                    <span class="suggestion-icon"><i class="fas fa-sync-alt"></i></span>
+                    <span>Rotate your device to landscape mode</span>
+                </div>
+                <div class="suggestion-item">
+                    <span class="suggestion-icon"><i class="fas fa-desktop"></i></span>
+                    <span>Enable "Desktop Site" in your browser</span>
+                </div>
+                <div class="suggestion-item">
+                    <span class="suggestion-icon"><i class="fas fa-search-minus"></i></span>
+                    <span>Zoom out to see full equations</span>
+                </div>
+            </div>
+            
+            <div class="warning-buttons">
+                <button class="warning-btn btn-primary" onclick="closeMobileWarning()">
+                    Got it!
+                </button>
+                <button class="warning-btn btn-secondary" onclick="dontShowAgain()">
+                    Don't show again
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Demo Content -->
+    <div class="demo-container">
+        <h1>Mobile Equation Warning Demo</h1>
+        <p>This page demonstrates a mobile warning system for mathematical content. The warning will appear automatically on mobile devices.</p>
+        
+        <div class="demo-equation">
+            <strong>Sample Complex Equation:</strong><br>
+            ∫(3x²)/(x³+5) dx = ln|x³+5| + C
+        </div>
+        
+        <div class="demo-equation">
+            <strong>Another Complex Expression:</strong><br>
+            y = (x⁵)/((1-10x)√(x²+2)) → dy/dx = y(5/x + 10/(1-10x) - x/(x²+2))
+        </div>
+        
+        <button class="test-button" onclick="resetWarningPreference()">Reset Warning Preference (Demo Only)</button>
+        
+        <h3>Automatic Behavior:</h3>
+        <p>The warning system works automatically:</p>
+        <ul>
+            <li>✅ Detects mobile devices automatically</li>
+            <li>✅ Shows popup 1 second after page loads on mobile</li>
+            <li>✅ Remembers user preference if dismissed permanently</li>
+            <li>✅ Triggers again when rotating to portrait mode</li>
+            <li>✅ Never shows on desktop devices</li>
+        </ul>
+        
+        <p><strong>To test on desktop:</strong> Open browser developer tools and toggle device simulation to mobile.</p>
+    </div>
+
+    <script>
+        // Mobile Detection and Warning System
+        function isMobileDevice() {
+            return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+        }
+
+        function isPortraitMode() {
+            return window.innerHeight > window.innerWidth;
+        }
+
+        function shouldShowWarning() {
+            // Check if user has dismissed the warning permanently
+            const dontShow = localStorage.getItem('hideMobileEquationWarning');
+            if (dontShow === 'true') {
+                return false;
+            }
+            
+            // Show warning if on mobile device
+            return isMobileDevice();
+        }
+
+        function showMobileWarning() {
+            const overlay = document.getElementById('mobileWarning');
+            if (overlay) {
+                overlay.style.display = 'flex';
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            }
+        }
+
+        function closeMobileWarning() {
+            const overlay = document.getElementById('mobileWarning');
+            if (overlay) {
+                overlay.style.display = 'none';
+                document.body.style.overflow = ''; // Restore scrolling
+            }
+        }
+
+        function dontShowAgain() {
+            localStorage.setItem('hideMobileEquationWarning', 'true');
+            closeMobileWarning();
+        }
+
+        function resetWarningPreference() {
+            localStorage.removeItem('hideMobileEquationWarning');
+            alert('Warning preference reset! The mobile warning will show again on mobile devices.');
+        }
+
+        // Auto-show warning on page load for mobile devices
+        document.addEventListener('DOMContentLoaded', function() {
+            if (shouldShowWarning()) {
+                // Small delay to ensure page is fully loaded
+                setTimeout(showMobileWarning, 1000);
+            }
+        });
+
+        // Optional: Show warning when rotating to portrait mode
+        window.addEventListener('orientationchange', function() {
+            setTimeout(function() {
+                if (isMobileDevice() && isPortraitMode() && !localStorage.getItem('hideMobileEquationWarning')) {
+                    showMobileWarning();
+                }
+            }, 500);
+        });
+
+        // Close warning when clicking outside the popup
+        document.getElementById('mobileWarning').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeMobileWarning();
+            }
+        });
+
+        // Close warning with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeMobileWarning();
+            }
+        });
+    </script>
+</body>
+</html>

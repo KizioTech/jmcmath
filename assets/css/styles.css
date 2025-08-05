@@ -792,6 +792,7 @@ body, html {
             align-items: center;
             padding: 20px;
             box-sizing: border-box;
+            overflow-y: scroll; /* Always allow scrolling on the overlay */
         }
 
         .mobile-warning-popup {
