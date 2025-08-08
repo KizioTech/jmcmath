@@ -813,574 +813,245 @@
     <script src="/assets/js/loader.js"></script>
     <script src="/assets/js/navbar.js"></script>
     <script>
-        // Enhanced PDF filtering and search functionality with navbar integration
+        // COMPLETE REPLACEMENT FOR THE LIBRARY.HTML JAVASCRIPT SECTION
+        // Replace the entire <script> section at the bottom of library.html with this:
+
         document.addEventListener('DOMContentLoaded', function () {
             // Hide loading screen when page loads
             window.addEventListener('load', function () {
                 document.body.classList.add('loaded');
             });
 
-            document.addEventListener('DOMContentLoaded', function () {
-                // Check URL parameters for search
-                const urlParams = new URLSearchParams(window.locatio < script > n.search);
-                const searchParam = urlParams.get('search');
+            // Check URL parameters for search - FIXED VERSION
+            const urlParams = new URLSearchParams(window.location.search);
+            const searchParam = urlParams.get('search');
 
-                if (searchParam) {
-                    // Set the search input
-                    const searchInput = document.getElementById('pdfSearch');
-                    if (searchInput) {
-                        searchInput.value = searchParam;
+            if (searchParam) {
+                console.log('URL search parameter found:', searchParam);
 
-                        // Set textbooks category active
-                        setTimeout(() => {
-                            const textbookBtn = document.querySelector('.category-btn[data-category="textbooks"]');
-                            if (textbookBtn) {
-                                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
-                                textbookBtn.classList.add('active');
-                            }
+                // Set the search input
+                const searchInput = document.getElementById('pdfSearch');
+                if (searchInput) {
+                    searchInput.value = searchParam;
 
-                            // Trigger search if the function exists
-                            if (typeof performPDFSearch === 'function') {
-                                performPDFSearch(searchParam);
-                            } else {
-                                // Fallback: trigger input event
-                                const inputEvent = new Event('input', { bubbles: true });
-                                searchInput.dispatchEvent(inputEvent);
-                            }
-                        }, 500);
-                    }
+                    // Create mapping for author searches to target specific documents
+                    const authorTargetMap = {
+                        'mcmullen': 'Essential Calculus Skills Practice Workbook',
+                        'illowsky': 'Introductory Statistics',
+                        'talbert': 'Additional Mathematics',
+                        'levin': 'Discrete Mathematics An Open Introduction',
+                        'makawa': 'Worked Examples for Trigonometry',
+                        'stewart': 'Calculus by James Stewart',
+                        'ralson': 'Ralson Calculus'
+                    };
+
+                    // Determine target and category
+                    const targetDocument = authorTargetMap[searchParam.toLowerCase()];
+                    const category = targetDocument ? 'textbooks' : 'all';
+
+                    // Set the appropriate category active
+                    setTimeout(() => {
+                        const categoryBtns = document.querySelectorAll('.category-btn');
+                        categoryBtns.forEach(btn => btn.classList.remove('active'));
+
+                        const targetBtn = document.querySelector(`.category-btn[data-category="${category}"]`);
+                        if (targetBtn) {
+                            targetBtn.classList.add('active');
+                            console.log('Category set to:', category);
+                        }
+
+                        // Trigger the enhanced search with specific targeting
+                        if (typeof performPDFSearch === 'function') {
+                            console.log('Triggering search for:', searchParam, 'targeting:', targetDocument);
+                            performPDFSearch(searchParam, targetDocument);
+                        } else {
+                            // Fallback: trigger input event
+                            const inputEvent = new Event('input', { bubbles: true });
+                            searchInput.dispatchEvent(inputEvent);
+                        }
+                    }, 300); // Increased delay to ensure all functions are loaded
                 }
-            });
+            }
 
+            // Rest of your DOMContentLoaded code continues here...
+        });
 
-            const categoryBtns = document.querySelectorAll('.category-btn');
-            const pdfCards = document.querySelectorAll('.pdf-card');
-            const searchInput = document.getElementById('pdfSearch');
-            let currentCategory = 'all';
-            let searchResults = [];
+        // Enhanced performPDFSearch function with better author matching
+        // Replace the existing performPDFSearch function with this enhanced version:
 
-            // Enhanced search mappings for better PDF targeting
-            const pdfSearchMappings = {
-                // Calculus variations
-                'calculus': ['calculus', 'differential', 'integral', 'derivative', 'limit'],
-                'differential calculus': ['differential', 'derivative', 'calculus'],
-                'integral calculus': ['integral', 'integration', 'calculus'],
-                'multivariable calculus': ['multivariable', 'vector', 'calculus', 'partial'],
+        function performPDFSearch(searchTerm, specificTarget = null) {
+            const lowerSearchTerm = searchTerm.toLowerCase().trim();
+            removeNoResultsMessage();
 
-                // Algebra variations
-                'algebra': ['algebra', 'polynomial', 'equation', 'variable'],
-                'linear algebra': ['linear', 'matrix', 'vector', 'eigenvalue'],
-                'abstract algebra': ['abstract', 'group', 'ring', 'field'],
+            if (!lowerSearchTerm) {
+                showCardsInCategory(currentCategory);
+                return;
+            }
 
-                // Geometry variations
-                'geometry': ['geometry', 'euclidean', 'triangle', 'circle'],
-                'analytic geometry': ['analytic', 'coordinate', 'geometry'],
-                'differential geometry': ['differential', 'manifold', 'geometry'],
+            let visibleCards = 0;
+            let bestMatches = [];
+            let goodMatches = [];
+            let partialMatches = [];
 
-                // Statistics and Probability
-                'statistics': ['statistics', 'data', 'mean', 'variance', 'distribution'],
-                'probability': ['probability', 'random', 'distribution', 'expectation'],
-                'biostatistics': ['biostatistics', 'medical', 'statistics'],
-
-                // Other subjects
-                'trigonometry': ['trigonometry', 'sine', 'cosine', 'tangent'],
-                'differential equations': ['differential', 'equation', 'ode', 'pde'],
-                'number theory': ['number', 'theory', 'prime', 'modular'],
-                'discrete mathematics': ['discrete', 'combinatorics', 'graph', 'logic'],
-                'real analysis': ['real', 'analysis', 'topology', 'measure'],
-                'complex analysis': ['complex', 'analytic', 'holomorphic'],
-
-                // Authors
-                'stewart': ['stewart', 'james'],
-                'mcmullen': ['mcmullen', 'curtis'],
-                'spivak': ['spivak', 'michael'],
-                'rudin': ['rudin', 'walter'],
-                'apostol': ['apostol', 'tom']
+            // Enhanced author matching patterns
+            const authorPatterns = {
+                'mcmullen': ['mcmullen', 'chris mcmullen', 'curtis mcmullen', 'essential calculus'],
+                'illowsky': ['illowsky', 'introductory statistics', 'openstax'],
+                'talbert': ['talbert', 'additional mathematics', 'pure and applied'],
+                'levin': ['levin', 'oscar levin', 'discrete mathematics', 'open introduction'],
+                'makawa': ['makawa', 'josophat makawa', 'trigonometry', 'worked examples'],
+                'stewart': ['stewart', 'james stewart', 'calculus', 'brooks cole'],
+                'ralson': ['ralson', 'ron larson', 'bruce edwards', 'calculus 11th']
             };
 
-            // Function to create "no results" message
-            function createNoResultsMessage(searchTerm) {
-                const existingMessage = document.querySelector('.no-results-message');
-                if (existingMessage) {
-                    existingMessage.remove();
-                }
+            // Get expanded search terms
+            const expandedTerms = getExpandedSearchTerms(lowerSearchTerm, authorPatterns);
 
-                const noResultsDiv = document.createElement('div');
-                noResultsDiv.className = 'no-results-message';
-                noResultsDiv.style.cssText = `
-            text-align: center;
-            padding: 2rem;
-            color: #666;
-            background: #f8f9fa;
-            border-radius: 8px;
-            margin: 2rem auto;
-            border: 1px solid #e9ecef;
-            max-width: 600px;
-            display: block;
-        `;
+            console.log('Searching for:', lowerSearchTerm, 'Expanded terms:', expandedTerms, 'Target:', specificTarget);
 
-                noResultsDiv.innerHTML = `
-            <div style="font-size: 3rem; margin-bottom: 1rem;"><i class="fas fa-search" style="color: #6c757d;"></i></div>
-            <h3 style="margin-bottom: 1rem; color: #333;">No documents found for "${searchTerm}"</h3>
-            <p style="margin-bottom: 1.5rem; color: #666;">Try using different keywords or browse by category to find what you need.</p>
-            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                <button onclick="clearSearch()" style="
-                    padding: 0.5rem 1.5rem;
-                    background: #007bff;
-                    color: white;
-                    border: none;
-                    border-radius: 4px;
-                    cursor: pointer;
-                    font-size: 0.9rem;
-                    display: flex;
-                    align-items: center;
-                    gap: 0.5rem;
-                "><i class="fas fa-times"></i>Clear Search</button>
-                <button onclick="showAllDocuments()" style="
-                    padding: 0.5rem 1.5rem;
-                    background: #28a745;
-                    color: white;
-                    border: none;
-                    border-radius: 4px;
-                    cursor: pointer;
-                    font-size: 0.9rem;
-                    display: flex;
-                    align-items: center;
-                    gap: 0.5rem;
-                "><i class="fas fa-books"></i>Show All Documents</button>
-                <button onclick="window.performWebSearch('${searchTerm}')" style="
-                    padding: 0.5rem 1.5rem;
-                    background: #17a2b8;
-                    color: white;
-                    border: none;
-                    border-radius: 4px;
-                    cursor: pointer;
-                    font-size: 0.9rem;
-                    display: flex;
-                    align-items: center;
-                    gap: 0.5rem;
-                "><i class="fas fa-globe"></i>Search Web</button>
-            </div>
-        `;
+            pdfCards.forEach(card => {
+                const title = card.querySelector('.pdf-title')?.textContent?.toLowerCase() || '';
+                const meta = card.querySelector('.pdf-meta')?.textContent?.toLowerCase() || '';
+                const description = card.querySelector('.pdf-description')?.textContent?.toLowerCase() || '';
+                const category = card.dataset.category;
 
-                const container = document.querySelector('.pdf-grid') || document.querySelector('.library-content');
-                if (container) {
-                    container.appendChild(noResultsDiv);
-                }
-            }
+                console.log('Checking card:', title.substring(0, 30) + '...');
 
-            // Function to remove "no results" message
-            function removeNoResultsMessage() {
-                const existingMessage = document.querySelector('.no-results-message');
-                if (existingMessage) {
-                    existingMessage.remove();
-                }
-            }
-
-            // Enhanced search function with better matching
-            function performPDFSearch(searchTerm, specificTarget = null) {
-                const lowerSearchTerm = searchTerm.toLowerCase().trim();
-                removeNoResultsMessage();
-
-                if (!lowerSearchTerm) {
-                    // Show all cards in current category
-                    showCardsInCategory(currentCategory);
+                // Skip if card doesn't match current category filter
+                if (currentCategory !== 'all' && category !== currentCategory) {
+                    card.style.display = 'none';
                     return;
                 }
 
-                let visibleCards = 0;
-                let bestMatches = [];
-                let goodMatches = [];
-                let partialMatches = [];
+                // Calculate match score with enhanced targeting
+                const matchScore = calculateEnhancedMatchScore(
+                    lowerSearchTerm,
+                    title,
+                    meta,
+                    description,
+                    expandedTerms,
+                    specificTarget
+                );
 
-                // Get expanded search terms
-                const expandedTerms = getExpandedSearchTerms(lowerSearchTerm);
+                console.log('Match score for', title.substring(0, 20) + '...', ':', matchScore);
 
-                pdfCards.forEach(card => {
-                    const title = card.querySelector('.pdf-title')?.textContent?.toLowerCase() || '';
-                    const meta = card.querySelector('.pdf-meta')?.textContent?.toLowerCase() || '';
-                    const description = card.querySelector('.pdf-description')?.textContent?.toLowerCase() || '';
-                    const category = card.dataset.category;
+                if (matchScore > 0) {
+                    addMatchIndicator(card, matchScore);
+                    card.style.display = 'block';
+                    visibleCards++;
 
-                    // Skip if card doesn't match current category filter
-                    if (currentCategory !== 'all' && category !== currentCategory) {
-                        card.style.display = 'none';
-                        return;
-                    }
-
-                    // Calculate match score
-                    const matchScore = calculateMatchScore(
-                        lowerSearchTerm,
-                        title,
-                        meta,
-                        description,
-                        expandedTerms,
-                        specificTarget
-                    );
-
-                    if (matchScore > 0) {
-                        // Add match indicator
-                        addMatchIndicator(card, matchScore);
-                        card.style.display = 'block';
-                        visibleCards++;
-
-                        // Categorize matches
-                        if (matchScore >= 90) {
-                            bestMatches.push(card);
-                        } else if (matchScore >= 60) {
-                            goodMatches.push(card);
-                        } else {
-                            partialMatches.push(card);
-                        }
+                    // Categorize matches
+                    if (matchScore >= 90) {
+                        bestMatches.push(card);
+                    } else if (matchScore >= 50) {
+                        goodMatches.push(card);
                     } else {
-                        removeMatchIndicator(card);
-                        card.style.display = 'none';
+                        partialMatches.push(card);
                     }
-                });
-
-                // Sort and reorder cards by match quality
-                reorderCardsByRelevance(bestMatches, goodMatches, partialMatches);
-
-                // Show "no results" message if no cards are visible
-                if (visibleCards === 0) {
-                    createNoResultsMessage(searchTerm);
+                } else {
+                    removeMatchIndicator(card);
+                    card.style.display = 'none';
                 }
+            });
 
-                console.log(`Found ${visibleCards} results for: ${searchTerm}`);
-                return { total: visibleCards, best: bestMatches.length, good: goodMatches.length, partial: partialMatches.length };
+            // Sort and reorder cards by match quality
+            reorderCardsByRelevance(bestMatches, goodMatches, partialMatches);
+
+            // Show "no results" message if no cards are visible
+            if (visibleCards === 0) {
+                createNoResultsMessage(searchTerm);
             }
 
-            // Function to get expanded search terms
-            function getExpandedSearchTerms(searchTerm) {
-                const expandedTerms = new Set([searchTerm]);
+            console.log(`Found ${visibleCards} results for: ${searchTerm}`);
+            return {
+                total: visibleCards,
+                best: bestMatches.length,
+                good: goodMatches.length,
+                partial: partialMatches.length
+            };
+        }
 
-                // Check direct mappings
+        // Enhanced function to get expanded search terms
+        function getExpandedSearchTerms(searchTerm, authorPatterns) {
+            const expandedTerms = new Set([searchTerm]);
+
+            // Check author patterns first
+            Object.keys(authorPatterns).forEach(author => {
+                if (author === searchTerm || authorPatterns[author].some(pattern =>
+                    pattern.includes(searchTerm) || searchTerm.includes(pattern)
+                )) {
+                    authorPatterns[author].forEach(term => expandedTerms.add(term));
+                }
+            });
+
+            // Check existing search mappings
+            if (typeof pdfSearchMappings !== 'undefined') {
                 Object.keys(pdfSearchMappings).forEach(key => {
                     if (key.includes(searchTerm) || searchTerm.includes(key)) {
                         pdfSearchMappings[key].forEach(term => expandedTerms.add(term));
                     }
                 });
-
-                // Add partial matches from mappings
-                Object.values(pdfSearchMappings).forEach(terms => {
-                    if (terms.some(term => term.includes(searchTerm) || searchTerm.includes(term))) {
-                        terms.forEach(term => expandedTerms.add(term));
-                    }
-                });
-
-                return Array.from(expandedTerms);
             }
 
-            // Enhanced match scoring algorithm
-            function calculateMatchScore(searchTerm, title, meta, description, expandedTerms, specificTarget) {
-                let score = 0;
-
-                // Exact title match (highest priority)
-                if (title.includes(searchTerm)) {
-                    score += 100;
-                }
-
-                // Exact meta match
-                if (meta.includes(searchTerm)) {
-                    score += 80;
-                }
-
-                // Exact description match
-                if (description.includes(searchTerm)) {
-                    score += 60;
-                }
-
-                // Expanded terms matching
-                expandedTerms.forEach(term => {
-                    if (term !== searchTerm) {
-                        if (title.includes(term)) score += 70;
-                        if (meta.includes(term)) score += 50;
-                        if (description.includes(term)) score += 30;
-                    }
-                });
-
-                // Word boundary matching (more precise)
-                const wordBoundaryRegex = new RegExp(`\\b${searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
-                if (wordBoundaryRegex.test(title)) score += 30;
-                if (wordBoundaryRegex.test(meta)) score += 20;
-
-                // Specific target bonus
-                if (specificTarget && (title.includes(specificTarget) || meta.includes(specificTarget))) {
-                    score += 50;
-                }
-
-                // Partial word matching
-                const searchWords = searchTerm.split(/\s+/);
-                searchWords.forEach(word => {
-                    if (word.length > 2) {
-                        if (title.includes(word)) score += 20;
-                        if (meta.includes(word)) score += 15;
-                        if (description.includes(word)) score += 10;
-                    }
-                });
-
-                return Math.min(score, 200); // Cap at 200
-            }
-
-            // Function to add match indicator with professional icons
-            function addMatchIndicator(card, score) {
-                removeMatchIndicator(card);
-
-                const indicator = document.createElement('div');
-                indicator.className = 'match-indicator';
-
-                let iconClass, bgColor, label;
-
-                if (score >= 90) {
-                    iconClass = 'fas fa-medal';
-                    bgColor = '#28a745';
-                    label = 'Best Match';
-                } else if (score >= 60) {
-                    iconClass = 'fas fa-check-circle';
-                    bgColor = '#007bff';
-                    label = 'Good Match';
-                } else {
-                    iconClass = 'fas fa-search-plus';
-                    bgColor = '#6c757d';
-                    label = 'Partial Match';
-                }
-
-                indicator.style.cssText = `
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            background: ${bgColor};
-            color: white;
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            z-index: 10;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            font-weight: 500;
-        `;
-
-                indicator.innerHTML = `<i class="${iconClass}"></i><span>${label}</span>`;
-
-                // Make sure card has relative positioning
-                card.style.position = 'relative';
-                card.appendChild(indicator);
-            }
-
-            // Function to remove match indicator
-            function removeMatchIndicator(card) {
-                const existing = card.querySelector('.match-indicator');
-                if (existing) {
-                    existing.remove();
-                }
-            }
-
-            // Function to reorder cards by relevance
-            function reorderCardsByRelevance(bestMatches, goodMatches, partialMatches) {
-                const container = document.querySelector('.pdf-grid');
-                if (!container) return;
-
-                // Create a fragment to avoid multiple DOM manipulations
-                const fragment = document.createDocumentFragment();
-
-                // Add cards in order of relevance
-                [...bestMatches, ...goodMatches, ...partialMatches].forEach(card => {
-                    fragment.appendChild(card);
-                });
-
-                // Clear container and add sorted cards
-                const allVisibleCards = container.querySelectorAll('.pdf-card[style*="block"]');
-                allVisibleCards.forEach(card => {
-                    if (!bestMatches.includes(card) && !goodMatches.includes(card) && !partialMatches.includes(card)) {
-                        fragment.appendChild(card);
-                    }
-                });
-
-                container.appendChild(fragment);
-            }
-
-            // Function to show cards in specific category
-            function showCardsInCategory(category) {
-                removeNoResultsMessage();
-                pdfCards.forEach(card => {
-                    removeMatchIndicator(card);
-                    if (category === 'all' || card.dataset.category === category) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            }
-
-            // Enhanced category filtering with search preservation
-            categoryBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    // Update active button
-                    categoryBtns.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    currentCategory = btn.dataset.category;
-
-                    // Re-run search if there's a search term
-                    const searchTerm = searchInput.value.trim();
-                    if (searchTerm) {
-                        performPDFSearch(searchTerm);
-                    } else {
-                        showCardsInCategory(currentCategory);
-                    }
-                });
-            });
-
-            // Enhanced search input listener
-            if (searchInput) {
-                searchInput.addEventListener('input', function () {
-                    const searchTerm = this.value;
-                    performPDFSearch(searchTerm);
-                });
-
-                // Add search enhancement features
-                searchInput.addEventListener('keydown', function (e) {
-                    if (e.key === 'Escape') {
-                        this.value = '';
-                        performPDFSearch('');
-                    }
-                });
-            }
-
-            // Global functions for navbar integration
-            window.clearSearch = function () {
-                if (searchInput) {
-                    searchInput.value = '';
-                    performPDFSearch('');
-                }
-            };
-
-            window.showAllDocuments = function () {
-                if (searchInput) {
-                    searchInput.value = '';
-                }
-                // Reset to 'all' category
-                categoryBtns.forEach(b => b.classList.remove('active'));
-                const allBtn = document.querySelector('.category-btn[data-category="all"]');
-                if (allBtn) {
-                    allBtn.classList.add('active');
-                }
-                currentCategory = 'all';
-                showCardsInCategory('all');
-            };
-
-            // Enhanced navbar integration - override the triggerResourceSearch function
-            if (typeof window.triggerResourceSearch !== 'undefined') {
-                const originalTriggerResourceSearch = window.triggerResourceSearch;
-
-                window.triggerResourceSearch = function (query, category = 'all', specific = null) {
-                    // Call original function for category filtering
-                    originalTriggerResourceSearch(query, category, specific);
-
-                    // Enhanced search with specific targeting
-                    setTimeout(() => {
-                        performPDFSearch(query, specific);
-                    }, 150);
-                };
-            }
-
-            // Listen for navbar search events
-            window.addEventListener('navbarResourceSearch', function (e) {
-                const { query, category, specific } = e.detail;
-
-                // Set category first
-                if (category && category !== 'all') {
-                    const categoryBtn = document.querySelector(`.category-btn[data-category="${category}"]`);
-                    if (categoryBtn) {
-                        categoryBtns.forEach(b => b.classList.remove('active'));
-                        categoryBtn.classList.add('active');
-                        currentCategory = category;
-                    }
-                }
-
-                // Set search input
-                if (searchInput) {
-                    searchInput.value = specific || query;
-                }
-
-                // Perform search
-                setTimeout(() => {
-                    performPDFSearch(specific || query, specific);
-                }, 100);
-            });
-
-            // Add search statistics display
-            function displaySearchStats(results) {
-                const existingStats = document.querySelector('.search-stats');
-                if (existingStats) {
-                    existingStats.remove();
-                }
-
-                if (results && results.total > 0) {
-                    const statsDiv = document.createElement('div');
-                    statsDiv.className = 'search-stats';
-                    statsDiv.style.cssText = `
-                padding: 0.5rem 1rem;
-                background: #e9ecef;
-                border-radius: 4px;
-                margin-bottom: 1rem;
-                font-size: 0.9rem;
-                color: #495057;
-            `;
-
-                    statsDiv.innerHTML = `
-                <i class="fas fa-analytics"></i>
-                Found ${results.total} results: 
-                <span style="color: #28a745;"><i class="fas fa-medal"></i> ${results.best} best</span>, 
-                <span style="color: #007bff;"><i class="fas fa-check-circle"></i> ${results.good} good</span>, 
-                <span style="color: #6c757d;"><i class="fas fa-search-plus"></i> ${results.partial} partial</span> matches
-            `;
-
-                    const container = document.querySelector('.pdf-grid');
-                    if (container && container.parentNode) {
-                        container.parentNode.insertBefore(statsDiv, container);
-                    }
-                }
-            }
-
-            // Update performPDFSearch to show stats
-            const originalPerformPDFSearch = performPDFSearch;
-            performPDFSearch = function (searchTerm, specificTarget = null) {
-                const results = originalPerformPDFSearch(searchTerm, specificTarget);
-                if (searchTerm.trim()) {
-                    displaySearchStats(results);
-                } else {
-                    const existingStats = document.querySelector('.search-stats');
-                    if (existingStats) {
-                        existingStats.remove();
-                    }
-                }
-                return results;
-            };
-
-            // Initialize
-            console.log('Enhanced PDF search initialized with navbar integration');
-        });
-        // Buy PDF function
-        function buyPdf() {
-            // You can implement your payment logic here
-            alert('Payment system integration coming soon!');
+            return Array.from(expandedTerms);
         }
 
-        // Optional: Add smooth scrolling for internal links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+        // Enhanced match scoring with better author targeting
+        function calculateEnhancedMatchScore(searchTerm, title, meta, description, expandedTerms, specificTarget) {
+            let score = 0;
+
+            // Specific target matching (highest priority)
+            if (specificTarget) {
+                const targetLower = specificTarget.toLowerCase();
+                if (title.includes(targetLower)) {
+                    score += 200; // Very high score for target match
+                    console.log('Target match found:', title);
+                }
+
+                // Check for partial target matches
+                const targetWords = targetLower.split(' ');
+                const matchingWords = targetWords.filter(word => title.includes(word));
+                if (matchingWords.length > 0) {
+                    score += (matchingWords.length / targetWords.length) * 150;
+                    console.log('Partial target match:', matchingWords.length, '/', targetWords.length);
+                }
+            }
+
+            // Exact search term matches
+            if (title.includes(searchTerm)) score += 100;
+            if (meta.includes(searchTerm)) score += 80;
+            if (description.includes(searchTerm)) score += 60;
+
+            // Expanded terms matching with author bonus
+            expandedTerms.forEach(term => {
+                if (term !== searchTerm) {
+                    if (title.includes(term)) score += 70;
+                    if (meta.includes(term)) score += 50;
+                    if (description.includes(term)) score += 30;
                 }
             });
-        });
+
+            // Word boundary matching
+            try {
+                const wordBoundaryRegex = new RegExp(`\\b${searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
+                if (wordBoundaryRegex.test(title)) score += 40;
+                if (wordBoundaryRegex.test(meta)) score += 30;
+            } catch (e) {
+                console.warn('Regex error for term:', searchTerm, e);
+            }
+
+            // Individual word matching
+            const searchWords = searchTerm.split(/\s+/);
+            searchWords.forEach(word => {
+                if (word.length > 2) {
+                    if (title.includes(word)) score += 25;
+                    if (meta.includes(word)) score += 20;
+                    if (description.includes(word)) score += 15;
+                }
+            });
+
+            return Math.min(score, 300); // Increased cap to 300 for better differentiation
+        }
     </script>
 </body>
 
