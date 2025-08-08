@@ -1360,7 +1360,7 @@
                             <i class="fas fa-star-half-alt"></i>
                             4.6/5
                         </div>
-                        <button onclick="navigateToLibrary('macmullen', 'textbooks')" class="card-cta">Explore</button>
+                        <a href="public/resources/library/library.html?search=mcmullen" class="card-cta">Explore</a>
                     </div>
 
                     <div class="book-card">
@@ -1377,7 +1377,7 @@
                             
                             3.5/5
                         </div>
-                        <button onclick="navigateToLibrary('illowsky', 'textbooks')" class="card-cta">Explore</button>
+                        <a href="public/resources/library/library.html?search=illowsky" class="card-cta">Explore</a>
                     </div>
 
                     <div class="book-card">
@@ -1394,7 +1394,7 @@
                             <i class="fas fa-star-half-alt"></i>
                             4.7/5
                         </div>
-                        <button onclick="navigateToLibrary('talbert', 'textbooks')" class="card-cta">Explore</button>
+                        <a href="public/resources/library/library.html?search=talbert" class="card-cta">Explore</a>
                     </div>
 
                     <div class="book-card">
@@ -1411,7 +1411,7 @@
                             
                             3.6/5
                         </div>
-                        <button onclick="navigateToLibrary('levin', 'textbooks')" class="card-cta">Explore</button>
+                        <a href="public/resources/library/library.html?search=levin" class="card-cta">Explore</a>
                     </div>
 
                     <div class="book-card">
@@ -1428,8 +1428,7 @@
                             <i class="fas fa-star-half-alt"></i>
                             4.8/5
                         </div>
-                        <button onclick="navigateToLibrary('makawa', 'textbooks')" class="card-cta">Explore</button>
-                    </div>
+                        <a href="public/resources/library/library.html?search=makawa" class="card-cta">Explore</a>
 
                 </div>
             </div>
@@ -1691,17 +1690,6 @@
     <script src="/assets/js/loader.js"></script>
     <script src="/assets/js/navbar.js"></script>
     <script>
-        function navigateToLibraryWithParams(searchTerm, category) {
-    const currentPath = window.location.pathname;
-    let libraryPath = './public/resources/library/library.html';
-    
-    // Add search parameters to URL
-    const url = new URL(libraryPath, window.location.origin);
-    url.searchParams.set('search', searchTerm);
-    url.searchParams.set('category', category || 'textbooks');
-    
-    window.location.href = url.toString();
-}
         // Particle Animation
         function createParticles() {
             const particlesContainer = document.getElementById('particles');

@@ -663,13 +663,13 @@
                         <h3 class="pdf-title">Introductory Statistics | OpenStax</h3>
                         <p class="pdf-meta">Textbook • B. Illowsky & S. Dean (2013)</p>
                         <div class="pdf-actions">
-                            <a href="/assets/pdfs/IntroductoryStatistics openstax.pdf"
-                                class="pdf-btn view-btn" target="_blank">
+                            <a href="/assets/pdfs/IntroductoryStatistics openstax.pdf" class="pdf-btn view-btn"
+                                target="_blank">
                                 <i class="fas fa-eye"></i>
                                 View
                             </a>
-                            <a href="/assets/pdfs/IntroductoryStatistics openstax.pdf"
-                                class="pdf-btn download-btn" download>
+                            <a href="/assets/pdfs/IntroductoryStatistics openstax.pdf" class="pdf-btn download-btn"
+                                download>
                                 <i class="fas fa-download"></i>
                                 Download
                             </a>
@@ -684,13 +684,11 @@
                         <h3 class="pdf-title">Additional Mathematics - Pure and Applied</h3>
                         <p class="pdf-meta">Textbook • J. F. Talbert & H. H. Heng</p>
                         <div class="pdf-actions">
-                            <a href="/assets/pdfs/additional-mathematics.pdf"
-                                class="pdf-btn view-btn" target="_blank">
+                            <a href="/assets/pdfs/additional-mathematics.pdf" class="pdf-btn view-btn" target="_blank">
                                 <i class="fas fa-eye"></i>
                                 View
                             </a>
-                            <a href="/assets/pdfs/additional-mathematics.pdf"
-                                class="pdf-btn download-btn" download>
+                            <a href="/assets/pdfs/additional-mathematics.pdf" class="pdf-btn download-btn" download>
                                 <i class="fas fa-download"></i>
                                 Download
                             </a>
@@ -706,13 +704,11 @@
                         <h3 class="pdf-title">Discrete MAthematics AN Open Introduction 3rd Edition</h3>
                         <p class="pdf-meta">Textbook • Oscar Levin</p>
                         <div class="pdf-actions">
-                            <a href="/assets/pdfs/dmoi-tablet.pdf"
-                                class="pdf-btn view-btn" target="_blank">
+                            <a href="/assets/pdfs/dmoi-tablet.pdf" class="pdf-btn view-btn" target="_blank">
                                 <i class="fas fa-eye"></i>
                                 View
                             </a>
-                            <a href="/assets/pdfs/dmoi-tablet.pdf"
-                                class="pdf-btn download-btn" download>
+                            <a href="/assets/pdfs/dmoi-tablet.pdf" class="pdf-btn download-btn" download>
                                 <i class="fas fa-download"></i>
                                 Download
                             </a>
@@ -748,13 +744,11 @@
                         <h3 class="pdf-title">Worked Examples for Trigonometry 1st Edition</h3>
                         <p class="pdf-meta">Textbook • Josophat Makawa</p>
                         <div class="pdf-actions">
-                            <a href="/assets/pdfs/Trig.pdf"
-                                class="pdf-btn view-btn" target="_blank">
+                            <a href="/assets/pdfs/Trig.pdf" class="pdf-btn view-btn" target="_blank">
                                 <i class="fas fa-eye"></i>
                                 View
                             </a>
-                            <a href="/assets/pdfs/Trig.pdf"
-                                class="pdf-btn download-btn" download>
+                            <a href="/assets/pdfs/Trig.pdf" class="pdf-btn download-btn" download>
                                 <i class="fas fa-download"></i>
                                 Download
                             </a>
@@ -825,42 +819,39 @@
             window.addEventListener('load', function () {
                 document.body.classList.add('loaded');
             });
-            // Add this to your library.html page's JavaScript
-document.addEventListener('DOMContentLoaded', function() {
-    // Check for search data from bestsellers navigation
-    const pendingSearch = sessionStorage.getItem('pendingLibrarySearch');
-    if (pendingSearch) {
-        try {
-            const searchData = JSON.parse(pendingSearch);
-            sessionStorage.removeItem('pendingLibrarySearch');
-            
-            // Apply the search after a short delay to ensure page is loaded
-            setTimeout(() => {
-                if (typeof performPDFSearch === 'function') {
-                    // Set category first
-                    const categoryBtn = document.querySelector(`.category-btn[data-category="${searchData.category}"]`);
-                    if (categoryBtn) {
-                        document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
-                        categoryBtn.classList.add('active');
-                        currentCategory = searchData.category;
-                    }
-                    
-                    // Set search input
+
+            document.addEventListener('DOMContentLoaded', function () {
+                // Check URL parameters for search
+                const urlParams = new URLSearchParams(window.locatio < script > n.search);
+                const searchParam = urlParams.get('search');
+
+                if (searchParam) {
+                    // Set the search input
                     const searchInput = document.getElementById('pdfSearch');
                     if (searchInput) {
-                        searchInput.value = searchData.specific || searchData.query;
+                        searchInput.value = searchParam;
+
+                        // Set textbooks category active
+                        setTimeout(() => {
+                            const textbookBtn = document.querySelector('.category-btn[data-category="textbooks"]');
+                            if (textbookBtn) {
+                                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                                textbookBtn.classList.add('active');
+                            }
+
+                            // Trigger search if the function exists
+                            if (typeof performPDFSearch === 'function') {
+                                performPDFSearch(searchParam);
+                            } else {
+                                // Fallback: trigger input event
+                                const inputEvent = new Event('input', { bubbles: true });
+                                searchInput.dispatchEvent(inputEvent);
+                            }
+                        }, 500);
                     }
-                    
-                    // Perform search
-                    performPDFSearch(searchData.specific || searchData.query, searchData.specific);
                 }
-            }, 500);
-        } catch (e) {
-            console.error('Error parsing pending search data:', e);
-            sessionStorage.removeItem('pendingLibrarySearch');
-        }
-    }
-});
+            });
+
 
             const categoryBtns = document.querySelectorAll('.category-btn');
             const pdfCards = document.querySelectorAll('.pdf-card');
