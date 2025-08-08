@@ -825,6 +825,42 @@
             window.addEventListener('load', function () {
                 document.body.classList.add('loaded');
             });
+            // Add this to your library.html page's JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+    // Check for search data from bestsellers navigation
+    const pendingSearch = sessionStorage.getItem('pendingLibrarySearch');
+    if (pendingSearch) {
+        try {
+            const searchData = JSON.parse(pendingSearch);
+            sessionStorage.removeItem('pendingLibrarySearch');
+            
+            // Apply the search after a short delay to ensure page is loaded
+            setTimeout(() => {
+                if (typeof performPDFSearch === 'function') {
+                    // Set category first
+                    const categoryBtn = document.querySelector(`.category-btn[data-category="${searchData.category}"]`);
+                    if (categoryBtn) {
+                        document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                        categoryBtn.classList.add('active');
+                        currentCategory = searchData.category;
+                    }
+                    
+                    // Set search input
+                    const searchInput = document.getElementById('pdfSearch');
+                    if (searchInput) {
+                        searchInput.value = searchData.specific || searchData.query;
+                    }
+                    
+                    // Perform search
+                    performPDFSearch(searchData.specific || searchData.query, searchData.specific);
+                }
+            }, 500);
+        } catch (e) {
+            console.error('Error parsing pending search data:', e);
+            sessionStorage.removeItem('pendingLibrarySearch');
+        }
+    }
+});
 
             const categoryBtns = document.querySelectorAll('.category-btn');
             const pdfCards = document.querySelectorAll('.pdf-card');
