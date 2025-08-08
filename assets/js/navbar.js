@@ -477,7 +477,10 @@ function initNavbar() {
     const browseItem = document.createElement('div');
     browseItem.className = 'search-result-item';
     browseItem.innerHTML = `
-      <div class="result-title">📚 Browse Library</div>
+      <div class="result-title">
+        <i class="fas fa-book-open"></i>
+        <span>Browse Library</span>
+      </div>
       <div class="result-description">Explore all mathematical resources and materials</div>
     `;
     browseItem.addEventListener('click', () => {
@@ -488,7 +491,10 @@ function initNavbar() {
     const webSearch = document.createElement('div');
     webSearch.className = 'search-result-item';
     webSearch.innerHTML = `
-      <div class="result-title">🌐 Search Web</div>
+      <div class="result-title">
+        <i class="fas fa-globe"></i>
+        <span>Search Web</span>
+      </div>
       <div class="result-description">Search the web for "${query}"</div>
     `;
     webSearch.addEventListener('click', () => {
@@ -549,9 +555,17 @@ function initNavbar() {
     suggestions.forEach(suggestion => {
       const suggestionItem = document.createElement('div');
       suggestionItem.className = 'search-result-item suggestion';
+      
+      // Determine icon based on suggestion type
+      const iconClass = suggestion.type === 'direct' ? 'fas fa-bullseye' : 'fas fa-file-alt';
+      const typeText = suggestion.type === 'direct' ? 'Direct Match' : 'Page Match';
+      
       suggestionItem.innerHTML = `
         <div class="result-title">${suggestion.title}</div>
-        <div class="result-type">${suggestion.type === 'direct' ? '🎯 Direct Match' : '📄 Page Match'}</div>
+        <div class="result-type">
+          <i class="${iconClass}"></i>
+          <span>${typeText}</span>
+        </div>
       `;
       suggestionItem.addEventListener('click', () => {
         const searchData = {

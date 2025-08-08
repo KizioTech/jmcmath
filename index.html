@@ -1360,7 +1360,8 @@
                             <i class="fas fa-star-half-alt"></i>
                             4.6/5
                         </div>
-                        <a href="public/resources/library/library.html?search=mcmullen" class="card-cta">Explore</a>
+                        <a href="#" onclick="navigateToLibraryWithSearch('mcmullen', 'textbooks', 'mcmullen')"
+                            class="card-cta">Explore</a>
                     </div>
 
                     <div class="book-card">
@@ -1374,10 +1375,11 @@
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star-half-alt"></i>
-                            
+
                             3.5/5
                         </div>
-                        <a href="public/resources/library/library.html?search=illowsky" class="card-cta">Explore</a>
+                        <a href="#" onclick="navigateToLibraryWithSearch('illowsky', 'textbooks', 'illowsky')"
+                            class="card-cta">Explore</a>
                     </div>
 
                     <div class="book-card">
@@ -1394,7 +1396,8 @@
                             <i class="fas fa-star-half-alt"></i>
                             4.7/5
                         </div>
-                        <a href="public/resources/library/library.html?search=talbert" class="card-cta">Explore</a>
+                        <a href="#" onclick="navigateToLibraryWithSearch('talbert', 'textbooks', 'talbert')"
+                            class="card-cta">Explore</a>
                     </div>
 
                     <div class="book-card">
@@ -1408,15 +1411,17 @@
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star-half-alt"></i>
-                            
+
                             3.6/5
                         </div>
-                        <a href="public/resources/library/library.html?search=levin" class="card-cta">Explore</a>
+                        <a href="#" onclick="navigateToLibraryWithSearch('levin', 'textbooks', 'levin')"
+                            class="card-cta">Explore</a>
                     </div>
 
                     <div class="book-card">
                         <div class="book-cover">
-                            <img src="assets/images/background.svg" alt="Worked Examples for Trigonometry" style="width:100%;height:100%;object-fit:cover;">
+                            <img src="assets/images/background.svg" alt="Worked Examples for Trigonometry"
+                                style="width:100%;height:100%;object-fit:cover;">
                         </div>
                         <h4 class="book-title">Worked Examples for Trigonometry</h4>
                         <p class="book-author">by Josophat Makawa</p>
@@ -1428,10 +1433,36 @@
                             <i class="fas fa-star-half-alt"></i>
                             4.8/5
                         </div>
-                        <a href="public/resources/library/library.html?search=makawa" class="card-cta">Explore</a>
-
+                        <a href="#" onclick="navigateToLibraryWithSearch('makawa', 'textbooks', 'makawa')"
+                            class="card-cta">Explore</a>
+                    </div>
                 </div>
             </div>
+
+            <script>
+                // Enhanced navigation function for home page book cards
+                function navigateToLibraryWithSearch(query, category, specific) {
+                    const searchData = {
+                        query: query,
+                        category: category,
+                        specific: specific
+                    };
+
+                    // Use the navbar navigation system
+                    if (typeof window.navigateToPage === 'function') {
+                        window.navigateToPage('/public/resources/library/library.html', searchData);
+                    } else {
+                        // Fallback: store search data and navigate normally
+                        sessionStorage.setItem('pendingSearch', JSON.stringify(searchData));
+                        window.location.href = 'public/resources/library/library.html';
+                    }
+                }
+
+                // Alternative approach using URL parameters (if you prefer this method)
+                function navigateToLibraryWithSearchParam(searchTerm) {
+                    window.location.href = `public/resources/library/library.html?search=${encodeURIComponent(searchTerm)}`;
+                }
+            </script>
         </div>
     </section>
     <!-- Statistics Section -->

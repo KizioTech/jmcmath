@@ -663,13 +663,13 @@
                         <h3 class="pdf-title">Introductory Statistics | OpenStax</h3>
                         <p class="pdf-meta">Textbook • B. Illowsky & S. Dean (2013)</p>
                         <div class="pdf-actions">
-                            <a href="/assets/pdfs/IntroductoryStatistics openstax.pdf" class="pdf-btn view-btn"
-                                target="_blank">
+                            <a href="/assets/pdfs/IntroductoryStatistics openstax.pdf"
+                                class="pdf-btn view-btn" target="_blank">
                                 <i class="fas fa-eye"></i>
                                 View
                             </a>
-                            <a href="/assets/pdfs/IntroductoryStatistics openstax.pdf" class="pdf-btn download-btn"
-                                download>
+                            <a href="/assets/pdfs/IntroductoryStatistics openstax.pdf"
+                                class="pdf-btn download-btn" download>
                                 <i class="fas fa-download"></i>
                                 Download
                             </a>
@@ -684,11 +684,13 @@
                         <h3 class="pdf-title">Additional Mathematics - Pure and Applied</h3>
                         <p class="pdf-meta">Textbook • J. F. Talbert & H. H. Heng</p>
                         <div class="pdf-actions">
-                            <a href="/assets/pdfs/additional-mathematics.pdf" class="pdf-btn view-btn" target="_blank">
+                            <a href="/assets/pdfs/additional-mathematics.pdf"
+                                class="pdf-btn view-btn" target="_blank">
                                 <i class="fas fa-eye"></i>
                                 View
                             </a>
-                            <a href="/assets/pdfs/additional-mathematics.pdf" class="pdf-btn download-btn" download>
+                            <a href="/assets/pdfs/additional-mathematics.pdf"
+                                class="pdf-btn download-btn" download>
                                 <i class="fas fa-download"></i>
                                 Download
                             </a>
@@ -704,11 +706,13 @@
                         <h3 class="pdf-title">Discrete MAthematics AN Open Introduction 3rd Edition</h3>
                         <p class="pdf-meta">Textbook • Oscar Levin</p>
                         <div class="pdf-actions">
-                            <a href="/assets/pdfs/dmoi-tablet.pdf" class="pdf-btn view-btn" target="_blank">
+                            <a href="/assets/pdfs/dmoi-tablet.pdf"
+                                class="pdf-btn view-btn" target="_blank">
                                 <i class="fas fa-eye"></i>
                                 View
                             </a>
-                            <a href="/assets/pdfs/dmoi-tablet.pdf" class="pdf-btn download-btn" download>
+                            <a href="/assets/pdfs/dmoi-tablet.pdf"
+                                class="pdf-btn download-btn" download>
                                 <i class="fas fa-download"></i>
                                 Download
                             </a>
@@ -744,11 +748,13 @@
                         <h3 class="pdf-title">Worked Examples for Trigonometry 1st Edition</h3>
                         <p class="pdf-meta">Textbook • Josophat Makawa</p>
                         <div class="pdf-actions">
-                            <a href="/assets/pdfs/Trig.pdf" class="pdf-btn view-btn" target="_blank">
+                            <a href="/assets/pdfs/Trig.pdf"
+                                class="pdf-btn view-btn" target="_blank">
                                 <i class="fas fa-eye"></i>
                                 View
                             </a>
-                            <a href="/assets/pdfs/Trig.pdf" class="pdf-btn download-btn" download>
+                            <a href="/assets/pdfs/Trig.pdf"
+                                class="pdf-btn download-btn" download>
                                 <i class="fas fa-download"></i>
                                 Download
                             </a>
@@ -813,245 +819,1063 @@
     <script src="/assets/js/loader.js"></script>
     <script src="/assets/js/navbar.js"></script>
     <script>
-        // COMPLETE REPLACEMENT FOR THE LIBRARY.HTML JAVASCRIPT SECTION
-        // Replace the entire <script> section at the bottom of library.html with this:
+        // Complete Enhanced PDF filtering and search functionality with navbar integration
+document.addEventListener('DOMContentLoaded', function () {
+    // Hide loading screen when page loads
+    window.addEventListener('load', function () {
+        document.body.classList.add('loaded');
+    });
 
-        document.addEventListener('DOMContentLoaded', function () {
-            // Hide loading screen when page loads
-            window.addEventListener('load', function () {
-                document.body.classList.add('loaded');
-            });
+    // Initialize DOM elements
+    const categoryBtns = document.querySelectorAll('.category-btn');
+    const pdfCards = document.querySelectorAll('.pdf-card');
+    const searchInput = document.getElementById('pdfSearch');
+    let currentCategory = 'all';
+    let searchResults = [];
 
-            // Check URL parameters for search - FIXED VERSION
-            const urlParams = new URLSearchParams(window.location.search);
-            const searchParam = urlParams.get('search');
+    // Enhanced search mappings for better PDF targeting
+    const pdfSearchMappings = {
+        // Calculus variations
+        'calculus': ['calculus', 'differential', 'integral', 'derivative', 'limit', 'function'],
+        'differential calculus': ['differential', 'derivative', 'calculus', 'limit'],
+        'integral calculus': ['integral', 'integration', 'calculus', 'antiderivative'],
+        'multivariable calculus': ['multivariable', 'vector', 'calculus', 'partial', 'multiple'],
+        'transcendental': ['transcendental', 'exponential', 'logarithmic', 'trigonometric'],
 
-            if (searchParam) {
-                console.log('URL search parameter found:', searchParam);
+        // Algebra variations
+        'algebra': ['algebra', 'polynomial', 'equation', 'variable', 'linear'],
+        'linear algebra': ['linear', 'matrix', 'vector', 'eigenvalue', 'determinant'],
+        'abstract algebra': ['abstract', 'group', 'ring', 'field', 'algebraic'],
 
-                // Set the search input
-                const searchInput = document.getElementById('pdfSearch');
-                if (searchInput) {
-                    searchInput.value = searchParam;
+        // Geometry variations
+        'geometry': ['geometry', 'euclidean', 'triangle', 'circle', 'geometric'],
+        'analytic geometry': ['analytic', 'coordinate', 'geometry', 'cartesian'],
+        'differential geometry': ['differential', 'manifold', 'geometry', 'curvature'],
 
-                    // Create mapping for author searches to target specific documents
-                    const authorTargetMap = {
-                        'mcmullen': 'Essential Calculus Skills Practice Workbook',
-                        'illowsky': 'Introductory Statistics',
-                        'talbert': 'Additional Mathematics',
-                        'levin': 'Discrete Mathematics An Open Introduction',
-                        'makawa': 'Worked Examples for Trigonometry',
-                        'stewart': 'Calculus by James Stewart',
-                        'ralson': 'Ralson Calculus'
-                    };
+        // Statistics and Probability
+        'statistics': ['statistics', 'data', 'mean', 'variance', 'distribution', 'statistical'],
+        'biostatistics': ['biostatistics', 'medical', 'statistics', 'biological'],
+        'probability': ['probability', 'random', 'distribution', 'expectation', 'stochastic'],
+        'introductory statistics': ['introductory', 'statistics', 'basic', 'elementary'],
 
-                    // Determine target and category
-                    const targetDocument = authorTargetMap[searchParam.toLowerCase()];
-                    const category = targetDocument ? 'textbooks' : 'all';
+        // Discrete Mathematics
+        'discrete': ['discrete', 'combinatorics', 'graph', 'logic', 'counting'],
+        'discrete mathematics': ['discrete', 'mathematics', 'combinatorics', 'graph', 'logic'],
+        'counting': ['counting', 'combinatorics', 'permutation', 'combination'],
 
-                    // Set the appropriate category active
-                    setTimeout(() => {
-                        const categoryBtns = document.querySelectorAll('.category-btn');
-                        categoryBtns.forEach(btn => btn.classList.remove('active'));
+        // Trigonometry
+        'trigonometry': ['trigonometry', 'sine', 'cosine', 'tangent', 'trigonometric'],
+        'inverse trigonometric': ['inverse', 'trigonometric', 'arcsin', 'arccos', 'arctan'],
 
-                        const targetBtn = document.querySelector(`.category-btn[data-category="${category}"]`);
-                        if (targetBtn) {
-                            targetBtn.classList.add('active');
-                            console.log('Category set to:', category);
-                        }
+        // Other mathematical subjects
+        'differential equations': ['differential', 'equation', 'ode', 'pde', 'solution'],
+        'number theory': ['number', 'theory', 'prime', 'modular', 'arithmetic'],
+        'real analysis': ['real', 'analysis', 'topology', 'measure', 'continuity'],
+        'complex analysis': ['complex', 'analytic', 'holomorphic', 'contour'],
 
-                        // Trigger the enhanced search with specific targeting
-                        if (typeof performPDFSearch === 'function') {
-                            console.log('Triggering search for:', searchParam, 'targeting:', targetDocument);
-                            performPDFSearch(searchParam, targetDocument);
-                        } else {
-                            // Fallback: trigger input event
-                            const inputEvent = new Event('input', { bubbles: true });
-                            searchInput.dispatchEvent(inputEvent);
-                        }
-                    }, 300); // Increased delay to ensure all functions are loaded
+        // Mathematical functions
+        'exponential': ['exponential', 'exp', 'growth', 'decay'],
+        'logarithmic': ['logarithmic', 'log', 'natural', 'logarithm'],
+        'functions': ['functions', 'domain', 'range', 'composition'],
+
+        // Practice and exam materials
+        'practice': ['practice', 'problems', 'exercises', 'workout', 'drill'],
+        'exam': ['exam', 'test', 'assessment', 'evaluation'],
+        'tutorial': ['tutorial', 'lesson', 'guide', 'instruction'],
+
+        // Authors and textbooks
+        'stewart': ['stewart', 'james'],
+        'mcmullen': ['mcmullen', 'chris', 'curtis', 'essential'],
+        'illowsky': ['illowsky', 'barbara', 'dean', 'introductory'],
+        'talbert': ['talbert', 'heng', 'additional', 'pure', 'applied'],
+        'levin': ['levin', 'oscar', 'open', 'introduction'],
+        'makawa': ['makawa', 'josophat', 'worked', 'examples'],
+        'ralson': ['ralson', 'larson', 'edwards', 'ron', 'bruce'],
+        'spivak': ['spivak', 'michael'],
+        'rudin': ['rudin', 'walter'],
+        'apostol': ['apostol', 'tom']
+    };
+
+    // Enhanced author mappings for precise targeting
+    const authorMappings = {
+        'mcmullen': {
+            aliases: ['mcmullen', 'chris', 'curtis', 'chris mcmullen'],
+            keywords: ['essential', 'calculus', 'skills', 'practice', 'workbook'],
+            category: 'textbooks'
+        },
+        'stewart': {
+            aliases: ['stewart', 'james', 'james stewart'],
+            keywords: ['calculus', 'brooks', 'cole'],
+            category: 'textbooks'
+        },
+        'illowsky': {
+            aliases: ['illowsky', 'barbara', 'dean', 'b. illowsky', 's. dean'],
+            keywords: ['introductory', 'statistics', 'openstax'],
+            category: 'textbooks'
+        },
+        'talbert': {
+            aliases: ['talbert', 'heng', 'j. f. talbert', 'h. h. heng'],
+            keywords: ['additional', 'mathematics', 'pure', 'applied'],
+            category: 'textbooks'
+        },
+        'levin': {
+            aliases: ['levin', 'oscar', 'oscar levin'],
+            keywords: ['discrete', 'mathematics', 'open', 'introduction'],
+            category: 'textbooks'
+        },
+        'makawa': {
+            aliases: ['makawa', 'josophat', 'josophat makawa'],
+            keywords: ['worked', 'examples', 'trigonometry'],
+            category: 'textbooks'
+        },
+        'ralson': {
+            aliases: ['ralson', 'larson', 'edwards', 'ron larson', 'bruce edwards'],
+            keywords: ['calculus', '11th', 'edition'],
+            category: 'textbooks'
+        }
+    };
+
+    // URL Parameter Handler
+    function handleUrlParameters() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const searchParam = urlParams.get('search');
+        
+        if (searchParam) {
+            console.log('URL search parameter found:', searchParam);
+            
+            // Set the search input value
+            if (searchInput) {
+                searchInput.value = searchParam;
+            }
+            
+            // Map search parameter to specific targeting
+            const searchMappings = {
+                'mcmullen': { category: 'textbooks', specific: 'mcmullen' },
+                'stewart': { category: 'textbooks', specific: 'stewart' },
+                'illowsky': { category: 'textbooks', specific: 'illowsky' },
+                'talbert': { category: 'textbooks', specific: 'talbert' },
+                'levin': { category: 'textbooks', specific: 'levin' },
+                'makawa': { category: 'textbooks', specific: 'makawa' },
+                'ralson': { category: 'textbooks', specific: 'ralson' },
+                'calculus': { category: 'textbooks', specific: 'calculus' },
+                'statistics': { category: 'textbooks', specific: 'statistics' },
+                'discrete': { category: 'textbooks', specific: 'discrete' },
+                'trigonometry': { category: 'textbooks', specific: 'trigonometry' }
+            };
+            
+            const mapping = searchMappings[searchParam.toLowerCase()];
+            
+            // Set appropriate category if mapping exists
+            if (mapping && mapping.category) {
+                const categoryBtn = document.querySelector(`.category-btn[data-category="${mapping.category}"]`);
+                if (categoryBtn) {
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    categoryBtn.classList.add('active');
+                    currentCategory = mapping.category;
                 }
             }
+            
+            // Delay search execution to ensure page is fully loaded
+            setTimeout(() => {
+                performPDFSearch(searchParam, mapping ? mapping.specific : null);
+                
+                // Clean up URL (optional - removes the parameter from address bar)
+                if (window.history.replaceState) {
+                    const newUrl = window.location.protocol + "//" + 
+                                  window.location.host + 
+                                  window.location.pathname;
+                    window.history.replaceState({ path: newUrl }, '', newUrl);
+                }
+            }, 500);
+        }
+    }
 
-            // Rest of your DOMContentLoaded code continues here...
+    // Function to create "no results" message
+    function createNoResultsMessage(searchTerm) {
+        const existingMessage = document.querySelector('.no-results-message');
+        if (existingMessage) {
+            existingMessage.remove();
+        }
+
+        const noResultsDiv = document.createElement('div');
+        noResultsDiv.className = 'no-results-message';
+        noResultsDiv.style.cssText = `
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+            background: #f8f9fa;
+            border-radius: 12px;
+            margin: 2rem auto;
+            border: 1px solid #e9ecef;
+            max-width: 600px;
+            display: block;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        `;
+
+        noResultsDiv.innerHTML = `
+            <div style="font-size: 3rem; margin-bottom: 1rem;">
+                <i class="fas fa-search" style="color: #6c757d;"></i>
+            </div>
+            <h3 style="margin-bottom: 1rem; color: #333; font-weight: 600;">
+                No documents found for "${searchTerm}"
+            </h3>
+            <p style="margin-bottom: 1.5rem; color: #666; line-height: 1.6;">
+                Try using different keywords, check spelling, or browse by category to find what you need.
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <button onclick="clearSearch()" style="
+                    padding: 0.75rem 1.5rem;
+                    background: #007bff;
+                    color: white;
+                    border: none;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    font-size: 0.9rem;
+                    font-weight: 500;
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    transition: all 0.3s ease;
+                " onmouseover="this.style.background='#0056b3'" onmouseout="this.style.background='#007bff'">
+                    <i class="fas fa-times"></i>Clear Search
+                </button>
+                <button onclick="showAllDocuments()" style="
+                    padding: 0.75rem 1.5rem;
+                    background: #28a745;
+                    color: white;
+                    border: none;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    font-size: 0.9rem;
+                    font-weight: 500;
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    transition: all 0.3s ease;
+                " onmouseover="this.style.background='#1e7e34'" onmouseout="this.style.background='#28a745'">
+                    <i class="fas fa-books"></i>Show All Documents
+                </button>
+                <button onclick="suggestAlternatives('${searchTerm}')" style="
+                    padding: 0.75rem 1.5rem;
+                    background: #17a2b8;
+                    color: white;
+                    border: none;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    font-size: 0.9rem;
+                    font-weight: 500;
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    transition: all 0.3s ease;
+                " onmouseover="this.style.background='#117a8b'" onmouseout="this.style.background='#17a2b8'">
+                    <i class="fas fa-lightbulb"></i>Suggestions
+                </button>
+            </div>
+        `;
+
+        const container = document.querySelector('.pdf-grid') || document.querySelector('.library-content');
+        if (container) {
+            container.appendChild(noResultsDiv);
+        }
+    }
+
+    // Function to remove "no results" message
+    function removeNoResultsMessage() {
+        const existingMessage = document.querySelector('.no-results-message');
+        if (existingMessage) {
+            existingMessage.remove();
+        }
+    }
+
+    // Function to get expanded search terms
+    function getExpandedSearchTerms(searchTerm) {
+        const expandedTerms = new Set([searchTerm]);
+
+        // Check direct mappings
+        Object.keys(pdfSearchMappings).forEach(key => {
+            if (key.includes(searchTerm) || searchTerm.includes(key)) {
+                pdfSearchMappings[key].forEach(term => expandedTerms.add(term));
+            }
         });
 
-        // Enhanced performPDFSearch function with better author matching
-        // Replace the existing performPDFSearch function with this enhanced version:
+        // Add partial matches from mappings
+        Object.values(pdfSearchMappings).forEach(terms => {
+            if (terms.some(term => term.includes(searchTerm) || searchTerm.includes(term))) {
+                terms.forEach(term => expandedTerms.add(term));
+            }
+        });
 
-        function performPDFSearch(searchTerm, specificTarget = null) {
-            const lowerSearchTerm = searchTerm.toLowerCase().trim();
-            removeNoResultsMessage();
+        // Add author-specific terms
+        Object.keys(authorMappings).forEach(authorKey => {
+            const authorData = authorMappings[authorKey];
+            if (authorData.aliases.some(alias => 
+                alias.includes(searchTerm) || searchTerm.includes(alias)
+            )) {
+                authorData.aliases.forEach(alias => expandedTerms.add(alias));
+                authorData.keywords.forEach(keyword => expandedTerms.add(keyword));
+            }
+        });
 
-            if (!lowerSearchTerm) {
-                showCardsInCategory(currentCategory);
+        return Array.from(expandedTerms);
+    }
+
+    // Enhanced match scoring algorithm
+    function calculateMatchScore(searchTerm, title, meta, description, expandedTerms, specificTarget, cardId) {
+        let score = 0;
+        const lowerSearchTerm = searchTerm.toLowerCase();
+
+        // Author-specific matching (highest priority)
+        const authorKey = Object.keys(authorMappings).find(key => 
+            key === lowerSearchTerm || authorMappings[key].aliases.includes(lowerSearchTerm)
+        );
+        
+        if (authorKey) {
+            const authorData = authorMappings[authorKey];
+            authorData.aliases.forEach(alias => {
+                if (title.includes(alias) || meta.includes(alias)) {
+                    score += 150;
+                }
+            });
+            authorData.keywords.forEach(keyword => {
+                if (title.includes(keyword) || meta.includes(keyword)) {
+                    score += 100;
+                }
+            });
+        }
+
+        // Card ID matching (for specific document targeting)
+        if (cardId && cardId.toLowerCase().includes(lowerSearchTerm)) {
+            score += 130;
+        }
+
+        // Exact title match (high priority)
+        if (title.includes(lowerSearchTerm)) {
+            score += 120;
+        }
+
+        // Exact meta match
+        if (meta.includes(lowerSearchTerm)) {
+            score += 100;
+        }
+
+        // Exact description match
+        if (description.includes(lowerSearchTerm)) {
+            score += 80;
+        }
+
+        // Specific target bonus
+        if (specificTarget) {
+            const specificLower = specificTarget.toLowerCase();
+            if (title.includes(specificLower) || meta.includes(specificLower) || 
+                (cardId && cardId.toLowerCase().includes(specificLower))) {
+                score += 90;
+            }
+        }
+
+        // Expanded terms matching
+        expandedTerms.forEach(term => {
+            if (term !== lowerSearchTerm && term.length > 2) {
+                if (title.includes(term)) score += 70;
+                if (meta.includes(term)) score += 50;
+                if (description.includes(term)) score += 30;
+            }
+        });
+
+        // Word boundary matching (more precise)
+        const words = lowerSearchTerm.split(/\s+/);
+        words.forEach(word => {
+            if (word.length > 2) {
+                const wordRegex = new RegExp(`\\b${word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
+                if (wordRegex.test(title)) score += 40;
+                if (wordRegex.test(meta)) score += 30;
+                if (wordRegex.test(description)) score += 20;
+            }
+        });
+
+        // Subject area matching
+        const subjectTerms = ['calculus', 'algebra', 'geometry', 'statistics', 'trigonometry', 'discrete'];
+        subjectTerms.forEach(subject => {
+            if (lowerSearchTerm.includes(subject) && (title.includes(subject) || meta.includes(subject))) {
+                score += 60;
+            }
+        });
+
+        return Math.min(score, 250); // Cap at 250
+    }
+
+    // Function to add match indicator with enhanced styling
+    function addMatchIndicator(card, score) {
+        removeMatchIndicator(card);
+
+        const indicator = document.createElement('div');
+        indicator.className = 'match-indicator';
+
+        let iconClass, bgColor, label, textColor = 'white';
+
+        if (score >= 120) {
+            iconClass = 'fas fa-trophy';
+            bgColor = 'linear-gradient(135deg, #ffd700, #ffed4e)';
+            textColor = '#333';
+            label = 'Perfect Match';
+        } else if (score >= 90) {
+            iconClass = 'fas fa-medal';
+            bgColor = 'linear-gradient(135deg, #28a745, #20c997)';
+            label = 'Excellent Match';
+        } else if (score >= 60) {
+            iconClass = 'fas fa-star';
+            bgColor = 'linear-gradient(135deg, #007bff, #6610f2)';
+            label = 'Good Match';
+        } else {
+            iconClass = 'fas fa-search-plus';
+            bgColor = 'linear-gradient(135deg, #6c757d, #495057)';
+            label = 'Partial Match';
+        }
+
+        indicator.style.cssText = `
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: ${bgColor};
+            color: ${textColor};
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            animation: slideInFromRight 0.3s ease-out;
+        `;
+
+        indicator.innerHTML = `<i class="${iconClass}"></i><span>${label}</span>`;
+
+        // Make sure card has relative positioning
+        card.style.position = 'relative';
+        card.appendChild(indicator);
+
+        // Add CSS animation if not already present
+        if (!document.querySelector('#match-indicator-styles')) {
+            const style = document.createElement('style');
+            style.id = 'match-indicator-styles';
+            style.textContent = `
+                @keyframes slideInFromRight {
+                    from {
+                        opacity: 0;
+                        transform: translateX(20px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateX(0);
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+    }
+
+    // Function to remove match indicator
+    function removeMatchIndicator(card) {
+        const existing = card.querySelector('.match-indicator');
+        if (existing) {
+            existing.remove();
+        }
+    }
+
+    // Function to reorder cards by relevance with smooth animation
+    function reorderCardsByRelevance(bestMatches, goodMatches, partialMatches) {
+        const container = document.querySelector('.pdf-grid');
+        if (!container) return;
+
+        // Create ordered array
+        const orderedCards = [...bestMatches, ...goodMatches, ...partialMatches];
+        
+        // Add remaining visible cards that don't have matches
+        const allVisibleCards = Array.from(container.querySelectorAll('.pdf-card[style*="block"]'));
+        allVisibleCards.forEach(card => {
+            if (!orderedCards.includes(card)) {
+                orderedCards.push(card);
+            }
+        });
+
+        // Animate reordering
+        orderedCards.forEach((card, index) => {
+            card.style.transition = 'all 0.5s ease';
+            card.style.order = index;
+        });
+    }
+
+    // Function to show cards in specific category
+    function showCardsInCategory(category) {
+        removeNoResultsMessage();
+        const searchStats = document.querySelector('.search-stats');
+        if (searchStats) searchStats.remove();
+
+        pdfCards.forEach(card => {
+            removeMatchIndicator(card);
+            if (category === 'all' || card.dataset.category === category) {
+                card.style.display = 'block';
+                card.style.order = '';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    // Enhanced search function with comprehensive matching
+    function performPDFSearch(searchTerm, specificTarget = null) {
+        const lowerSearchTerm = searchTerm.toLowerCase().trim();
+        removeNoResultsMessage();
+        
+        // Remove existing search stats
+        const existingStats = document.querySelector('.search-stats');
+        if (existingStats) existingStats.remove();
+
+        if (!lowerSearchTerm) {
+            showCardsInCategory(currentCategory);
+            return { total: 0, best: 0, good: 0, partial: 0 };
+        }
+
+        let visibleCards = 0;
+        let bestMatches = [];
+        let goodMatches = [];
+        let partialMatches = [];
+
+        // Get expanded search terms
+        const expandedTerms = getExpandedSearchTerms(lowerSearchTerm);
+
+        pdfCards.forEach(card => {
+            const title = card.querySelector('.pdf-title')?.textContent?.toLowerCase() || '';
+            const meta = card.querySelector('.pdf-meta')?.textContent?.toLowerCase() || '';
+            const description = card.querySelector('.pdf-description')?.textContent?.toLowerCase() || '';
+            const category = card.dataset.category;
+            const cardId = card.id || '';
+
+            // Skip if card doesn't match current category filter
+            if (currentCategory !== 'all' && category !== currentCategory) {
+                card.style.display = 'none';
                 return;
             }
 
-            let visibleCards = 0;
-            let bestMatches = [];
-            let goodMatches = [];
-            let partialMatches = [];
+            // Calculate match score
+            const matchScore = calculateMatchScore(
+                lowerSearchTerm,
+                title,
+                meta,
+                description,
+                expandedTerms,
+                specificTarget,
+                cardId
+            );
 
-            // Enhanced author matching patterns
-            const authorPatterns = {
-                'mcmullen': ['mcmullen', 'chris mcmullen', 'curtis mcmullen', 'essential calculus'],
-                'illowsky': ['illowsky', 'introductory statistics', 'openstax'],
-                'talbert': ['talbert', 'additional mathematics', 'pure and applied'],
-                'levin': ['levin', 'oscar levin', 'discrete mathematics', 'open introduction'],
-                'makawa': ['makawa', 'josophat makawa', 'trigonometry', 'worked examples'],
-                'stewart': ['stewart', 'james stewart', 'calculus', 'brooks cole'],
-                'ralson': ['ralson', 'ron larson', 'bruce edwards', 'calculus 11th']
-            };
+            if (matchScore > 0) {
+                addMatchIndicator(card, matchScore);
+                card.style.display = 'block';
+                visibleCards++;
 
-            // Get expanded search terms
-            const expandedTerms = getExpandedSearchTerms(lowerSearchTerm, authorPatterns);
-
-            console.log('Searching for:', lowerSearchTerm, 'Expanded terms:', expandedTerms, 'Target:', specificTarget);
-
-            pdfCards.forEach(card => {
-                const title = card.querySelector('.pdf-title')?.textContent?.toLowerCase() || '';
-                const meta = card.querySelector('.pdf-meta')?.textContent?.toLowerCase() || '';
-                const description = card.querySelector('.pdf-description')?.textContent?.toLowerCase() || '';
-                const category = card.dataset.category;
-
-                console.log('Checking card:', title.substring(0, 30) + '...');
-
-                // Skip if card doesn't match current category filter
-                if (currentCategory !== 'all' && category !== currentCategory) {
-                    card.style.display = 'none';
-                    return;
-                }
-
-                // Calculate match score with enhanced targeting
-                const matchScore = calculateEnhancedMatchScore(
-                    lowerSearchTerm,
-                    title,
-                    meta,
-                    description,
-                    expandedTerms,
-                    specificTarget
-                );
-
-                console.log('Match score for', title.substring(0, 20) + '...', ':', matchScore);
-
-                if (matchScore > 0) {
-                    addMatchIndicator(card, matchScore);
-                    card.style.display = 'block';
-                    visibleCards++;
-
-                    // Categorize matches
-                    if (matchScore >= 90) {
-                        bestMatches.push(card);
-                    } else if (matchScore >= 50) {
-                        goodMatches.push(card);
-                    } else {
-                        partialMatches.push(card);
-                    }
+                // Categorize matches with refined thresholds
+                if (matchScore >= 120) {
+                    bestMatches.push(card);
+                } else if (matchScore >= 60) {
+                    goodMatches.push(card);
                 } else {
-                    removeMatchIndicator(card);
-                    card.style.display = 'none';
+                    partialMatches.push(card);
                 }
-            });
-
-            // Sort and reorder cards by match quality
-            reorderCardsByRelevance(bestMatches, goodMatches, partialMatches);
-
-            // Show "no results" message if no cards are visible
-            if (visibleCards === 0) {
-                createNoResultsMessage(searchTerm);
+            } else {
+                removeMatchIndicator(card);
+                card.style.display = 'none';
             }
+        });
 
-            console.log(`Found ${visibleCards} results for: ${searchTerm}`);
-            return {
-                total: visibleCards,
-                best: bestMatches.length,
-                good: goodMatches.length,
-                partial: partialMatches.length
-            };
+        // Sort and reorder cards by match quality
+        reorderCardsByRelevance(bestMatches, goodMatches, partialMatches);
+
+        const results = { 
+            total: visibleCards, 
+            best: bestMatches.length, 
+            good: goodMatches.length, 
+            partial: partialMatches.length 
+        };
+
+        // Show search statistics
+        displaySearchStats(results, lowerSearchTerm);
+
+        // Show "no results" message if no cards are visible
+        if (visibleCards === 0) {
+            createNoResultsMessage(searchTerm);
         }
 
-        // Enhanced function to get expanded search terms
-        function getExpandedSearchTerms(searchTerm, authorPatterns) {
-            const expandedTerms = new Set([searchTerm]);
+        console.log(`Enhanced search results for "${searchTerm}":`, results);
+        return results;
+    }
 
-            // Check author patterns first
-            Object.keys(authorPatterns).forEach(author => {
-                if (author === searchTerm || authorPatterns[author].some(pattern =>
-                    pattern.includes(searchTerm) || searchTerm.includes(pattern)
-                )) {
-                    authorPatterns[author].forEach(term => expandedTerms.add(term));
-                }
+    // Enhanced search statistics display
+    function displaySearchStats(results, searchTerm) {
+        const existingStats = document.querySelector('.search-stats');
+        if (existingStats) {
+            existingStats.remove();
+        }
+
+        if (results && results.total > 0) {
+            const statsDiv = document.createElement('div');
+            statsDiv.className = 'search-stats';
+            statsDiv.style.cssText = `
+                padding: 1rem 1.5rem;
+                background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+                border-radius: 12px;
+                margin-bottom: 1.5rem;
+                font-size: 0.9rem;
+                color: #495057;
+                border: 1px solid #dee2e6;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                flex-wrap: wrap;
+            `;
+
+            statsDiv.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 0.5rem; font-weight: 600;">
+                    <i class="fas fa-search" style="color: #6c757d;"></i>
+                    <span>Found ${results.total} result${results.total !== 1 ? 's' : ''} for "<em>${searchTerm}</em>"</span>
+                </div>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    ${results.best > 0 ? `<span style="color: #ffd700; display: flex; align-items: center; gap: 0.25rem;"><i class="fas fa-trophy"></i> ${results.best} perfect</span>` : ''}
+                    ${results.good > 0 ? `<span style="color: #28a745; display: flex; align-items: center; gap: 0.25rem;"><i class="fas fa-star"></i> ${results.good} excellent</span>` : ''}
+                    ${results.partial > 0 ? `<span style="color: #007bff; display: flex; align-items: center; gap: 0.25rem;"><i class="fas fa-search-plus"></i> ${results.partial} partial</span>` : ''}
+                </div>
+            `;
+
+            const container = document.querySelector('.pdf-grid');
+            if (container && container.parentNode) {
+                container.parentNode.insertBefore(statsDiv, container);
+            }
+        }
+    }
+
+    // Enhanced category filtering with search preservation
+    categoryBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Update active button with enhanced styling
+            categoryBtns.forEach(b => {
+                b.classList.remove('active');
+                b.style.transform = '';
             });
+            btn.classList.add('active');
+            btn.style.transform = 'translateY(-2px)';
+            currentCategory = btn.dataset.category;
 
-            // Check existing search mappings
-            if (typeof pdfSearchMappings !== 'undefined') {
-                Object.keys(pdfSearchMappings).forEach(key => {
-                    if (key.includes(searchTerm) || searchTerm.includes(key)) {
-                        pdfSearchMappings[key].forEach(term => expandedTerms.add(term));
-                    }
+            // Re-run search if there's a search term
+            const searchTerm = searchInput.value.trim();
+            if (searchTerm) {
+                performPDFSearch(searchTerm);
+            } else {
+                showCardsInCategory(currentCategory);
+            }
+        });
+
+        // Add hover effects
+        btn.addEventListener('mouseenter', () => {
+            if (!btn.classList.contains('active')) {
+                btn.style.transform = 'translateY(-1px)';
+            }
+        });
+
+        btn.addEventListener('mouseleave', () => {
+            if (!btn.classList.contains('active')) {
+                btn.style.transform = '';
+            }
+        });
+    });
+
+    // Enhanced search input listener with debouncing
+    if (searchInput) {
+        let searchTimeout;
+        
+        searchInput.addEventListener('input', function () {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                const searchTerm = this.value;
+                performPDFSearch(searchTerm);
+            }, 300); // 300ms debounce
+        });
+
+        // Enhanced keyboard shortcuts
+        searchInput.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                this.value = '';
+                performPDFSearch('');
+                this.blur();
+            } else if (e.key === 'Enter') {
+                clearTimeout(searchTimeout);
+                performPDFSearch(this.value);
+            }
+        });
+
+        // Search input focus effects
+        searchInput.addEventListener('focus', function () {
+            this.parentElement.style.transform = 'translateY(-2px)';
+            this.parentElement.style.boxShadow = '0 8px 25px rgba(239, 68, 68, 0.15)';
+        });
+
+        searchInput.addEventListener('blur', function () {
+            this.parentElement.style.transform = '';
+            this.parentElement.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.05)';
+        });
+    }
+
+    // Global functions for external use
+    window.clearSearch = function () {
+        if (searchInput) {
+            searchInput.value = '';
+            searchInput.dispatchEvent(new Event('input'));
+            searchInput.focus();
+        }
+    };
+
+    window.showAllDocuments = function () {
+        if (searchInput) {
+            searchInput.value = '';
+        }
+        // Reset to 'all' category
+        categoryBtns.forEach(b => {
+            b.classList.remove('active');
+            b.style.transform = '';
+        });
+        const allBtn = document.querySelector('.category-btn[data-category="all"]');
+        if (allBtn) {
+            allBtn.classList.add('active');
+            allBtn.style.transform = 'translateY(-2px)';
+        }
+        currentCategory = 'all';
+        showCardsInCategory('all');
+    };
+
+    window.suggestAlternatives = function (searchTerm) {
+        const suggestions = [];
+        const lowerTerm = searchTerm.toLowerCase();
+        
+        // Generate suggestions based on partial matches
+        Object.keys(pdfSearchMappings).forEach(key => {
+            if (key.includes(lowerTerm) || lowerTerm.includes(key)) {
+                suggestions.push(key);
+            }
+        });
+
+        Object.keys(authorMappings).forEach(author => {
+            if (authorMappings[author].aliases.some(alias => 
+                alias.includes(lowerTerm) || lowerTerm.includes(alias)
+            )) {
+                suggestions.push(author);
+            }
+        });
+
+        // Remove duplicates and limit suggestions
+        const uniqueSuggestions = [...new Set(suggestions)].slice(0, 5);
+        
+        if (uniqueSuggestions.length > 0) {
+            const suggestionText = uniqueSuggestions.join(', ');
+            alert(`Try searching for: ${suggestionText}`);
+        } else {
+            alert('No specific suggestions available. Try browsing by category or using broader terms.');
+        }
+    };
+
+    // Enhanced navbar integration
+    if (typeof window.triggerResourceSearch !== 'undefined') {
+        const originalTriggerResourceSearch = window.triggerResourceSearch;
+
+        window.triggerResourceSearch = function (query, category = 'all', specific = null) {
+            // Set category first
+            if (category && category !== 'all') {
+                const categoryBtn = document.querySelector(`.category-btn[data-category="${category}"]`);
+                if (categoryBtn) {
+                    categoryBtns.forEach(b => {
+                        b.classList.remove('active');
+                        b.style.transform = '';
+                    });
+                    categoryBtn.classList.add('active');
+                    categoryBtn.style.transform = 'translateY(-2px)';
+                    currentCategory = category;
+                }
+            }
+
+            // Set search input
+            if (searchInput) {
+                searchInput.value = specific || query;
+            }
+
+            // Enhanced search with specific targeting
+            setTimeout(() => {
+                performPDFSearch(specific || query, specific);
+            }, 150);
+        };
+    }
+
+    // Listen for navbar search events
+    window.addEventListener('navbarResourceSearch', function (e) {
+        const { query, category, specific } = e.detail;
+
+        // Set category first
+        if (category && category !== 'all') {
+            const categoryBtn = document.querySelector(`.category-btn[data-category="${category}"]`);
+            if (categoryBtn) {
+                categoryBtns.forEach(b => {
+                    b.classList.remove('active');
+                    b.style.transform = '';
                 });
+                categoryBtn.classList.add('active');
+                categoryBtn.style.transform = 'translateY(-2px)';
+                currentCategory = category;
             }
-
-            return Array.from(expandedTerms);
         }
 
-        // Enhanced match scoring with better author targeting
-        function calculateEnhancedMatchScore(searchTerm, title, meta, description, expandedTerms, specificTarget) {
-            let score = 0;
+        // Set search input
+        if (searchInput) {
+            searchInput.value = specific || query;
+        }
 
-            // Specific target matching (highest priority)
-            if (specificTarget) {
-                const targetLower = specificTarget.toLowerCase();
-                if (title.includes(targetLower)) {
-                    score += 200; // Very high score for target match
-                    console.log('Target match found:', title);
-                }
+        // Perform search
+        setTimeout(() => {
+            performPDFSearch(specific || query, specific);
+        }, 100);
+    });
 
-                // Check for partial target matches
-                const targetWords = targetLower.split(' ');
-                const matchingWords = targetWords.filter(word => title.includes(word));
-                if (matchingWords.length > 0) {
-                    score += (matchingWords.length / targetWords.length) * 150;
-                    console.log('Partial target match:', matchingWords.length, '/', targetWords.length);
+    // Advanced search features
+    function initAdvancedFeatures() {
+        // Add search history
+        const searchHistory = JSON.parse(localStorage.getItem('librarySearchHistory') || '[]');
+        
+        // Search input autocomplete
+        if (searchInput) {
+            const datalist = document.createElement('datalist');
+            datalist.id = 'search-suggestions';
+            
+            // Add common search terms
+            const commonTerms = [
+                ...Object.keys(pdfSearchMappings),
+                ...Object.keys(authorMappings),
+                'calculus', 'algebra', 'statistics', 'geometry', 'trigonometry',
+                'exam', 'practice', 'tutorial', 'textbook'
+            ];
+            
+            commonTerms.forEach(term => {
+                const option = document.createElement('option');
+                option.value = term;
+                datalist.appendChild(option);
+            });
+            
+            searchInput.setAttribute('list', 'search-suggestions');
+            document.body.appendChild(datalist);
+        }
+
+        // Keyboard navigation for cards
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey || e.metaKey) {
+                switch(e.key) {
+                    case 'f':
+                        e.preventDefault();
+                        if (searchInput) {
+                            searchInput.focus();
+                            searchInput.select();
+                        }
+                        break;
+                    case 'k':
+                        e.preventDefault();
+                        window.clearSearch();
+                        break;
                 }
             }
+        });
+    }
 
-            // Exact search term matches
-            if (title.includes(searchTerm)) score += 100;
-            if (meta.includes(searchTerm)) score += 80;
-            if (description.includes(searchTerm)) score += 60;
+    // Smart search suggestions based on partial input
+    function showSmartSuggestions(partialInput) {
+        if (partialInput.length < 2) return;
 
-            // Expanded terms matching with author bonus
-            expandedTerms.forEach(term => {
-                if (term !== searchTerm) {
-                    if (title.includes(term)) score += 70;
-                    if (meta.includes(term)) score += 50;
-                    if (description.includes(term)) score += 30;
+        const suggestions = new Set();
+        const lowerInput = partialInput.toLowerCase();
+
+        // Add exact matches first
+        Object.keys(pdfSearchMappings).forEach(key => {
+            if (key.startsWith(lowerInput)) {
+                suggestions.add(key);
+            }
+        });
+
+        Object.keys(authorMappings).forEach(author => {
+            if (author.startsWith(lowerInput)) {
+                suggestions.add(author);
+            }
+        });
+
+        // Add partial matches
+        Object.keys(pdfSearchMappings).forEach(key => {
+            if (key.includes(lowerInput) && !key.startsWith(lowerInput)) {
+                suggestions.add(key);
+            }
+        });
+
+        return Array.from(suggestions).slice(0, 8);
+    }
+
+    // Enhanced card interaction
+    function enhanceCardInteractions() {
+        pdfCards.forEach(card => {
+            // Add subtle hover animation
+            card.addEventListener('mouseenter', function() {
+                if (!this.style.transform.includes('translateY')) {
+                    this.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+                    this.style.transform = 'translateY(-8px)';
+                    this.style.boxShadow = '0 12px 40px rgba(0, 0, 0, 0.15)';
                 }
             });
 
-            // Word boundary matching
-            try {
-                const wordBoundaryRegex = new RegExp(`\\b${searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
-                if (wordBoundaryRegex.test(title)) score += 40;
-                if (wordBoundaryRegex.test(meta)) score += 30;
-            } catch (e) {
-                console.warn('Regex error for term:', searchTerm, e);
-            }
-
-            // Individual word matching
-            const searchWords = searchTerm.split(/\s+/);
-            searchWords.forEach(word => {
-                if (word.length > 2) {
-                    if (title.includes(word)) score += 25;
-                    if (meta.includes(word)) score += 20;
-                    if (description.includes(word)) score += 15;
+            card.addEventListener('mouseleave', function() {
+                if (this.style.transform.includes('translateY(-8px)')) {
+                    this.style.transform = '';
+                    this.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.08)';
                 }
             });
 
-            return Math.min(score, 300); // Increased cap to 300 for better differentiation
-        }
+            // Add click tracking for analytics
+            card.addEventListener('click', function(e) {
+                if (e.target.classList.contains('pdf-btn')) {
+                    const cardTitle = this.querySelector('.pdf-title')?.textContent || 'Unknown';
+                    const actionType = e.target.classList.contains('view-btn') ? 'view' : 'download';
+                    console.log(`Card interaction: ${actionType} - ${cardTitle}`);
+                    
+                    // Store interaction in local storage for potential analytics
+                    const interactions = JSON.parse(localStorage.getItem('cardInteractions') || '[]');
+                    interactions.push({
+                        title: cardTitle,
+                        action: actionType,
+                        timestamp: new Date().toISOString()
+                    });
+                    localStorage.setItem('cardInteractions', JSON.stringify(interactions.slice(-50))); // Keep last 50
+                }
+            });
+        });
+    }
+
+    // Performance optimization for large numbers of cards
+    function optimizePerformance() {
+        // Use Intersection Observer for lazy loading animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '50px'
+        };
+
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    cardObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Initially hide cards for animation
+        pdfCards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+            cardObserver.observe(card);
+        });
+    }
+
+    // Initialize all enhanced features
+    function initializeEnhancements() {
+        handleUrlParameters();
+        initAdvancedFeatures();
+        enhanceCardInteractions();
+        optimizePerformance();
+        
+        console.log('Enhanced library search system initialized with all features');
+        console.log('Features active:', {
+            'URL parameter handling': true,
+            'Advanced search': true,
+            'Smart suggestions': true,
+            'Enhanced animations': true,
+            'Keyboard shortcuts': true,
+            'Performance optimization': true
+        });
+    }
+
+    // Call initialization
+    initializeEnhancements();
+
+    // Buy PDF function with enhanced modal (if needed)
+    window.buyPdf = function() {
+        // Enhanced modal or payment integration can be added here
+        const modal = document.createElement('div');
+        modal.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            backdrop-filter: blur(5px);
+        `;
+
+        modal.innerHTML = `
+            <div style="
+                background: white;
+                padding: 2rem;
+                border-radius: 16px;
+                max-width: 400px;
+                text-align: center;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            ">
+                <i class="fas fa-shopping-cart" style="font-size: 3rem; color: #ef4444; margin-bottom: 1rem;"></i>
+                <h3 style="margin-bottom: 1rem; color: #333;">Premium Content</h3>
+                <p style="margin-bottom: 1.5rem; color: #666; line-height: 1.6;">
+                    Payment system integration coming soon! Premium content will be available for purchase.
+                </p>
+                <button onclick="this.closest('div').remove()" style="
+                    padding: 0.75rem 2rem;
+                    background: #ef4444;
+                    color: white;
+                    border: none;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    font-weight: 500;
+                ">Close</button>
+            </div>
+        `;
+
+        document.body.appendChild(modal);
+        
+        // Auto-remove after 3 seconds
+        setTimeout(() => {
+            if (document.body.contains(modal)) {
+                modal.remove();
+            }
+        }, 3000);
+    };
+
+    // Export useful functions to window for external access
+    window.libraryUtils = {
+        performPDFSearch,
+        showCardsInCategory,
+        clearSearch: window.clearSearch,
+        showAllDocuments: window.showAllDocuments,
+        currentCategory: () => currentCategory,
+        searchMappings: pdfSearchMappings,
+        authorMappings
+    };
+
+});
     </script>
 </body>
 
