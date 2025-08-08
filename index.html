@@ -1691,37 +1691,16 @@
     <script src="/assets/js/loader.js"></script>
     <script src="/assets/js/navbar.js"></script>
     <script>
-        // Fixed navigation function that works reliably
-function navigateToLibrary(searchTerm, category) {
-    console.log('Navigating to library with:', searchTerm, category);
-    
-    // Store search data in sessionStorage for the library page to pick up
-    const searchData = {
-        query: searchTerm,
-        category: category || 'textbooks',
-        specific: searchTerm,
-        timestamp: Date.now()
-    };
-    
-    sessionStorage.setItem('pendingLibrarySearch', JSON.stringify(searchData));
-    
-    // Determine the correct relative path based on current location
+        function navigateToLibraryWithParams(searchTerm, category) {
     const currentPath = window.location.pathname;
-    let libraryPath;
+    let libraryPath = './public/resources/library/library.html';
     
-    if (currentPath.includes('/public/')) {
-        // We're already in a public subdirectory
-        libraryPath = './resources/library/library.html';
-    } else if (currentPath === '/' || currentPath.endsWith('index.html') || currentPath.endsWith('/')) {
-        // We're at the root
-        libraryPath = './public/resources/library/library.html';
-    } else {
-        // Default fallback
-        libraryPath = '/public/resources/library/library.html';
-    }
+    // Add search parameters to URL
+    const url = new URL(libraryPath, window.location.origin);
+    url.searchParams.set('search', searchTerm);
+    url.searchParams.set('category', category || 'textbooks');
     
-    // Navigate to the library page
-    window.location.href = libraryPath;
+    window.location.href = url.toString();
 }
         // Particle Animation
         function createParticles() {
