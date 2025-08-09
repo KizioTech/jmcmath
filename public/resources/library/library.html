@@ -8,21 +8,19 @@
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-8NVMG0WLL7');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4421684242850337"
-        crossorigin="anonymous"></script>
     <meta name="description"
         content="Explore our comprehensive digital library of mathematical resources, including lecture notes, past exams, and practice materials.">
     <meta name="keywords" content="Math, Education, Learning, Courses, Resources, JMC Mathematics">
     <link rel="icon" type="image/png" href="/assets/images/favicon.ico">
-    <title>JMC Math & Academics - Library</title>
+    <title>JMC Math & Academics - Digital Library</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/styles.css">
     <style>
+        /* Loading Screen */
         #loading-screen {
             position: fixed;
             top: 0;
@@ -36,17 +34,17 @@
             justify-content: center;
             z-index: 9999;
             color: white;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.5s ease;
         }
 
         .loading-spinner {
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             border: 3px solid #374151;
             border-top: 3px solid #ef4444;
             border-radius: 50%;
             animation: spin 1s linear infinite;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         @keyframes spin {
@@ -59,55 +57,23 @@
             }
         }
 
-        /* Navbar Placeholder */
-        #navbar {
-            height: 64px;
-            background: white;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
+        body.loaded #loading-screen {
+            opacity: 0;
+            pointer-events: none;
         }
 
-        /* Breadcrumb */
-        .breadcrumb {
-            padding: 1rem 0;
-            background: white;
-            margin-top: 64px;
-            border-bottom: 1px solid #e5e7eb;
-        }
 
-        .breadcrumb-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .breadcrumb a {
-            color: #6b7280;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .breadcrumb a:hover {
-            color: #ef4444;
-        }
-
-        .breadcrumb span {
-            margin: 0 0.5rem;
-            color: #9ca3af;
-        }
-
-        .breadcrumb .active {
-            color: #ef4444;
-            font-weight: 500;
+        /* Hide navbar search on library page */
+        .navbar-search,
+        .nav-search,
+        #navbar-search,
+        .header .search-container {
+            display: none !important;
         }
 
         /* Page Hero */
         .page-hero {
-            background: linear-gradient(135deg, #111827 0%, #1f2937 50%, #461515 100%);
+            background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
             color: white;
             padding: 4rem 0;
             position: relative;
@@ -121,141 +87,302 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('/assets/images/mathematics-numbers-and-mathematical-data-ftjn425sx2rnifuk.svg');
-            opacity: 0.1;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
         }
 
-        .page-hero-container {
-            max-width: 1200px;
+        .hero-container {
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 2rem;
             position: relative;
             z-index: 1;
+            text-align: center;
         }
 
-        .page-hero h1 {
-            font-size: 3rem;
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             background: linear-gradient(135deg, #ffffff 0%, #f3f4f6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .page-hero p {
+        .hero-subtitle {
             font-size: 1.25rem;
             opacity: 0.9;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        /* Search Bar in Hero */
+        .hero-search {
             max-width: 600px;
-        }
-
-        /* Content Section */
-        .content-section {
-            padding: 4rem 0;
-        }
-
-        .section-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Search Bar */
-        .search-bar {
-            margin-bottom: 2rem;
+            margin: 0 auto 2rem;
             position: relative;
         }
 
-        .search-bar input {
+        .hero-search input {
             width: 100%;
-            padding: 1rem 1rem 1rem 3rem;
-            border: 2px solid #e5e7eb;
-            border-radius: 12px;
-            font-size: 1rem;
-            background: white;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            padding: 16px 60px 16px 24px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            font-size: 18px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            backdrop-filter: blur(10px);
             transition: all 0.3s ease;
         }
 
-        .search-bar input:focus {
+        .hero-search input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .hero-search input:focus {
             outline: none;
             border-color: #ef4444;
-            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.3);
         }
 
-        .search-bar i {
+        .hero-search-btn {
             position: absolute;
-            left: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #6b7280;
-            font-size: 1.1rem;
-        }
-
-        /* Category Filters */
-        .category-filters {
+            right: 6px;
+            top: 6px;
+            background: #ef4444;
+            border: none;
+            border-radius: 50px;
+            width: 48px;
+            height: 48px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
             display: flex;
-            gap: 1rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
+            align-items: center;
             justify-content: center;
         }
 
-        .category-btn {
-            padding: 0.75rem 1.5rem;
-            border: 2px solid #ef4444;
-            border-radius: 50px;
-            background: white;
-            color: #ef4444;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-            white-space: nowrap;
+        .hero-search-btn:hover {
+            background: #dc2626;
+            transform: scale(1.05);
         }
 
-        .category-btn.active,
-        .category-btn:hover {
-            background: #ef4444;
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
-        }
-
-        /* PDF Grid */
-        .pdf-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        /* View Toggle in Hero */
+        .hero-controls {
+            display: flex;
+            justify-content: center;
             gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .view-toggle {
+            display: flex;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 6px;
+            backdrop-filter: blur(10px);
+        }
+
+        .view-btn {
+            padding: 12px 20px;
+            border: none;
+            background: transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+        }
+
+        .view-btn.active {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
             margin-top: 2rem;
         }
 
-        .pdf-card {
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ef4444;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 0.5rem;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Category Section */
+        .category-section {
+            margin-bottom: 4rem;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f1f5f9;
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1f2937;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .category-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+
+        .category-nav {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #e5e7eb;
+            background: white;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            color: #6b7280;
+        }
+
+        .nav-btn:hover {
+            border-color: #ef4444;
+            color: #ef4444;
+            transform: translateY(-2px);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .see-all-btn {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .see-all-btn:hover {
+            background: #dc2626;
+            transform: translateY(-2px);
+        }
+
+        /* Documents Container */
+        .documents-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .documents-scroll {
+            display: flex;
+            gap: 1.5rem;
+            transition: transform 0.5s ease;
+            padding: 1rem 0;
+        }
+
+        /* Grid View Styles */
+        .grid-view .documents-scroll {
+            flex-wrap: nowrap;
+        }
+
+        .document-card {
+            flex: 0 0 auto;
             background: white;
             border-radius: 16px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            overflow: hidden;
             transition: all 0.3s ease;
+            cursor: pointer;
+            overflow: hidden;
             border: 1px solid #f1f5f9;
+            position: relative;
         }
 
-        .pdf-card:hover {
+        .grid-view .document-card {
+            width: 200px;
+        }
+
+        .document-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
         }
 
-        .pdf-preview {
+        .document-cover {
+            width: 100%;
+            height: 250px;
             background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-            height: 200px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-bottom: 1px solid #e2e8f0;
             position: relative;
             overflow: hidden;
         }
 
-        .pdf-preview::before {
+        .grid-view .document-cover {
+            height: 250px;
+        }
+
+        .document-cover::before {
             content: '';
             position: absolute;
             top: -50%;
@@ -278,183 +405,503 @@
             }
         }
 
-        .pdf-preview i {
+        .document-cover i {
             font-size: 48px;
             color: #ef4444;
             position: relative;
             z-index: 1;
         }
 
-        .pdf-info {
+        .document-info {
             padding: 1.5rem;
         }
 
-        .pdf-title {
-            font-size: 1.1rem;
+        .document-title {
+            font-size: 1rem;
             font-weight: 600;
             color: #1f2937;
             margin-bottom: 0.5rem;
             line-height: 1.4;
             display: -webkit-box;
-            line-clamp: 2;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            height: 2.8rem;
+        }
+
+        .document-meta {
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+
+        .document-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: #fee2e2;
+            color: #dc2626;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* List View Styles */
+        .list-view .documents-scroll {
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .list-view .document-card {
+            width: 100%;
+            display: flex;
+            padding: 1.5rem;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .list-view .document-cover {
+            width: 120px;
+            height: 160px;
+            flex-shrink: 0;
+            border-radius: 12px;
+        }
+
+        .list-view .document-info {
+            flex: 1;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .list-view .document-title {
+            font-size: 1.25rem;
+            height: auto;
+            -webkit-line-clamp: 1;
+        }
+
+        .document-description {
+            color: #6b7280;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
 
-        .pdf-meta {
-            font-size: 0.9rem;
-            color: #6b7280;
-            margin-bottom: 1.5rem;
+        .list-view .document-meta {
+            margin-bottom: 0;
         }
 
-        .pdf-actions {
-            display: flex;
-            gap: 0.75rem;
+        /* Document Modal */
+        .document-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            padding: 2rem;
         }
 
-        .pdf-btn {
-            flex: 1;
-            padding: 0.75rem 1rem;
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            animation: modalSlideIn 0.3s ease-out;
+            position: relative;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .modal-header {
+            padding: 2rem 2rem 1rem;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 40px;
+            height: 40px;
             border: none;
-            border-radius: 8px;
+            background: #f3f4f6;
+            border-radius: 50%;
             cursor: pointer;
-            font-weight: 500;
-            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6b7280;
             transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: #e5e7eb;
+            color: #374151;
+        }
+
+        .modal-cover {
+            width: 120px;
+            height: 160px;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-cover i {
+            font-size: 36px;
+            color: #ef4444;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1rem;
             text-align: center;
+        }
+
+        .modal-meta {
+            text-align: center;
+            color: #6b7280;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .modal-description {
+            color: #374151;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
             text-decoration: none;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
+            gap: 8px;
+            transition: all 0.3s ease;
+            text-align: center;
+            border: none;
         }
 
-        .view-btn {
+        .view-btn-modal {
             background: #ef4444;
             color: white;
         }
 
-        .view-btn:hover {
+        .view-btn-modal:hover {
             background: #dc2626;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3);
         }
 
-        .download-btn {
+        .download-btn-modal {
             background: #f8fafc;
             color: #374151;
-            border: 1px solid #e5e7eb;
+            border: 2px solid #e5e7eb;
         }
 
-        .download-btn:hover {
+        .download-btn-modal:hover {
             background: #e5e7eb;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
         }
 
-        /* Footer Placeholder */
-        #footer {
-            margin-top: 4rem;
-            background: #111827;
-            color: white;
-            padding: 2rem 0;
+        /* Search Results */
+        .search-results {
+            margin-bottom: 2rem;
+        }
+
+        .search-stats {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border: 1px solid #dee2e6;
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        /* Enhanced No Results Message */
+        .no-results-message {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            margin: 2rem auto;
+            max-width: 600px;
             text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .no-results-icon {
+            font-size: 4rem;
+            color: #d1d5db;
+            margin-bottom: 1.5rem;
+        }
+
+        .no-results-title {
+            font-size: 1.5rem;
+            color: #1f2937;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .no-results-text {
+            color: #6b7280;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .no-results-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .no-results-btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: #007bff;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #1e7e34;
+            transform: translateY(-2px);
+        }
+
+        /* Match Indicators */
+        .match-indicator {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: slideInFromRight 0.3s ease-out;
+        }
+
+        @keyframes slideInFromRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Search Results Enhancement */
+        .search-results .documents-scroll {
+            flex-wrap: wrap;
+        }
+
+        .search-results .document-card {
+            margin-bottom: 1rem;
         }
 
         /* Responsive Design */
+        @media (max-width: 1024px) {
+            .main-content {
+                padding: 1.5rem;
+            }
+
+            .grid-view .document-card {
+                width: 180px;
+            }
+        }
+
         @media (max-width: 768px) {
-            .page-hero h1 {
-                font-size: 2rem;
+            .hero-controls {
+                flex-direction: column;
+                gap: 1rem;
             }
 
-            .page-hero p {
-                font-size: 1rem;
+            .main-content {
+                padding: 1rem;
             }
 
-            .section-container {
-                padding: 0 1rem;
+            .category-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
             }
 
-            .pdf-grid {
-                grid-template-columns: 1fr;
+            .category-nav {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .grid-view .document-card {
+                width: 160px;
+            }
+
+            .list-view .document-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .list-view .document-cover {
+                width: 100px;
+                height: 140px;
+            }
+
+            .modal-content {
+                margin: 1rem;
+                max-height: 90vh;
+            }
+
+            .modal-actions {
+                flex-direction: column;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .hero-stats {
                 gap: 1.5rem;
             }
 
-            .category-filters {
-                justify-content: flex-start;
-                overflow-x: auto;
-                padding-bottom: 0.5rem;
-            }
-
-            .category-btn {
-                flex-shrink: 0;
-            }
-
-            .pdf-actions {
+            .no-results-actions {
                 flex-direction: column;
-                gap: 0.5rem;
+                align-items: center;
             }
 
-            .pdf-btn {
-                flex: none;
+            .no-results-btn {
+                width: 200px;
+                justify-content: center;
             }
         }
 
         @media (max-width: 480px) {
-
-            .breadcrumb-container,
-            .page-hero-container {
-                padding: 0 1rem;
+            .grid-view .document-card {
+                width: 140px;
             }
 
-            .page-hero {
-                padding: 2rem 0;
-                padding: 4rem 1rem 3rem 1rem;
+            .document-cover {
+                height: 180px;
             }
 
-            .content-section {
-                padding: 2rem 0;
+            .grid-view .document-cover {
+                height: 180px;
+            }
+
+            .document-info {
+                padding: 1rem;
+            }
+
+            .category-title {
+                font-size: 1.5rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
             }
         }
 
-        /* Animation for cards appearing */
-        .pdf-card {
-            animation: fadeInUp 0.6s ease forwards;
-        }
-
-        .pdf-card:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-
-        .pdf-card:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .pdf-card:nth-child(3) {
-            animation-delay: 0.3s;
-        }
-
-        .pdf-card:nth-child(4) {
-            animation-delay: 0.4s;
-        }
-
-        .pdf-card:nth-child(5) {
-            animation-delay: 0.5s;
-        }
-
-        .pdf-card:nth-child(6) {
-            animation-delay: 0.6s;
-        }
-
-        .pdf-card:nth-child(7) {
-            animation-delay: 0.7s;
-        }
-
-        .pdf-card:nth-child(8) {
-            animation-delay: 0.8s;
-        }
-
-        @keyframes fadeInUp {
+        /* Additional animations */
+        @keyframes slideInUp {
             from {
                 opacity: 0;
                 transform: translateY(30px);
@@ -466,1418 +913,1356 @@
             }
         }
 
-        /* Hide loading screen after page loads */
-        body.loaded #loading-screen {
-            opacity: 0;
-            pointer-events: none;
+        .category-section {
+            animation: slideInUp 0.6s ease forwards;
+        }
+
+        .category-section:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .category-section:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .category-section:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .category-section:nth-child(4) {
+            animation-delay: 0.4s;
         }
     </style>
 </head>
+<div id="navbar"></div>
 
 <body>
-    <div id="navbar"></div>
-
-
+    <div id="loading-screen">
+        <div class="loading-spinner"></div>
+        <p>Loading Digital Library...</p>
+    </div>
 
     <section class="page-hero">
-        <div class="page-hero-container">
-            <h1>Digital Library</h1>
-            <p>Access our collection of mathematical resources, lecture notes, and practice materials.</p>
-        </div>
-    </section>
-
-    <section class="content-section">
-        <div class="section-container">
-            <!-- Search Bar -->
-            <div class="search-bar">
-                <i class="fas fa-search"></i>
-                <input type="text" id="pdfSearch" placeholder="Search for resources...">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">JMC Digital Library</h1>
+                <p class="hero-subtitle">Your gateway to a vast collection of mathematical resources. Explore lecture
+                    notes, textbooks, past exams, and practice materials to excel in your studies.</p>
             </div>
 
-            <!-- Category Filters -->
-            <div class="category-filters">
-                <button class="category-btn active" data-category="all">All Resources</button>
-                <button class="category-btn" data-category="lectures">Study Notes</button>
-                <button class="category-btn" data-category="exams">Past Exams</button>
-                <button class="category-btn" data-category="practice">Practice Materials</button>
-                <button class="category-btn" data-category="textbooks">Textbooks</button>
+            <div class="hero-search">
+                <input type="text" id="pdfsearchInput" placeholder="Search for textbooks, notes, exams...">
+                <button class="hero-search-btn" id="pdfsearchBtn">
+                    <i class="fas fa-search"></i>
+                </button>
             </div>
 
-            <!-- PDF Grid -->
-            <div class="pdf-grid">
-                <!-- Lecture Notes -->
-                <div class="pdf-card" data-category="lectures">
-                    <div class="pdf-preview">
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <div class="pdf-info">
-                        <h3 class="pdf-title">Introduction to Calculus</h3>
-                        <p class="pdf-meta">Study notes • Josophat Makawa</p>
-                        <div class="pdf-actions">
-                            <a href="../library/introtocalc.html" class="pdf-btn view-btn">
-                                <i class="fas fa-eye"></i>
-                                View
-                            </a>
-                            <button class="pdf-btn download-btn" onclick="buyPdf()">
-                                <i class="fas fa-shopping-cart"></i>
-                                Buy PDF
-                            </button>
-                        </div>
-                    </div>
+            <div class="hero-controls">
+                <div class="view-toggle">
+                    <button class="view-btn active" data-view="grid"><i class="fas fa-th-large"></i> Grid</button>
+                    <button class="view-btn" data-view="list"><i class="fas fa-list"></i> List</button>
                 </div>
+            </div>
 
-                <div class="pdf-card" data-category="lectures">
-                    <div class="pdf-preview">
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <div class="pdf-info">
-                        <h3 class="pdf-title">CALCULUS II | Transcendental Functions</h3>
-                        <p class="pdf-meta">Study notes • Josophat Makawa</p>
-                        <div class="pdf-actions">
-                            <a href="../library/transcendental functions.html" class="pdf-btn view-btn">
-                                <i class="fas fa-eye"></i>
-                                View
-                            </a>
-                            <button class="pdf-btn download-btn" onclick="buyPdf()">
-                                <i class="fas fa-shopping-cart"></i>
-                                Buy PDF
-                            </button>
-                        </div>
-                    </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="docCount">0+</span>
+                    <span class="stat-label">Documents</span>
                 </div>
-
-                <div class="pdf-card" data-category="lectures">
-                    <div class="pdf-preview">
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <div class="pdf-info">
-                        <h3 class="pdf-title">DISCRETE MATHEMATICS WITH APPLICATIONS</h3>
-                        <p class="pdf-meta">Study notes • Josophat Makawa</p>
-                        <div class="pdf-actions">
-                            <a href="../library/discrete/counting.html" class="pdf-btn view-btn">
-                                <i class="fas fa-eye"></i>
-                                View
-                            </a>
-                            <button class="pdf-btn download-btn" onclick="buyPdf()">
-                                <i class="fas fa-shopping-cart"></i>
-                                Buy PDF
-                            </button>
-                        </div>
-                    </div>
+                <div class="stat-item">
+                    <span class="stat-number">4</span>
+                    <span class="stat-label">Categories</span>
                 </div>
-
-                <!-- Past Exams -->
-                <div class="pdf-card" data-category="exams">
-                    <div class="pdf-preview">
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <div class="pdf-info">
-                        <h3 class="pdf-title">MAT221 End Semester 2 (2014)</h3>
-                        <p class="pdf-meta">Past Exam Paper</p>
-                        <div class="pdf-actions">
-                            <a href="../../../assets/pdfs/2014_Mat221_End_Semester2.pdf" class="pdf-btn view-btn"
-                                target="_blank">
-                                <i class="fas fa-eye"></i>
-                                View
-                            </a>
-                            <a href="../../../assets/pdfs/2014_Mat221_End_Semester2.pdf" class="pdf-btn download-btn"
-                                download>
-                                <i class="fas fa-download"></i>
-                                Download
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Practice Materials -->
-                <div class="pdf-card" data-category="practice">
-                    <div class="pdf-preview">
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <div class="pdf-info">
-                        <h3 class="pdf-title">MAT221 Practice Questions</h3>
-                        <p class="pdf-meta">Tutorial 3 • 135 KB</p>
-                        <div class="pdf-actions">
-                            <a href="../../../assets/pdfs/Mat221_practice_Questions_tutorial3[1].pdf"
-                                class="pdf-btn view-btn" target="_blank">
-                                <i class="fas fa-eye"></i>
-                                View
-                            </a>
-                            <a href="../../../assets/pdfs/Mat221_practice_Questions_tutorial3[1].pdf"
-                                class="pdf-btn download-btn" download>
-                                <i class="fas fa-download"></i>
-                                Download
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Textbooks -->
-                <div class="pdf-card" data-category="textbooks" id="stewart">
-                    <div class="pdf-preview">
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <div class="pdf-info">
-                        <h3 class="pdf-title">Calculus by James Stewart</h3>
-                        <p class="pdf-meta">Textbook • Brooks Cole (2015)</p>
-                        <div class="pdf-actions">
-                            <a href="../../../assets/pdfs/James Stewart - Calculus-Brooks Cole (2015).pdf"
-                                class="pdf-btn view-btn" target="_blank">
-                                <i class="fas fa-eye"></i>
-                                View
-                            </a>
-                            <a href="../../../assets/pdfs/James Stewart - Calculus-Brooks Cole (2015).pdf"
-                                class="pdf-btn download-btn" download>
-                                <i class="fas fa-download"></i>
-                                Download
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pdf-card" data-category="textbooks" id="McMullen">
-                    <div class="pdf-preview">
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <div class="pdf-info">
-                        <h3 class="pdf-title">Essential Calculus Skills Practice Workbook with Full Solutions</h3>
-                        <p class="pdf-meta">Textbook • Chris McMullen (2018)</p>
-                        <div class="pdf-actions">
-                            <a href="/assets/pdfs/McMullen, Chris - Essential Calculus Skills Practice Workbook with Full Solutions (2018, Zishka Publishing) - libgen.li.pdf"
-                                class="pdf-btn view-btn" target="_blank">
-                                <i class="fas fa-eye"></i>
-                                View
-                            </a>
-                            <a href="/assets/pdfs/McMullen, Chris - Essential Calculus Skills Practice Workbook with Full Solutions (2018, Zishka Publishing) - libgen.li.pdf"
-                                class="pdf-btn download-btn" download>
-                                <i class="fas fa-download"></i>
-                                Download
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="pdf-card" data-category="textbooks" id="illowsky">
-                    <div class="pdf-preview">
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <div class="pdf-info">
-                        <h3 class="pdf-title">Introductory Statistics | OpenStax</h3>
-                        <p class="pdf-meta">Textbook • B. Illowsky & S. Dean (2013)</p>
-                        <div class="pdf-actions">
-                            <a href="/assets/pdfs/IntroductoryStatistics openstax.pdf"
-                                class="pdf-btn view-btn" target="_blank">
-                                <i class="fas fa-eye"></i>
-                                View
-                            </a>
-                            <a href="/assets/pdfs/IntroductoryStatistics openstax.pdf"
-                                class="pdf-btn download-btn" download>
-                                <i class="fas fa-download"></i>
-                                Download
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="pdf-card" data-category="textbooks" id="talbert">
-                    <div class="pdf-preview">
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <div class="pdf-info">
-                        <h3 class="pdf-title">Additional Mathematics - Pure and Applied</h3>
-                        <p class="pdf-meta">Textbook • J. F. Talbert & H. H. Heng</p>
-                        <div class="pdf-actions">
-                            <a href="/assets/pdfs/additional-mathematics.pdf"
-                                class="pdf-btn view-btn" target="_blank">
-                                <i class="fas fa-eye"></i>
-                                View
-                            </a>
-                            <a href="/assets/pdfs/additional-mathematics.pdf"
-                                class="pdf-btn download-btn" download>
-                                <i class="fas fa-download"></i>
-                                Download
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pdf-card" data-category="textbooks" id="levin">
-                    <div class="pdf-preview">
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <div class="pdf-info">
-                        <h3 class="pdf-title">Discrete MAthematics AN Open Introduction 3rd Edition</h3>
-                        <p class="pdf-meta">Textbook • Oscar Levin</p>
-                        <div class="pdf-actions">
-                            <a href="/assets/pdfs/dmoi-tablet.pdf"
-                                class="pdf-btn view-btn" target="_blank">
-                                <i class="fas fa-eye"></i>
-                                View
-                            </a>
-                            <a href="/assets/pdfs/dmoi-tablet.pdf"
-                                class="pdf-btn download-btn" download>
-                                <i class="fas fa-download"></i>
-                                Download
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="pdf-card" data-category="textbooks" id="ralson">
-                    <div class="pdf-preview">
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <div class="pdf-info">
-                        <h3 class="pdf-title">Ralson Calculus 11th Edition</h3>
-                        <p class="pdf-meta">Textbook • Ron Ralson & Bruce Edwards </p>
-                        <div class="pdf-actions">
-                            <a href="/assets/pdfs/Calculus 11th edition by Ron Larson, Bruce Edwards.pdf"
-                                class="pdf-btn view-btn" target="_blank">
-                                <i class="fas fa-eye"></i>
-                                View
-                            </a>
-                            <a href="/assets/pdfs/Calculus 11th edition by Ron Larson, Bruce Edwards.pdf"
-                                class="pdf-btn download-btn" download>
-                                <i class="fas fa-download"></i>
-                                Download
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="pdf-card" data-category="textbooks" id="makawa">
-                    <div class="pdf-preview">
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <div class="pdf-info">
-                        <h3 class="pdf-title">Worked Examples for Trigonometry 1st Edition</h3>
-                        <p class="pdf-meta">Textbook • Josophat Makawa</p>
-                        <div class="pdf-actions">
-                            <a href="/assets/pdfs/Trig.pdf"
-                                class="pdf-btn view-btn" target="_blank">
-                                <i class="fas fa-eye"></i>
-                                View
-                            </a>
-                            <a href="/assets/pdfs/Trig.pdf"
-                                class="pdf-btn download-btn" download>
-                                <i class="fas fa-download"></i>
-                                Download
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Additional Topic Materials -->
-                <div class="pdf-card" data-category="lectures">
-                    <div class="pdf-preview">
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <div class="pdf-info">
-                        <h3 class="pdf-title">Exponential and Logarithmic Functions</h3>
-                        <p class="pdf-meta">Topic Notes • 592 KB</p>
-                        <div class="pdf-actions">
-                            <a href="../../../assets/pdfs/Exp and Log.pdf" class="pdf-btn view-btn" target="_blank">
-                                <i class="fas fa-eye"></i>
-                                View
-                            </a>
-                            <a href="../../../assets/pdfs/Exp and Log.pdf" class="pdf-btn download-btn" download>
-                                <i class="fas fa-download"></i>
-                                Download
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pdf-card" data-category="lectures">
-                    <div class="pdf-preview">
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <div class="pdf-info">
-                        <h3 class="pdf-title">Inverse Trigonometric Functions</h3>
-                        <p class="pdf-meta">Topic Notes • 628 KB</p>
-                        <div class="pdf-actions">
-                            <a href="../../../assets/pdfs/Inverse Trig. Functions.pdf" class="pdf-btn view-btn"
-                                target="_blank">
-                                <i class="fas fa-eye"></i>
-                                View
-                            </a>
-                            <a href="../../../assets/pdfs/Inverse Trig. Functions.pdf" class="pdf-btn download-btn"
-                                download>
-                                <i class="fas fa-download"></i>
-                                Download
-                            </a>
-                        </div>
-                    </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="authorCount">0+</span>
+                    <span class="stat-label">Authors</span>
                 </div>
             </div>
         </div>
     </section>
-    <section class="help-request-section">
-        <div class="help-request-container">
-            <h3 class="help-request-title">Are you lost? </h3>
-            <p></p>You can get help or request any document that you can't find here. Click on the button below.</p>
-            <button onclick="window.location.href='/public/help.html'" class="help-request-btn">Get Help</button>
-        </div>
-    </section>
 
+    <main class="main-content">
+        <div id="searchResults" class="search-results" style="display: none;">
+            <div class="search-stats"></div>
+            <div class="documents-container">
+                <div class="documents-scroll" id="searchResultsContainer"></div>
+            </div>
+        </div>
+
+        <!-- Study Notes Category -->
+        <section class="category-section" data-category="lectures">
+            <div class="category-header">
+                <div class="category-title">
+                    <div class="category-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    Study Notes
+                </div>
+                <div class="category-nav">
+                    <button class="nav-btn" id="lecturesPrev" disabled>
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="nav-btn" id="lecturesNext">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <button class="see-all-btn" onclick="viewAllInCategory('lectures')">
+                        See All <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="documents-container">
+                <div class="documents-scroll" id="lecturesContainer">
+                    <!-- Study Notes will be populated here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Textbooks Category -->
+        <section class="category-section" data-category="textbooks">
+            <div class="category-header">
+                <div class="category-title">
+                    <div class="category-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    Textbooks
+                </div>
+                <div class="category-nav">
+                    <button class="nav-btn" id="textbooksPrev" disabled>
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="nav-btn" id="textbooksNext">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <button class="see-all-btn" onclick="viewAllInCategory('textbooks')">
+                        See All <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="documents-container">
+                <div class="documents-scroll" id="textbooksContainer">
+                    <!-- Textbooks will be populated here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Past Exams Category -->
+        <section class="category-section" data-category="exams">
+            <div class="category-header">
+                <div class="category-title">
+                    <div class="category-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    Past Exams
+                </div>
+                <div class="category-nav">
+                    <button class="nav-btn" id="examsPrev" disabled>
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="nav-btn" id="examsNext">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <button class="see-all-btn" onclick="viewAllInCategory('exams')">
+                        See All <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="documents-container">
+                <div class="documents-scroll" id="examsContainer">
+                    <!-- Past Exams will be populated here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Practice Materials Category -->
+        <section class="category-section" data-category="practice">
+            <div class="category-header">
+                <div class="category-title">
+                    <div class="category-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    Practice Materials
+                </div>
+                <div class="category-nav">
+                    <button class="nav-btn" id="practicePrev" disabled>
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="nav-btn" id="practiceNext">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <button class="see-all-btn" onclick="viewAllInCategory('practice')">
+                        See All <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="documents-container">
+                <div class="documents-scroll" id="practiceContainer">
+                    <!-- Practice Materials will be populated here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Document Detail Modal -->
+    <div class="document-modal" id="documentModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-header">
+                <div class="modal-cover" id="modalCover">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <h2 class="modal-title" id="modalTitle">Document Title</h2>
+                <p class="modal-meta" id="modalMeta">Document metadata</p>
+            </div>
+            <div class="modal-body">
+                <div class="modal-description" id="modalDescription">
+                    Document description will appear here...
+                </div>
+                <div class="modal-actions">
+                    <button class="modal-btn view-btn-modal" id="modalViewBtn">
+                        <i class="fas fa-eye"></i> View Document
+                    </button>
+                    <button class="modal-btn download-btn-modal" id="modalDownloadBtn">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div id="footer"></div>
-    <div id="payment"></div>
-    <script src="/assets/js/loader.js"></script>
-    <script src="/assets/js/navbar.js"></script>
     <script>
-        // Complete Enhanced PDF filtering and search functionality with navbar integration
-document.addEventListener('DOMContentLoaded', function () {
-    // Hide loading screen when page loads
-    window.addEventListener('load', function () {
-        document.body.classList.add('loaded');
-    });
-
-    // Initialize DOM elements
-    const categoryBtns = document.querySelectorAll('.category-btn');
-    const pdfCards = document.querySelectorAll('.pdf-card');
-    const searchInput = document.getElementById('pdfSearch');
-    let currentCategory = 'all';
-    let searchResults = [];
-
-    // Enhanced search mappings for better PDF targeting
-    const pdfSearchMappings = {
-        // Calculus variations
-        'calculus': ['calculus', 'differential', 'integral', 'derivative', 'limit', 'function'],
-        'differential calculus': ['differential', 'derivative', 'calculus', 'limit'],
-        'integral calculus': ['integral', 'integration', 'calculus', 'antiderivative'],
-        'multivariable calculus': ['multivariable', 'vector', 'calculus', 'partial', 'multiple'],
-        'transcendental': ['transcendental', 'exponential', 'logarithmic', 'trigonometric'],
-
-        // Algebra variations
-        'algebra': ['algebra', 'polynomial', 'equation', 'variable', 'linear'],
-        'linear algebra': ['linear', 'matrix', 'vector', 'eigenvalue', 'determinant'],
-        'abstract algebra': ['abstract', 'group', 'ring', 'field', 'algebraic'],
-
-        // Geometry variations
-        'geometry': ['geometry', 'euclidean', 'triangle', 'circle', 'geometric'],
-        'analytic geometry': ['analytic', 'coordinate', 'geometry', 'cartesian'],
-        'differential geometry': ['differential', 'manifold', 'geometry', 'curvature'],
-
-        // Statistics and Probability
-        'statistics': ['statistics', 'data', 'mean', 'variance', 'distribution', 'statistical'],
-        'biostatistics': ['biostatistics', 'medical', 'statistics', 'biological'],
-        'probability': ['probability', 'random', 'distribution', 'expectation', 'stochastic'],
-        'introductory statistics': ['introductory', 'statistics', 'basic', 'elementary'],
-
-        // Discrete Mathematics
-        'discrete': ['discrete', 'combinatorics', 'graph', 'logic', 'counting'],
-        'discrete mathematics': ['discrete', 'mathematics', 'combinatorics', 'graph', 'logic'],
-        'counting': ['counting', 'combinatorics', 'permutation', 'combination'],
-
-        // Trigonometry
-        'trigonometry': ['trigonometry', 'sine', 'cosine', 'tangent', 'trigonometric'],
-        'inverse trigonometric': ['inverse', 'trigonometric', 'arcsin', 'arccos', 'arctan'],
-
-        // Other mathematical subjects
-        'differential equations': ['differential', 'equation', 'ode', 'pde', 'solution'],
-        'number theory': ['number', 'theory', 'prime', 'modular', 'arithmetic'],
-        'real analysis': ['real', 'analysis', 'topology', 'measure', 'continuity'],
-        'complex analysis': ['complex', 'analytic', 'holomorphic', 'contour'],
-
-        // Mathematical functions
-        'exponential': ['exponential', 'exp', 'growth', 'decay'],
-        'logarithmic': ['logarithmic', 'log', 'natural', 'logarithm'],
-        'functions': ['functions', 'domain', 'range', 'composition'],
-
-        // Practice and exam materials
-        'practice': ['practice', 'problems', 'exercises', 'workout', 'drill'],
-        'exam': ['exam', 'test', 'assessment', 'evaluation'],
-        'tutorial': ['tutorial', 'lesson', 'guide', 'instruction'],
-
-        // Authors and textbooks
-        'stewart': ['stewart', 'james'],
-        'mcmullen': ['mcmullen', 'chris', 'curtis', 'essential'],
-        'illowsky': ['illowsky', 'barbara', 'dean', 'introductory'],
-        'talbert': ['talbert', 'heng', 'additional', 'pure', 'applied'],
-        'levin': ['levin', 'oscar', 'open', 'introduction'],
-        'makawa': ['makawa', 'josophat', 'worked', 'examples'],
-        'ralson': ['ralson', 'larson', 'edwards', 'ron', 'bruce'],
-        'spivak': ['spivak', 'michael'],
-        'rudin': ['rudin', 'walter'],
-        'apostol': ['apostol', 'tom']
-    };
-
-    // Enhanced author mappings for precise targeting
-    const authorMappings = {
-        'mcmullen': {
-            aliases: ['mcmullen', 'chris', 'curtis', 'chris mcmullen'],
-            keywords: ['essential', 'calculus', 'skills', 'practice', 'workbook'],
-            category: 'textbooks'
-        },
-        'stewart': {
-            aliases: ['stewart', 'james', 'james stewart'],
-            keywords: ['calculus', 'brooks', 'cole'],
-            category: 'textbooks'
-        },
-        'illowsky': {
-            aliases: ['illowsky', 'barbara', 'dean', 'b. illowsky', 's. dean'],
-            keywords: ['introductory', 'statistics', 'openstax'],
-            category: 'textbooks'
-        },
-        'talbert': {
-            aliases: ['talbert', 'heng', 'j. f. talbert', 'h. h. heng'],
-            keywords: ['additional', 'mathematics', 'pure', 'applied'],
-            category: 'textbooks'
-        },
-        'levin': {
-            aliases: ['levin', 'oscar', 'oscar levin'],
-            keywords: ['discrete', 'mathematics', 'open', 'introduction'],
-            category: 'textbooks'
-        },
-        'makawa': {
-            aliases: ['makawa', 'josophat', 'josophat makawa'],
-            keywords: ['worked', 'examples', 'trigonometry'],
-            category: 'textbooks'
-        },
-        'ralson': {
-            aliases: ['ralson', 'larson', 'edwards', 'ron larson', 'bruce edwards'],
-            keywords: ['calculus', '11th', 'edition'],
-            category: 'textbooks'
-        }
-    };
-
-    // URL Parameter Handler
-    function handleUrlParameters() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const searchParam = urlParams.get('search');
-        
-        if (searchParam) {
-            console.log('URL search parameter found:', searchParam);
-            
-            // Set the search input value
-            if (searchInput) {
-                searchInput.value = searchParam;
-            }
-            
-            // Map search parameter to specific targeting
-            const searchMappings = {
-                'mcmullen': { category: 'textbooks', specific: 'mcmullen' },
-                'stewart': { category: 'textbooks', specific: 'stewart' },
-                'illowsky': { category: 'textbooks', specific: 'illowsky' },
-                'talbert': { category: 'textbooks', specific: 'talbert' },
-                'levin': { category: 'textbooks', specific: 'levin' },
-                'makawa': { category: 'textbooks', specific: 'makawa' },
-                'ralson': { category: 'textbooks', specific: 'ralson' },
-                'calculus': { category: 'textbooks', specific: 'calculus' },
-                'statistics': { category: 'textbooks', specific: 'statistics' },
-                'discrete': { category: 'textbooks', specific: 'discrete' },
-                'trigonometry': { category: 'textbooks', specific: 'trigonometry' }
-            };
-            
-            const mapping = searchMappings[searchParam.toLowerCase()];
-            
-            // Set appropriate category if mapping exists
-            if (mapping && mapping.category) {
-                const categoryBtn = document.querySelector(`.category-btn[data-category="${mapping.category}"]`);
-                if (categoryBtn) {
-                    categoryBtns.forEach(b => b.classList.remove('active'));
-                    categoryBtn.classList.add('active');
-                    currentCategory = mapping.category;
-                }
-            }
-            
-            // Delay search execution to ensure page is fully loaded
-            setTimeout(() => {
-                performPDFSearch(searchParam, mapping ? mapping.specific : null);
-                
-                // Clean up URL (optional - removes the parameter from address bar)
-                if (window.history.replaceState) {
-                    const newUrl = window.location.protocol + "//" + 
-                                  window.location.host + 
-                                  window.location.pathname;
-                    window.history.replaceState({ path: newUrl }, '', newUrl);
-                }
-            }, 500);
-        }
-    }
-
-    // Function to create "no results" message
-    function createNoResultsMessage(searchTerm) {
-        const existingMessage = document.querySelector('.no-results-message');
-        if (existingMessage) {
-            existingMessage.remove();
-        }
-
-        const noResultsDiv = document.createElement('div');
-        noResultsDiv.className = 'no-results-message';
-        noResultsDiv.style.cssText = `
-            text-align: center;
-            padding: 2rem;
-            color: #666;
-            background: #f8f9fa;
-            border-radius: 12px;
-            margin: 2rem auto;
-            border: 1px solid #e9ecef;
-            max-width: 600px;
-            display: block;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        `;
-
-        noResultsDiv.innerHTML = `
-            <div style="font-size: 3rem; margin-bottom: 1rem;">
-                <i class="fas fa-search" style="color: #6c757d;"></i>
-            </div>
-            <h3 style="margin-bottom: 1rem; color: #333; font-weight: 600;">
-                No documents found for "${searchTerm}"
-            </h3>
-            <p style="margin-bottom: 1.5rem; color: #666; line-height: 1.6;">
-                Try using different keywords, check spelling, or browse by category to find what you need.
-            </p>
-            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                <button onclick="clearSearch()" style="
-                    padding: 0.75rem 1.5rem;
-                    background: #007bff;
-                    color: white;
-                    border: none;
-                    border-radius: 8px;
-                    cursor: pointer;
-                    font-size: 0.9rem;
-                    font-weight: 500;
-                    display: flex;
-                    align-items: center;
-                    gap: 0.5rem;
-                    transition: all 0.3s ease;
-                " onmouseover="this.style.background='#0056b3'" onmouseout="this.style.background='#007bff'">
-                    <i class="fas fa-times"></i>Clear Search
-                </button>
-                <button onclick="showAllDocuments()" style="
-                    padding: 0.75rem 1.5rem;
-                    background: #28a745;
-                    color: white;
-                    border: none;
-                    border-radius: 8px;
-                    cursor: pointer;
-                    font-size: 0.9rem;
-                    font-weight: 500;
-                    display: flex;
-                    align-items: center;
-                    gap: 0.5rem;
-                    transition: all 0.3s ease;
-                " onmouseover="this.style.background='#1e7e34'" onmouseout="this.style.background='#28a745'">
-                    <i class="fas fa-books"></i>Show All Documents
-                </button>
-                <button onclick="suggestAlternatives('${searchTerm}')" style="
-                    padding: 0.75rem 1.5rem;
-                    background: #17a2b8;
-                    color: white;
-                    border: none;
-                    border-radius: 8px;
-                    cursor: pointer;
-                    font-size: 0.9rem;
-                    font-weight: 500;
-                    display: flex;
-                    align-items: center;
-                    gap: 0.5rem;
-                    transition: all 0.3s ease;
-                " onmouseover="this.style.background='#117a8b'" onmouseout="this.style.background='#17a2b8'">
-                    <i class="fas fa-lightbulb"></i>Suggestions
-                </button>
-            </div>
-        `;
-
-        const container = document.querySelector('.pdf-grid') || document.querySelector('.library-content');
-        if (container) {
-            container.appendChild(noResultsDiv);
-        }
-    }
-
-    // Function to remove "no results" message
-    function removeNoResultsMessage() {
-        const existingMessage = document.querySelector('.no-results-message');
-        if (existingMessage) {
-            existingMessage.remove();
-        }
-    }
-
-    // Function to get expanded search terms
-    function getExpandedSearchTerms(searchTerm) {
-        const expandedTerms = new Set([searchTerm]);
-
-        // Check direct mappings
-        Object.keys(pdfSearchMappings).forEach(key => {
-            if (key.includes(searchTerm) || searchTerm.includes(key)) {
-                pdfSearchMappings[key].forEach(term => expandedTerms.add(term));
-            }
-        });
-
-        // Add partial matches from mappings
-        Object.values(pdfSearchMappings).forEach(terms => {
-            if (terms.some(term => term.includes(searchTerm) || searchTerm.includes(term))) {
-                terms.forEach(term => expandedTerms.add(term));
-            }
-        });
-
-        // Add author-specific terms
-        Object.keys(authorMappings).forEach(authorKey => {
-            const authorData = authorMappings[authorKey];
-            if (authorData.aliases.some(alias => 
-                alias.includes(searchTerm) || searchTerm.includes(alias)
-            )) {
-                authorData.aliases.forEach(alias => expandedTerms.add(alias));
-                authorData.keywords.forEach(keyword => expandedTerms.add(keyword));
-            }
-        });
-
-        return Array.from(expandedTerms);
-    }
-
-    // Enhanced match scoring algorithm
-    function calculateMatchScore(searchTerm, title, meta, description, expandedTerms, specificTarget, cardId) {
-        let score = 0;
-        const lowerSearchTerm = searchTerm.toLowerCase();
-
-        // Author-specific matching (highest priority)
-        const authorKey = Object.keys(authorMappings).find(key => 
-            key === lowerSearchTerm || authorMappings[key].aliases.includes(lowerSearchTerm)
-        );
-        
-        if (authorKey) {
-            const authorData = authorMappings[authorKey];
-            authorData.aliases.forEach(alias => {
-                if (title.includes(alias) || meta.includes(alias)) {
-                    score += 150;
-                }
-            });
-            authorData.keywords.forEach(keyword => {
-                if (title.includes(keyword) || meta.includes(keyword)) {
-                    score += 100;
-                }
+        function loadNavbarForLibrary() {
+            return new Promise((resolve, reject) => {
+                fetch('/assets/componen/navbar.html')
+                    .then(response => {
+                        if (!response.ok) throw new Error('Navbar fetch failed');
+                        return response.text();
+                    })
+                    .then(html => {
+                        document.getElementById('navbar').innerHTML = html;
+                        resolve();
+                    })
+                    .catch(err => {
+                        console.error('Navbar load error:', err);
+                        resolve(); // Continue even if navbar fails
+                    });
             });
         }
 
-        // Card ID matching (for specific document targeting)
-        if (cardId && cardId.toLowerCase().includes(lowerSearchTerm)) {
-            score += 130;
+        function loadFooterForLibrary() {
+            return new Promise((resolve, reject) => {
+                fetch('/assets/components/footer.html')
+                    .then(response => {
+                        if (!response.ok) throw new Error('Footer fetch failed');
+                        return response.text();
+                    })
+                    .then(html => {
+                        document.getElementById('footer').innerHTML = html;
+                        resolve();
+                    })
+                    .catch(err => {
+                        console.error('Footer load error:', err);
+                        resolve(); // Continue even if footer fails
+                    });
+            });
         }
 
-        // Exact title match (high priority)
-        if (title.includes(lowerSearchTerm)) {
-            score += 120;
-        }
-
-        // Exact meta match
-        if (meta.includes(lowerSearchTerm)) {
-            score += 100;
-        }
-
-        // Exact description match
-        if (description.includes(lowerSearchTerm)) {
-            score += 80;
-        }
-
-        // Specific target bonus
-        if (specificTarget) {
-            const specificLower = specificTarget.toLowerCase();
-            if (title.includes(specificLower) || meta.includes(specificLower) || 
-                (cardId && cardId.toLowerCase().includes(specificLower))) {
-                score += 90;
-            }
-        }
-
-        // Expanded terms matching
-        expandedTerms.forEach(term => {
-            if (term !== lowerSearchTerm && term.length > 2) {
-                if (title.includes(term)) score += 70;
-                if (meta.includes(term)) score += 50;
-                if (description.includes(term)) score += 30;
-            }
-        });
-
-        // Word boundary matching (more precise)
-        const words = lowerSearchTerm.split(/\s+/);
-        words.forEach(word => {
-            if (word.length > 2) {
-                const wordRegex = new RegExp(`\\b${word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
-                if (wordRegex.test(title)) score += 40;
-                if (wordRegex.test(meta)) score += 30;
-                if (wordRegex.test(description)) score += 20;
-            }
-        });
-
-        // Subject area matching
-        const subjectTerms = ['calculus', 'algebra', 'geometry', 'statistics', 'trigonometry', 'discrete'];
-        subjectTerms.forEach(subject => {
-            if (lowerSearchTerm.includes(subject) && (title.includes(subject) || meta.includes(subject))) {
-                score += 60;
-            }
-        });
-
-        return Math.min(score, 250); // Cap at 250
-    }
-
-    // Function to add match indicator with enhanced styling
-    function addMatchIndicator(card, score) {
-        removeMatchIndicator(card);
-
-        const indicator = document.createElement('div');
-        indicator.className = 'match-indicator';
-
-        let iconClass, bgColor, label, textColor = 'white';
-
-        if (score >= 120) {
-            iconClass = 'fas fa-trophy';
-            bgColor = 'linear-gradient(135deg, #ffd700, #ffed4e)';
-            textColor = '#333';
-            label = 'Perfect Match';
-        } else if (score >= 90) {
-            iconClass = 'fas fa-medal';
-            bgColor = 'linear-gradient(135deg, #28a745, #20c997)';
-            label = 'Excellent Match';
-        } else if (score >= 60) {
-            iconClass = 'fas fa-star';
-            bgColor = 'linear-gradient(135deg, #007bff, #6610f2)';
-            label = 'Good Match';
-        } else {
-            iconClass = 'fas fa-search-plus';
-            bgColor = 'linear-gradient(135deg, #6c757d, #495057)';
-            label = 'Partial Match';
-        }
-
-        indicator.style.cssText = `
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: ${bgColor};
-            color: ${textColor};
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            z-index: 10;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-            animation: slideInFromRight 0.3s ease-out;
-        `;
-
-        indicator.innerHTML = `<i class="${iconClass}"></i><span>${label}</span>`;
-
-        // Make sure card has relative positioning
-        card.style.position = 'relative';
-        card.appendChild(indicator);
-
-        // Add CSS animation if not already present
-        if (!document.querySelector('#match-indicator-styles')) {
-            const style = document.createElement('style');
-            style.id = 'match-indicator-styles';
-            style.textContent = `
-                @keyframes slideInFromRight {
-                    from {
-                        opacity: 0;
-                        transform: translateX(20px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateX(0);
-                    }
+        // Your existing document data and functions remain the same...
+        const documentData = {
+            lectures: [
+                {
+                    id: 'intro-calculus',
+                    title: 'Introduction to Calculus',
+                    author: 'Josophat Makawa',
+                    type: 'Study Notes',
+                    description: 'Comprehensive introduction to calculus covering limits, derivatives, and basic integration techniques.',
+                    tags: ['Calculus', 'Mathematics', 'Study Notes'],
+                    viewUrl: './library/introtocalc.html',
+                    downloadUrl: '#',
+                    isPremium: true,
+                    size: '2.5 MB'
+                },
+                {
+                    id: 'transcendental',
+                    title: 'CALCULUS II | Transcendental Functions',
+                    author: 'Josophat Makawa',
+                    type: 'Study Notes',
+                    description: 'Advanced calculus covering exponential, logarithmic, and trigonometric functions with their derivatives and integrals.',
+                    tags: ['Calculus II', 'Transcendental', 'Functions'],
+                    viewUrl: './library/transcendental functions.html',
+                    downloadUrl: '#',
+                    isPremium: true,
+                    size: '3.1 MB'
+                },
+                {
+                    id: 'discrete-math',
+                    title: 'DISCRETE MATHEMATICS WITH APPLICATIONS',
+                    author: 'Josophat Makawa',
+                    type: 'Study Notes',
+                    description: 'Comprehensive guide to discrete mathematics including set theory, logic, combinatorics, and graph theory.',
+                    tags: ['Discrete Math', 'Logic', 'Combinatorics'],
+                    viewUrl: './library/discrete/counting.html',
+                    downloadUrl: '#',
+                    isPremium: true,
+                    size: '4.2 MB'
+                },
+                {
+                    id: 'exp-log',
+                    title: 'Exponential and Logarithmic Functions',
+                    author: 'Mathematics Department',
+                    type: 'Topic Notes',
+                    description: 'Detailed study of exponential and logarithmic functions, their properties, and applications.',
+                    tags: ['Exponential', 'Logarithm', 'Functions'],
+                    viewUrl: './assets/pdfs/Exp and Log.pdf',
+                    downloadUrl: './assets/pdfs/Exp and Log.pdf',
+                    isPremium: false,
+                    size: '592 KB'
+                },
+                {
+                    id: 'inverse-trig',
+                    title: 'Inverse Trigonometric Functions',
+                    author: 'Mathematics Department',
+                    type: 'Topic Notes',
+                    description: 'Complete coverage of inverse trigonometric functions, their domains, ranges, and applications.',
+                    tags: ['Trigonometry', 'Inverse Functions', 'Mathematics'],
+                    viewUrl: './assets/pdfs/Inverse Trig. Functions.pdf',
+                    downloadUrl: './assets/pdfs/Inverse Trig. Functions.pdf',
+                    isPremium: false,
+                    size: '628 KB'
                 }
-            `;
-            document.head.appendChild(style);
-        }
-    }
+            ],
+            textbooks: [
+                {
+                    id: 'stewart-calculus',
+                    title: 'Calculus by James Stewart',
+                    author: 'James Stewart',
+                    type: 'Textbook',
+                    description: 'The most successful calculus book of its generation, Stewart\'s CALCULUS offers an ideal balance of the conceptual and computational approaches to calculus.',
+                    tags: ['Calculus', 'Stewart', 'Brooks Cole'],
+                    viewUrl: './assets/pdfs/James Stewart - Calculus-Brooks Cole (2015).pdf',
+                    downloadUrl: './assets/pdfs/James Stewart - Calculus-Brooks Cole (2015).pdf',
+                    isPremium: false,
+                    size: '45.2 MB',
+                    publisher: 'Brooks Cole (2015)'
+                },
+                {
+                    id: 'mcmullen-calculus',
+                    title: 'Essential Calculus Skills Practice Workbook with Full Solutions',
+                    author: 'Chris McMullen',
+                    type: 'Textbook',
+                    description: 'A comprehensive practice workbook for calculus students with step-by-step solutions to help master essential calculus skills.',
+                    tags: ['Calculus', 'Practice', 'Workbook'],
+                    viewUrl: './assets/pdfs/McMullen, Chris - Essential Calculus Skills Practice Workbook with Full Solutions (2018, Zishka Publishing) - libgen.li.pdf',
+                    downloadUrl: './assets/pdfs/McMullen, Chris - Essential Calculus Skills Practice Workbook with Full Solutions (2018, Zishka Publishing) - libgen.li.pdf',
+                    isPremium: false,
+                    size: '8.7 MB',
+                    publisher: 'Zishka Publishing (2018)'
+                },
+                {
+                    id: 'illowsky-statistics',
+                    title: 'Introductory Statistics | OpenStax',
+                    author: 'B. Illowsky & S. Dean',
+                    type: 'Textbook',
+                    description: 'A comprehensive introduction to statistics designed for introductory statistics courses. Covers descriptive and inferential statistics.',
+                    tags: ['Statistics', 'OpenStax', 'Data Analysis'],
+                    viewUrl: './assets/pdfs/IntroductoryStatistics openstax.pdf',
+                    downloadUrl: './assets/pdfs/IntroductoryStatistics openstax.pdf',
+                    isPremium: false,
+                    size: '12.3 MB',
+                    publisher: 'OpenStax (2013)'
+                },
+                {
+                    id: 'talbert-additional',
+                    title: 'Additional Mathematics - Pure and Applied',
+                    author: 'J. F. Talbert & H. H. Heng',
+                    type: 'Textbook',
+                    description: 'Advanced mathematics textbook covering pure and applied mathematics topics for higher level students.',
+                    tags: ['Advanced Math', 'Pure Mathematics', 'Applied Mathematics'],
+                    viewUrl: './assets/pdfs/additional-mathematics.pdf',
+                    downloadUrl: './assets/pdfs/additional-mathematics.pdf',
+                    isPremium: false,
+                    size: '15.8 MB'
+                },
+                {
+                    id: 'levin-discrete',
+                    title: 'Discrete Mathematics: An Open Introduction 3rd Edition',
+                    author: 'Oscar Levin',
+                    type: 'Textbook',
+                    description: 'An open-source textbook for a first course in discrete mathematics, covering logic, proofs, sets, functions, and more.',
+                    tags: ['Discrete Math', 'Open Source', 'Logic'],
+                    viewUrl: './assets/pdfs/dmoi-tablet.pdf',
+                    downloadUrl: './assets/pdfs/dmoi-tablet.pdf',
+                    isPremium: false,
+                    size: '6.9 MB',
+                    publisher: 'Open Edition (3rd Ed.)'
+                },
+                {
+                    id: 'larson-calculus',
+                    title: 'Larson Calculus 11th Edition',
+                    author: 'Ron Larson & Bruce Edwards',
+                    type: 'Textbook',
+                    description: 'A comprehensive calculus textbook that provides clear explanations and step-by-step problem-solving techniques.',
+                    tags: ['Calculus', 'Larson', 'Edwards'],
+                    viewUrl: './assets/pdfs/Calculus 11th edition by Ron Larson, Bruce Edwards.pdf',
+                    downloadUrl: './assets/pdfs/Calculus 11th edition by Ron Larson, Bruce Edwards.pdf',
+                    isPremium: false,
+                    size: '42.1 MB',
+                    publisher: '11th Edition'
+                },
+                {
+                    id: 'makawa-trig',
+                    title: 'Worked Examples for Trigonometry 1st Edition',
+                    author: 'Josophat Makawa',
+                    type: 'Textbook',
+                    description: 'A collection of worked examples in trigonometry, designed to help students understand and master trigonometric concepts.',
+                    tags: ['Trigonometry', 'Worked Examples', 'Makawa'],
+                    viewUrl: './assets/pdfs/Trig.pdf',
+                    downloadUrl: './assets/pdfs/Trig.pdf',
+                    isPremium: false,
+                    size: '3.4 MB',
+                    publisher: '1st Edition'
+                }
+            ],
+            exams: [
+                {
+                    id: 'mat221-2014',
+                    title: 'MAT221 End Semester 2 (2014)',
+                    author: 'Mathematics Department',
+                    type: 'Past Exam Paper',
+                    description: 'End of semester examination paper for MAT221 from 2014. Covers calculus and analytical geometry topics.',
+                    tags: ['MAT221', 'Exam', '2014'],
+                    viewUrl: './assets/pdfs/2014_Mat221_End_Semester2.pdf',
+                    downloadUrl: './assets/pdfs/2014_Mat221_End_Semester2.pdf',
+                    isPremium: false,
+                    size: '245 KB',
+                    year: '2014',
+                    semester: 'Semester 2'
+                }
+            ],
+            practice: [
+                {
+                    id: 'mat221-practice',
+                    title: 'MAT221 Practice Questions',
+                    author: 'Mathematics Department',
+                    type: 'Tutorial 3',
+                    description: 'Practice questions and exercises for MAT221 course covering various calculus topics with solutions.',
+                    tags: ['MAT221', 'Practice', 'Tutorial'],
+                    viewUrl: './assets/pdfs/Mat221_practice_Questions_tutorial3[1].pdf',
+                    downloadUrl: './assets/pdfs/Mat221_practice_Questions_tutorial3[1].pdf',
+                    isPremium: false,
+                    size: '135 KB'
+                }
+            ]
+        };
 
-    // Function to remove match indicator
-    function removeMatchIndicator(card) {
-        const existing = card.querySelector('.match-indicator');
-        if (existing) {
-            existing.remove();
-        }
-    }
+        // Enhanced search mappings
+        const pdfSearchMappings = {
+            'calculus': ['calculus', 'differential', 'integral', 'derivative', 'limit', 'function'],
+            'differential calculus': ['differential', 'derivative', 'calculus', 'limit'],
+            'integral calculus': ['integral', 'integration', 'calculus', 'antiderivative'],
+            'multivariable calculus': ['multivariable', 'vector', 'calculus', 'partial', 'multiple'],
+            'transcendental': ['transcendental', 'exponential', 'logarithmic', 'trigonometric'],
+            'algebra': ['algebra', 'polynomial', 'equation', 'variable', 'linear'],
+            'linear algebra': ['linear', 'matrix', 'vector', 'eigenvalue', 'determinant'],
+            'abstract algebra': ['abstract', 'group', 'ring', 'field', 'algebraic'],
+            'geometry': ['geometry', 'euclidean', 'triangle', 'circle', 'geometric'],
+            'analytic geometry': ['analytic', 'coordinate', 'geometry', 'cartesian'],
+            'differential geometry': ['differential', 'manifold', 'geometry', 'curvature'],
+            'statistics': ['statistics', 'data', 'mean', 'variance', 'distribution', 'statistical'],
+            'biostatistics': ['biostatistics', 'medical', 'statistics', 'biological'],
+            'probability': ['probability', 'random', 'distribution', 'expectation', 'stochastic'],
+            'introductory statistics': ['introductory', 'statistics', 'basic', 'elementary'],
+            'discrete': ['discrete', 'combinatorics', 'graph', 'logic', 'counting'],
+            'discrete mathematics': ['discrete', 'mathematics', 'combinatorics', 'graph', 'logic'],
+            'counting': ['counting', 'combinatorics', 'permutation', 'combination'],
+            'trigonometry': ['trigonometry', 'sine', 'cosine', 'tangent', 'trigonometric'],
+            'inverse trigonometric': ['inverse', 'trigonometric', 'arcsin', 'arccos', 'arctan'],
+            'differential equations': ['differential', 'equation', 'ode', 'pde', 'solution'],
+            'number theory': ['number', 'theory', 'prime', 'modular', 'arithmetic'],
+            'real analysis': ['real', 'analysis', 'topology', 'measure', 'continuity'],
+            'complex analysis': ['complex', 'analytic', 'holomorphic', 'contour'],
+            'exponential': ['exponential', 'exp', 'growth', 'decay'],
+            'logarithmic': ['logarithmic', 'log', 'natural', 'logarithm'],
+            'functions': ['functions', 'domain', 'range', 'composition'],
+            'practice': ['practice', 'problems', 'exercises', 'workout', 'drill'],
+            'exam': ['exam', 'test', 'assessment', 'evaluation'],
+            'tutorial': ['tutorial', 'lesson', 'guide', 'instruction'],
+            'stewart': ['stewart', 'james'],
+            'mcmullen': ['mcmullen', 'chris', 'curtis', 'essential'],
+            'illowsky': ['illowsky', 'barbara', 'dean', 'introductory'],
+            'talbert': ['talbert', 'heng', 'additional', 'pure', 'applied'],
+            'levin': ['levin', 'oscar', 'open', 'introduction'],
+            'makawa': ['makawa', 'josophat', 'worked', 'examples'],
+            'larson': ['larson', 'edwards', 'ron', 'bruce']
+        };
 
-    // Function to reorder cards by relevance with smooth animation
-    function reorderCardsByRelevance(bestMatches, goodMatches, partialMatches) {
-        const container = document.querySelector('.pdf-grid');
-        if (!container) return;
-
-        // Create ordered array
-        const orderedCards = [...bestMatches, ...goodMatches, ...partialMatches];
-        
-        // Add remaining visible cards that don't have matches
-        const allVisibleCards = Array.from(container.querySelectorAll('.pdf-card[style*="block"]'));
-        allVisibleCards.forEach(card => {
-            if (!orderedCards.includes(card)) {
-                orderedCards.push(card);
+        // Author mappings
+        const authorMappings = {
+            'mcmullen': {
+                aliases: ['mcmullen', 'chris', 'curtis', 'chris mcmullen'],
+                keywords: ['essential', 'calculus', 'skills', 'practice', 'workbook'],
+                category: 'textbooks'
+            },
+            'stewart': {
+                aliases: ['stewart', 'james', 'james stewart'],
+                keywords: ['calculus', 'brooks', 'cole'],
+                category: 'textbooks'
+            },
+            'illowsky': {
+                aliases: ['illowsky', 'barbara', 'dean', 'b. illowsky', 's. dean'],
+                keywords: ['introductory', 'statistics', 'openstax'],
+                category: 'textbooks'
+            },
+            'talbert': {
+                aliases: ['talbert', 'heng', 'j. f. talbert', 'h. h. heng'],
+                keywords: ['additional', 'mathematics', 'pure', 'applied'],
+                category: 'textbooks'
+            },
+            'levin': {
+                aliases: ['levin', 'oscar', 'oscar levin'],
+                keywords: ['discrete', 'mathematics', 'open', 'introduction'],
+                category: 'textbooks'
+            },
+            'makawa': {
+                aliases: ['makawa', 'josophat', 'josophat makawa'],
+                keywords: ['worked', 'examples', 'trigonometry', 'calculus', 'discrete'],
+                category: 'textbooks'
+            },
+            'larson': {
+                aliases: ['larson', 'edwards', 'ron larson', 'bruce edwards'],
+                keywords: ['calculus', '11th', 'edition'],
+                category: 'textbooks'
             }
-        });
+        };
 
-        // Animate reordering
-        orderedCards.forEach((card, index) => {
-            card.style.transition = 'all 0.5s ease';
-            card.style.order = index;
-        });
-    }
+        // Library state management
+        let currentView = 'grid';
+        let categoryScrollPositions = { lectures: 0, textbooks: 0, exams: 0, practice: 0 };
+        let searchMode = false;
+        let searchResults = [];
+        let libraryInitialized = false;
 
-    // Function to show cards in specific category
-    function showCardsInCategory(category) {
-        removeNoResultsMessage();
-        const searchStats = document.querySelector('.search-stats');
-        if (searchStats) searchStats.remove();
+        // Fixed ID management to avoid conflicts
+        const librarySearchId = 'pdfSearch';
+        const heroSearchId = 'heroSearch';
 
-        pdfCards.forEach(card => {
-            removeMatchIndicator(card);
-            if (category === 'all' || card.dataset.category === category) {
-                card.style.display = 'block';
-                card.style.order = '';
-            } else {
-                card.style.display = 'none';
-            }
-        });
-    }
-
-    // Enhanced search function with comprehensive matching
-    function performPDFSearch(searchTerm, specificTarget = null) {
-        const lowerSearchTerm = searchTerm.toLowerCase().trim();
-        removeNoResultsMessage();
-        
-        // Remove existing search stats
-        const existingStats = document.querySelector('.search-stats');
-        if (existingStats) existingStats.remove();
-
-        if (!lowerSearchTerm) {
-            showCardsInCategory(currentCategory);
-            return { total: 0, best: 0, good: 0, partial: 0 };
-        }
-
-        let visibleCards = 0;
-        let bestMatches = [];
-        let goodMatches = [];
-        let partialMatches = [];
-
-        // Get expanded search terms
-        const expandedTerms = getExpandedSearchTerms(lowerSearchTerm);
-
-        pdfCards.forEach(card => {
-            const title = card.querySelector('.pdf-title')?.textContent?.toLowerCase() || '';
-            const meta = card.querySelector('.pdf-meta')?.textContent?.toLowerCase() || '';
-            const description = card.querySelector('.pdf-description')?.textContent?.toLowerCase() || '';
-            const category = card.dataset.category;
-            const cardId = card.id || '';
-
-            // Skip if card doesn't match current category filter
-            if (currentCategory !== 'all' && category !== currentCategory) {
-                card.style.display = 'none';
+        // Initialize the library with conflict resolution
+        function initializeLibrary() {
+            if (libraryInitialized) {
+                console.log('Library already initialized, skipping...');
                 return;
             }
 
-            // Calculate match score
-            const matchScore = calculateMatchScore(
-                lowerSearchTerm,
-                title,
-                meta,
-                description,
-                expandedTerms,
-                specificTarget,
-                cardId
+            try {
+                // Initialize document categories
+                Object.keys(documentData).forEach(category => {
+                    populateCategory(category, documentData[category]);
+                    setupCategoryNavigation(category);
+                });
+
+                document.body.classList.add('grid-view');
+                libraryInitialized = true;
+                console.log('Library initialized successfully');
+            } catch (error) {
+                console.error('Error initializing library:', error);
+            }
+        }
+
+        // Enhanced search setup with unique IDs
+        function setupLibrarySearch() {
+            console.log('Setting up library search...');
+
+            // Get the hero search input (rename it to avoid conflicts)
+            const heroSearchInput = document.getElementById('pdfsearchInput');
+            const heroSearchBtn = document.getElementById('pdfsearchBtn');
+
+            if (heroSearchInput) {
+                heroSearchInput.id = heroSearchId;
+
+                let searchTimeout;
+
+                // Hero search input handler
+                heroSearchInput.addEventListener('input', function () {
+                    clearTimeout(searchTimeout);
+                    const query = this.value.trim();
+
+                    searchTimeout = setTimeout(() => {
+                        if (query) {
+                            performLibrarySearch(query);
+                        } else {
+                            exitSearchMode();
+                        }
+                    }, 300);
+                });
+
+                // Hero search button handler
+                if (heroSearchBtn) {
+                    heroSearchBtn.addEventListener('click', () => {
+                        const query = heroSearchInput.value.trim();
+                        if (query) {
+                            performLibrarySearch(query);
+                        }
+                    });
+                }
+
+                // Enter key handler
+                heroSearchInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        clearTimeout(searchTimeout);
+                        const query = heroSearchInput.value.trim();
+                        if (query) {
+                            performLibrarySearch(query);
+                        }
+                    }
+                });
+
+                // Escape key handler
+                heroSearchInput.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        clearLibrarySearch();
+                    }
+                });
+
+                console.log('Library search setup completed');
+            } else {
+                console.error('Hero search input not found');
+            }
+        }
+
+        // Main library search function (isolated from navbar)
+        function performLibrarySearch(searchTerm, specificTarget = null) {
+            console.log('Performing library search for:', searchTerm);
+
+            const lowerSearchTerm = searchTerm.toLowerCase().trim();
+
+            if (!lowerSearchTerm) {
+                exitSearchMode();
+                return { total: 0, best: 0, good: 0, partial: 0 };
+            }
+
+            enterSearchMode();
+
+            let bestMatches = [];
+            let goodMatches = [];
+            let partialMatches = [];
+
+            const expandedTerms = getExpandedSearchTerms(lowerSearchTerm);
+            searchResults = [];
+
+            // Search through all documents
+            Object.keys(documentData).forEach(category => {
+                documentData[category].forEach(doc => {
+                    const matchScore = calculateMatchScore(
+                        lowerSearchTerm,
+                        doc.title.toLowerCase(),
+                        (doc.author + ' ' + doc.type).toLowerCase(),
+                        doc.description.toLowerCase(),
+                        expandedTerms,
+                        specificTarget,
+                        doc.id
+                    );
+
+                    if (matchScore > 0) {
+                        const searchDoc = { ...doc, category, matchScore };
+                        searchResults.push(searchDoc);
+
+                        if (matchScore >= 120) {
+                            bestMatches.push(searchDoc);
+                        } else if (matchScore >= 60) {
+                            goodMatches.push(searchDoc);
+                        } else {
+                            partialMatches.push(searchDoc);
+                        }
+                    }
+                });
+            });
+
+            // Sort by match score
+            searchResults.sort((a, b) => b.matchScore - a.matchScore);
+
+            const stats = {
+                total: searchResults.length,
+                best: bestMatches.length,
+                good: goodMatches.length,
+                partial: partialMatches.length
+            };
+
+            displaySearchResults(searchResults, searchTerm, stats);
+
+            console.log(`Library search results for "${searchTerm}":`, stats);
+            return stats;
+        }
+
+        // Enhanced search term expansion
+        function getExpandedSearchTerms(searchTerm) {
+            const expandedTerms = new Set([searchTerm]);
+
+            // Add terms from search mappings
+            Object.keys(pdfSearchMappings).forEach(key => {
+                if (key.includes(searchTerm) || searchTerm.includes(key)) {
+                    pdfSearchMappings[key].forEach(term => expandedTerms.add(term));
+                }
+            });
+
+            // Add terms from values
+            Object.values(pdfSearchMappings).forEach(terms => {
+                if (terms.some(term => term.includes(searchTerm) || searchTerm.includes(term))) {
+                    terms.forEach(term => expandedTerms.add(term));
+                }
+            });
+
+            // Add author-specific terms
+            Object.keys(authorMappings).forEach(authorKey => {
+                const authorData = authorMappings[authorKey];
+                if (authorData.aliases.some(alias =>
+                    alias.includes(searchTerm) || searchTerm.includes(alias)
+                )) {
+                    authorData.aliases.forEach(alias => expandedTerms.add(alias));
+                    authorData.keywords.forEach(keyword => expandedTerms.add(keyword));
+                }
+            });
+
+            return Array.from(expandedTerms);
+        }
+
+        // Enhanced match scoring algorithm
+        function calculateMatchScore(searchTerm, title, meta, description, expandedTerms, specificTarget, cardId) {
+            let score = 0;
+            const lowerSearchTerm = searchTerm.toLowerCase();
+
+            // Author-specific scoring
+            const authorKey = Object.keys(authorMappings).find(key =>
+                key === lowerSearchTerm || authorMappings[key].aliases.includes(lowerSearchTerm)
             );
 
-            if (matchScore > 0) {
-                addMatchIndicator(card, matchScore);
-                card.style.display = 'block';
-                visibleCards++;
-
-                // Categorize matches with refined thresholds
-                if (matchScore >= 120) {
-                    bestMatches.push(card);
-                } else if (matchScore >= 60) {
-                    goodMatches.push(card);
-                } else {
-                    partialMatches.push(card);
-                }
-            } else {
-                removeMatchIndicator(card);
-                card.style.display = 'none';
-            }
-        });
-
-        // Sort and reorder cards by match quality
-        reorderCardsByRelevance(bestMatches, goodMatches, partialMatches);
-
-        const results = { 
-            total: visibleCards, 
-            best: bestMatches.length, 
-            good: goodMatches.length, 
-            partial: partialMatches.length 
-        };
-
-        // Show search statistics
-        displaySearchStats(results, lowerSearchTerm);
-
-        // Show "no results" message if no cards are visible
-        if (visibleCards === 0) {
-            createNoResultsMessage(searchTerm);
-        }
-
-        console.log(`Enhanced search results for "${searchTerm}":`, results);
-        return results;
-    }
-
-    // Enhanced search statistics display
-    function displaySearchStats(results, searchTerm) {
-        const existingStats = document.querySelector('.search-stats');
-        if (existingStats) {
-            existingStats.remove();
-        }
-
-        if (results && results.total > 0) {
-            const statsDiv = document.createElement('div');
-            statsDiv.className = 'search-stats';
-            statsDiv.style.cssText = `
-                padding: 1rem 1.5rem;
-                background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-                border-radius: 12px;
-                margin-bottom: 1.5rem;
-                font-size: 0.9rem;
-                color: #495057;
-                border: 1px solid #dee2e6;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-                display: flex;
-                align-items: center;
-                gap: 1rem;
-                flex-wrap: wrap;
-            `;
-
-            statsDiv.innerHTML = `
-                <div style="display: flex; align-items: center; gap: 0.5rem; font-weight: 600;">
-                    <i class="fas fa-search" style="color: #6c757d;"></i>
-                    <span>Found ${results.total} result${results.total !== 1 ? 's' : ''} for "<em>${searchTerm}</em>"</span>
-                </div>
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                    ${results.best > 0 ? `<span style="color: #ffd700; display: flex; align-items: center; gap: 0.25rem;"><i class="fas fa-trophy"></i> ${results.best} perfect</span>` : ''}
-                    ${results.good > 0 ? `<span style="color: #28a745; display: flex; align-items: center; gap: 0.25rem;"><i class="fas fa-star"></i> ${results.good} excellent</span>` : ''}
-                    ${results.partial > 0 ? `<span style="color: #007bff; display: flex; align-items: center; gap: 0.25rem;"><i class="fas fa-search-plus"></i> ${results.partial} partial</span>` : ''}
-                </div>
-            `;
-
-            const container = document.querySelector('.pdf-grid');
-            if (container && container.parentNode) {
-                container.parentNode.insertBefore(statsDiv, container);
-            }
-        }
-    }
-
-    // Enhanced category filtering with search preservation
-    categoryBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Update active button with enhanced styling
-            categoryBtns.forEach(b => {
-                b.classList.remove('active');
-                b.style.transform = '';
-            });
-            btn.classList.add('active');
-            btn.style.transform = 'translateY(-2px)';
-            currentCategory = btn.dataset.category;
-
-            // Re-run search if there's a search term
-            const searchTerm = searchInput.value.trim();
-            if (searchTerm) {
-                performPDFSearch(searchTerm);
-            } else {
-                showCardsInCategory(currentCategory);
-            }
-        });
-
-        // Add hover effects
-        btn.addEventListener('mouseenter', () => {
-            if (!btn.classList.contains('active')) {
-                btn.style.transform = 'translateY(-1px)';
-            }
-        });
-
-        btn.addEventListener('mouseleave', () => {
-            if (!btn.classList.contains('active')) {
-                btn.style.transform = '';
-            }
-        });
-    });
-
-    // Enhanced search input listener with debouncing
-    if (searchInput) {
-        let searchTimeout;
-        
-        searchInput.addEventListener('input', function () {
-            clearTimeout(searchTimeout);
-            searchTimeout = setTimeout(() => {
-                const searchTerm = this.value;
-                performPDFSearch(searchTerm);
-            }, 300); // 300ms debounce
-        });
-
-        // Enhanced keyboard shortcuts
-        searchInput.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') {
-                this.value = '';
-                performPDFSearch('');
-                this.blur();
-            } else if (e.key === 'Enter') {
-                clearTimeout(searchTimeout);
-                performPDFSearch(this.value);
-            }
-        });
-
-        // Search input focus effects
-        searchInput.addEventListener('focus', function () {
-            this.parentElement.style.transform = 'translateY(-2px)';
-            this.parentElement.style.boxShadow = '0 8px 25px rgba(239, 68, 68, 0.15)';
-        });
-
-        searchInput.addEventListener('blur', function () {
-            this.parentElement.style.transform = '';
-            this.parentElement.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.05)';
-        });
-    }
-
-    // Global functions for external use
-    window.clearSearch = function () {
-        if (searchInput) {
-            searchInput.value = '';
-            searchInput.dispatchEvent(new Event('input'));
-            searchInput.focus();
-        }
-    };
-
-    window.showAllDocuments = function () {
-        if (searchInput) {
-            searchInput.value = '';
-        }
-        // Reset to 'all' category
-        categoryBtns.forEach(b => {
-            b.classList.remove('active');
-            b.style.transform = '';
-        });
-        const allBtn = document.querySelector('.category-btn[data-category="all"]');
-        if (allBtn) {
-            allBtn.classList.add('active');
-            allBtn.style.transform = 'translateY(-2px)';
-        }
-        currentCategory = 'all';
-        showCardsInCategory('all');
-    };
-
-    window.suggestAlternatives = function (searchTerm) {
-        const suggestions = [];
-        const lowerTerm = searchTerm.toLowerCase();
-        
-        // Generate suggestions based on partial matches
-        Object.keys(pdfSearchMappings).forEach(key => {
-            if (key.includes(lowerTerm) || lowerTerm.includes(key)) {
-                suggestions.push(key);
-            }
-        });
-
-        Object.keys(authorMappings).forEach(author => {
-            if (authorMappings[author].aliases.some(alias => 
-                alias.includes(lowerTerm) || lowerTerm.includes(alias)
-            )) {
-                suggestions.push(author);
-            }
-        });
-
-        // Remove duplicates and limit suggestions
-        const uniqueSuggestions = [...new Set(suggestions)].slice(0, 5);
-        
-        if (uniqueSuggestions.length > 0) {
-            const suggestionText = uniqueSuggestions.join(', ');
-            alert(`Try searching for: ${suggestionText}`);
-        } else {
-            alert('No specific suggestions available. Try browsing by category or using broader terms.');
-        }
-    };
-
-    // Enhanced navbar integration
-    if (typeof window.triggerResourceSearch !== 'undefined') {
-        const originalTriggerResourceSearch = window.triggerResourceSearch;
-
-        window.triggerResourceSearch = function (query, category = 'all', specific = null) {
-            // Set category first
-            if (category && category !== 'all') {
-                const categoryBtn = document.querySelector(`.category-btn[data-category="${category}"]`);
-                if (categoryBtn) {
-                    categoryBtns.forEach(b => {
-                        b.classList.remove('active');
-                        b.style.transform = '';
-                    });
-                    categoryBtn.classList.add('active');
-                    categoryBtn.style.transform = 'translateY(-2px)';
-                    currentCategory = category;
-                }
-            }
-
-            // Set search input
-            if (searchInput) {
-                searchInput.value = specific || query;
-            }
-
-            // Enhanced search with specific targeting
-            setTimeout(() => {
-                performPDFSearch(specific || query, specific);
-            }, 150);
-        };
-    }
-
-    // Listen for navbar search events
-    window.addEventListener('navbarResourceSearch', function (e) {
-        const { query, category, specific } = e.detail;
-
-        // Set category first
-        if (category && category !== 'all') {
-            const categoryBtn = document.querySelector(`.category-btn[data-category="${category}"]`);
-            if (categoryBtn) {
-                categoryBtns.forEach(b => {
-                    b.classList.remove('active');
-                    b.style.transform = '';
+            if (authorKey) {
+                const authorData = authorMappings[authorKey];
+                authorData.aliases.forEach(alias => {
+                    if (title.includes(alias) || meta.includes(alias)) {
+                        score += 150;
+                    }
                 });
-                categoryBtn.classList.add('active');
-                categoryBtn.style.transform = 'translateY(-2px)';
-                currentCategory = category;
+                authorData.keywords.forEach(keyword => {
+                    if (title.includes(keyword) || meta.includes(keyword)) {
+                        score += 100;
+                    }
+                });
+            }
+
+            // ID matching
+            if (cardId && cardId.toLowerCase().includes(lowerSearchTerm)) {
+                score += 130;
+            }
+
+            // Direct text matching
+            if (title.includes(lowerSearchTerm)) score += 120;
+            if (meta.includes(lowerSearchTerm)) score += 100;
+            if (description.includes(lowerSearchTerm)) score += 80;
+
+            // Specific target matching
+            if (specificTarget) {
+                const specificLower = specificTarget.toLowerCase();
+                if (title.includes(specificLower) || meta.includes(specificLower) ||
+                    (cardId && cardId.toLowerCase().includes(specificLower))) {
+                    score += 90;
+                }
+            }
+
+            // Expanded terms matching
+            expandedTerms.forEach(term => {
+                if (term !== lowerSearchTerm && term.length > 2) {
+                    if (title.includes(term)) score += 70;
+                    if (meta.includes(term)) score += 50;
+                    if (description.includes(term)) score += 30;
+                }
+            });
+
+            // Word-by-word matching
+            const words = lowerSearchTerm.split(/\s+/);
+            words.forEach(word => {
+                if (word.length > 2) {
+                    try {
+                        const wordRegex = new RegExp(`\\b${word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
+                        if (wordRegex.test(title)) score += 40;
+                        if (wordRegex.test(meta)) score += 30;
+                        if (wordRegex.test(description)) score += 20;
+                    } catch (e) {
+                        // Fallback to simple includes
+                        if (title.includes(word)) score += 35;
+                        if (meta.includes(word)) score += 25;
+                        if (description.includes(word)) score += 15;
+                    }
+                }
+            });
+
+            // Subject-specific bonus
+            const subjectTerms = ['calculus', 'algebra', 'geometry', 'statistics', 'trigonometry', 'discrete'];
+            subjectTerms.forEach(subject => {
+                if (lowerSearchTerm.includes(subject) && (title.includes(subject) || meta.includes(subject))) {
+                    score += 60;
+                }
+            });
+
+            return Math.min(score, 250);
+        }
+
+        // Enhanced event listeners setup
+        function setupEventListeners() {
+            // View toggle functionality
+            const viewBtns = document.querySelectorAll('.view-btn');
+            viewBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    viewBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentView = btn.dataset.view;
+                    toggleView(currentView);
+                });
+            });
+
+            // Setup library search
+            setupLibrarySearch();
+
+            // Setup modal
+            setupModal();
+        }
+
+        // Navbar integration functions (safe)
+        function handleNavbarSearch(query, category = 'all', specific = null) {
+            console.log('Handling navbar search:', { query, category, specific });
+
+            // Update hero search input
+            const heroSearchInput = document.getElementById(heroSearchId);
+            if (heroSearchInput) {
+                heroSearchInput.value = specific || query;
+            }
+
+            // Perform the search
+            setTimeout(() => {
+                performLibrarySearch(specific || query, specific);
+            }, 100);
+        }
+
+        // External search trigger (for navbar integration)
+        function triggerLibraryResourceSearch(query, category = 'all', specific = null) {
+            console.log('External resource search triggered:', { query, category, specific });
+            handleNavbarSearch(query, category, specific);
+        }
+
+        // URL parameter handling
+        function handleUrlParameters() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const searchParam = urlParams.get('search');
+            const pendingSearchJSON = sessionStorage.getItem('pendingSearch');
+
+            let searchTermToUse = null;
+            let specificTerm = null;
+
+            if (searchParam) {
+                console.log('URL search parameter found:', searchParam);
+                searchTermToUse = searchParam;
+            } else if (pendingSearchJSON) {
+                console.log('Session storage search data found:', pendingSearchJSON);
+                try {
+                    const pendingSearch = JSON.parse(pendingSearchJSON);
+                    searchTermToUse = pendingSearch.specific || pendingSearch.query;
+                    specificTerm = pendingSearch.specific;
+                    sessionStorage.removeItem('pendingSearch');
+                } catch (e) {
+                    console.error("Error parsing pending search data:", e);
+                    sessionStorage.removeItem('pendingSearch');
+                }
+            }
+
+            if (searchTermToUse) {
+                const heroSearchInput = document.getElementById(heroSearchId);
+                if (heroSearchInput) {
+                    heroSearchInput.value = searchTermToUse;
+                }
+
+                setTimeout(() => {
+                    performLibrarySearch(searchTermToUse, specificTerm);
+
+                    // Clean up URL
+                    if (window.history.replaceState && searchParam) {
+                        const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+                        window.history.replaceState({ path: newUrl }, '', newUrl);
+                    }
+                }, 500);
             }
         }
 
-        // Set search input
-        if (searchInput) {
-            searchInput.value = specific || query;
+        // View management functions
+        function toggleView(view) {
+            document.body.className = document.body.className.replace(/\b(grid|list)-view\b/g, '');
+            document.body.classList.add(`${view}-view`);
         }
 
-        // Perform search
-        setTimeout(() => {
-            performPDFSearch(specific || query, specific);
-        }, 100);
-    });
-
-    // Advanced search features
-    function initAdvancedFeatures() {
-        // Add search history
-        const searchHistory = JSON.parse(localStorage.getItem('librarySearchHistory') || '[]');
-        
-        // Search input autocomplete
-        if (searchInput) {
-            const datalist = document.createElement('datalist');
-            datalist.id = 'search-suggestions';
-            
-            // Add common search terms
-            const commonTerms = [
-                ...Object.keys(pdfSearchMappings),
-                ...Object.keys(authorMappings),
-                'calculus', 'algebra', 'statistics', 'geometry', 'trigonometry',
-                'exam', 'practice', 'tutorial', 'textbook'
-            ];
-            
-            commonTerms.forEach(term => {
-                const option = document.createElement('option');
-                option.value = term;
-                datalist.appendChild(option);
+        function enterSearchMode() {
+            searchMode = true;
+            document.querySelectorAll('.category-section').forEach(section => {
+                section.style.display = 'none';
             });
-            
-            searchInput.setAttribute('list', 'search-suggestions');
-            document.body.appendChild(datalist);
+            const searchResults = document.getElementById('searchResults');
+            if (searchResults) searchResults.style.display = 'block';
         }
 
-        // Keyboard navigation for cards
-        document.addEventListener('keydown', function(e) {
-            if (e.ctrlKey || e.metaKey) {
-                switch(e.key) {
-                    case 'f':
-                        e.preventDefault();
-                        if (searchInput) {
-                            searchInput.focus();
-                            searchInput.select();
-                        }
-                        break;
-                    case 'k':
-                        e.preventDefault();
-                        window.clearSearch();
-                        break;
-                }
-            }
-        });
-    }
-
-    // Smart search suggestions based on partial input
-    function showSmartSuggestions(partialInput) {
-        if (partialInput.length < 2) return;
-
-        const suggestions = new Set();
-        const lowerInput = partialInput.toLowerCase();
-
-        // Add exact matches first
-        Object.keys(pdfSearchMappings).forEach(key => {
-            if (key.startsWith(lowerInput)) {
-                suggestions.add(key);
-            }
-        });
-
-        Object.keys(authorMappings).forEach(author => {
-            if (author.startsWith(lowerInput)) {
-                suggestions.add(author);
-            }
-        });
-
-        // Add partial matches
-        Object.keys(pdfSearchMappings).forEach(key => {
-            if (key.includes(lowerInput) && !key.startsWith(lowerInput)) {
-                suggestions.add(key);
-            }
-        });
-
-        return Array.from(suggestions).slice(0, 8);
-    }
-
-    // Enhanced card interaction
-    function enhanceCardInteractions() {
-        pdfCards.forEach(card => {
-            // Add subtle hover animation
-            card.addEventListener('mouseenter', function() {
-                if (!this.style.transform.includes('translateY')) {
-                    this.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
-                    this.style.transform = 'translateY(-8px)';
-                    this.style.boxShadow = '0 12px 40px rgba(0, 0, 0, 0.15)';
-                }
+        function exitSearchMode() {
+            searchMode = false;
+            document.querySelectorAll('.category-section').forEach(section => {
+                section.style.display = 'block';
             });
+            const searchResults = document.getElementById('searchResults');
+            if (searchResults) searchResults.style.display = 'none';
+        }
 
-            card.addEventListener('mouseleave', function() {
-                if (this.style.transform.includes('translateY(-8px)')) {
-                    this.style.transform = '';
-                    this.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.08)';
-                }
+        // Document display functions
+        function populateCategory(category, documents) {
+            const container = document.getElementById(`${category}Container`);
+            if (!container) return;
+
+            container.innerHTML = '';
+
+            documents.forEach(doc => {
+                const docElement = createDocumentCard(doc);
+                container.appendChild(docElement);
             });
+        }
 
-            // Add click tracking for analytics
-            card.addEventListener('click', function(e) {
-                if (e.target.classList.contains('pdf-btn')) {
-                    const cardTitle = this.querySelector('.pdf-title')?.textContent || 'Unknown';
-                    const actionType = e.target.classList.contains('view-btn') ? 'view' : 'download';
-                    console.log(`Card interaction: ${actionType} - ${cardTitle}`);
-                    
-                    // Store interaction in local storage for potential analytics
-                    const interactions = JSON.parse(localStorage.getItem('cardInteractions') || '[]');
-                    interactions.push({
-                        title: cardTitle,
-                        action: actionType,
-                        timestamp: new Date().toISOString()
-                    });
-                    localStorage.setItem('cardInteractions', JSON.stringify(interactions.slice(-50))); // Keep last 50
+        function createDocumentCard(doc) {
+            const card = document.createElement('div');
+            card.className = 'document-card';
+            card.dataset.docId = doc.id;
+
+            const tagsHtml = doc.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
+            const premiumBadge = doc.isPremium ? '<i class="fas fa-crown" style="color: #fbbf24; margin-left: 8px;"></i>' : '';
+
+            card.innerHTML = `
+        <div class="document-cover">
+            <i class="fas fa-file-pdf"></i>
+        </div>
+        <div class="document-info">
+            <h3 class="document-title">${doc.title}${premiumBadge}</h3>
+            <p class="document-meta">${doc.type} • ${doc.author}</p>
+            <div class="document-description">${doc.description}</div>
+            <div class="document-tags">
+                ${tagsHtml}
+            </div>
+            <div class="document-size" style="font-size: 0.8rem; color: #9ca3af; margin-top: 0.5rem;">
+                ${doc.size}${doc.publisher ? ` • ${doc.publisher}` : ''}
+            </div>
+        </div>
+    `;
+
+            card.addEventListener('click', () => showDocumentModal(doc));
+            return card;
+        }
+
+        // Search results display
+        function displaySearchResults(results, query, stats) {
+            const container = document.getElementById('searchResultsContainer');
+            const statsContainer = document.querySelector('.search-stats');
+
+            if (!container) return;
+
+            if (results.length === 0) {
+                container.innerHTML = createNoResultsMessage(query);
+                if (statsContainer) {
+                    statsContainer.innerHTML = `<p>No results found for "${query}"</p>`;
+                    statsContainer.style.display = 'block';
                 }
-            });
-        });
-    }
+                return;
+            }
 
-    // Performance optimization for large numbers of cards
-    function optimizePerformance() {
-        // Use Intersection Observer for lazy loading animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '50px'
-        };
-
-        const cardObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    cardObserver.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        // Initially hide cards for animation
-        pdfCards.forEach((card, index) => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-            cardObserver.observe(card);
-        });
-    }
-
-    // Initialize all enhanced features
-    function initializeEnhancements() {
-        handleUrlParameters();
-        initAdvancedFeatures();
-        enhanceCardInteractions();
-        optimizePerformance();
-        
-        console.log('Enhanced library search system initialized with all features');
-        console.log('Features active:', {
-            'URL parameter handling': true,
-            'Advanced search': true,
-            'Smart suggestions': true,
-            'Enhanced animations': true,
-            'Keyboard shortcuts': true,
-            'Performance optimization': true
-        });
-    }
-
-    // Call initialization
-    initializeEnhancements();
-
-    // Buy PDF function with enhanced modal (if needed)
-    window.buyPdf = function() {
-        // Enhanced modal or payment integration can be added here
-        const modal = document.createElement('div');
-        modal.style.cssText = `
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-            backdrop-filter: blur(5px);
-        `;
-
-        modal.innerHTML = `
-            <div style="
-                background: white;
-                padding: 2rem;
-                border-radius: 16px;
-                max-width: 400px;
-                text-align: center;
-                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            ">
-                <i class="fas fa-shopping-cart" style="font-size: 3rem; color: #ef4444; margin-bottom: 1rem;"></i>
-                <h3 style="margin-bottom: 1rem; color: #333;">Premium Content</h3>
-                <p style="margin-bottom: 1.5rem; color: #666; line-height: 1.6;">
-                    Payment system integration coming soon! Premium content will be available for purchase.
-                </p>
-                <button onclick="this.closest('div').remove()" style="
-                    padding: 0.75rem 2rem;
-                    background: #ef4444;
-                    color: white;
-                    border: none;
-                    border-radius: 8px;
-                    cursor: pointer;
-                    font-weight: 500;
-                ">Close</button>
+            // Display statistics
+            if (statsContainer) {
+                statsContainer.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 1rem; font-weight: 600;">
+                <i class="fas fa-search" style="color: #6c757d;"></i>
+                <span>Found ${results.length} result${results.length !== 1 ? 's' : ''} for "<em>${query}</em>"</span>
+            </div>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                ${stats.best > 0 ? `<span style="color: #ffd700; display: flex; align-items: center; gap: 0.25rem;"><i class="fas fa-trophy"></i> ${stats.best} perfect</span>` : ''}
+                ${stats.good > 0 ? `<span style="color: #28a745; display: flex; align-items: center; gap: 0.25rem;"><i class="fas fa-star"></i> ${stats.good} excellent</span>` : ''}
+                ${stats.partial > 0 ? `<span style="color: #007bff; display: flex; align-items: center; gap: 0.25rem;"><i class="fas fa-search-plus"></i> ${stats.partial} partial</span>` : ''}
             </div>
         `;
-
-        document.body.appendChild(modal);
-        
-        // Auto-remove after 3 seconds
-        setTimeout(() => {
-            if (document.body.contains(modal)) {
-                modal.remove();
+                statsContainer.style.display = 'block';
             }
-        }, 3000);
-    };
 
-    // Export useful functions to window for external access
-    window.libraryUtils = {
-        performPDFSearch,
-        showCardsInCategory,
-        clearSearch: window.clearSearch,
-        showAllDocuments: window.showAllDocuments,
-        currentCategory: () => currentCategory,
-        searchMappings: pdfSearchMappings,
-        authorMappings
-    };
+            // Display results
+            container.innerHTML = '';
+            results.forEach(doc => {
+                const docElement = createDocumentCard(doc);
+                if (doc.matchScore) {
+                    addMatchIndicator(docElement, doc.matchScore);
+                }
+                container.appendChild(docElement);
+            });
+        }
 
-});
+        // Match indicator functions
+        function addMatchIndicator(card, score) {
+            removeMatchIndicator(card);
+
+            const indicator = document.createElement('div');
+            indicator.className = 'match-indicator';
+
+            let iconClass, bgColor, label, textColor = 'white';
+
+            if (score >= 120) {
+                iconClass = 'fas fa-trophy';
+                bgColor = 'linear-gradient(135deg, #ffd700, #ffed4e)';
+                textColor = '#333';
+                label = 'Perfect Match';
+            } else if (score >= 90) {
+                iconClass = 'fas fa-medal';
+                bgColor = 'linear-gradient(135deg, #28a745, #20c997)';
+                label = 'Excellent Match';
+            } else if (score >= 60) {
+                iconClass = 'fas fa-star';
+                bgColor = 'linear-gradient(135deg, #007bff, #6610f2)';
+                label = 'Good Match';
+            } else {
+                iconClass = 'fas fa-search-plus';
+                bgColor = 'linear-gradient(135deg, #6c757d, #495057)';
+                label = 'Partial Match';
+            }
+
+            indicator.style.cssText = `
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background: ${bgColor};
+        color: ${textColor};
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        z-index: 10;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.2);
+        animation: slideInFromRight 0.3s ease-out;
+    `;
+
+            indicator.innerHTML = `<i class="${iconClass}"></i><span>${label}</span>`;
+
+            card.style.position = 'relative';
+            card.appendChild(indicator);
+        }
+
+        function removeMatchIndicator(card) {
+            const existing = card.querySelector('.match-indicator');
+            if (existing) existing.remove();
+        }
+
+        // No results message
+        function createNoResultsMessage(searchTerm) {
+            return `
+        <div class="no-results-message">
+            <div class="no-results-icon">
+                <i class="fas fa-search"></i>
+            </div>
+            <h3 class="no-results-title">
+                No documents found for "${searchTerm}"
+            </h3>
+            <p class="no-results-text">
+                Try using different keywords, check spelling, or browse by category to find what you need.
+            </p>
+            <div class="no-results-actions">
+                <button onclick="clearLibrarySearch()" class="no-results-btn btn-primary">
+                    <i class="fas fa-times"></i>Clear Search
+                </button>
+                <button onclick="showAllDocuments()" class="no-results-btn btn-success">
+                    <i class="fas fa-books"></i>Show All Documents
+                </button>
+            </div>
+        </div>
+    `;
+        }
+
+        // Category navigation
+        function setupCategoryNavigation(category) {
+            const prevBtn = document.getElementById(`${category}Prev`);
+            const nextBtn = document.getElementById(`${category}Next`);
+            const container = document.getElementById(`${category}Container`);
+
+            if (!prevBtn || !nextBtn || !container) return;
+
+            const scrollAmount = currentView === 'grid' ? 220 : 400;
+
+            prevBtn.addEventListener('click', () => {
+                categoryScrollPositions[category] = Math.max(0, categoryScrollPositions[category] - scrollAmount);
+                updateCategoryScroll(category);
+            });
+
+            nextBtn.addEventListener('click', () => {
+                const maxScroll = container.scrollWidth - container.parentElement.clientWidth;
+                categoryScrollPositions[category] = Math.min(maxScroll, categoryScrollPositions[category] + scrollAmount);
+                updateCategoryScroll(category);
+            });
+
+            updateCategoryScroll(category);
+        }
+
+        function updateCategoryScroll(category) {
+            const container = document.getElementById(`${category}Container`);
+            const prevBtn = document.getElementById(`${category}Prev`);
+            const nextBtn = document.getElementById(`${category}Next`);
+
+            if (!container) return;
+
+            container.style.transform = `translateX(-${categoryScrollPositions[category]}px)`;
+
+            if (prevBtn) prevBtn.disabled = categoryScrollPositions[category] <= 0;
+
+            const maxScroll = container.scrollWidth - container.parentElement.clientWidth;
+            if (nextBtn) nextBtn.disabled = categoryScrollPositions[category] >= maxScroll;
+        }
+
+        // Modal functions
+        function showDocumentModal(doc) {
+            const modal = document.getElementById('documentModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalMeta = document.getElementById('modalMeta');
+            const modalDescription = document.getElementById('modalDescription');
+            const modalViewBtn = document.getElementById('modalViewBtn');
+            const modalDownloadBtn = document.getElementById('modalDownloadBtn');
+
+            if (!modal || !modalTitle || !modalMeta || !modalDescription || !modalViewBtn || !modalDownloadBtn) return;
+
+            modalTitle.textContent = doc.title;
+            modalMeta.textContent = `${doc.type} • ${doc.author}`;
+            modalDescription.textContent = doc.description;
+
+            if (doc.isPremium) {
+                modalViewBtn.innerHTML = '<i class="fas fa-crown"></i> Premium Content';
+                modalViewBtn.onclick = () => showPremiumMessage();
+                modalDownloadBtn.innerHTML = '<i class="fas fa-shopping-cart"></i> Purchase';
+                modalDownloadBtn.onclick = () => showPremiumMessage();
+            } else {
+                modalViewBtn.innerHTML = '<i class="fas fa-eye"></i> View Document';
+                modalViewBtn.onclick = () => {
+                    window.open(doc.viewUrl, '_blank');
+                    closeModal();
+                };
+
+                modalDownloadBtn.innerHTML = '<i class="fas fa-download"></i> Download';
+                modalDownloadBtn.onclick = () => {
+                    const link = document.createElement('a');
+                    link.href = doc.downloadUrl;
+                    link.download = doc.title + '.pdf';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                };
+            }
+
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function setupModal() {
+            const modal = document.getElementById('documentModal');
+            const closeBtn = document.getElementById('modalClose');
+
+            if (!modal || !closeBtn) return;
+
+            closeBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.style.display === 'flex') {
+                    closeModal();
+                }
+            });
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('documentModal');
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        }
+
+        function showPremiumMessage() {
+            alert('This is premium content. Payment system integration coming soon!');
+        }
+
+        // Utility functions
+        function updateHeroStats() {
+            try {
+                const docCount = Object.values(documentData).flat().length;
+                const authors = new Set(Object.values(documentData).flat().map(doc => doc.author));
+
+                const docCountEl = document.getElementById('docCount');
+                const authorCountEl = document.getElementById('authorCount');
+
+                if (docCountEl) docCountEl.textContent = `${docCount}+`;
+                if (authorCountEl) authorCountEl.textContent = `${authors.size}+`;
+            } catch (e) {
+                console.error("Could not update hero stats:", e);
+            }
+        }
+
+        // Search control functions
+        function clearLibrarySearch() {
+            const heroSearchInput = document.getElementById(heroSearchId);
+            if (heroSearchInput) {
+                heroSearchInput.value = '';
+                exitSearchMode();
+                heroSearchInput.focus();
+            }
+        }
+
+        function showAllDocuments() {
+            clearLibrarySearch();
+            exitSearchMode();
+        }
+
+        function viewAllInCategory(category) {
+            const categoryNames = {
+                lectures: 'Study Notes',
+                textbooks: 'Textbooks',
+                exams: 'Past Exams',
+                practice: 'Practice Materials'
+            };
+
+            alert(`Viewing all ${categoryNames[category]}. This would navigate to a dedicated page with all documents in this category.`);
+        }
+
+        // Add required CSS for animations and indicators
+        function addRequiredCSS() {
+            if (!document.querySelector('#library-enhancements')) {
+                const style = document.createElement('style');
+                style.id = 'library-enhancements';
+                style.textContent = `
+            @keyframes slideInFromRight {
+                from { opacity: 0; transform: translateX(20px); }
+                to { opacity: 1; transform: translateX(0); }
+            }
+            
+            @keyframes slideInUp {
+                from { opacity: 0; transform: translateY(30px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            
+            .documents-scroll {
+                transition: transform 0.3s ease;
+            }
+            
+            .document-card {
+                transition: all 0.3s ease;
+            }
+            
+            .category-section {
+                animation: slideInUp 0.6s ease forwards;
+            }
+            
+            .category-section:nth-child(1) { animation-delay: 0.1s; }
+            .category-section:nth-child(2) { animation-delay: 0.2s; }
+            .category-section:nth-child(3) { animation-delay: 0.3s; }
+            .category-section:nth-child(4) { animation-delay: 0.4s; }
+        `;
+                document.head.appendChild(style);
+            }
+        }
+
+        // Main initialization function
+        function initializeLibrarySystem() {
+            console.log('Initializing library system with integrated loader...');
+
+            try {
+                // Load navbar and footer first
+                Promise.all([
+                    loadNavbarForLibrary(),
+                    loadFooterForLibrary()
+                ]).then(() => {
+                    console.log('Navbar and footer loaded');
+
+                    // Initialize core library
+                    initializeLibrary();
+
+                    // Setup event listeners
+                    setupEventListeners();
+
+                    // Update statistics
+                    updateHeroStats();
+
+                    // Handle URL parameters
+                    handleUrlParameters();
+
+                    // Add required CSS
+                    addRequiredCSS();
+
+                    console.log('Library system fully initialized');
+
+                    // Hide loading screen
+                    setTimeout(() => {
+                        document.body.classList.add('loaded');
+                    }, 1000);
+                }).catch(error => {
+                    console.error('Error loading components:', error);
+                    // Still try to initialize library even if components fail
+                    initializeLibrary();
+                    setupEventListeners();
+                    updateHeroStats();
+                    handleUrlParameters();
+                    addRequiredCSS();
+
+                    setTimeout(() => {
+                        document.body.classList.add('loaded');
+                    }, 1000);
+                });
+
+            } catch (error) {
+                console.error('Error initializing library system:', error);
+            }
+        }
+
+        // Global exports for external use
+        window.libraryUtils = {
+            performLibrarySearch,
+            clearLibrarySearch,
+            showAllDocuments,
+            searchMappings: pdfSearchMappings,
+            authorMappings,
+            documentData,
+            triggerLibraryResourceSearch,
+            handleNavbarSearch
+        };
+
+        // Global functions for HTML onclick events
+        window.clearLibrarySearch = clearLibrarySearch;
+        window.showAllDocuments = showAllDocuments;
+        window.viewAllInCategory = viewAllInCategory;
+
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('DOM loaded, initializing library with integrated loader...');
+            initializeLibrarySystem();
+        });
+
+        // Also initialize if DOM is already loaded
+        if (document.readyState === 'loading') {
+            // DOM is still loading, event listener will handle it
+        } else {
+            // DOM is already loaded
+            console.log('DOM already loaded, initializing library immediately...');
+            initializeLibrarySystem();
+        }
+
+        console.log('Enhanced JMC Digital Library script loaded with integrated navbar/footer loading');
     </script>
+    <script src="/assets/js/navbar.js"></script>
+    <script src="/assets/js/loader.js"></script>
 </body>
 
 </html>
