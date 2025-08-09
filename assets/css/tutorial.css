@@ -356,6 +356,11 @@ body {
     padding: 1rem;
   }
 }
+@media (max-width: 480px) {
+  .tutorial-header {
+    padding: 4rem 1rem 3rem 1rem;
+  }
+}
 
 /* Back to tutorials link */
 .back-link {
