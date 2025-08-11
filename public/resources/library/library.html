@@ -31,6 +31,11 @@
         content="Explore our comprehensive digital library of mathematical resources, including lecture notes, past exams, and practice materials.">
     <meta property="twitter:image"
         content="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=1200&q=80">
+        <meta property="og:title" content="Document Title Here">
+<meta property="og:description" content="Document description here">
+<meta property="og:image" content="Full absolute URL to your cover image">
+<meta property="og:url" content="Exact link you’re sharing">
+
     <link rel="icon" type="image/png" href="/assets/images/favicon.ico">
     <title>JMC Math & Academics - Digital Library</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -158,8 +163,15 @@
         }
 
         @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .mobile-nav-links {
@@ -172,7 +184,8 @@
             padding: 12px 0;
             text-align: center;
             border-radius: 8px;
-            justify-content: center; /* Center icon and text */
+            justify-content: center;
+            /* Center icon and text */
         }
 
         /* Loading Screen */
@@ -1371,6 +1384,77 @@
             background: #e5e7eb;
             color: #1f2937;
         }
+
+        /* 6. ADD THESE CSS STYLES to your existing stylesheet */
+        /* Add these styles to the <style> section in the <head> */
+
+        /* Document cover image styling */
+        .document-cover img {
+            transition: transform 0.3s ease;
+        }
+
+        .document-card:hover .document-cover img {
+            transform: scale(1.05);
+        }
+
+        /* Share button styling */
+        .share-btn:hover {
+            background: #e5e7eb !important;
+            color: #374151 !important;
+            transform: scale(1.05);
+        }
+
+        /* Modal cover image styling */
+        .modal-cover img {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Share modal backdrop */
+        #shareModal {
+            animation: fadeIn 0.3s ease;
+        }
+
+        #shareModal>div {
+            animation: slideInUp 0.3s ease;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive adjustments for share buttons */
+        @media (max-width: 480px) {
+            .document-actions {
+                margin-top: 0.5rem !important;
+            }
+
+            .share-btn {
+                padding: 4px 8px !important;
+                font-size: 0.7rem !important;
+            }
+
+            #shareModal>div {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+
+            .share-platform-btn {
+                padding: 0.75rem !important;
+                font-size: 0.8rem;
+            }
+
+            .share-platform-btn i {
+                font-size: 1.2rem !important;
+            }
+        }
     </style>
 </head>
 
@@ -1565,7 +1649,7 @@
                     <div class="category-icon">
                         <i class="fas fa-dumbbell"></i>
                     </div>
-                    Practice Materials
+                    Tutorials Practice Materials
                 </div>
                 <div class="category-nav">
                     <button class="nav-btn" id="practicePrev" disabled>
@@ -1717,8 +1801,9 @@
                     tags: ['Calculus', 'Mathematics', 'Study Notes'],
                     viewUrl: './library/introtocalc.html',
                     downloadUrl: '#',
-                    isPremium: true,
-                    size: '2.5 MB'
+                    isPremium: false,
+                    size: '2.5 MB',
+                    coverImage: './assets/images/covers/intro-calculus-cover.jpg'
                 },
                 {
                     id: 'transcendental',
@@ -1729,8 +1814,9 @@
                     tags: ['Calculus II', 'Transcendental', 'Functions'],
                     viewUrl: './library/transcendental functions.html',
                     downloadUrl: '#',
-                    isPremium: true,
-                    size: '3.1 MB'
+                    isPremium: false,
+                    size: '3.1 MB',
+                    coverImage: './assets/images/covers/intro-calculus-cover.jpg'
                 },
                 {
                     id: 'discrete-math',
@@ -1741,8 +1827,9 @@
                     tags: ['Discrete Math', 'Logic', 'Combinatorics'],
                     viewUrl: './library/discrete/counting.html',
                     downloadUrl: '#',
-                    isPremium: true,
-                    size: '4.2 MB'
+                    isPremium: false,
+                    size: '4.2 MB',
+                    coverImage: './assets/images/covers/intro-calculus-cover.jpg'
                 },
                 {
                     id: 'exp-log',
@@ -1754,7 +1841,8 @@
                     viewUrl: './assets/pdfs/Exp and Log.pdf',
                     downloadUrl: './assets/pdfs/Exp and Log.pdf',
                     isPremium: false,
-                    size: '592 KB'
+                    size: '592 KB',
+                    coverImage: './assets/images/covers/intro-calculus-cover.jpg'
                 },
                 {
                     id: 'inverse-trig',
@@ -1766,7 +1854,9 @@
                     viewUrl: './assets/pdfs/Inverse Trig. Functions.pdf',
                     downloadUrl: './assets/pdfs/Inverse Trig. Functions.pdf',
                     isPremium: false,
-                    size: '628 KB'
+                    size: '628 KB',
+                    coverImage: './assets/images/covers/intro-calculus-cover.jpg'
+
                 }
             ],
             textbooks: [
@@ -1781,7 +1871,8 @@
                     downloadUrl: './assets/pdfs/James Stewart - Calculus-Brooks Cole (2015).pdf',
                     isPremium: false,
                     size: '45.2 MB',
-                    publisher: 'Brooks Cole (2015)'
+                    publisher: 'Brooks Cole (2015)',
+                    coverImage: './assets/images/covers/stewwart.svg'
                 },
                 {
                     id: 'mcmullen-calculus',
@@ -1794,7 +1885,8 @@
                     downloadUrl: './assets/pdfs/McMullen, Chris - Essential Calculus Skills Practice Workbook with Full Solutions (2018, Zishka Publishing) - libgen.li.pdf',
                     isPremium: false,
                     size: '8.7 MB',
-                    publisher: 'Zishka Publishing (2018)'
+                    publisher: 'Zishka Publishing (2018)',
+                    coverImage: './assets/images/covers/mcmullen-calculus.jpg'
                 },
                 {
                     id: 'illowsky-statistics',
@@ -1807,7 +1899,8 @@
                     downloadUrl: './assets/pdfs/IntroductoryStatistics openstax.pdf',
                     isPremium: false,
                     size: '12.3 MB',
-                    publisher: 'OpenStax (2013)'
+                    publisher: 'OpenStax (2013)',
+                    coverImage: './assets/images/covers/illowsky-statistics.jpg'
                 },
                 {
                     id: 'talbert-additional',
@@ -1819,7 +1912,9 @@
                     viewUrl: './assets/pdfs/additional-mathematics.pdf',
                     downloadUrl: './assets/pdfs/additional-mathematics.pdf',
                     isPremium: false,
-                    size: '15.8 MB'
+                    size: '15.8 MB',
+                    publisher: 'Open Edition',
+                    coverImage: './assets/images/covers/talbert-additional.jpg'
                 },
                 {
                     id: 'levin-discrete',
@@ -1832,7 +1927,8 @@
                     downloadUrl: './assets/pdfs/dmoi-tablet.pdf',
                     isPremium: false,
                     size: '6.9 MB',
-                    publisher: 'Open Edition (3rd Ed.)'
+                    publisher: 'Open Edition (3rd Ed.)',
+                    coverImage: './assets/images/covers/intro-calculus-cover.jpg'
                 },
                 {
                     id: 'larson-calculus',
@@ -1845,7 +1941,8 @@
                     downloadUrl: './assets/pdfs/Calculus 11th edition by Ron Larson, Bruce Edwards.pdf',
                     isPremium: false,
                     size: '42.1 MB',
-                    publisher: '11th Edition'
+                    publisher: '11th Edition',
+                    coverImage: './assets/images/covers/larson-calculus.jpg'
                 },
                 {
                     id: 'makawa-trig',
@@ -1858,7 +1955,8 @@
                     downloadUrl: './assets/pdfs/Trig.pdf',
                     isPremium: false,
                     size: '3.4 MB',
-                    publisher: '1st Edition'
+                    publisher: '1st Edition',
+                    coverImage: './assets/images/covers/makawa-trig.jpg'
                 }
             ],
             exams: [
@@ -1874,7 +1972,8 @@
                     isPremium: false,
                     size: '245 KB',
                     year: '2014',
-                    semester: 'Semester 2'
+                    semester: 'Semester 2',
+                    coverImage: './assets/images/covers/exam-cover.jpg'
                 }
             ],
             practice: [
@@ -1888,7 +1987,8 @@
                     viewUrl: './assets/pdfs/Mat221_practice_Questions_tutorial3[1].pdf',
                     downloadUrl: './assets/pdfs/Mat221_practice_Questions_tutorial3[1].pdf',
                     isPremium: false,
-                    size: '135 KB'
+                    size: '135 KB',
+                    coverImage: './assets/images/covers/practice-cover.jpg'
                 }
             ]
         };
@@ -1929,6 +2029,203 @@
         let categoryScrollPositions = { lectures: 0, textbooks: 0, exams: 0, practice: 0 };
         let searchMode = false;
         let searchResults = [];
+
+        // 4. ADD SOCIAL MEDIA SHARING FUNCTIONS
+        // Add these new functions to your JavaScript (before the initialization functions):
+
+        // Generate shareable URL for a document
+        function generateShareableUrl(docId) {
+            const baseUrl = window.location.origin + window.location.pathname;
+            return `${baseUrl}?doc=${docId}&share=1`;
+        }
+
+        // Get document by ID from all categories
+        function getDocumentById(docId) {
+            for (const category in documentData) {
+                const doc = documentData[category].find(d => d.id === docId);
+                if (doc) return { ...doc, category };
+            }
+            return null;
+        }
+
+        // Main share function
+        function shareDocument(docId) {
+            const doc = getDocumentById(docId);
+            if (!doc) {
+                console.error('Document not found:', docId);
+                return;
+            }
+
+            const shareUrl = generateShareableUrl(docId);
+            const shareTitle = `${doc.title} - JMC Digital Library`;
+            const shareDescription = doc.description;
+            const shareImage = doc.coverImage ?
+                (doc.coverImage.startsWith('http') ? doc.coverImage : window.location.origin + '/' + doc.coverImage.replace('./', '')) :
+                'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=1200&q=80';
+
+            // Create sharing modal
+            createSharingModal(shareUrl, shareTitle, shareDescription, shareImage, doc);
+        }
+
+        // Create sharing modal
+        function createSharingModal(url, title, description, image, doc) {
+            const modal = document.createElement('div');
+            modal.id = 'shareModal';
+            modal.style.cssText = `
+        position: fixed; top: 0; left: 0; right: 0; bottom: 0; 
+        background: rgba(0,0,0,0.8); display: flex; align-items: center; 
+        justify-content: center; z-index: 2000; backdrop-filter: blur(5px);
+    `;
+
+            const modalContent = document.createElement('div');
+            modalContent.style.cssText = `
+        background: white; border-radius: 16px; padding: 2rem; 
+        max-width: 500px; width: 90%; text-align: center; position: relative;
+    `;
+
+            modalContent.innerHTML = `
+        <button onclick="closeSharingModal()" style="position: absolute; top: 1rem; right: 1rem; 
+                background: #f3f4f6; border: none; border-radius: 50%; width: 32px; height: 32px; 
+                cursor: pointer; display: flex; align-items: center; justify-content: center;">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <div style="margin-bottom: 1.5rem;">
+            <h3 style="margin-bottom: 0.5rem; color: #1f2937;">Share Document</h3>
+            <p style="color: #6b7280; font-size: 0.9rem;">${doc.title}</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1.5rem;">
+            <button onclick="shareToTwitter('${encodeURIComponent(url)}', '${encodeURIComponent(title)}', '${encodeURIComponent(description)}')" 
+                    class="share-platform-btn" data-platform="twitter">
+                <i class="fab fa-twitter"></i>
+                <span>Twitter</span>
+            </button>
+            
+            <button onclick="shareToFacebook('${encodeURIComponent(url)}')" 
+                    class="share-platform-btn" data-platform="facebook">
+                <i class="fab fa-facebook-f"></i>
+                <span>Facebook</span>
+            </button>
+            
+            <button onclick="shareToLinkedIn('${encodeURIComponent(url)}', '${encodeURIComponent(title)}', '${encodeURIComponent(description)}')" 
+                    class="share-platform-btn" data-platform="linkedin">
+                <i class="fab fa-linkedin-in"></i>
+                <span>LinkedIn</span>
+            </button>
+            
+            <button onclick="shareToWhatsApp('${encodeURIComponent(url)}', '${encodeURIComponent(title)}')" 
+                    class="share-platform-btn" data-platform="whatsapp">
+                <i class="fab fa-whatsapp"></i>
+                <span>WhatsApp</span>
+            </button>
+        </div>
+
+        <div style="margin-bottom: 1rem;">
+            <label style="display: block; font-size: 0.9rem; color: #6b7280; margin-bottom: 0.5rem;">Share Link:</label>
+            <div style="display: flex; gap: 0.5rem;">
+                <input type="text" id="shareUrlInput" value="${url}" readonly 
+                       style="flex: 1; padding: 0.5rem; border: 2px solid #e5e7eb; border-radius: 8px; 
+                              background: #f9fafb; font-size: 0.9rem;">
+                <button onclick="copyShareUrl()" style="background: #ef4444; color: white; border: none; 
+                        padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer; white-space: nowrap;">
+                    <i class="fas fa-copy"></i> Copy
+                </button>
+            </div>
+        </div>
+
+        <div style="font-size: 0.8rem; color: #9ca3af;">
+            Share this document with others to help them access valuable educational resources.
+        </div>
+    `;
+
+            modal.appendChild(modalContent);
+            document.body.appendChild(modal);
+
+            // Add styles for share platform buttons
+            const style = document.createElement('style');
+            style.textContent = `
+        .share-platform-btn {
+            display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+            padding: 1rem; border: 2px solid #e5e7eb; border-radius: 12px; background: white;
+            cursor: pointer; transition: all 0.3s ease; text-decoration: none; color: #374151;
+        }
+        .share-platform-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .share-platform-btn[data-platform="twitter"] { border-color: #1da1f2; }
+        .share-platform-btn[data-platform="twitter"]:hover { background: #1da1f2; color: white; }
+        .share-platform-btn[data-platform="facebook"] { border-color: #4267B2; }
+        .share-platform-btn[data-platform="facebook"]:hover { background: #4267B2; color: white; }
+        .share-platform-btn[data-platform="linkedin"] { border-color: #0077B5; }
+        .share-platform-btn[data-platform="linkedin"]:hover { background: #0077B5; color: white; }
+        .share-platform-btn[data-platform="whatsapp"] { border-color: #25D366; }
+        .share-platform-btn[data-platform="whatsapp"]:hover { background: #25D366; color: white; }
+        .share-platform-btn i { font-size: 1.5rem; }
+    `;
+            document.head.appendChild(style);
+
+            // Close modal on background click
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeSharingModal();
+            });
+        }
+
+        // Platform-specific sharing functions
+        function shareToTwitter(url, title, description) {
+            const tweetText = `${decodeURIComponent(title)} - ${decodeURIComponent(description).substring(0, 100)}... Check it out at JMC Digital Library!`;
+            const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}&url=${url}`;
+            window.open(twitterUrl, '_blank', 'width=600,height=400');
+        }
+
+        function shareToFacebook(url) {
+            const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+            window.open(facebookUrl, '_blank', 'width=600,height=400');
+        }
+
+        function shareToLinkedIn(url, title, description) {
+            const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}&title=${title}&summary=${description}`;
+            window.open(linkedInUrl, '_blank', 'width=600,height=400');
+        }
+
+        function shareToWhatsApp(url, title) {
+            const message = `Check out this document: ${decodeURIComponent(title)} - ${decodeURIComponent(url)}`;
+            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Utility functions
+        function copyShareUrl() {
+            const input = document.getElementById('shareUrlInput');
+            input.select();
+            input.setSelectionRange(0, 99999);
+            document.execCommand('copy');
+
+            // Show feedback
+            const button = event.target.closest('button');
+            const originalContent = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-check"></i> Copied!';
+            button.style.background = '#10b981';
+
+            setTimeout(() => {
+                button.innerHTML = originalContent;
+                button.style.background = '#ef4444';
+            }, 2000);
+        }
+
+        function closeSharingModal() {
+            const modal = document.getElementById('shareModal');
+            if (modal) {
+                document.body.removeChild(modal);
+            }
+        }
+
+        // Global function for HTML onclick events
+        window.shareDocument = shareDocument;
+        window.shareToTwitter = shareToTwitter;
+        window.shareToFacebook = shareToFacebook;
+        window.shareToLinkedIn = shareToLinkedIn;
+        window.shareToWhatsApp = shareToWhatsApp;
+        window.copyShareUrl = copyShareUrl;
+        window.closeSharingModal = closeSharingModal;
 
         // Initialize the library
         function initializeLibrary() {
@@ -2258,6 +2555,9 @@
             });
         }
 
+        // 2. UPDATE createDocumentCard FUNCTION 
+        // Replace the existing createDocumentCard function with this:
+
         function createDocumentCard(doc) {
             const card = document.createElement('div');
             card.className = 'document-card';
@@ -2266,9 +2566,16 @@
             const tagsHtml = doc.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
             const premiumBadge = doc.isPremium ? '<i class="fas fa-crown" style="color: #fbbf24; margin-left: 8px;"></i>' : '';
 
+            // Handle cover image with fallback to icon
+            const coverContent = doc.coverImage
+                ? `<img src="${doc.coverImage}" alt="${doc.title} cover" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;" 
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+           <i class="fas fa-file-pdf" style="display: none;"></i>`
+                : `<i class="fas fa-file-pdf"></i>`;
+
             card.innerHTML = `
         <div class="document-cover">
-            <i class="fas fa-file-pdf"></i>
+            ${coverContent}
         </div>
         <div class="document-info">
             <h3 class="document-title">${doc.title}${premiumBadge}</h3>
@@ -2279,6 +2586,13 @@
             </div>
             <div class="document-size" style="font-size: 0.8rem; color: #9ca3af; margin-top: 0.5rem;">
                 ${doc.size}${doc.publisher ? ` • ${doc.publisher}` : ''}
+            </div>
+            <div class="document-actions" style="margin-top: 1rem; display: flex; gap: 0.5rem;">
+                <button class="share-btn" onclick="shareDocument('${doc.id}'); event.stopPropagation();" 
+                        style="padding: 6px 12px; background: #f3f4f6; border: none; border-radius: 6px; 
+                               color: #6b7280; font-size: 0.8rem; cursor: pointer; transition: all 0.2s;">
+                    <i class="fas fa-share-alt"></i>
+                </button>
             </div>
         </div>
     `;
@@ -2450,6 +2764,9 @@
         }
 
         // Modal functions
+        // 3. UPDATE showDocumentModal FUNCTION
+        // Replace the existing showDocumentModal function with this:
+
         function showDocumentModal(doc) {
             const modal = document.getElementById('documentModal');
             const modalTitle = document.getElementById('modalTitle');
@@ -2457,12 +2774,34 @@
             const modalDescription = document.getElementById('modalDescription');
             const modalViewBtn = document.getElementById('modalViewBtn');
             const modalDownloadBtn = document.getElementById('modalDownloadBtn');
+            const modalCover = document.getElementById('modalCover');
 
-            if (!modal || !modalTitle || !modalMeta || !modalDescription || !modalViewBtn || !modalDownloadBtn) return;
+            if (!modal || !modalTitle || !modalMeta || !modalDescription || !modalViewBtn || !modalDownloadBtn || !modalCover) return;
+
+            // Update modal cover with image or fallback icon
+            if (doc.coverImage) {
+                modalCover.innerHTML = `
+            <img src="${doc.coverImage}" alt="${doc.title} cover" 
+                 style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;" 
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <i class="fas fa-file-pdf" style="display: none; font-size: 36px; color: #ef4444;"></i>
+        `;
+            } else {
+                modalCover.innerHTML = '<i class="fas fa-file-pdf" style="font-size: 36px; color: #ef4444;"></i>';
+            }
 
             modalTitle.textContent = doc.title;
             modalMeta.textContent = `${doc.type} • ${doc.author}`;
-            modalDescription.textContent = doc.description;
+            modalDescription.innerHTML = `
+        ${doc.description}
+        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #f1f5f9;">
+            <button onclick="shareDocument('${doc.id}')" style="background: #1da1f2; color: white; border: none; 
+                    padding: 8px 16px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 8px; 
+                    margin-bottom: 0.5rem; transition: background 0.2s;">
+                <i class="fas fa-share-alt"></i> Share Document
+            </button>
+        </div>
+    `;
 
             if (doc.isPremium) {
                 modalViewBtn.innerHTML = '<i class="fas fa-crown"></i> Premium Content';
@@ -2615,11 +2954,41 @@
         }
 
         // URL parameter handling
+        // 5. UPDATE URL PARAMETER HANDLING FUNCTION
+        // Replace the existing handleUrlParameters function with this:
+
         function handleUrlParameters() {
             const urlParams = new URLSearchParams(window.location.search);
             const searchParam = urlParams.get('search');
             const categoryParam = urlParams.get('category');
+            const docParam = urlParams.get('doc');
+            const shareParam = urlParams.get('share');
 
+            // Handle document sharing URL
+            if (docParam) {
+                const doc = getDocumentById(docParam);
+                if (doc) {
+                    // Update meta tags for social sharing
+                    updateSocialMetaTags(doc);
+
+                    // If it's a share request, show the document modal
+                    if (shareParam) {
+                        setTimeout(() => {
+                            showDocumentModal(doc);
+                        }, 1000);
+                    }
+
+                    // Clean up URL for better UX
+                    setTimeout(() => {
+                        if (window.history.replaceState) {
+                            const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+                            window.history.replaceState({ path: newUrl }, '', newUrl);
+                        }
+                    }, 2000);
+                }
+            }
+
+            // Handle search parameters
             if (searchParam) {
                 console.log('URL search parameter found:', searchParam, 'category:', categoryParam);
                 const searchInput = document.getElementById('heroSearchInput');
@@ -2629,13 +2998,50 @@
 
                 setTimeout(() => {
                     performSearch(searchParam, categoryParam);
-
-                    // Clean up URL
-                    if (window.history.replaceState) {
-                        const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
-                        window.history.replaceState({ path: newUrl }, '', newUrl);
-                    }
                 }, 500);
+            }
+        }
+
+        // Function to update social media meta tags dynamically
+        function updateSocialMetaTags(doc) {
+            const title = `${doc.title} - JMC Digital Library`;
+            const description = doc.description;
+            const imageUrl = doc.coverImage ?
+                (doc.coverImage.startsWith('http') ? doc.coverImage : window.location.origin + '/' + doc.coverImage.replace('./', '')) :
+                'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=1200&q=80';
+            const url = window.location.href;
+
+            // Update or create meta tags
+            updateMetaTag('og:title', title);
+            updateMetaTag('og:description', description);
+            updateMetaTag('og:image', imageUrl);
+            updateMetaTag('og:url', url);
+            updateMetaTag('twitter:title', title);
+            updateMetaTag('twitter:description', description);
+            updateMetaTag('twitter:image', imageUrl);
+
+            // Update document title
+            document.title = title;
+
+            console.log('Updated meta tags for document:', doc.title);
+        }
+
+        // Helper function to update or create meta tags
+        function updateMetaTag(property, content) {
+            let metaTag = document.querySelector(`meta[property="${property}"]`) ||
+                document.querySelector(`meta[name="${property}"]`);
+
+            if (metaTag) {
+                metaTag.setAttribute('content', content);
+            } else {
+                metaTag = document.createElement('meta');
+                if (property.startsWith('og:') || property.startsWith('twitter:')) {
+                    metaTag.setAttribute('property', property);
+                } else {
+                    metaTag.setAttribute('name', property);
+                }
+                metaTag.setAttribute('content', content);
+                document.head.appendChild(metaTag);
             }
         }
 
