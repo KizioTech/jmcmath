@@ -31,10 +31,10 @@
         content="Explore our comprehensive digital library of mathematical resources, including lecture notes, past exams, and practice materials.">
     <meta property="twitter:image"
         content="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=1200&q=80">
-        <meta property="og:title" content="Document Title Here">
-<meta property="og:description" content="Document description here">
-<meta property="og:image" content="Full absolute URL to your cover image">
-<meta property="og:url" content="Exact link you’re sharing">
+    <meta property="og:title" content="Document Title Here">
+    <meta property="og:description" content="Document description here">
+    <meta property="og:image" content="Full absolute URL to your cover image">
+    <meta property="og:url" content="Exact link you’re sharing">
 
     <link rel="icon" type="image/png" href="/assets/images/favicon.ico">
     <title>JMC Math & Academics - Digital Library</title>
@@ -2567,11 +2567,8 @@
             const premiumBadge = doc.isPremium ? '<i class="fas fa-crown" style="color: #fbbf24; margin-left: 8px;"></i>' : '';
 
             // Handle cover image with fallback to icon
-            const coverContent = doc.coverImage
-                ? `<img src="${doc.coverImage}" alt="${doc.title} cover" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;" 
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-           <i class="fas fa-file-pdf" style="display: none;"></i>`
-                : `<i class="fas fa-file-pdf"></i>`;
+            // Use the cover image directly
+            const coverContent = `<img src="${doc.coverImage}" alt="${doc.title} cover" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">`;
 
             card.innerHTML = `
         <div class="document-cover">
