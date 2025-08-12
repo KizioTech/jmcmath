@@ -3068,28 +3068,29 @@
             // Update document title
             document.title = title;
 
+            document.dispatchEvent(new Event('DOMContentLoaded'));
+
             console.log('Updated meta tags:', { title, description, imageUrl, shareUrl });
         }
 
         // Helper function to update or create meta tags
         function updateMetaTag(property, content) {
-            let metaTag = document.querySelector(`meta[property="${property}"]`) ||
-                document.querySelector(`meta[name="${property}"]`);
+            // Remove existing meta tags first to avoid conflicts
+            const existingTags = document.querySelectorAll(`meta[property="${property}"], meta[name="${property}"]`);
+            existingTags.forEach(tag => tag.remove());
 
-            if (metaTag) {
-                metaTag.setAttribute('content', content);
+            // Create new meta tag
+            const metaTag = document.createElement('meta');
+            if (property.startsWith('og:') || property.startsWith('twitter:')) {
+                metaTag.setAttribute('property', property);
             } else {
-                metaTag = document.createElement('meta');
-                if (property.startsWith('og:') || property.startsWith('twitter:')) {
-                    metaTag.setAttribute('property', property);
-                } else {
-                    metaTag.setAttribute('name', property);
-                }
-                metaTag.setAttribute('content', content);
-                document.head.appendChild(metaTag);
+                metaTag.setAttribute('name', property);
             }
-        }
+            metaTag.setAttribute('content', content);
 
+            // Insert at the beginning of head for better priority
+            document.head.insertBefore(metaTag, document.head.firstChild);
+        }
         // ENHANCED: Expose functions for compatibility with navbar.js
         window.triggerResourceSearch = function (query, category = 'all', specific = null) {
             console.log('Window triggerResourceSearch called:', { query, category, specific });
