@@ -31,13 +31,8 @@
         content="Explore our comprehensive digital library of mathematical resources, including lecture notes, past exams, and practice materials.">
     <meta property="twitter:image"
         content="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=1200&q=80">
-    <meta property="og:title" content="Document Title Here">
-    <meta property="og:description" content="Document description here">
-    <meta property="og:image" content="Full absolute URL to your cover image">
-    <meta property="og:url" content="Exact link you’re sharing">
-
     <link rel="icon" type="image/png" href="/assets/images/favicon.ico">
-    <title>JMC Math & Academics - Digital Library</title>
+    <title>Digital Library - JMC | Mathematics & Academic Resources</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -1658,7 +1653,8 @@
                     <button class="nav-btn" id="practiceNext">
                         <i class="fas fa-chevron-right"></i>
                     </button>
-                    <button class="see-all-btn" onclick="window.location.href='/public/resources/tutorials/tutorials.html'">
+                    <button class="see-all-btn"
+                        onclick="window.location.href='/public/resources/tutorials/tutorials.html'">
                         See All <i class="fas fa-arrow-right"></i>
                     </button>
                 </div>
@@ -2033,9 +2029,8 @@
         // 4. ADD SOCIAL MEDIA SHARING FUNCTIONS
         // Add these new functions to your JavaScript (before the initialization functions):
 
-        // Generate shareable URL for a document
         function generateShareableUrl(docId) {
-            const baseUrl = window.location.origin + window.location.pjpgathname;
+            const baseUrl = window.location.origin + window.location.pathname;  // Fix typo
             return `${baseUrl}?doc=${docId}&share=1`;
         }
 
@@ -2811,19 +2806,54 @@
                 modalDownloadBtn.onclick = () => showPremiumMessage();
             } else {
                 modalViewBtn.innerHTML = '<i class="fas fa-eye"></i> View Document';
+                // Find this code block and replace:
                 modalViewBtn.onclick = () => {
-                    window.open(doc.viewUrl, '_blank');
-                    closeModal();
+                    // Add error handling and logging
+                    console.log('Opening document:', doc.viewUrl);
+
+                    // Check if URL is absolute or needs base path
+                    let fullUrl = doc.viewUrl;
+                    if (!fullUrl.startsWith('http') && !fullUrl.startsWith('/')) {
+                        fullUrl = '/' + fullUrl.replace('./', '');
+                    }
+
+                    try {
+                        window.open(fullUrl, '_blank');
+                        closeModal();
+                    } catch (error) {
+                        console.error('Error opening document:', error);
+                        alert('Unable to open document. Please try again or contact support.');
+                    }
                 };
 
                 modalDownloadBtn.innerHTML = '<i class="fas fa-download"></i> Download';
                 modalDownloadBtn.onclick = () => {
-                    const link = document.createElement('a');
-                    link.href = doc.downloadUrl;
-                    link.download = doc.title + '.pdf';
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
+                    console.log('Downloading document:', doc.downloadUrl);
+
+                    // Handle different URL formats
+                    let downloadUrl = doc.downloadUrl;
+                    if (!downloadUrl.startsWith('http') && !downloadUrl.startsWith('/')) {
+                        downloadUrl = '/' + downloadUrl.replace('./', '');
+                    }
+
+                    try {
+                        // For PDFs and direct downloads
+                        if (downloadUrl.endsWith('.pdf') || downloadUrl.includes('.pdf')) {
+                            const link = document.createElement('a');
+                            link.href = downloadUrl;
+                            link.download = doc.title.replace(/[^a-zA-Z0-9]/g, '_') + '.pdf';
+                            link.target = '_blank';
+                            document.body.appendChild(link);
+                            link.click();
+                            document.body.removeChild(link);
+                        } else {
+                            // For other file types, open in new tab
+                            window.open(downloadUrl, '_blank');
+                        }
+                    } catch (error) {
+                        console.error('Download error:', error);
+                        alert('Download failed. Please try again or contact support.');
+                    }
                 };
             }
 
@@ -3003,28 +3033,42 @@
             }
         }
 
-        // Function to update social media meta tags dynamically
+        // Replace the updateSocialMetaTags function:
         function updateSocialMetaTags(doc) {
             const title = `${doc.title} - JMC Digital Library`;
-            const description = doc.description;
-            const imageUrl = doc.coverImage ?
-                (doc.coverImage.startsWith('http') ? doc.coverImage : window.location.origin + '/' + doc.coverImage.replace('./', '')) :
-                'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=1200&q=80';
-            const url = window.location.href;
+            const description = doc.description.substring(0, 160) + (doc.description.length > 160 ? '...' : '');
 
-            // Update or create meta tags
+            // Fix image URL construction
+            let imageUrl;
+            if (doc.coverImage) {
+                if (doc.coverImage.startsWith('http')) {
+                    imageUrl = doc.coverImage;
+                } else {
+                    // Remove leading ./ and ensure proper path
+                    const cleanPath = doc.coverImage.replace(/^\.?\//, '');
+                    imageUrl = `${window.location.origin}/${cleanPath}`;
+                }
+            } else {
+                imageUrl = 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=1200&q=80';
+            }
+
+            const currentUrl = window.location.href.split('?')[0]; // Remove existing query params
+            const shareUrl = `${currentUrl}?doc=${doc.id}&share=1`;
+
+            // Update meta tags with proper error handling
             updateMetaTag('og:title', title);
             updateMetaTag('og:description', description);
             updateMetaTag('og:image', imageUrl);
-            updateMetaTag('og:url', url);
+            updateMetaTag('og:url', shareUrl);
             updateMetaTag('twitter:title', title);
             updateMetaTag('twitter:description', description);
             updateMetaTag('twitter:image', imageUrl);
+            updateMetaTag('twitter:card', 'summary_large_image');
 
             // Update document title
             document.title = title;
 
-            console.log('Updated meta tags for document:', doc.title);
+            console.log('Updated meta tags:', { title, description, imageUrl, shareUrl });
         }
 
         // Helper function to update or create meta tags
