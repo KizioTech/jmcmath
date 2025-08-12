@@ -31,6 +31,12 @@
         content="Explore our comprehensive digital library of mathematical resources, including lecture notes, past exams, and practice materials.">
     <meta property="twitter:image"
         content="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=1200&q=80">
+    <!-- Dynamic meta tags for document sharing (will be updated by JavaScript) -->
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Education">
+    <meta property="article:tag" content="Mathematics">
+    <meta property="article:tag" content="Education">
+    <meta property="article:tag" content="Academic Resources">
     <link rel="icon" type="image/png" href="/assets/images/favicon.ico">
     <title>Digital Library - JMC | Mathematics & Academic Resources</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -2028,9 +2034,9 @@
 
         // 4. ADD SOCIAL MEDIA SHARING FUNCTIONS
         // Add these new functions to your JavaScript (before the initialization functions):
-
         function generateShareableUrl(docId) {
-            const baseUrl = window.location.origin + window.location.pathname;  // Fix typo
+            // Use the actual deployed URL instead of current location
+            const baseUrl = 'https://www.jmcmathematics.com/public/resources/library/library.html';
             return `${baseUrl}?doc=${docId}&share=1`;
         }
 
@@ -2994,7 +3000,6 @@
             const categoryParam = urlParams.get('category');
             const docParam = urlParams.get('doc');
             const shareParam = urlParams.get('share');
-
             // Handle document sharing URL
             if (docParam) {
                 const doc = getDocumentById(docParam);
@@ -3009,13 +3014,18 @@
                         }, 1000);
                     }
 
-                    // Clean up URL for better UX
-                    setTimeout(() => {
-                        if (window.history.replaceState) {
-                            const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
-                            window.history.replaceState({ path: newUrl }, '', newUrl);
-                        }
-                    }, 2000);
+                    // Don't clean up URL for shared links to maintain social sharing functionality
+                    if (!shareParam) {
+                        setTimeout(() => {
+                            if (window.history.replaceState) {
+                                const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+                                window.history.replaceState({ path: newUrl }, '', newUrl);
+                            }
+                        }, 2000);
+                    }
+                } else {
+                    // Document not found, redirect to main library
+                    window.location.href = 'https://www.jmcmathematics.com/public/resources/library/library.html';
                 }
             }
 
@@ -3039,17 +3049,20 @@
             const description = doc.description.substring(0, 160) + (doc.description.length > 160 ? '...' : '');
 
             // Fix image URL construction
+            // Fix image URL construction
+            // Fix image URL construction
             let imageUrl;
             if (doc.coverImage) {
                 if (doc.coverImage.startsWith('http')) {
                     imageUrl = doc.coverImage;
                 } else {
-                    // Remove leading ./ and ensure proper path
+                    // Use absolute URL for social sharing
                     const cleanPath = doc.coverImage.replace(/^\.?\//, '');
-                    imageUrl = `${window.location.origin}/${cleanPath}`;
+                    imageUrl = `https://jmcacademics.netlify.app/${cleanPath}`;
                 }
             } else {
-                imageUrl = 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=1200&q=80';
+                // Use a specific document-related image instead of library image
+                imageUrl = 'https://images.unsplash.com/photo-1543966888-7c1dc482a810?auto=format&fit=crop&w=1200&q=80'; // Math/books image
             }
 
             const currentUrl = window.location.href.split('?')[0]; // Remove existing query params
