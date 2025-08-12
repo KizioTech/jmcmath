@@ -2032,14 +2032,11 @@
         let searchMode = false;
         let searchResults = [];
 
-        // 4. ADD SOCIAL MEDIA SHARING FUNCTIONS
-        // Add these new functions to your JavaScript (before the initialization functions):
         function generateShareableUrl(docId) {
-            // Use the actual deployed URL instead of current location
+            // Use HTTPS instead of HTTP for secure sharing
             const baseUrl = 'https://jmcacademics.netlify.app/public/resources/library/library.html';
             return `${baseUrl}?doc=${docId}&share=1`;
         }
-
         // Get document by ID from all categories
         function getDocumentById(docId) {
             for (const category in documentData) {
@@ -2069,22 +2066,32 @@
         }
 
         // Create sharing modal
-        function createSharingModal(url, title, description, image, doc) {
-            const modal = document.createElement('div');
-            modal.id = 'shareModal';
-            modal.style.cssText = `
+    // 6. FIXED: createSharingModal function with proper URL encoding
+function createSharingModal(url, title, description, image, doc) {
+    // Ensure all URLs are HTTPS
+    const secureUrl = url.replace('http://', 'https://');
+    const secureImage = image.replace('http://', 'https://');
+    
+    const modal = document.createElement('div');
+    modal.id = 'shareModal';
+    modal.style.cssText = `
         position: fixed; top: 0; left: 0; right: 0; bottom: 0; 
         background: rgba(0,0,0,0.8); display: flex; align-items: center; 
         justify-content: center; z-index: 2000; backdrop-filter: blur(5px);
     `;
 
-            const modalContent = document.createElement('div');
-            modalContent.style.cssText = `
+    const modalContent = document.createElement('div');
+    modalContent.style.cssText = `
         background: white; border-radius: 16px; padding: 2rem; 
         max-width: 500px; width: 90%; text-align: center; position: relative;
     `;
 
-            modalContent.innerHTML = `
+    // Properly escape quotes and special characters for onclick attributes
+    const escapedUrl = secureUrl.replace(/'/g, "\\'").replace(/"/g, '\\"');
+    const escapedTitle = title.replace(/'/g, "\\'").replace(/"/g, '\\"');
+    const escapedDescription = description.replace(/'/g, "\\'").replace(/"/g, '\\"');
+
+    modalContent.innerHTML = `
         <button onclick="closeSharingModal()" style="position: absolute; top: 1rem; right: 1rem; 
                 background: #f3f4f6; border: none; border-radius: 50%; width: 32px; height: 32px; 
                 cursor: pointer; display: flex; align-items: center; justify-content: center;">
@@ -2097,25 +2104,25 @@
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1.5rem;">
-            <button onclick="shareToTwitter('${encodeURIComponent(url)}', '${encodeURIComponent(title)}', '${encodeURIComponent(description)}')" 
+            <button onclick="shareToTwitter('${encodeURIComponent(secureUrl)}', '${encodeURIComponent(title)}', '${encodeURIComponent(description)}')" 
                     class="share-platform-btn" data-platform="twitter">
                 <i class="fab fa-twitter"></i>
                 <span>Twitter</span>
             </button>
             
-            <button onclick="shareToFacebook('${encodeURIComponent(url)}')" 
+            <button onclick="shareToFacebook('${encodeURIComponent(secureUrl)}')" 
                     class="share-platform-btn" data-platform="facebook">
                 <i class="fab fa-facebook-f"></i>
                 <span>Facebook</span>
             </button>
             
-            <button onclick="shareToLinkedIn('${encodeURIComponent(url)}', '${encodeURIComponent(title)}', '${encodeURIComponent(description)}')" 
+            <button onclick="shareToLinkedIn('${encodeURIComponent(secureUrl)}', '${encodeURIComponent(title)}', '${encodeURIComponent(description)}')" 
                     class="share-platform-btn" data-platform="linkedin">
                 <i class="fab fa-linkedin-in"></i>
                 <span>LinkedIn</span>
             </button>
             
-            <button onclick="shareToWhatsApp('${encodeURIComponent(url)}', '${encodeURIComponent(title)}')" 
+            <button onclick="shareToWhatsApp('${encodeURIComponent(secureUrl)}', '${encodeURIComponent(title)}')" 
                     class="share-platform-btn" data-platform="whatsapp">
                 <i class="fab fa-whatsapp"></i>
                 <span>WhatsApp</span>
@@ -2125,7 +2132,7 @@
         <div style="margin-bottom: 1rem;">
             <label style="display: block; font-size: 0.9rem; color: #6b7280; margin-bottom: 0.5rem;">Share Link:</label>
             <div style="display: flex; gap: 0.5rem;">
-                <input type="text" id="shareUrlInput" value="${url}" readonly 
+                <input type="text" id="shareUrlInput" value="${secureUrl}" readonly 
                        style="flex: 1; padding: 0.5rem; border: 2px solid #e5e7eb; border-radius: 8px; 
                               background: #f9fafb; font-size: 0.9rem;">
                 <button onclick="copyShareUrl()" style="background: #ef4444; color: white; border: none; 
@@ -2140,12 +2147,12 @@
         </div>
     `;
 
-            modal.appendChild(modalContent);
-            document.body.appendChild(modal);
+    modal.appendChild(modalContent);
+    document.body.appendChild(modal);
 
-            // Add styles for share platform buttons
-            const style = document.createElement('style');
-            style.textContent = `
+    // Add styles for share platform buttons
+    const style = document.createElement('style');
+    style.textContent = `
         .share-platform-btn {
             display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
             padding: 1rem; border: 2px solid #e5e7eb; border-radius: 12px; background: white;
@@ -2162,37 +2169,44 @@
         .share-platform-btn[data-platform="whatsapp"]:hover { background: #25D366; color: white; }
         .share-platform-btn i { font-size: 1.5rem; }
     `;
-            document.head.appendChild(style);
+    document.head.appendChild(style);
 
-            // Close modal on background click
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) closeSharingModal();
-            });
-        }
+    // Close modal on background click
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeSharingModal();
+    });
+}
 
         // Platform-specific sharing functions
         function shareToTwitter(url, title, description) {
+            // Ensure HTTPS URL
+            const secureUrl = url.replace('http://', 'https://');
             const tweetText = `${decodeURIComponent(title)} - ${decodeURIComponent(description).substring(0, 100)}... Check it out at JMC Digital Library!`;
-            const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}&url=${url}`;
+            const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}&url=${encodeURIComponent(secureUrl)}`;
             window.open(twitterUrl, '_blank', 'width=600,height=400');
         }
 
         function shareToFacebook(url) {
-            const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+            // Ensure HTTPS URL
+            const secureUrl = url.replace('http://', 'https://');
+            const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(secureUrl)}`;
             window.open(facebookUrl, '_blank', 'width=600,height=400');
         }
 
         function shareToLinkedIn(url, title, description) {
-            const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}&title=${title}&summary=${description}`;
+            // Ensure HTTPS URL
+            const secureUrl = url.replace('http://', 'https://');
+            const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(secureUrl)}&title=${encodeURIComponent(title)}&summary=${encodeURIComponent(description)}`;
             window.open(linkedInUrl, '_blank', 'width=600,height=400');
         }
 
         function shareToWhatsApp(url, title) {
-            const message = `Check out this document: ${decodeURIComponent(title)} - ${decodeURIComponent(url)}`;
+            // Ensure HTTPS URL
+            const secureUrl = url.replace('http://', 'https://');
+            const message = `Check out this document: ${decodeURIComponent(title)} - ${secureUrl}`;
             const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
         }
-
         // Utility functions
         function copyShareUrl() {
             const input = document.getElementById('shareUrlInput');
@@ -2769,6 +2783,7 @@
         // 3. UPDATE showDocumentModal FUNCTION
         // Replace the existing showDocumentModal function with this:
 
+        // 4. FIXED: showDocumentModal function - fix URL handling
         function showDocumentModal(doc) {
             const modal = document.getElementById('documentModal');
             const modalTitle = document.getElementById('modalTitle');
@@ -2782,8 +2797,16 @@
 
             // Update modal cover with image or fallback icon
             if (doc.coverImage) {
+                // Fix image URL to use HTTPS
+                let imageUrl = doc.coverImage;
+                if (!imageUrl.startsWith('http')) {
+                    imageUrl = `https://jmcacademics.netlify.app/${imageUrl.replace(/^\.?\//, '')}`;
+                } else {
+                    imageUrl = imageUrl.replace('http://', 'https://');
+                }
+
                 modalCover.innerHTML = `
-            <img src="${doc.coverImage}" alt="${doc.title} cover" 
+            <img src="${imageUrl}" alt="${doc.title} cover" 
                  style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;" 
                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
             <i class="fas fa-file-pdf" style="display: none; font-size: 36px; color: #ef4444;"></i>
@@ -2812,23 +2835,36 @@
                 modalDownloadBtn.onclick = () => showPremiumMessage();
             } else {
                 modalViewBtn.innerHTML = '<i class="fas fa-eye"></i> View Document';
-                // Find this code block and replace:
+
+                // FIXED: Better URL handling for viewing documents
                 modalViewBtn.onclick = () => {
-                    // Add error handling and logging
                     console.log('Opening document:', doc.viewUrl);
 
-                    // Check if URL is absolute or needs base path
                     let fullUrl = doc.viewUrl;
-                    if (!fullUrl.startsWith('http') && !fullUrl.startsWith('/')) {
-                        fullUrl = '/' + fullUrl.replace('./', '');
+
+                    // Handle different URL formats
+                    if (fullUrl.startsWith('http')) {
+                        // Already absolute URL, ensure HTTPS
+                        fullUrl = fullUrl.replace('http://', 'https://');
+                    } else if (fullUrl.startsWith('/')) {
+                        // Root relative URL
+                        fullUrl = `https://jmcacademics.netlify.app${fullUrl}`;
+                    } else {
+                        // Relative URL
+                        fullUrl = `https://jmcacademics.netlify.app/${fullUrl.replace(/^\.\//, '')}`;
                     }
 
                     try {
-                        window.open(fullUrl, '_blank');
+                        window.open(fullUrl, '_blank', 'noopener,noreferrer');
                         closeModal();
                     } catch (error) {
                         console.error('Error opening document:', error);
-                        alert('Unable to open document. Please try again or contact support.');
+                        // Fallback: try direct navigation
+                        try {
+                            window.location.href = fullUrl;
+                        } catch (navError) {
+                            alert('Unable to open document. Please check your internet connection and try again.');
+                        }
                     }
                 };
 
@@ -2836,29 +2872,38 @@
                 modalDownloadBtn.onclick = () => {
                     console.log('Downloading document:', doc.downloadUrl);
 
-                    // Handle different URL formats
                     let downloadUrl = doc.downloadUrl;
-                    if (!downloadUrl.startsWith('http') && !downloadUrl.startsWith('/')) {
-                        downloadUrl = '/' + downloadUrl.replace('./', '');
+
+                    // Handle different URL formats for downloads
+                    if (downloadUrl.startsWith('http')) {
+                        downloadUrl = downloadUrl.replace('http://', 'https://');
+                    } else if (downloadUrl.startsWith('/')) {
+                        downloadUrl = `https://jmcacademics.netlify.app${downloadUrl}`;
+                    } else {
+                        downloadUrl = `https://jmcacademics.netlify.app/${downloadUrl.replace(/^\.\//, '')}`;
                     }
 
                     try {
-                        // For PDFs and direct downloads
-                        if (downloadUrl.endsWith('.pdf') || downloadUrl.includes('.pdf')) {
-                            const link = document.createElement('a');
-                            link.href = downloadUrl;
-                            link.download = doc.title.replace(/[^a-zA-Z0-9]/g, '_') + '.pdf';
-                            link.target = '_blank';
-                            document.body.appendChild(link);
-                            link.click();
-                            document.body.removeChild(link);
-                        } else {
-                            // For other file types, open in new tab
-                            window.open(downloadUrl, '_blank');
+                        // Create a download link
+                        const link = document.createElement('a');
+                        link.href = downloadUrl;
+                        link.target = '_blank';
+                        link.rel = 'noopener noreferrer';
+
+                        // Try to set download attribute for PDFs
+                        if (downloadUrl.includes('.pdf')) {
+                            link.download = doc.title.replace(/[^a-zA-Z0-9\s]/g, '_').replace(/\s+/g, '_') + '.pdf';
                         }
+
+                        // Add to DOM, click, and remove
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+
                     } catch (error) {
                         console.error('Download error:', error);
-                        alert('Download failed. Please try again or contact support.');
+                        // Fallback: open in new window
+                        window.open(downloadUrl, '_blank', 'noopener,noreferrer');
                     }
                 };
             }
@@ -3048,27 +3093,27 @@
             const title = `${doc.title} - JMC Digital Library`;
             const description = doc.description.substring(0, 160) + (doc.description.length > 160 ? '...' : '');
 
-            // Fix image URL construction
-            // Fix image URL construction
-            // Fix image URL construction
+            // Fixed image URL construction
             let imageUrl;
             if (doc.coverImage) {
                 if (doc.coverImage.startsWith('http')) {
-                    imageUrl = doc.coverImage;
+                    // Ensure HTTPS for external URLs
+                    imageUrl = doc.coverImage.replace('http://', 'https://');
                 } else {
-                    // Use absolute URL for social sharing
+                    // Use absolute HTTPS URL for social sharing
                     const cleanPath = doc.coverImage.replace(/^\.?\//, '');
                     imageUrl = `https://jmcacademics.netlify.app/${cleanPath}`;
                 }
             } else {
-                // Use a specific document-related image instead of library image
-                imageUrl = 'https://images.unsplash.com/photo-1543966888-7c1dc482a810?auto=format&fit=crop&w=1200&q=80'; // Math/books image
+                // Use a fallback image with HTTPS
+                imageUrl = 'https://images.unsplash.com/photo-1543966888-7c1dc482a810?auto=format&fit=crop&w=1200&q=80';
             }
 
-            const currentUrl = window.location.href.split('?')[0]; // Remove existing query params
-            const shareUrl = `${currentUrl}?doc=${doc.id}&share=1`;
+            const currentUrl = window.location.href.split('?')[0];
+            // Ensure share URL uses HTTPS
+            const shareUrl = currentUrl.replace('http://', 'https://') + `?doc=${doc.id}&share=1`;
 
-            // Update meta tags with proper error handling
+            // Update meta tags
             updateMetaTag('og:title', title);
             updateMetaTag('og:description', description);
             updateMetaTag('og:image', imageUrl);
@@ -3081,9 +3126,7 @@
             // Update document title
             document.title = title;
 
-            document.dispatchEvent(new Event('DOMContentLoaded'));
-
-            console.log('Updated meta tags:', { title, description, imageUrl, shareUrl });
+            console.log('Updated meta tags with HTTPS:', { title, description, imageUrl, shareUrl });
         }
 
         // Helper function to update or create meta tags
