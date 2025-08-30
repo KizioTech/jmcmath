@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Calculus - JMC Mathematics & Academic Resources</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background-color: #f8f9fb;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .course-header {
+            background: linear-gradient(135deg, #111827 0%, #1f2937 50%, #461515 100%);
+            color: white;
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="20" fill="white" opacity="0.1">∫∑π√∞</text></svg>');
+            opacity: 0.1;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .course-info h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f3f4f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .course-info p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .course-meta-header {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .progress-overview {
+            text-align: right;
+        }
+
+        .progress-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: conic-gradient(#ef4444 0deg 324deg, rgba(255,255,255,0.2) 324deg 360deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .progress-circle::before {
+            content: '';
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #1f2937;
+            position: absolute;
+        }
+
+        .progress-text {
+            font-size: 1.2rem;
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Main Layout */
+        .main-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            height: fit-content;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            sticky: top;
+            position: sticky;
+            top: 2rem;
+        }
+
+        .sidebar h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #111827;
+            border-bottom: 2px solid #f3f4f6;
+            padding-bottom: 0.5rem;
+        }
+
+        .module-list {
+            margin-bottom: 2rem;
+        }
+
+        .module-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 0.5rem;
+            margin-bottom: 0.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .module-item:hover {
+            background-color: #f8f9fb;
+        }
+
+        .module-item.active {
+            background-color: #fef2f2;
+            border-left-color: #ef4444;
+        }
+
+        .module-item.completed {
+            background-color: #f0fdf4;
+            border-left-color: #22c55e;
+        }
+
+        .module-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.75rem;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .module-icon.completed {
+            background-color: #22c55e;
+            color: white;
+        }
+
+        .module-icon.current {
+            background-color: #ef4444;
+            color: white;
+        }
+
+        .module-icon.locked {
+            background-color: #e5e7eb;
+            color: #9ca3af;
+        }
+
+        .module-text {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .nav-menu {
+            list-style: none;
+        }
+
+        .nav-item {
+            padding: 0.75rem 0.5rem;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .nav-item:hover {
+            background-color: #f8f9fb;
+        }
+
+        .nav-item.active {
+            background-color: #fef2f2;
+            color: #ef4444;
+            font-weight: 500;
+        }
+
+        /* Main Content */
+        .content-area {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #f3f4f6;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #111827;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            color: #6b7280;
+        }
+
+        .section-toggle:hover {
+            background-color: #f3f4f6;
+        }
+
+        .status-badge {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: white;
+            padding: 0.375rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.375rem;
+        }
+
+        /* Lesson Items */
+        .lesson-list {
+            margin-bottom: 3rem;
+        }
+
+        .lesson-item {
+            display: flex;
+            align-items: center;
+            padding: 1.25rem 0;
+            border-bottom: 1px solid #f3f4f6;
+            transition: all 0.3s ease;
+        }
+
+        .lesson-item:hover {
+            background-color: #fafafa;
+            margin: 0 -1rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            border-radius: 8px;
+        }
+
+        .lesson-item:last-child {
+            border-bottom: none;
+        }
+
+        .lesson-status {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 0.875rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .lesson-status.completed {
+            background-color: #22c55e;
+            color: white;
+        }
+
+        .lesson-status.current {
+            background-color: #ef4444;
+            color: white;
+        }
+
+        .lesson-status.locked {
+            background-color: #f3f4f6;
+            color: #9ca3af;
+        }
+
+        .lesson-content {
+            flex: 1;
+            margin-right: 1rem;
+        }
+
+        .lesson-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+            color: #111827;
+        }
+
+        .lesson-meta {
+            font-size: 0.875rem;
+            color: #6b7280;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .lesson-type {
+            display: flex;
+            align-items: center;
+            gap: 0.375rem;
+        }
+
+        .lesson-action {
+            flex-shrink: 0;
+        }
+
+        .start-btn, .continue-btn, .review-btn {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-transform: none;
+            font-size: 0.9rem;
+        }
+
+        .start-btn:hover, .continue-btn:hover, .review-btn:hover {
+            background: #dc2626;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+        }
+
+        .continue-btn {
+            background: #3b82f6;
+        }
+
+        .continue-btn:hover {
+            background: #2563eb;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .review-btn {
+            background: #10b981;
+        }
+
+        .review-btn:hover {
+            background: #059669;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        /* Grades View */
+        .grades-container {
+            display: none;
+        }
+
+        .grades-container.active {
+            display: block;
+        }
+
+        .completion-alert {
+            background: linear-gradient(135deg, #ecfdf5, #f0fdf4);
+            border: 1px solid #bbf7d0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .alert-icon {
+            width: 48px;
+            height: 48px;
+            background: #22c55e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .grade-summary {
+            background: linear-gradient(135deg, #fef2f2, #fef7f7);
+            border: 1px solid #fecaca;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .grade-icon {
+            width: 64px;
+            height: 64px;
+            background: #ef4444;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .grade-text {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .grades-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .grades-table th {
+            background: #f8fafc;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: #374151;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.025em;
+        }
+
+        .grades-table td {
+            padding: 1.25rem 1rem;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .grades-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .assignment-info {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .assignment-icon {
+            width: 32px;
+            height: 32px;
+            background: #22c55e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.875rem;
+            flex-shrink: 0;
+        }
+
+        .assignment-details h4 {
+            font-weight: 500;
+            color: #111827;
+            margin-bottom: 0.125rem;
+        }
+
+        .assignment-type {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .status-passed {
+            color: #059669;
+            font-weight: 500;
+        }
+
+        .grade-score {
+            font-weight: 600;
+            color: #111827;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .main-container {
+                grid-template-columns: 250px 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                grid-template-columns: 1fr;
+                margin: 1rem auto;
+                padding: 0 1rem;
+            }
+
+            .course-header {
+                padding: 1.5rem 0;
+            }
+
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+            }
+
+            .course-info h1 {
+                font-size: 2rem;
+            }
+
+            .course-meta-header {
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .sidebar {
+                position: static;
+                margin-bottom: 1rem;
+            }
+
+            .lesson-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .lesson-action {
+                width: 100%;
+            }
+
+            .start-btn, .continue-btn, .review-btn {
+                width: 100%;
+            }
+
+            .grades-table {
+                font-size: 0.875rem;
+            }
+
+            .grades-table th, .grades-table td {
+                padding: 0.75rem 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .course-info h1 {
+                font-size: 1.5rem;
+            }
+
+            .content-area {
+                padding: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Course Header -->
+    <header class="course-header">
+        <div class="header-container">
+            <div class="course-info">
+                <h1 id="courseTitle">Advanced Calculus</h1>
+                <p id="courseDescription">Master the fundamentals of differential and integral calculus with our comprehensive course.</p>
+                <div class="course-meta-header">
+                    <div class="meta-item">
+                        <i class="fas fa-signal"></i>
+                        <span id="courseLevel">Advanced</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-clock"></i>
+                        <span id="courseDuration">12 weeks</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-users"></i>
+                        <span>1,234 enrolled</span>
+                    </div>
+                </div>
+            </div>
+            <div class="progress-overview">
+                <div class="progress-circle">
+                    <div class="progress-text">90%</div>
+                </div>
+                <div>Course Progress</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="module-list">
+                <h3>Course Modules</h3>
+                <div class="module-item completed">
+                    <div class="module-icon completed">✓</div>
+                    <div class="module-text">Module 1: Limits</div>
+                </div>
+                <div class="module-item completed">
+                    <div class="module-icon completed">✓</div>
+                    <div class="module-text">Module 2: Derivatives</div>
+                </div>
+                <div class="module-item active">
+                    <div class="module-icon current">3</div>
+                    <div class="module-text">Module 3: Integration</div>
+                </div>
+                <div class="module-item">
+                    <div class="module-icon locked">4</div>
+                    <div class="module-text">Module 4: Applications</div>
+                </div>
+                <div class="module-item">
+                    <div class="module-icon locked">5</div>
+                    <div class="module-text">Module 5: Series</div>
+                </div>
+                <div class="module-item">
+                    <div class="module-icon locked">6</div>
+                    <div class="module-text">Module 6: Multivariable</div>
+                </div>
+            </div>
+
+            <nav>
+                <h3>Navigation</h3>
+                <ul class="nav-menu">
+                    <li class="nav-item active" data-view="course">
+                        <i class="fas fa-play-circle"></i>
+                        Course Content
+                    </li>
+                    <li class="nav-item" data-view="grades">
+                        <i class="fas fa-chart-line"></i>
+                        Grades
+                    </li>
+                    <li class="nav-item">
+                        <i class="fas fa-sticky-note"></i>
+                        Notes
+                    </li>
+                    <li class="nav-item">
+                        <i class="fas fa-comments"></i>
+                        Discussion
+                    </li>
+                    <li class="nav-item">
+                        <i class="fas fa-envelope"></i>
+                        Messages
+                    </li>
+                    <li class="nav-item">
+                        <i class="fas fa-info-circle"></i>
+                        Course Info
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="content-area">
+            <!-- Course Content View -->
+            <div id="courseContent" class="course-view">
+                <!-- Week/Module Section -->
+                <section class="course-section">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <i class="fas fa-play-circle" style="color: #ef4444;"></i>
+                            Week 3: Integration Fundamentals
+                        </h2>
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <span class="status-badge">
+                                <i class="fas fa-check"></i>
+                                In Progress
+                            </span>
+                            <button class="section-toggle">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="lesson-list">
+                        <div class="lesson-item">
+                            <div class="lesson-status completed">✓</div>
+                            <div class="lesson-content">
+                                <h3 class="lesson-title">Introduction to Integration</h3>
+                                <div class="lesson-meta">
+                                    <div class="lesson-type">
+                                        <i class="fas fa-play"></i>
+                                        Video
+                                    </div>
+                                    <span>12 minutes</span>
+                                    <span>•</span>
+                                    <span>Completed</span>
+                                </div>
+                            </div>
+                            <div class="lesson-action">
+                                <button class="review-btn">Review</button>
+                            </div>
+                        </div>
+
+                        <div class="lesson-item">
+                            <div class="lesson-status current">▶</div>
+                            <div class="lesson-content">
+                                <h3 class="lesson-title">Basic Integration Techniques</h3>
+                                <div class="lesson-meta">
+                                    <div class="lesson-type">
+                                        <i class="fas fa-play"></i>
+                                        Video
+                                    </div>
+                                    <span>18 minutes</span>
+                                    <span>•</span>
+                                    <span>8 min remaining</span>
+                                </div>
+                            </div>
+                            <div class="lesson-action">
+                                <button class="continue-btn">Continue</button>
+                            </div>
+                        </div>
+
+                        <div class="lesson-item">
+                            <div class="lesson-status locked">3</div>
+                            <div class="lesson-content">
+                                <h3 class="lesson-title">Practice Problems: Integration</h3>
+                                <div class="lesson-meta">
+                                    <div class="lesson-type">
+                                        <i class="fas fa-edit"></i>
+                                        Practice
+                                    </div>
+                                    <span>15 problems</span>
+                                    <span>•</span>
+                                    <span>Not started</span>
+                                </div>
+                            </div>
+                            <div class="lesson-action">
+                                <button class="start-btn" disabled style="opacity: 0.5; cursor: not-allowed;">Locked</button>
+                            </div>
+                        </div>
+
+                        <div class="lesson-item">
+                            <div class="lesson-status locked">4</div>
+                            <div class="lesson-content">
+                                <h3 class="lesson-title">Reading: Integration by Substitution</h3>
+                                <div class="lesson-meta">
+                                    <div class="lesson-type">
+                                        <i class="fas fa-book-open"></i>
+                                        Reading
+                                    </div>
+                                    <span>25 minutes</span>
+                                    <span>•</span>
+                                    <span>Not started</span>
+                                </div>
+                            </div>
+                            <div class="lesson-action">
+                                <button class="start-btn" disabled style="opacity: 0.5; cursor: not-allowed;">Locked</button>
+                            </div>
+                        </div>
+
+                        <div class="lesson-item">
+                            <div class="lesson-status locked">5</div>
+                            <div class="lesson-content">
+                                <h3 class="lesson-title">Week 3 Quiz: Integration</h3>
+                                <div class="lesson-meta">
+                                    <div class="lesson-type">
+                                        <i class="fas fa-question-circle"></i>
+                                        Quiz
+                                    </div>
+                                    <span>10 questions</span>
+                                    <span>•</span>
+                                    <span>Due: Next Monday</span>
+                                </div>
+                            </div>
+                            <div class="lesson-action">
+                                <button class="start-btn" disabled style="opacity: 0.5; cursor: not-allowed;">Locked</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Grades View -->
+            <div id="gradesContent" class="grades-container">
+                <h2 style="margin-bottom: 2rem; font-size: 2rem; color: #111827;">Grades & Progress</h2>
+                
+                <div class="completion-alert">
+                    <div class="alert-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div>
+                        <h3 style="margin-bottom: 0.5rem; color: #065f46;">Great Progress!</h3>
+                        <p style="color: #047857;">You have completed 3 out of 6 modules. Keep up the excellent work!</p>
+                    </div>
+                </div>
+
+                <div class="grade-summary">
+                    <div class="grade-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div>
+                        <div class="grade-text">Current Grade: 87.5%</div>
+                        <p style="color: #6b7280; margin-top: 0.25rem;">You're performing above average in this course.</p>
+                    </div>
+                </div>
+
+                <table class="grades-table">
+                    <thead>
+                        <tr>
+                            <th>Assignment</th>
+                            <th>Status</th>
+                            <th>Due Date</th>
+                            <th>Weight</th>
+                            <th>Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="assignment-info">
+                                    <div class="assignment-icon">✓</div>
+                                    <div class="assignment-details">
+                                        <h4>Module 1 Quiz: Limits</h4>
+                                        <div class="assignment-type">Graded Assignment</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="status-passed">Completed</td>
+                            <td>Jan 15, 2025</td>
+                            <td>15%</td>
+                            <td class="grade-score">92%</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="assignment-info">
+                                    <div class="assignment-icon">✓</div>
+                                    <div class="assignment-details">
+                                        <h4>Module 2 Quiz: Derivatives</h4>
+                                        <div class="assignment-type">Graded Assignment</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="status-passed">Completed</td>
+                            <td>Jan 22, 2025</td>
+                            <td>15%</td>
+                            <td class="grade-score">85%</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="assignment-info">
+                                    <div class="assignment-icon" style="background: #f59e0b; color: white;">!</div>
+                                    <div class="assignment-details">
+                                        <h4>Module 3 Quiz: Integration</h4>
+                                        <div class="assignment-type">Graded Assignment</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="color: #f59e0b; font-weight: 500;">In Progress</td>
+                            <td>Jan 29, 2025</td>
+                            <td>15%</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="assignment-info">
+                                    <div class="assignment-icon" style="background: #e5e7eb; color: #9ca3af;">4</div>
+                                    <div class="assignment-details">
+                                        <h4>Midterm Exam</h4>
+                                        <div class="assignment-type">Major Assessment</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="color: #6b7280;">Not Available</td>
+                            <td>Feb 15, 2025</td>
+                            <td>25%</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Course Configuration - Easy to customize for different courses
+        const courseConfig = {
+            title: "Advanced Calculus",
+            description: "Master the fundamentals of differential and integral calculus with our comprehensive course.",
+            level: "Advanced",
+            duration: "12 weeks",
+            modules: [
+                { id: 1, title: "Limits", status: "completed" },
+                { id: 2, title: "Derivatives", status: "completed" },
+                { id: 3, title: "Integration", status: "current" },
+                { id: 4, title: "Applications", status: "locked" },
+                { id: 5, title: "Series", status: "locked" },
+                { id: 6, title: "Multivariable", status: "locked" }
+            ]
+        };
+
+        // Navigation functionality
+        const navItems = document.querySelectorAll('.nav-item');
+        const courseContent = document.getElementById('courseContent');
+        const gradesContent = document.getElementById('gradesContent');
+
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Remove active class from all nav items
+                navItems.forEach(nav => nav.classList.remove('active'));
+                // Add active class to clicked item
+                item.classList.add('active');
+
+                // Show/hide content based on selection
+                const view = item.getAttribute('data-view');
+                if (view === 'grades') {
+                    courseContent.style.display = 'none';
+                    gradesContent.classList.add('active');
+                } else {
+                    courseContent.style.display = 'block';
+                    gradesContent.classList.remove('active');
+                }
+            });
+        });
+
+        // Module navigation
+        const moduleItems = document.querySelectorAll('.module-item');
+        moduleItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                if (!item.classList.contains('locked')) {
+                    moduleItems.forEach(mod => mod.classList.remove('active'));
+                    item.classList.add('active');
+                    
+                    // Update main content for selected module
+                    updateModuleContent(index + 1);
+                }
+            });
+        });
+
+        // Section toggle functionality
+        const sectionToggles = document.querySelectorAll('.section-toggle');
+        sectionToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const icon = toggle.querySelector('i');
+                const lessonList = toggle.closest('.course-section').querySelector('.lesson-list');
+                
+                if (icon.classList.contains('fa-chevron-down')) {
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                    lessonList.style.display = 'none';
+                } else {
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                    lessonList.style.display = 'block';
+                }
+            });
+        });
+
+        // Lesson action buttons
+        const actionButtons = document.querySelectorAll('.start-btn, .continue-btn, .review-btn');
+        actionButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                if (!button.disabled) {
+                    const action = button.textContent.toLowerCase();
+                    handleLessonAction(action, button);
+                }
+            });
+        });
+
+        // Function to handle lesson actions
+        function handleLessonAction(action, button) {
+            const lessonItem = button.closest('.lesson-item');
+            const lessonTitle = lessonItem.querySelector('.lesson-title').textContent;
+            
+            switch(action) {
+                case 'start':
+                    alert(`Starting: ${lessonTitle}`);
+                    // Here you would typically redirect to the lesson content
+                    break;
+                case 'continue':
+                    alert(`Continuing: ${lessonTitle}`);
+                    // Here you would typically redirect to the lesson content at the last position
+                    break;
+                case 'review':
+                    alert(`Reviewing: ${lessonTitle}`);
+                    // Here you would typically redirect to the lesson content for review
+                    break;
+            }
+        }
+
+        // Function to update module content
+        function updateModuleContent(moduleNumber) {
+            const moduleData = {
+                1: {
+                    title: "Week 1: Limits and Continuity",
+                    lessons: [
+                        { title: "Introduction to Limits", type: "video", duration: "15 minutes", status: "completed" },
+                        { title: "Properties of Limits", type: "video", duration: "20 minutes", status: "completed" },
+                        { title: "Continuity", type: "reading", duration: "30 minutes", status: "completed" },
+                        { title: "Limits Practice Problems", type: "practice", duration: "12 problems", status: "completed" },
+                        { title: "Week 1 Quiz: Limits", type: "quiz", duration: "8 questions", status: "completed" }
+                    ]
+                },
+                2: {
+                    title: "Week 2: Derivatives",
+                    lessons: [
+                        { title: "Definition of Derivative", type: "video", duration: "18 minutes", status: "completed" },
+                        { title: "Differentiation Rules", type: "video", duration: "25 minutes", status: "completed" },
+                        { title: "Chain Rule", type: "video", duration: "22 minutes", status: "completed" },
+                        { title: "Derivative Applications", type: "reading", duration: "40 minutes", status: "completed" },
+                        { title: "Week 2 Quiz: Derivatives", type: "quiz", duration: "10 questions", status: "completed" }
+                    ]
+                },
+                3: {
+                    title: "Week 3: Integration Fundamentals",
+                    lessons: [
+                        { title: "Introduction to Integration", type: "video", duration: "12 minutes", status: "completed" },
+                        { title: "Basic Integration Techniques", type: "video", duration: "18 minutes", status: "current" },
+                        { title: "Practice Problems: Integration", type: "practice", duration: "15 problems", status: "locked" },
+                        { title: "Reading: Integration by Substitution", type: "reading", duration: "25 minutes", status: "locked" },
+                        { title: "Week 3 Quiz: Integration", type: "quiz", duration: "10 questions", status: "locked" }
+                    ]
+                }
+            };
+
+            const data = moduleData[moduleNumber];
+            if (data) {
+                // Update the section title
+                const sectionTitle = document.querySelector('.section-title');
+                sectionTitle.innerHTML = `<i class="fas fa-play-circle" style="color: #ef4444;"></i>${data.title}`;
+                
+                // You could dynamically update the lesson list here
+                console.log(`Switched to module ${moduleNumber}: ${data.title}`);
+            }
+        }
+
+        // Function to customize course for different subjects
+        function initializeCourse(config) {
+            // Update header information
+            document.getElementById('courseTitle').textContent = config.title;
+            document.getElementById('courseDescription').textContent = config.description;
+            document.getElementById('courseLevel').textContent = config.level;
+            document.getElementById('courseDuration').textContent = config.duration;
+            
+            // Update page title
+            document.title = `${config.title} - JMC Mathematics & Academic Resources`;
+        }
+
+        // Easy customization functions for different courses
+        function switchToCourse(courseName) {
+            const courses = {
+                'calculus': {
+                    title: "Advanced Calculus",
+                    description: "Master the fundamentals of differential and integral calculus with our comprehensive course.",
+                    level: "Advanced",
+                    duration: "12 weeks"
+                },
+                'algebra': {
+                    title: "Algebra Fundamentals",
+                    description: "Build a solid foundation in algebra with step-by-step explanations and practice problems.",
+                    level: "Beginner",
+                    duration: "8 weeks"
+                },
+                'statistics': {
+                    title: "Statistics & Probability",
+                    description: "Understand data analysis, probability distributions, and statistical inference.",
+                    level: "Intermediate",
+                    duration: "14 weeks"
+                },
+                'geometry': {
+                    title: "Geometry Mastery",
+                    description: "Explore shapes, angles, and spatial relationships in this comprehensive geometry course.",
+                    level: "Beginner",
+                    duration: "10 weeks"
+                },
+                'trigonometry': {
+                    title: "Trigonometry",
+                    description: "Master sine, cosine, tangent, and their applications in real-world problems.",
+                    level: "Intermediate",
+                    duration: "9 weeks"
+                },
+                'linear-algebra': {
+                    title: "Linear Algebra",
+                    description: "Learn vectors, matrices, and linear transformations in this essential mathematics course.",
+                    level: "Intermediate",
+                    duration: "10 weeks"
+                }
+            };
+
+            const courseConfig = courses[courseName];
+            if (courseConfig) {
+                initializeCourse(courseConfig);
+            }
+        }
+
+        // Initialize the course with default configuration
+        initializeCourse(courseConfig);
+
+        // Example: To switch to a different course, call:
+        // switchToCourse('algebra');
+
+        // Progress update functionality
+        function updateProgress(completedLessons, totalLessons) {
+            const percentage = Math.round((completedLessons / totalLessons) * 100);
+            const progressText = document.querySelector('.progress-text');
+            const progressCircle = document.querySelector('.progress-circle');
+            
+            progressText.textContent = percentage + '%';
+            
+            // Update the conic gradient
+            const degrees = (percentage / 100) * 360;
+            progressCircle.style.background = `conic-gradient(#ef4444 0deg ${degrees}deg, rgba(255,255,255,0.2) ${degrees}deg 360deg)`;
+        }
+
+        // Initialize with current progress
+        updateProgress(15, 30); // Example: 15 out of 30 lessons completed
+
+        console.log('JMC Course Platform initialized successfully!');
+        console.log('To customize for different courses, use: switchToCourse("courseName")');
+        console.log('Available courses: calculus, algebra, statistics, geometry, trigonometry, linear-algebra');
+    </script>
+</body>
+</html>
