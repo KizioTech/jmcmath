@@ -313,7 +313,7 @@
                         <p>In this process of differentiation, we will be
                             introducing natural logarithms both sides and solve
                             the function implicitly (Check and review on <a
-                                href="https://tutorial.math.lamar.edu/classes/calci/implicitdiff.aspx">Implicit
+                                class="hyperlink" href="https://tutorial.math.lamar.edu/classes/calci/implicitdiff.aspx">Implicit
                                 Differentiation</a> too)
                             <div class="example-box">
                                 <div class="box-title">Example 1</div>
@@ -578,32 +578,45 @@
                                         revise some of the basic differentiation
                                         formulas to avoid confusion.</p>
                                     <div class="math-block">$$\begin{array}{ll}
-                                    \diff{}{x}(c) = 0 & \text{Constant Differentiation} \\[0.5em]
-                                    \diff{}{x}(x^n) = nx^{n-1} & \text{Power Rule} \\[0.5em]
-                                    \diff{}{x}(a^x) = a^x\ln a &
-                                    \text{Derivative of an Exponential Function}
-                                    \\[0.5em]
-                                    \diff{}{x}(x^x) = x^x(1+\ln x) &
-                                    \text{Logarithmic Differentiation}
-                                    \end{array}$$
+                                        \diff{}{x}(c) = 0 & \text{Constant Differentiation}
+                                        \\[0.5em]
+                                        \diff{}{x}(x^n) = nx^{n-1} & \text{Power Rule}
+                                        \\[0.5em]
+                                        \diff{}{x}(a^x) = a^x\ln a &
+                                        \text{Derivative of an Exponential Function}
+                                        \\[0.5em]
+                                        \diff{}{x}(x^x) = x^x(1+\ln x) &
+                                        \text{Logarithmic Differentiation}
+                                        \end{array}$$
                                     </div>
                                     <p>It's very useful to keep on eye on the
                                         theorems we use to avoid costly mistakes
                                         since a lot of things look similar but
                                         are mathematically different.</p>
-                                    </div>
+                                </div>
                                 <div class="example-box">
                                     <div class="box-title">Example 5</div>
-                                    <p>Differentiate \(f(x)=(5-3x^2)^7\sqrt{6x^2+8x-12}\)</p>
+                                    <p>Differentiate
+                                        \(f(x)=(5-3x^2)^7\sqrt{6x^2+8x-12}\)</p>
                                     <strong>Solution:</strong>
                                     <div class="math-block">
                                         \[
                                         \begin{aligned}
-                                            &\ln f(x)=\ln\left[(5-3x^2)^7\sqrt{6x^2+8x-12} \right] =\ln(5-3x^2)^7+\ln(6x^2+8x-12)^{\frac{1}{2}}\\
-                                            &\ln f(x)=7\ln(5-3x^2)+\frac{1}{2}\ln(6x^2+8x-12)\\
-                                            &\frac{f'(x)}{f(x)}=7\left(\frac{-6x}{5-3x^2} \right) +\frac{1}{2}\left( \frac{12x+8}{6x^2+8x-12} \right)\\
-                                            &f'(x)=f(x)\left( \frac{-42x}{5-3x^2}+\frac{6x+4}{6x^2+8x-12}\right) \\
-                                            &\therefore \boxed{ f'(x)=(5-3x^2)^7\sqrt{6x^2+8x-12}\left[ 	\frac{-42x}{5-3x^2}+\frac{6x+4}{6x^2+8x-12}\right]} 
+                                        &\ln
+                                        f(x)=\ln\left[(5-3x^2)^7\sqrt{6x^2+8x-12}
+                                        \right]
+                                        =\ln(5-3x^2)^7+\ln(6x^2+8x-12)^{\frac{1}{2}}\\
+                                        &\ln
+                                        f(x)=7\ln(5-3x^2)+\frac{1}{2}\ln(6x^2+8x-12)\\
+                                        &\frac{f'(x)}{f(x)}=7\left(\frac{-6x}{5-3x^2}
+                                        \right) +\frac{1}{2}\left(
+                                        \frac{12x+8}{6x^2+8x-12} \right)\\
+                                        &f'(x)=f(x)\left(
+                                        \frac{-42x}{5-3x^2}+\frac{6x+4}{6x^2+8x-12}\right)
+                                        \\
+                                        &\therefore \boxed{
+                                        f'(x)=(5-3x^2)^7\sqrt{6x^2+8x-12}\left[
+                                        \frac{-42x}{5-3x^2}+\frac{6x+4}{6x^2+8x-12}\right]}
                                         \end{aligned}
                                         \]
                                     </div>
@@ -611,15 +624,27 @@
 
                                 <div class="example-box">
                                     <div class="box-title">Example 6</div>
-                                    <p>Differentiate \(y=(2x-e^{8x})^{\sin 2x}\)</p>
+                                    <p>Differentiate \(y=(2x-e^{8x})^{\sin
+                                        2x}\)</p>
                                     <strong>Solution:</strong>
                                     <div class="math-block">
                                         \[
                                         \begin{aligned}
-                                            &\ln y = \ln \left(2x-e^{8x} \right)^{\sin 2x}=\sin 2x \ln(2x-e^{8x})\\
-                                            &\frac{y'}{y} = (2\cos 2x)\cdot\ln(2x-e^{8x})+\sin 2x\cdot\left(\frac{2-8e^{8x}}{2x-e^{8x}} \right) \\
-                                            &y'=\left(2\cos 2x\ln(2x-e^{8x})+\frac{\sin 2x(2-8e^{8x})}{2x-e^{8x}} \right) \times y\\
-                                            &\therefore \boxed{y'=\left[2\cos 2x\ln(2x-e^{8x})+\frac{\sin 2x(2-8e^{8x})}{2x-e^{8x}} \right]\left[ (2x-e^{8x})^{\sin 2x}\right] }
+                                        &\ln y = \ln \left(2x-e^{8x}
+                                        \right)^{\sin 2x}=\sin 2x
+                                        \ln(2x-e^{8x})\\
+                                        &\frac{y'}{y} = (2\cos
+                                        2x)\cdot\ln(2x-e^{8x})+\sin
+                                        2x\cdot\left(\frac{2-8e^{8x}}{2x-e^{8x}}
+                                        \right) \\
+                                        &y'=\left(2\cos
+                                        2x\ln(2x-e^{8x})+\frac{\sin
+                                        2x(2-8e^{8x})}{2x-e^{8x}} \right) \times
+                                        y\\
+                                        &\therefore \boxed{y'=\left[2\cos
+                                        2x\ln(2x-e^{8x})+\frac{\sin
+                                        2x(2-8e^{8x})}{2x-e^{8x}} \right]\left[
+                                        (2x-e^{8x})^{\sin 2x}\right] }
                                         \end{aligned}
                                         \]
                                     </div>
@@ -627,28 +652,219 @@
 
                                 <div class="example-box">
                                     <div class="box-title">Example 7</div>
-                                    <p>Differentiate \(y=\frac{\sqrt{5x+8}\sqrt[3]{1-9\cos4x}}{\sqrt[4]{t^2+10t}}\).</p>
+                                    <p>Differentiate
+                                        \(y=\frac{\sqrt{5x+8}\sqrt[3]{1-9\cos4x}}{\sqrt[4]{t^2+10t}}\).</p>
                                     <strong>Solution:</strong>
                                     <div class="math-block">
                                         \[
                                         \begin{aligned}
-                                            &\ln y = \ln \left( \frac{\sqrt{5x+8}\sqrt[3]{1-9\cos4x}}{\sqrt[4]{t^2+10t}} \right) = \ln (5x+8)^{\frac{1}{2}}+\ln (1-9\cos 4x)^{\frac{1}{3}}-\ln (t^2+10t)^{\frac{1}{4}}\\
-                                            &\ln y = \frac{1}{2}\ln (5x+8)+\frac{1}{3}\ln (1-9\cos4x)-\frac{1}{4}\ln (t^2+10t)
+                                        &\ln y = \ln \left(
+                                        \frac{\sqrt{5x+8}\sqrt[3]{1-9\cos4x}}{\sqrt[4]{t^2+10t}}
+                                        \right) = \ln (5x+8)^{\frac{1}{2}}+\ln
+                                        (1-9\cos 4x)^{\frac{1}{3}}-\ln
+                                        (t^2+10t)^{\frac{1}{4}}\\
+                                        &\ln y = \frac{1}{2}\ln
+                                        (5x+8)+\frac{1}{3}\ln
+                                        (1-9\cos4x)-\frac{1}{4}\ln (t^2+10t)
                                         \end{aligned}
                                         \]
                                         \[
-                                        \frac{y'}{y}=\frac{1}{2}\cdot\frac{5}{5x+8}+ \frac{1}{3}\cdot\frac{12\sin 4x}{1-9\cos 4x}-\frac{1}{2}\cdot\frac{t+5}{t^2 +10t}
+                                        \frac{y'}{y}=\frac{1}{2}\cdot\frac{5}{5x+8}+
+                                        \frac{1}{3}\cdot\frac{12\sin 4x}{1-9\cos
+                                        4x}-\frac{1}{2}\cdot\frac{t+5}{t^2 +10t}
                                         \]
                                         \[
-                                        y'=\left[ \frac{5}{2(5x+8)}+\frac{12\sin4x}{1-9\cos4x}+\frac{t+5}{2(t^2+10t)}\right]\times y 
+                                        y'=\left[
+                                        \frac{5}{2(5x+8)}+\frac{12\sin4x}{1-9\cos4x}+\frac{t+5}{2(t^2+10t)}\right]\times
+                                        y
                                         \]
                                         \[
-                                        \therefore \boxed{y'=\left[ \frac{5}{2(5x+8)}+\frac{12\sin4x}{1-9\cos4x}+\frac{t+5}{2(t^2+10t)}\right]\left[ \frac{\sqrt{5x+8}\sqrt[3]{1-9\cos4x}}{\sqrt[4]{t^2+10t}}\right] }
+                                        \therefore \boxed{y'=\left[
+                                        \frac{5}{2(5x+8)}+\frac{12\sin4x}{1-9\cos4x}+\frac{t+5}{2(t^2+10t)}\right]\left[
+                                        \frac{\sqrt{5x+8}\sqrt[3]{1-9\cos4x}}{\sqrt[4]{t^2+10t}}\right]
+                                        }
                                         \]
                                     </div>
                                 </div>
 
                                 <h2 id="integrals">Logarithmic Integration</h2>
+                                <p>So far, we have seen that the derivative of
+                                    \(\ln x\) is \(\frac{1}{x}\). And let's we
+                                    want to integrate \(\frac{1}{x}\) using the
+                                    power rule; \(\int x^n \, dx =
+                                    \frac{x^{n+1}}{n+1}+c\).</p>
+                                <p>Firstly we will write \(\frac{1}{x}\) as
+                                    \(x^{-1}\) using the rules of indices. If we
+                                    apply the power rule here,</p>
+                                <div class="math-block">\[
+                                    \int x^{-1}\, dx =
+                                    \frac{x^{-1+1}}{-1+1}=\frac{x^0}{0}=\frac{1}{0}
+                                    \]
+                                </div>
+                                <p>which is undefined.</p>
+                                <p>Now, knowing the fact that the integral is an
+                                    antiderivative of a given function, we can
+                                    happily conclude from <strong>Integral
+                                        Equations</strong> that \(\ln x\) is an
+                                    antiderivative of $\frac{1}{x}$ on the
+                                    interval \((-\infty,0)\cup(0,\infty)\) that
+                                    doesn't contain \(0\). Therefore;</p>
+
+                                    <div class="theorem-box">
+                                        <div class="box-title">Important Integral</div>
+                                        <div class="math-block">
+                                            \[
+		                                    \int \frac{1}{u} \, du = \ln |u|+C
+		                                    \]
+                                        </div>
+                                        <p>This result comes from the derivative of 
+                                        $\ln x$ and cannot be solved using the power rule.</p>
+                                    </div>
+
+                                <div class="example-box">
+                                    <div class="box-title">Example 8</div>
+                                    <p>Evaluate \(\displaystyle\int\limits_1^e \frac{1}{x} \, dx\)</p>
+                                    <strong>Solution</strong>
+                                    <p>We will firstly find the indefinite integral then 
+                                        handle the limits later. Thus,</p>
+                              <div class="math-block">
+                                \[
+                                \int \frac{1}{x} = \ln |x| + C
+                                \]>
+                                </div>
+			                <p>Bringing the limits in, </p>
+                            <div class="math-block">
+                                \[
+                                \int\limits_1^e \frac{1}{x}\, dx = [\ln x]_1^e=\ln e - \ln 1=1-0=1
+                                \]
+                            </div>
+			                <P>from rules of logarithms, we know that \(\ln e = \log_{e}e = 1\text{ and } \ln 1 = 0\).</P>
+                            </div>
+                            <div class="example-box">
+                                <div class="box-title">Example 9</div>
+                                <p>Evaluate \(\displaystyle\int \frac{3x^2}{x^3 +5}\, dx\).</p>
+                                <strong>Solution</strong>
+                                <p>We will be using <strong>Integration by Substitution</strong>. 
+                                The idea is to eliminate the a certain part of the 
+                                expression by substituting a derivative of another 
+                                part of the given expression. Here, let \(u=x^3+5\), 
+                                after differentiating \(\diff{u}{x}=3x^2\). 
+                                Making \(dx\) a subject of the formula, we get
+                                \(dx=\frac{du}{3x^2}\). Hence we will 
+                                substitute \(u \text{ and } dx\);</p>
+                                <div class="math-block">
+                                \[
+                                \int \frac{\cancel{3x^2}}{u}\cdot\frac{du}{\cancel{3x^2}}=\int \frac{1}{u}du=\ln u +C
+                                \]
+                                </div>
+	                            <p>And substituting \(u\) back,yields
+                                <div class="math-block">
+                                    \[
+                                    \int \frac{3x^2}{x^3 +5}\, dx = \ln |x^3+5|+C
+                                    \]
+                                </div>
+                            </div>
+                            <div class="example-box">
+                                <div class="box-title">Example 10</div>
+                                <p>Evaluate \(\displaystyle\int \tan x \, dx\)</p>
+                                <strong>Solution</strong>
+                                <p>Apply the trig identity: \(\tan x = \frac{\sin x}{\cos x}\).</p>
+                                <div class="math-block">
+                                    \[
+                                    \int \tan x \, dx = \int \frac{\sin x}{\cos x}\, dx
+                                    \]
+                                </div>
+                                <p>Let \(u = \cos x\), then \(du = -\sin x \, dx\).</p>
+                                <div class="math-block">
+                                    \[
+                                    \int \frac{\sin x}{\cos x} \, dx = -\int \frac{du}{u} = -\ln |u| + C
+                                    \]
+                                </div>
+                                <p>Substitute \(u\) back:</p>
+                                <div class="math-block">
+                                    \[
+                                    \int \tan x \, dx = - \ln |\cos x| + C
+                                    \]
+                                </div>
+
+                            </div>
+                            <div class="example-box">
+                                <div class="box-title">Example 11</div>
+                                <p>Integrate \(\displaystyle\int \frac{dx}{x\ln x}\).</p>
+                                <strong>Solution:</strong>
+                                <p>Let \(u = \ln x\), then \(du = \frac{1}{x}\, dx\).</p>
+                                <p>Substitute to get:
+                                    <div class="math-block">
+                                        \[
+                                        \int \frac{dx}{x\ln x} = \int \frac{du}{u} = \ln |u| + C
+                                        \]
+                                    </div>
+                                </p>
+                                <p>Substitute \(u\) back:
+                                    <div class="math-block">
+                                        \[
+                                        \int \frac{dx}{x\ln x} = \ln |\ln x| + C
+                                        \]
+                                    </div>
+                                </p>
+                            </div>
+
+                            <div class="example-box">
+                                <div class="box-title">Example 12</div>
+                                <p>Evaluate \(\displaystyle\int \frac{\sin 3\theta}{1+\cos 3\theta}\, dx\).</p>
+                                <strong>Solution:</strong>
+                                <p>Let \(u = 1 + \cos 3\theta\), then \(du = -\sin 3\theta\, dx\).</p>
+                                <p>
+                                    <div class="math-block">
+                                        \[
+                                        \int \frac{\sin 3\theta}{1+\cos 3\theta}\, dx = -\int \frac{du}{u} = -\ln |u| + C
+                                        \]
+                                    </div>
+                                </p>
+                                <p>Substitute \(u\) back:
+                                    <div class="math-block">
+                                        \[
+                                        \int \frac{\sin 3\theta}{1+\cos 3\theta}\, dx = -\ln |1+\cos 3\theta| + C
+                                        \]
+                                    </div>
+                                </p>
+                            </div>
+
+                            <div class="example-box">
+                                <div class="box-title">Example 13</div>
+                                <p>Evaluate \(\displaystyle\int \cot x \, dx\).</p>
+                                <strong>Solution:</strong>
+                                <p>\(\cot x = \frac{\cos x}{\sin x}\), let \(u = \sin x\), \(du = \cos x\, dx\).</p>
+                                <p>
+                                    <div class="math-block">
+                                        \[
+                                        \int \cot x \, dx = \int \frac{\cos x}{\sin x}\, dx = \int \frac{du}{u} = \ln |u| + C
+                                        \]
+                                    </div>
+                                </p>
+                                <p>Substitute \(u\) back:
+                                    <div class="math-block">
+                                        \[
+                                        \int \cot x \, dx = \ln |\sin x| + C
+                                        \]
+                                    </div>
+                                </p>
+                            </div>
+                            <div class="definition-box">
+                                <div class="box-title" id="review">Chapter Review</div>
+                                <ol>
+                                    <li>Use logarithmic differentiation to find $\frac{dy}{dx}$ for $y = \frac{x^3\sqrt{2x+1}}{(x^2-5)^4}$.</li>
+                                    <li>Differentiate $y = (3x^2 + 1)^{\sin x}$ using logarithmic differentiation.</li>
+                                    <li>Find $\frac{dy}{dx}$ if $y = x^{\ln x}$.</li>
+                                    <li>Use logarithmic differentiation to find the derivative of $y = \frac{(x-1)^3(x+2)^2}{\sqrt{x^2+4}}$.</li>
+                                    <li>Differentiate $y = (\cos x)^x$ for $x \in (0, \pi/2)$.</li>
+                                    <li>Evaluate $\displaystyle\int \frac{2x}{x^2 + 3} \, dx$.</li>
+                                    <li>Find $\displaystyle\int \frac{e^{2x}}{1 + e^{2x}} \, dx$.</li>
+                                    <li>Evaluate $\displaystyle\int \frac{\ln x}{x} \, dx$.</li>
+                                    <li>Compute $\displaystyle\int \frac{dx}{x \ln x \ln(\ln x)}$.</li>
+                                    <li>Find $\displaystyle\int_1^e \frac{\ln x}{x^2} \, dx$.</li>
+                                </ol>
+                            </div>
                                 <nav class="notes-section-nav">
                                     <button href="#"
                                         class="notes-nav-btn"
@@ -669,9 +885,11 @@
                                     </button>
                                 </nav>
                                 <div class="theorem-box">
-                                    <div
-                                        class="box-title">REFERENCES</div>
-
+                                    <div class="box-title">REFERENCES</div>
+                                    <p>Stewart, J. (2020). <i>Calculus: Early Transcendentals</i>. 9th Edition. Cengage Learning.</p>
+                                    <p>Anton, H., Bivens, I., & Davis, S. (2016). <i>Calculus: Early Transcendentals</i>. 11th Edition. Wiley.</p>
+                                    <p>Larson, R., & Edwards, B. H. (2018). <i>Calculus</i>. 11th Edition. Cengage Learning.</p>
+                                </div>
                                 </div>
                                 <nav class="notes-section-nav">
                                     <a

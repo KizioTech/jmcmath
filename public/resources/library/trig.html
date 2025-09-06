@@ -185,14 +185,64 @@
                     </nav>
                     <h1 id="exp">Chapter 2: Trigonometric Functions</h1>
 
+                    <h2 id="introduction">Introduction</h2>
+                    <p>Trigonometric functions are fundamental in calculus, particularly in integration and
+                        differentiation. They include sine, cosine, tangent, and their inverses. 
+                        They also include their reciprocals namely Cosecant, secant and cotangent, in that 
+                        order, and their inverses too. These functions are
+                        periodic and have unique properties that make them essential for solving various mathematical
+                        problems.</p>
+                        <p>The derivatives and integrals of these six basic trigonmetric functions were discussed 
+                             in previous module called <a class="hyperlink" href="introtocalc.html">Introduction to Calculus</a>.
+                             In this chapter, we will look at the derivatives and integrals of the inverse trigonometric functions,
+                            powers of trigonometric functions, products of multiple angles, and trigonometric substitutions.
+                        </p>
+                        <h2 id="inverse">Inverse Trigonometric Functions</h2>
+                        <p>Mathematically, the six basic trigonometric functions do not have inverses because 
+                            their graphs repeat periodically and do not pass the horizontal line test.</p>
+                        <p>However, inverses of trigonometric functions are widely 
+                        used in finding angles that are associated 
+                        with specific ratios. These inverses usually give 
+                        angles which are in the range \(-\frac{\pi}{2}\leq\theta\leq\frac{\pi}{2}\). 
+                        For example, consider:</p>
+                        <div class="math-block">
+                            \[
+                            \sin x = \frac{1}{2}\text{;} \quad x = \sin^{-1} \frac{1}{2}= 30^\circ
+                            \]
+                        </div>
 
+                        <h3 id="derivatives">Derivatives of Inverse Trigonometric Functions</h3>
+	
+                        <p> When differentiating these functions, careful 
+                            attention has to be taken to avoid confusing them 
+                            with normal function as their behaviour is not 
+                            even the same with the inverses of other functions.</p>
+                        <p>To derive the derivatives of inverse functions, 
+                            we will use the formula for finding derivatives 
+                            of general functions. Thus if \(f(x) \text{ and } g(x)\) 
+                            are inverses of each other, then</p>
+                        <div class="math-block">
+                            \[\boxed{g'(x)=\frac{1}{f'(g(x))}}\]
+                        </div>
+                        <p>And always remember from inverse function that, two 
+                            functions \(f(x) \text{ and } g(x)\) are inverses 
+                            if and only if \(f(g(x))=g(f(x))=x\).</p>
 
+                        <p>	In this section, we will derive the derivatives of 
+                            the inverses for all the six trigonometric functions.</p>
+	
+                        <p>Before we start diving into the derivations, 
+                            it might be important to note that the 
+                            inverses are written in two forms, that is, 
+                            \(\sin^{-1} x\)  can also be written 
+                            as \(\arcsin x\).</p>
+                            
                     <nav class="notes-section-nav">
                         <button href="transcendental functions.html" class="notes-nav-btn">
                             <i class="fas fa-chevron-left"></i>
                             Previous
                         </button>
-                        <span class="progress-indicator">Chapter 2: Trigonometric Functions</span>
+                        <span class="progress-indicator">Chapter 3: Hyperbolic Functions</span>
                         <button href="hyperbolic.html" class="notes-nav-btn">
                             Next
                             <i class="fas fa-chevron-right"></i>
