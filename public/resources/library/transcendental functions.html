@@ -1,512 +1,703 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8NVMG0WLL7"></script>
-    <script>
+    <head>
+        <!-- Google tag (gtag.js) -->
+        <script async
+            src="https://www.googletagmanager.com/gtag/js?id=G-8NVMG0WLL7"></script>
+        <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
 
         gtag('config', 'G-8NVMG0WLL7');
     </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4421684242850337"
-     crossorigin="anonymous"></script>
-    <script type='text/javascript' src='//softballabnegatemailman.com/6b/2c/a0/6b2ca02bc270f48895c176c8ece35046.js'></script>
-    <meta name="description" content="JMC Math & Academics - Calculus II Tutorial 1: Transcendental Functions.">
-    <meta name="keywords" content="Calculus, Transcendental Functions, JMC Mathematics, Math Tutorials">
-    <link rel="icon" type="image/png" href="/assets/images/favicon.ico">
-    <title>Calculus II - Transcendental Functions</title>
-    <link rel="icon" type="image/x-icon" href="/assets/images/logo.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/assets/css/styles.css">
-    <link rel="stylesheet" href="/assets/css/notes.css">
-    <link rel="stylesheet" href="/assets/css/tutorial.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4421684242850337"
+            crossorigin="anonymous"></script>
+        <script type='text/javascript'
+            src='//softballabnegatemailman.com/6b/2c/a0/6b2ca02bc270f48895c176c8ece35046.js'></script>
+        <meta name="description"
+            content="JMC Mathematics - Your go-to platform for structured and effective math learning materials.">
+        <meta name="keywords"
+            content="Math, Education, Learning, Courses, Resources, JMC Mathematics">
+        <link rel="icon" type="image/png" href="/assets/images/favicon.ico">
+        <title>Course Notes - Discrete Mathematics</title>
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="/assets/css/styles.css">
+        <link rel="stylesheet" href="/assets/css/notes.css">
+        <link rel="stylesheet" href="/assets/css/tutorial.css">
 
-    <!-- MathJax Configuration -->
-    <script>
+        <!-- MathJax Configuration -->
+        <script>
         MathJax = {
             tex: {
                 inlineMath: [['$', '$'], ['\\(', '\\)']],
                 displayMath: [['$$', '$$'], ['\\[', '\\]']],
-                packages: { '[+]': ['ams', 'newcommand', 'configMacros'] }
+                packages: { '[+]': ['ams', 'newcommand', 'configMacros'] },
+                macros: {
+                    // Define the \diff macro to take two arguments
+                    diff: ['\\frac{d#1}{d#2}', 2],
+                    // You can also add other useful derivatives macros
+                    pdiff: ['\\frac{\\partial #1}{\\partial #2}', 2],  // for partial derivatives
+                    ddiff: ['\\frac{d^2#1}{d#2^2}', 2],  // for second derivatives
+                    // Other common calculus macros you might find useful
+                    lint: ['\\int_{#1}^{#2}', 2],  // definite integral with limits
+                    eval: ['\\left.#1\\right|_{#2}', 2]  // evaluation bar
+                }
             },
             svg: {
                 fontCache: 'global'
             }
         };
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
-</head>
 
-<body>
-    <div id="navbar"></div>
-    <script async="async" data-cfasync="false" src="//pl27548441.revenuecpmgate.com/d69b470dce68b59eb758a3f9fd2a3545/invoke.js"></script>
-<div id="container-d69b470dce68b59eb758a3f9fd2a3545"></div>
-    <div class="mobile-warning-overlay" id="mobileWarning">
-        <div class="mobile-warning-popup">
-            <button class="close-btn" onclick="closeMobileWarning()">&times;</button>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+    </head>
 
-            <div class="warning-icon"><i class="fas fa-mobile-alt"></i></div>
+    <body>
+        <div id="navbar"></div>
+        <script async="async" data-cfasync="false"
+            src="//pl27548441.revenuecpmgate.com/d69b470dce68b59eb758a3f9fd2a3545/invoke.js"></script>
+        <div id="container-d69b470dce68b59eb758a3f9fd2a3545"></div>
+        <div class="mobile-warning-overlay" id="mobileWarning">
+            <div class="mobile-warning-popup">
+                <button class="close-btn"
+                    onclick="closeMobileWarning()">&times;</button>
 
-            <div class="warning-title">Better Equation Viewing</div>
+                <div class="warning-icon"><i
+                        class="fas fa-mobile-alt"></i></div>
 
-            <div class="warning-message">
-                Mathematical equations on this page may appear cut off or difficult to read on mobile devices in portrait mode.
-            </div>
+                <div class="warning-title">Better Equation Viewing</div>
 
-            <div class="warning-suggestions">
-                <div class="suggestion-item">
-                    <span class="suggestion-icon"><i class="fas fa-sync-alt"></i></span>
-                    <span>Rotate your device to landscape mode</span>
+                <div class="warning-message">
+                    Mathematical equations on this page may appear cut off or
+                    difficult to read on mobile devices in
+                    portrait mode.
                 </div>
-                <div class="suggestion-item">
-                    <span class="suggestion-icon"><i class="fas fa-desktop"></i></span>
-                    <span>Enable "Desktop Site" in your browser</span>
+
+                <div class="warning-suggestions">
+                    <div class="suggestion-item">
+                        <span class="suggestion-icon"><i
+                                class="fas fa-sync-alt"></i></span>
+                        <span>Rotate your device to landscape mode</span>
+                    </div>
+                    <div class="suggestion-item">
+                        <span class="suggestion-icon"><i
+                                class="fas fa-desktop"></i></span>
+                        <span>Enable "Desktop Site" in your browser</span>
+                    </div>
+                    <div class="suggestion-item">
+                        <span class="suggestion-icon"><i
+                                class="fas fa-search-minus"></i></span>
+                        <span>Zoom out to see full equations</span>
+                    </div>
                 </div>
-                <div class="suggestion-item">
-                    <span class="suggestion-icon"><i class="fas fa-search-minus"></i></span>
-                    <span>Zoom out to see full equations</span>
+
+                <div class="warning-buttons">
+                    <button class="warning-btn btn-primary"
+                        onclick="closeMobileWarning()">
+                        Got it!
+                    </button>
+                    <button class="warning-btn btn-secondary"
+                        onclick="dontShowAgain()">
+                        Don't show again
+                    </button>
                 </div>
-            </div>
-            
-            <div class="warning-buttons">
-                <button class="warning-btn btn-primary" onclick="closeMobileWarning()">
-                    Got it!
-                </button>
-                <button class="warning-btn btn-secondary" onclick="dontShowAgain()">
-                    Don't show again
-                </button>
             </div>
         </div>
-    </div>
+        <!-- Mobile Overlay -->
+        <div class="mobile-overlay" id="mobile-overlay"></div>
+        <!-- Main Container -->
+        <div class="notes-container">
+            <!-- Navigation Sidebar -->
+            <nav class="notes-nav-sidebar" id="notes-nav-sidebar">
+                <div class="notes-nav-content">
+                    <div class="notes-nav-section">
+                        <a href="#" class="notes-nav-section-title">Exponential
+                            & Logarithmic Functions</a>
+                        <ul class="notes-nav-list">
+                            <li class="notes-nav-item">
+                                <a href="#introduction"
+                                    class="notes-nav-link active">Introduction</a>
+                            </li>
+                            <li class="notes-nav-item">
+                                <a href="#derivatives"
+                                    class="notes-nav-link">Logarithmic
+                                    Differentiation</a>
+                            </li>
+                            <li class="notes-nav-item">
+                                <a href="#integrals"
+                                    class="notes-nav-link">Integrals of
+                                    Logarithmic Functions</a>
+                            </li>
 
-    <!-- Mobile Overlay -->
-    <div class="mobile-overlay" id="mobile-overlay"></div>
-
-    <!-- Main Container -->
-    <div class="notes-container">
-        <!-- Navigation Sidebar -->
-        <nav class="notes-nav-sidebar" id="notes-nav-sidebar">
-            <div class="notes-nav-content">
-                <div class="notes-nav-section">
-                    <h3 class="notes-nav-section-title">Transcendental Functions</h3>
-                    <ul class="notes-nav-list">
-                        <li class="notes-nav-item">
-                            <a href="#introduction" class="notes-nav-link active">Introduction</a>
-                        </li>
-                        <li class="notes-nav-item">
-                            <a href="#logdiff" class="notes-nav-link">Logarithmic Differentiation</a>
-                        </li>
-                        <li class="notes-nav-item">
-                            <a href="#logintegration" class="notes-nav-link">Logarithmic Integration</a>
-                        </li>
-                        <li class="notes-nav-item">
-                            <a href="#inversetrig" class="notes-nav-link">Inverse Trigonometric Functions</a>
-                        </li>
-                        <li class="notes-nav-item">
-                            <a href="#inversetrigint" class="notes-nav-link">Inverse Trig Integrals</a>
-                        </li>
-                        <li class="notes-nav-item">
-                            <a href="#examples" class="notes-nav-link sub-item">Examples</a>
-                        </li>
-                        <li class="notes-nav-item">
-                            <a href="#exercises" class="notes-nav-link sub-item">Practice Exercises</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            <div class="content-wrapper">
-                <div class="tutorial-header">
-                    <h1>CALCULUS II</h1>
-                    <h2>Indeterminate Forms</h2>
-                    <p>In this chapter, we explore transcendental functions - mathematical functions that go beyond
-                        basic algebraic
-                        operations. We'll study exponential and logarithmic functions, their properties, derivatives,
-                        and integrals.
-                        We'll also examine inverse trigonometric functions and their applications in calculus. These
-                        functions are
-                        fundamental in modeling real-world phenomena and solving complex mathematical problems.</p>
-
-                    <div class="tutorial-meta">
-                        <div class="meta-item">
-                            <i class="fas fa-book"></i>
-                            <span>Chapter 7</span>
-                        </div>
-                        <div class="meta-item">
-                            <i class="fas fa-calendar"></i>
-                            <span>May 2025</span>
-                        </div>
-                        <div class="meta-item">
-                            <i class="fas fa-graduation-cap"></i>
-                            <span>Calculus II</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="content-wrapper">
-
-                <div class="content">
-
-                    <h1 id="introduction">Introduction to Logarithmic and Exponential Functions</h1>
-
-                    <p>A review of the fundamental properties and calculus rules for logarithmic and exponential
-                        functions.</p>
-
-                    <div class="definition-box">
-                        <p>Exponential and Logarithmic Functions are inverses of each other. They satisfy:</p>
-                        <div class="math-block">
-                            $$f(f^{-1}(x))=f^{-1}(f(x))=x$$
-                        </div>
-                        <p>Which means:</p>
-                        <div class="math-block">
-                            $$\log_{a} (a^{x}) = a^{\log_{a}(x)}=x$$
-                        </div>
-                        <p>as long as the base $a$ remains constant throughout.</p>
-                    </div>
-
-                    <div class="theorem-box">
-                        <div class="box-title">Change of Base Formula</div>
-                        <p>To change a logarithm of $x$ in base $a$ to base $b$:</p>
-                        <div class="math-block">
-                            $$\log_{a}x=\frac{\log_{b}x}{\log_{b}a}$$
-                        </div>
-                    </div>
-
-                    <div class="warning-box">
-                        <div class="box-title">Key Concepts from Previous Course</div>
-                        <ul>
-                            <li>The derivative of $y=e^x$ is $e^x$ (Natural Exponential Function)</li>
-                            <li>The derivative of $y=a^x$ is $a^x \ln a$</li>
-                            <li>The derivative of $y=\ln x$ is $\frac{1}{x}$</li>
-                            <li>The derivative of $y=\log_{a} x$ is $\frac{1}{x \ln a}$</li>
-                            <li>Integration often requires substitution</li>
+                            <li class="notes-nav-item">
+                                <a href="#review" class="notes-nav-link">Chapter
+                                    Review</a>
+                            </li>
                         </ul>
                     </div>
+                    <div class="notes-nav-section">
+                        <a href="trig.html" class="notes-nav-section-title">
+                            Trigonometric Functions</a>
 
-                    <div class="theorem-box">
-                        <div class="box-title">Summary of Derivatives</div>
-                        <div class="math-block">
-                            $$\begin{aligned}
-                            & \frac{d}{dx}\left(e^{u(x)}\right)=e^{u(x)}\times \frac{du}{dx}\\
-                            &\frac{d}{dx}\left( a^{u(x)}\right) = a^{u(x)}\ln a\times\frac{du}{dx} \\
-                            & \frac{d}{dx}\left( \ln u(x)\right) = \frac{1}{u(x)}\times \frac{du}{dx}\\
-                            &\frac{d}{dx}\left( \log_{a}u(x)\right)=\frac{1}{u(x)\ln a}\times\frac{du}{dx}
-                            \end{aligned}$$
-                        </div>
                     </div>
+                    <div class="notes-nav-section">
+                        <a href="hyperbolic.html"
+                            class="notes-nav-section-title">Hyperbolic
+                            Functions</a>
 
-                    <div class="theorem-box">
-                        <div class="box-title">Summary of Integrals</div>
-                        <div class="math-block">
-                            $$\begin{aligned}
-                            &\int e^{u(x)} \, du=e^u+c\\
-                            &\int a^{u(x)} \, du=\frac{a^{u(x)}}{\ln a}+c\\
-                            &\int \frac{1}{u(x)}\, du = \ln |u(x)|+c
-                            \end{aligned}$$
-                        </div>
-                    </div>
-
-                    <a href="uploads/documents/transcendentalfunctions.pdf" download class="download-btn">
-                        Download PDF
-                    </a>
-
-                    <h1 id="logdiff">Logarithmic Differentiation</h1>
-
-                    <p>The technique of logarithmic differentiation simplifies complex functions by using logarithms to
-                        transform products, quotients, and exponents into simpler expressions.</p>
-
-                    <div class="example-box">
-                        <div class="box-title">Example: Complex Function</div>
-                        <p>Differentiate $y=\frac{x^5}{(1-10x)\sqrt{x^2+2}}$</p>
-                        <p><strong>Solution:</strong></p>
-                        <p>Apply natural logarithms to both sides:</p>
-                        <div class="math-block">
-                            \[\ln y = \ln \left(\frac{x^5}{(1-10x)\sqrt{x^2+2}} \right)\]
-                        </div>
-                        <p>Simplify using logarithm properties:</p>
-                        <div class="math-block">
-                            \[\ln y = \ln x^5 - \ln(1-10x) - \frac{1}{2}\ln (x^2+2)\]
-                        </div>
-                        <p>Differentiate implicitly:</p>
-                        <div class="math-block">
-                            \[\frac{1}{y} \frac{dy}{dx} = \frac{5}{x} + \frac{10}{1-10x} - \frac{x}{x^2 + 2}\]
-                        </div>
-                        <p>Solve for $\frac{dy}{dx}$:</p>
-                        <div class="math-block">
-                            \[\frac{dy}{dx} = y \left( \frac{5}{x} + \frac{10}{1-10x} - \frac{x}{x^2 + 2} \right)\]
-                        </div>
-                        <p>Substitute back for $y$:</p>
-                        <div class="math-block">
-                            \[\frac{dy}{dx} = \frac{x^5}{(1-10x)\sqrt{x^2+2}} \left( \frac{5}{x} + \frac{10}{1-10x} -
-                            \frac{x}{x^2 + 2} \right)\]
-                        </div>
-                    </div>
-
-                    <div class="example-box">
-                        <div class="box-title">Example: Exponential Function</div>
-                        <p>Differentiate $y=x^x$</p>
-                        <p><strong>Solution:</strong></p>
-                        <div class="math-block">
-                            \[\ln y = x \ln x\]
-                            \[\frac{1}{y} \frac{dy}{dx} = \ln x + 1\]
-                            \[\frac{dy}{dx} = x^x (\ln x + 1)\]
-                        </div>
-                    </div>
-
-                    <div class="example-box">
-                        <div class="box-title">Example: Trigonometric Exponent</div>
-                        <p>Differentiate $y=(1-3x)^{\cos x}$</p>
-                        <p><strong>Solution:</strong></p>
-                        <div class="math-block">
-                            \[\ln y = \cos x \ln(1-3x)\]
-                            \[\frac{1}{y} \frac{dy}{dx} = -\sin x \ln(1-3x) - \frac{3 \cos x}{1-3x}\]
-                            \[\frac{dy}{dx} = -(1-3x)^{\cos x} \left[ \sin x \ln(1-3x) + \frac{3 \cos x}{1-3x} \right]\]
-                        </div>
-                    </div>
-
-                    <div class="theorem-box">
-                        <div class="box-title">Basic Differentiation Formulas</div>
-                        <table style="width:100%; border-collapse: collapse;">
-                            <tr>
-                                <td style="padding: 8px; border-bottom: 1px solid #ddd;">$\frac{d}{dx}(c)=0$</td>
-                                <td style="padding: 8px; border-bottom: 1px solid #ddd;">Constant Differentiation</td>
-                            </tr>
-                            <tr>
-                                <td style="padding: 8px; border-bottom: 1px solid #ddd;">$\frac{d}{dx}(x^n)=nx^{n-1}$
-                                </td>
-                                <td style="padding: 8px; border-bottom: 1px solid #ddd;">Power Rule</td>
-                            </tr>
-                            <tr>
-                                <td style="padding: 8px; border-bottom: 1px solid #ddd;">$\frac{d}{dx}(a^x)=a^x\ln a$
-                                </td>
-                                <td style="padding: 8px; border-bottom: 1px solid #ddd;">Exponential Function</td>
-                            </tr>
-                            <tr>
-                                <td style="padding: 8px; border-bottom: 1px solid #ddd;">$\frac{d}{dx}(x^x)=x^x(1+\ln
-                                    x)$</td>
-                                <td style="padding: 8px; border-bottom: 1px solid #ddd;">Logarithmic Differentiation
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-
-                    <h1 id="logintegration">Logarithmic Integration</h1>
-
-                    <p>Understanding how to use logarithms in integration problems.</p>
-
-                    <div class="theorem-box">
-                        <div class="box-title">Important Integral</div>
-                        <div class="math-block">
-                            \[\int \frac{1}{u} \, du = \ln |u| + C\]
-                        </div>
-                        <p>This result comes from the derivative of $\ln x$ and cannot be solved using the power rule.
-                        </p>
-                    </div>
-
-                    <div class="example-box">
-                        <div class="box-title">Example: Basic Integral</div>
-                        <p>Evaluate $\int\limits_1^e \frac{1}{x} \, dx$</p>
-                        <p><strong>Solution:</strong></p>
-                        <div class="math-block">
-                            \[\int\limits_1^e \frac{1}{x}\, dx = [\ln x]_1^e = \ln e - \ln 1 = 1 - 0 = 1\]
-                        </div>
-                    </div>
-
-                    <div class="example-box">
-                        <div class="box-title">Example: Substitution Method</div>
-                        <p>Evaluate $\int \frac{3x^2}{x^3 +5}\, dx$</p>
-                        <p><strong>Solution:</strong></p>
-                        <p>Let $u = x^3 + 5$, then $du = 3x^2 dx$</p>
-                        <div class="math-block">
-                            \[\int \frac{3x^2}{x^3 +5}\, dx = \int \frac{1}{u} du = \ln |u| + C = \ln |x^3+5| + C\]
-                        </div>
-                    </div>
-
-                    <div class="example-box">
-                        <div class="box-title">Example: Trigonometric Integral</div>
-                        <p>Evaluate $\int \tan x \, dx$</p>
-                        <p><strong>Solution:</strong></p>
-                        <div class="math-block">
-                            \[\int \tan x \, dx = \int \frac{\sin x}{\cos x} dx\]
-                            <p>Let $u = \cos x$, $du = -\sin x \, dx$</p>
-                            \[\int \frac{\sin x}{\cos x} dx = -\int \frac{du}{u} = -\ln |u| + C = -\ln |\cos x| + C\]
-                        </div>
-                    </div>
-
-                    <div class="example-box">
-                        <div class="box-title">Example: Nested Logarithm</div>
-                        <p>Evaluate $\int \frac{dx}{x\ln x}$</p>
-                        <p><strong>Solution:</strong></p>
-                        <p>Let $u = \ln x$, $du = \frac{1}{x} dx$</p>
-                        <div class="math-block">
-                            \[\int \frac{dx}{x\ln x} = \int \frac{du}{u} = \ln |u| + C = \ln |\ln x| + C\]
-                        </div>
-                    </div>
-
-                    <h1 id="inversetrig">Inverse Trigonometric Functions</h1>
-
-                    <p>Understanding the derivatives of inverse trigonometric functions and their applications.</p>
-
-                    <div class="definition-box">
-                        <div class="box-title">Derivative of $\arcsin x$</div>
-                        <p>Let $y = \arcsin x$, then $x = \sin y$</p>
-                        <div class="math-block">
-                            \[\frac{dy}{dx} = \frac{1}{\cos y} = \frac{1}{\sqrt{1 - x^2}}\]
-                        </div>
-                        <p>Thus:</p>
-                        <div class="math-block">
-                            \[\frac{d}{dx}(\arcsin x) = \frac{1}{\sqrt{1 - x^2}}\]
-                        </div>
-                    </div>
-
-                    <div class="definition-box">
-                        <div class="box-title">Derivative of $\arccos x$</div>
-                        <p>Let $y = \arccos x$, then $x = \cos y$</p>
-                        <div class="math-block">
-                            \[\frac{dy}{dx} = -\frac{1}{\sin y} = -\frac{1}{\sqrt{1 - x^2}}\]
-                        </div>
-                        <p>Thus:</p>
-                        <div class="math-block">
-                            \[\frac{d}{dx}(\arccos x) = -\frac{1}{\sqrt{1 - x^2}}\]
-                        </div>
-                    </div>
-
-                    <div class="definition-box">
-                        <div class="box-title">Derivative of $\arctan x$</div>
-                        <p>Let $y = \arctan x$, then $x = \tan y$</p>
-                        <div class="math-block">
-                            \[\frac{dy}{dx} = \frac{1}{\sec^2 y} = \frac{1}{1 + x^2}\]
-                        </div>
-                        <p>Thus:</p>
-                        <div class="math-block">
-                            \[\frac{d}{dx}(\arctan x) = \frac{1}{1 + x^2}\]
-                        </div>
-                    </div>
-
-                    <div class="theorem-box">
-                        <div class="box-title">Summary of Inverse Trig Derivatives</div>
-                        <div class="math-block">
-                            $$\begin{aligned}
-                            &\frac{d}{dx}(\sin^{-1} u) = \frac{1}{\sqrt{1 - u^2}} \cdot \frac{du}{dx} \\
-                            &\frac{d}{dx}(\cos^{-1} u) = -\frac{1}{\sqrt{1 - u^2}} \cdot \frac{du}{dx} \\
-                            &\frac{d}{dx}(\tan^{-1} u) = \frac{1}{1 + u^2} \cdot \frac{du}{dx} \\
-                            &\frac{d}{dx}(\cot^{-1} u) = -\frac{1}{1 + u^2} \cdot \frac{du}{dx} \\
-                            &\frac{d}{dx}(\sec^{-1} u) = \frac{1}{|u|\sqrt{u^2 - 1}} \cdot \frac{du}{dx} \\
-                            &\frac{d}{dx}(\csc^{-1} u) = -\frac{1}{|u|\sqrt{u^2 - 1}} \cdot \frac{du}{dx}
-                            \end{aligned}$$
-                        </div>
-                    </div>
-
-                    <div class="example-box">
-                        <div class="box-title">Example: Composite Function</div>
-                        <p>Differentiate $y = \sin^{-1}(x^3)$</p>
-                        <p><strong>Solution:</strong></p>
-                        <div class="math-block">
-                            \[\frac{dy}{dx} = \frac{1}{\sqrt{1 - (x^3)^2}} \cdot 3x^2 = \frac{3x^2}{\sqrt{1 - x^6}}\]
-                        </div>
-                    </div>
-
-                    <h1 id="inversetrigint">Integrals Involving Inverse Trig Functions</h1>
-
-                    <p>Using the derivatives of inverse trig functions to find their integrals.</p>
-
-                    <div class="theorem-box">
-                        <div class="box-title">Key Inverse Trig Integrals</div>
-                        <div class="math-block">
-                            $$\begin{aligned}
-                            &\int \frac{1}{\sqrt{1 - u^2}} \, du = \sin^{-1} u + C \\
-                            &\int \frac{1}{1 + u^2} \, du = \tan^{-1} u + C \\
-                            &\int \frac{1}{|u|\sqrt{u^2 - 1}} \, du = \sec^{-1} |u| + C
-                            \end{aligned}$$
-                        </div>
-                    </div>
-
-                    <div class="example-box">
-                        <div class="box-title">Example: Exponential Integral</div>
-                        <p>Evaluate $\int \frac{e^x}{\sqrt{1 - e^{2x}}} \, dx$</p>
-                        <p><strong>Solution:</strong></p>
-                        <p>Let $u = e^x$, $du = e^x dx$</p>
-                        <div class="math-block">
-                            \[\int \frac{e^x}{\sqrt{1 - e^{2x}}} dx = \int \frac{1}{\sqrt{1 - u^2}} du = \sin^{-1}(u) +
-                            C = \sin^{-1}(e^x) + C\]
-                        </div>
-                    </div>
-
-                    <div class="example-box">
-                        <div class="box-title">Example: Quadratic Denominator</div>
-                        <p>Evaluate $\int \frac{1}{1 + 3x^2} \, dx$</p>
-                        <p><strong>Solution:</strong></p>
-                        <p>Let $u = \sqrt{3}x$, $dx = \frac{du}{\sqrt{3}}$</p>
-                        <div class="math-block">
-                            \[\int \frac{1}{1 + 3x^2} dx = \frac{1}{\sqrt{3}} \int \frac{1}{1 + u^2} du =
-                            \frac{1}{\sqrt{3}} \tan^{-1}(u) + C = \frac{1}{\sqrt{3}} \tan^{-1}(\sqrt{3}x) + C\]
-                        </div>
-                    </div>
-
-                    <div class="theorem-box">
-                        <div class="box-title">General Integrals</div>
-                        <div class="math-block">
-                            $$\begin{aligned}
-                            &\int \frac{du}{\sqrt{a^2 - u^2}} = \sin^{-1} \left(\frac{u}{a} \right) + C \\
-                            &\int \frac{du}{a^2 + u^2} = \frac{1}{a} \tan^{-1} \left( \frac{u}{a} \right) + C \\
-                            &\int \frac{du}{u \sqrt{u^2 - a^2}} = \frac{1}{a} \sec^{-1} \left| \frac{u}{a} \right| + C
-                            \end{aligned}$$
-                        </div>
-                    </div>
-
-                    <div class="example-box">
-                        <div class="box-title">Example: Square Root Denominator</div>
-                        <p>Evaluate $\int \frac{dx}{\sqrt{9 - x^2}}$</p>
-                        <p><strong>Solution:</strong></p>
-                        <div class="math-block">
-                            \[\int \frac{dx}{\sqrt{9 - x^2}} = \sin^{-1} \left( \frac{x}{3} \right) + C\]
-                        </div>
-                    </div>
-
-                    <h3 id="exercises">Practice Exercises</h3>
-
-                    <p>Work through these exercises to test your understanding:</p>
-
-                    <ol>
-                        <li>Differentiate $y = \ln(\sin(2x))$</li>
-                        <li>Evaluate $\int \frac{\cos x}{1 + \sin x} dx$</li>
-                        <li>Find $\frac{d}{dx} \left( \tan^{-1}(e^x) \right)$</li>
-                        <li>Evaluate $\int \frac{dx}{x\sqrt{x^2 - 4}}$</li>
-                        <li>Differentiate $y = (x^2 + 1)^{\ln x}$</li>
-                    </ol>
-
-                    <div class="warning-box">
-                        <div class="box-title">Hint for Exercise 1</div>
-                        <p>Use chain rule and the derivative of natural logarithm.</p>
                     </div>
                 </div>
+            </nav>
+            <!-- Add this below the navbar -->
+            <div class="push-toggle" id="push-toggle">
+                <i class="fas fa-chevron-right"></i>
             </div>
-        </main>
-    </div>
-    <div id="footer"></div>
-    
-    <!-- Mobile Orientation Alert -->
-    <div id="mobile-orientation-alert" class="mobile-alert">
-        <div class="mobile-alert-content">
-            <span class="close-alert-btn">&times;</span>
-            <i class="fas fa-mobile-alt"></i>
-            <h3>For the Best Experience</h3>
-            <p>Some equations may not display correctly in portrait mode. Please rotate your device to landscape or switch to "Desktop site" view.</p>
-        </div>
-    </div>
 
-    <script src="/assets/js/notes.js"></script>
-    <script src="/assets/js/loader.js"></script>
-    <script src="/assets/js/navbar.js"></script>
-</body>
+            <!-- Main Content -->
+            <main class="main-content">
+                <div class="content-wrapper">
+                    <div class="content">
+                        <div class="notes-header">
+                            <h1 id="introduction">CALCULUS II - TRANSCENDENTAL
+                                fUNCTIONS</h1>
 
-</html>
+                            <p>Transcendental functions are mathematical
+                                functions that are not algebraic, meaning they
+                                cannot be expressed as roots of polynomial
+                                equations with finite degree. Common examples
+                                include exponential, logarithmic, trigonometric,
+                                and hyperbolic functions.</p>
+                        </div>
+                        <div class="definition-box">
+                            <div class="box-title">Key Concepts</div>
+                            <p>Transcendental functions in calculus include:</p>
+                            <ul>
+                                <li>Exponential functions ($f(x) = a^x$)</li>
+                                <li>Logarithmic functions ($f(x) = \log_a
+                                    x$)</li>
+                                <li>Trigonometric functions ($\sin x$, $\cos x$,
+                                    etc.)</li>
+                                <li>Hyperbolic functions ($\sinh x$, $\cosh x$,
+                                    etc.)</li>
+                            </ul>
+                        </div>
+
+                        <nav class="notes-section-nav">
+                            <button href="#" class="notes-nav-btn" disabled>
+                                <i class="fas fa-chevron-left"></i>
+                                Previous
+                            </button>
+                            <span class="progress-indicator">Chapter 1:
+                                Exponential & Logarithmic Functions</span>
+                            <button href="trig.html" class="notes-nav-btn">
+                                Next
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </nav>
+                        <h1 id="introduction">Chapter 1: Exponential &
+                            Logarithmic Functions</h1>
+                        <h2 id="introduction">Introduction</h2>
+
+                        <p>A review of the fundamental properties and calculus
+                            rules for logarithmic and exponential
+                            functions.</p>
+
+                        <div class="definition-box">
+                            Firstly, it is well known that Exponential and
+                            Logarithmic Functions are inverses of each other.
+                            That is, they satisfy the fact that;
+                            <div class="math-block">
+                                \[
+                                f(f^{-1}(x))=f^{-1}(f(x))=x
+                                \]
+                            </div>
+                            <p>That means, </p>
+                            <div class="math-block">
+                                \[
+                                \log_{a} (a^{x}) = a^{\log_{a}(x)}=x
+                                \]
+                            </div>
+                            <p>as long as the base \(a\) remains constant
+                                through out.</p>
+                        </div>
+
+                        <p>In addition, we also know how to change logarithms
+                            from one base to the other.</p>
+                        <div class="theorem-box">
+                            <strong>Change of Base Formula</strong>
+                            <p>For example, if you want to change a logarithm of
+                                \(x\) in base \(a\) to base \(b\), we use:
+                            </p>
+                            <div class="math-block">
+                                $$\log_{a}x=\frac{\log_{b}x}{\log_{b}a}$$
+                            </div>
+                        </div>
+                        <p> In MAT121, we looked at the differentiation and
+                            integration of the basic exponential
+                            and
+                            logarithmic functions. Here, we discussed that the
+                            derivative of an exponential function
+                            \(y=e^x\) is \(e^x\). When the base is \(e\), it is
+                            called <strong>Natural Exponential
+                                Function</strong>.</p>
+                        <p> For any other base \(a\), we found the derivative of
+                            the function \(y=a^x\) to be \(a^x
+                            \ln
+                            a\).</p>
+                        <p> For logarithms, we discussed that the natural
+                            logarithmic function of x is present as
+                            \(\ln
+                            x\) as a short form of \(\log_{e} x\).</p>
+                        <p> We also discussed that the derivative of the
+                            function \(y=\ln x\) is \(\frac{1}{x}\).
+                            And
+                            for any other general base \(a\) we first change it
+                            to base \(e\) using <strong>Change
+                                of
+                                Base equation</strong> and then differentiate
+                            which yielded the derivative of
+                            \(y=\log_{a} x\) as \(\frac{1}{x \ln a}\).</p>
+                        <p> On <strong>Integration</strong>, we found the
+                            reverse processes of the above
+                            derivatives.
+                            And for most questions we used <strong>integration
+                                by substitution</strong> to solve
+                            them.
+                        </p>
+                        <div class="theorem-box">
+                            <div class="box-title">Summary of Derivatives</div>
+                            $$\begin{align}
+                            \frac{d}{dx}\left(e^{u(x)}\right) &= e^{u(x)} \cdot
+                            \frac{du}{dx}\\
+                            \frac{d}{dx}\left( a^{u(x)}\right) &= a^{u(x)}\ln a
+                            \cdot \frac{du}{dx}\\
+                            \frac{d}{dx}\left( \ln u(x)\right) &= \frac{1}{u(x)}
+                            \cdot \frac{du}{dx}\\
+                            \frac{d}{dx}\left( \log_{a}u(x)\right) &=
+                            \frac{1}{u(x)\ln a} \cdot \frac{du}{dx}
+                            \end{align}$$
+                        </div>
+
+                        <div class="theorem-box">
+                            <div class="box-title">Summary of Integrals</div>
+                            $$\begin{align}
+                            \int e^{u(x)} \, du &= e^u+C\\
+                            \int a^{u(x)} \, du &= \frac{a^{u(x)}}{\ln a}+C\\
+                            \int \frac{1}{u(x)}\, du &= \ln |u(x)|+C
+                            \end{align}$$
+                        </div>
+                        <h2 id="derivatives">Logarithmic Differentiation</h2>
+
+                        <p>The other thing that we looked at in MAT121 is the
+                            \textbf{Quotient Rule} which dealt with the
+                            differentiation of rational functions. However, some
+                            rational functions are so complicated such that
+                            using the quotient seems almost impossible.</p>
+                        <p>For example, consider the function below;</p>
+                        <div class="math-block">
+                            \[
+                            y=\frac{x^5}{(1-10x)\sqrt{x^2+2}}
+                            \]
+                        </div>
+                        <p>The above function can be solved using the quotient
+                            rule but the process will be very complicated to
+                            follow. Therefore we will be using the
+                            <strong>Logarithmic Differentiation</strong>.</p>
+                        <p>In this process of differentiation, we will be
+                            introducing natural logarithms both sides and solve
+                            the function implicitly (Check and review on <a
+                                href="https://tutorial.math.lamar.edu/classes/calci/implicitdiff.aspx">Implicit
+                                Differentiation</a> too)
+                            <div class="example-box">
+                                <div class="box-title">Example 1</div>
+                                <p>Find the derivative of
+                                    \(y=\frac{x^5}{(1-10x)\sqrt{x^2+2}}\) with
+                                    respect ti $x$.</p>
+                                <strong>Solution</strong>
+
+                                <p> Given \(y=\frac{x^5}{(1-10x)\sqrt{x^2+2}}\),
+                                    introduce natural logarithms both sides.</p>
+                                <div class="math-block">
+                                    \[
+                                    \ln (y)=\ln
+                                    \left(\frac{x^5}{(1-10x)\sqrt{x^2+2}}
+                                    \right)
+                                    \]
+                                </div>
+                                <p>We then apply the rules of indices and
+                                    logarithms where we know that if the
+                                    expressions are multiplying, then, their
+                                    logs are adding and if the expressions are
+                                    dividing, then their logs are subtracting,
+                                    and a power is a product of a log.</p>
+                                <div class="math-block">
+                                    \[
+                                    \ln y = \ln x^5 -
+                                    \ln\left((1-10x)\sqrt{x^2+2}
+                                    \right) =\ln x^5 - \left[ \ln(1-10x)+\ln
+                                    (x^2+2)^{\frac{1}{2}} \right]
+                                    \]
+                                    \[
+                                    \ln y = \ln x^5 -\ln(1-10x)-\frac{1}{2}\ln
+                                    (x^2+2)
+                                    \]
+                                </div>
+                                <p>After this, we will differentiate implicitly;
+                                    each term on its own using the derivative
+                                    rules from equations on the summeries, where
+                                    in simplified terms, for \(y=\ln u \text{, }
+                                    y'=\frac{u'}{u}\).</p>
+
+                                <p>Let's now use the implicit differentiation to
+                                    differentiate \(\ln y = \ln x^5
+                                    -\ln(1-10x)-\ln \sqrt{x^2 +2}\) term by term
+                                    as follows:</p>
+                                <div class="math-block">
+                                    \[
+                                    \begin{aligned}
+                                    &\frac{dy}{dx}(\ln
+                                    y)=\frac{1}{y}\times\frac{dy}{dx}=\frac{y'}{y}
+                                    \text{ since }\frac{dy}{dx}=y'\\
+                                    &\frac{dy}{dx}(\ln
+                                    x^5)=\frac{5x^4}{x^{5}}=\frac{5}{x}\\
+                                    &\frac{dy}{dx}(\ln(1-10x))=\frac{-10}{1-10x}\\
+                                    &\frac{dy}{dx}\left( \frac{1}{2}\ln
+                                    (x^2+2)\right)
+                                    =\frac{1}{2}\times
+                                    \frac{2x}{x^2+2}=\frac{x}{x^2+2}
+                                    \end{aligned}
+                                    \]
+                                </div>
+                                <p>From here, we just need to combine everything
+                                    and simplify if possible.</p>
+
+                                <p>Therefore, the derivative of
+                                    \(y=\frac{x^5}{(1-10x)\sqrt{x^2+2}}\) is</p>
+                                <div class="math-block">
+                                    \[
+                                    \frac{y'}{y}=\frac{5}{x}-\left(
+                                    \frac{-10}{1-10x}\right) - \frac{x}{x^2 +
+                                    2}=\frac{5}{x}+\frac{10}{1-10x} -
+                                    \frac{x}{x^2 +
+                                    2}
+                                    \]
+                                </div>
+                                <p>If we multiply \(y\) both sides,</p>
+                                <div class="math-block">
+                                    \[
+                                    y'=\left( \frac{5}{x}+ \frac{10}{1-10x}-
+                                    \frac{x}{x^2 + 2}\right) \times y
+                                    \]
+                                </div>
+                                <p>But \(y=\frac{x^5}{(1-10x)\sqrt{x^2+2}}\), if
+                                    we substitute we get the final derivative of
+                                    \(y\) as,</p>
+                                <div class="math-block">
+                                    \[
+                                    \therefore \boxed{\frac{dy}{dx}=\left(
+                                    \frac{5}{x}+ \frac{10}{1-10x}- \frac{x}{x^2
+                                    +
+                                    2}\right) \left(
+                                    \frac{x^5}{(1-10x)\sqrt{x^2+2}}\right) }
+                                    \]
+                                </div>
+                            </div>
+
+                            <p>We can see here that it's slightly simpler to do
+                                the differentiation using logarithms that it
+                                could be if we have used the product and
+                                quotient rules. In addition, the answers are
+                                also simplified which improves our understanding
+                                to the process.</p>
+                            <p> The same approach is also used to differentiate
+                                expressions in which functions are raised to
+                                other functions. Thus:</p>
+                            <div class="math-block">\[
+                                \text{If } y=f(x)^{g(x)} \text{, then, } \ln y =
+                                \ln \left( f(x)^{g(x)}\right)=g(x)\ln f(x)
+                                \]</div>
+                            <p>Then, we apply <strong>implicit
+                                    differentiation</strong> and use the product
+                                rule on the right hand side to finish the
+                                differentiation process.</p>
+
+                            <div class="example-box">
+                                <div class="box-title">Example 2</div>
+                                <p>Find the derivative of
+                                    \(y=x^x\) with respect to
+                                    \(x\).</p>
+                                <strong>Solution</strong>
+
+                                <p>Firstly, we can happily see that both power
+                                    rule \(y'=nx^{n-1}\) and the exponential
+                                    differentiation \(y'=a^x \ln a\) won't work.
+                                    So, let's introduce the logarithms.
+                                    <div class="math-block">\[
+                                        \ln y = \ln x^x = x\ln x
+                                        \]</div>
+                                    <p>Here, we will differentiate \(\ln y\)
+                                        implicitly and \(x\ln x\) using the
+                                        product rule.</p>
+                                    <div class="math-block">\[
+                                        \frac{1}{y}\cdot \diff{x}{y}=1\cdot\ln x
+                                        + \cancel{x}\cdot\left(
+                                        \frac{1}{\cancel{x}}\right) =\ln x + 1
+                                        \]</div>
+                                    <p> Multiplying by \(y\) both sides
+                                        yields</p>
+                                    <div class="math-block">\[
+                                        \boxed{ \diff{y}{x}=(\ln x + 1)x^x}
+                                        \]</div>
+                                </div>
+                                <div class="example-box">
+                                    <div class="box-title">Example 3</div>
+                                    <p>Differentiate $y=(1-3x)^{\cos x}$ with
+                                        respect to $x$</p>
+                                    <strong>Solution</strong>
+                                    <p>Let \( y = (1-3x)^{\cos x} \). To
+                                        differentiate, introduce natural
+                                        logarithms on both sides:</p>
+                                    <div class="math-block">
+                                        \[
+                                        \ln y = \ln \left( (1-3x)^{\cos x}
+                                        \right) = \cos x \cdot \ln(1-3x)
+                                        \]
+                                    </div>
+                                    <p>Now, differentiate both sides with
+                                        respect to \( x \):</p>
+                                    <div class="math-block">
+                                        \[
+                                        \frac{1}{y} \frac{dy}{dx} = \frac{d}{dx}
+                                        \left( \cos x \cdot \ln(1-3x) \right)
+                                        \]
+                                    </div>
+                                    <p>Apply the product rule to the right
+                                        side:</p>
+                                    <div class="math-block">
+                                        \[
+                                        \frac{d}{dx} \left( \cos x \cdot
+                                        \ln(1-3x) \right) = -\sin x \cdot
+                                        \ln(1-3x) + \cos x \cdot \frac{-3}{1-3x}
+                                        \]
+                                    </div>
+                                    <p>So,</p>
+                                    <div class="math-block">
+                                        \[
+                                        \frac{1}{y} \frac{dy}{dx} = -\sin x
+                                        \cdot \ln(1-3x) - \frac{3\cos x}{1-3x}
+                                        \]
+                                    </div>
+                                    <p>Multiply both sides by \( y \):</p>
+
+                                    <div class="math-block">
+                                        \[
+                                        \therefore\boxed{
+                                        \frac{dy}{dx} = \left[ -\sin x \cdot
+                                        \ln(1-3x) - \frac{3\cos x}{1-3x} \right]
+                                        (1-3x)^{\cos x}
+                                        }
+                                        \]
+                                    </div>
+                                </div>
+                                <div class="example-box">
+                                    <div class="box-title">Example 4</div>
+                                    <p>Differentiate
+                                        $y=\left(\frac{2x+1}{3x-1}\right)^{x^2}$
+                                        with respect to $x$</p>
+                                    <strong>Solution</strong>
+                                    <p>Let \( y =
+                                        \left(\frac{2x+1}{3x-1}\right)^{x^2} \).
+                                        To differentiate, introduce natural
+                                        logarithms on both sides:</p>
+                                    <div class="math-block">
+                                        \[
+                                        \ln y = \ln \left(
+                                        \left(\frac{2x+1}{3x-1}\right)^{x^2}
+                                        \right) = x^2 \cdot
+                                        \ln\left(\frac{2x+1}{3x-1}\right)
+                                        \]
+                                    </div>
+                                    <p>Now, differentiate both sides with
+                                        respect to \( x \):</p>
+                                    <div class="math-block">
+                                        \[
+                                        \frac{1}{y} \frac{dy}{dx} = \frac{d}{dx}
+                                        \left( x^2 \cdot
+                                        \ln\left(\frac{2x+1}{3x-1}\right)
+                                        \right)
+                                        \]
+                                    </div>
+                                    <p>Apply the product rule to the
+                                        right side:</p>
+                                    <div class="math-block">
+                                        \[
+                                        \frac{d}{dx} \left( x^2 \cdot
+                                        \ln\left(\frac{2x+1}{3x-1}\right)
+                                        \right) = 2x \cdot
+                                        \ln\left(\frac{2x+1}{3x-1}\right)
+                                        + x^2 \cdot \frac{(2(3x-1) -
+                                        (2x+1)3)}{(2x+1)(3x-1)}
+                                        \]
+                                    </div>
+                                    <p>So,</p>
+                                    <div class="math-block">
+                                        \[
+                                        \frac{1}{y} \frac{dy}{dx} = 2x
+                                        \cdot
+                                        \ln\left(\frac{2x+1}{3x-1}\right)
+                                        + x^2 \cdot \frac{(6x-2 - 6x -
+                                        3)}{(2x+1)(3x-1)}
+                                        \]
+                                    </div>
+                                    <p>Multiply both sides by \( y
+                                        \):</p>
+                                    <div class="math-block">
+                                        \[
+                                        \therefore\boxed{
+                                        \frac{dy}{dx} = \left[ 2x \cdot
+                                        \ln\left(\frac{2x+1}{3x-1}\right)
+                                        + x^2 \cdot
+                                        \frac{-5}{(2x+1)(3x-1)} \right]
+                                        \left(\frac{2x+1}{3x-1}\right)^{x^2}
+                                        }
+                                        \]
+                                    </div>
+
+                                </div>
+                                <div class="theorem-box">
+                                    <div class="box-title">Basic Differentiation
+                                        Formulas</div>
+                                    <p>Before we look more examples, let's
+                                        revise some of the basic differentiation
+                                        formulas to avoid confusion.</p>
+                                    <div class="math-block">$$\begin{array}{ll}
+                                    \diff{}{x}(c) = 0 & \text{Constant Differentiation} \\[0.5em]
+                                    \diff{}{x}(x^n) = nx^{n-1} & \text{Power Rule} \\[0.5em]
+                                    \diff{}{x}(a^x) = a^x\ln a &
+                                    \text{Derivative of an Exponential Function}
+                                    \\[0.5em]
+                                    \diff{}{x}(x^x) = x^x(1+\ln x) &
+                                    \text{Logarithmic Differentiation}
+                                    \end{array}$$
+                                    </div>
+                                    <p>It's very useful to keep on eye on the
+                                        theorems we use to avoid costly mistakes
+                                        since a lot of things look similar but
+                                        are mathematically different.</p>
+                                    </div>
+                                <div class="example-box">
+                                    <div class="box-title">Example 5</div>
+                                    <p>Differentiate \(f(x)=(5-3x^2)^7\sqrt{6x^2+8x-12}\)</p>
+                                    <strong>Solution:</strong>
+                                    <div class="math-block">
+                                        \[
+                                        \begin{aligned}
+                                            &\ln f(x)=\ln\left[(5-3x^2)^7\sqrt{6x^2+8x-12} \right] =\ln(5-3x^2)^7+\ln(6x^2+8x-12)^{\frac{1}{2}}\\
+                                            &\ln f(x)=7\ln(5-3x^2)+\frac{1}{2}\ln(6x^2+8x-12)\\
+                                            &\frac{f'(x)}{f(x)}=7\left(\frac{-6x}{5-3x^2} \right) +\frac{1}{2}\left( \frac{12x+8}{6x^2+8x-12} \right)\\
+                                            &f'(x)=f(x)\left( \frac{-42x}{5-3x^2}+\frac{6x+4}{6x^2+8x-12}\right) \\
+                                            &\therefore \boxed{ f'(x)=(5-3x^2)^7\sqrt{6x^2+8x-12}\left[ 	\frac{-42x}{5-3x^2}+\frac{6x+4}{6x^2+8x-12}\right]} 
+                                        \end{aligned}
+                                        \]
+                                    </div>
+                                </div>
+
+                                <div class="example-box">
+                                    <div class="box-title">Example 6</div>
+                                    <p>Differentiate \(y=(2x-e^{8x})^{\sin 2x}\)</p>
+                                    <strong>Solution:</strong>
+                                    <div class="math-block">
+                                        \[
+                                        \begin{aligned}
+                                            &\ln y = \ln \left(2x-e^{8x} \right)^{\sin 2x}=\sin 2x \ln(2x-e^{8x})\\
+                                            &\frac{y'}{y} = (2\cos 2x)\cdot\ln(2x-e^{8x})+\sin 2x\cdot\left(\frac{2-8e^{8x}}{2x-e^{8x}} \right) \\
+                                            &y'=\left(2\cos 2x\ln(2x-e^{8x})+\frac{\sin 2x(2-8e^{8x})}{2x-e^{8x}} \right) \times y\\
+                                            &\therefore \boxed{y'=\left[2\cos 2x\ln(2x-e^{8x})+\frac{\sin 2x(2-8e^{8x})}{2x-e^{8x}} \right]\left[ (2x-e^{8x})^{\sin 2x}\right] }
+                                        \end{aligned}
+                                        \]
+                                    </div>
+                                </div>
+
+                                <div class="example-box">
+                                    <div class="box-title">Example 7</div>
+                                    <p>Differentiate \(y=\frac{\sqrt{5x+8}\sqrt[3]{1-9\cos4x}}{\sqrt[4]{t^2+10t}}\).</p>
+                                    <strong>Solution:</strong>
+                                    <div class="math-block">
+                                        \[
+                                        \begin{aligned}
+                                            &\ln y = \ln \left( \frac{\sqrt{5x+8}\sqrt[3]{1-9\cos4x}}{\sqrt[4]{t^2+10t}} \right) = \ln (5x+8)^{\frac{1}{2}}+\ln (1-9\cos 4x)^{\frac{1}{3}}-\ln (t^2+10t)^{\frac{1}{4}}\\
+                                            &\ln y = \frac{1}{2}\ln (5x+8)+\frac{1}{3}\ln (1-9\cos4x)-\frac{1}{4}\ln (t^2+10t)
+                                        \end{aligned}
+                                        \]
+                                        \[
+                                        \frac{y'}{y}=\frac{1}{2}\cdot\frac{5}{5x+8}+ \frac{1}{3}\cdot\frac{12\sin 4x}{1-9\cos 4x}-\frac{1}{2}\cdot\frac{t+5}{t^2 +10t}
+                                        \]
+                                        \[
+                                        y'=\left[ \frac{5}{2(5x+8)}+\frac{12\sin4x}{1-9\cos4x}+\frac{t+5}{2(t^2+10t)}\right]\times y 
+                                        \]
+                                        \[
+                                        \therefore \boxed{y'=\left[ \frac{5}{2(5x+8)}+\frac{12\sin4x}{1-9\cos4x}+\frac{t+5}{2(t^2+10t)}\right]\left[ \frac{\sqrt{5x+8}\sqrt[3]{1-9\cos4x}}{\sqrt[4]{t^2+10t}}\right] }
+                                        \]
+                                    </div>
+                                </div>
+
+                                <h2 id="integrals">Logarithmic Integration</h2>
+                                <nav class="notes-section-nav">
+                                    <button href="#"
+                                        class="notes-nav-btn"
+                                        disabled>
+                                        <i
+                                            class="fas fa-chevron-left"></i>
+                                        Previous
+                                    </button>
+                                    <span
+                                        class="progress-indicator">Chapter
+                                        2:
+                                        Trigonometric Functions</span>
+                                    <button href="trig.html"
+                                        class="notes-nav-btn">
+                                        Next
+                                        <i
+                                            class="fas fa-chevron-right"></i>
+                                    </button>
+                                </nav>
+                                <div class="theorem-box">
+                                    <div
+                                        class="box-title">REFERENCES</div>
+
+                                </div>
+                                <nav class="notes-section-nav">
+                                    <a
+                                        href="/public/resources/library/library.html"
+                                        class="notes-nav-btn">
+                                        <i class="fas fa-book"></i>
+                                        Library
+                                    </a>
+                                    <span class="progress-indicator">End
+                                        of
+                                        Chapter</span>
+                                    <a
+                                        href="/public/resources/tutorials/tutorials.html"
+                                        class="notes-nav-btn">
+                                        <i
+                                            class="fas fa-graduation-cap"></i>
+                                        Tutorials
+                                    </a>
+                                </nav>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+                <script src="/assets/js/loader.js"></script>
+                <script src="/assets/js/navbar.js"></script>
+                <script src="/assets/js/notes.js"></script>
+            </body>
+
+        </html>
