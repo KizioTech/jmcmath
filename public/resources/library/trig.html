@@ -33,7 +33,17 @@
             tex: {
                 inlineMath: [['$', '$'], ['\\(', '\\)']],
                 displayMath: [['$$', '$$'], ['\\[', '\\]']],
-                packages: { '[+]': ['ams', 'newcommand', 'configMacros'] }
+                packages: { '[+]': ['ams', 'newcommand', 'configMacros'] },
+                macros: {
+                    // Define the \diff macro to take two arguments
+                    diff: ['\\frac{d#1}{d#2}', 2],
+                    // You can also add other useful derivatives macros
+                    pdiff: ['\\frac{\\partial #1}{\\partial #2}', 2],  // for partial derivatives
+                    ddiff: ['\\frac{d^2#1}{d#2^2}', 2],  // for second derivatives
+                    // Other common calculus macros you might find useful
+                    lint: ['\\int_{#1}^{#2}', 2],  // definite integral with limits
+                    eval: ['\\left.#1\\right|_{#2}', 2]  // evaluation bar
+                }
             },
             svg: {
                 fontCache: 'global'
@@ -222,7 +232,9 @@
                             of general functions. Thus if \(f(x) \text{ and } g(x)\) 
                             are inverses of each other, then</p>
                         <div class="math-block">
-                            \[\boxed{g'(x)=\frac{1}{f'(g(x))}}\]
+                            \begin{equation}
+                            \boxed{g'(x)=\frac{1}{f'(g(x))}}\tag{Inverse Derivative}
+                            \end{equation}
                         </div>
                         <p>And always remember from inverse function that, two 
                             functions \(f(x) \text{ and } g(x)\) are inverses 
@@ -236,7 +248,162 @@
                             inverses are written in two forms, that is, 
                             \(\sin^{-1} x\)  can also be written 
                             as \(\arcsin x\).</p>
-                            
+
+                        <div class="theorem-box">
+                            <div class="box-title">The Derivative of \(y=\sin^{-1} x\).</div>
+                            <p>From previous knowledge, we know that if \(y=\sin^{-1}x\), 
+                            then \(x=\sin y\). Since these two functions are inverses 
+                            of each other, their derivative will follow <b>Inverse Derivative</b>. Thus,</p>
+                            <div class="math-block">
+                                \[
+                                \diff{}{x}(\sin^{-1}x)= \diff{y}{x}=\frac{1}{\cos y}=\frac{1}{\cos (\sin^{-1}x )}
+                                \]
+                            </div>
+                            <p>To solve for the equivalence of \(\cos(\sin^{-1}x)\), 
+                                we can use a lot of methods. One of the methods 
+                                is transforming the question into a triangle. 
+                                Since \(\cos y = x\), we can also write this 
+                                as \(\cos y = \frac{x}{1}\). Using <b>SOHCAHTOA</b>, 
+                                \(x\) is the <b>opposite</b> side and \(1\) is 
+                                the <b>hypotenuse</b> to angle \(y\) of a 
+                                right-angled triangle. Consider the figure below,</p>
+                                <div class="image-container"
+                            style="display: flex; justify-content: center; align-items: center;">
+                            <img src="/assets/images/invsine.svg" alt="inverse sine diagram"
+                                style="max-width: 50%; height: auto;" />
+                        </div>
+                        <div class="math-block">
+                            \[
+                            \boxed{\cos (\sin^{-1}x)= \sqrt{1-x^2}}
+                            \]
+                        </div>
+                        <p>
+                            Here, the third side, \(\sqrt{1-x^2}\), has been found by using the Pythagoras theorem. Therefore,
+                        </p>
+                        <div class="math-block">
+                            \begin{equation}
+                                \boxed{\diff{}{x}(\arcsin x)=\frac{1}{\sqrt{1-x^2}}}
+                            \end{equation}
+                        </div>
+                        <p>
+                            Another method to find the same result is to use implicit differentiation and trigonometric identities.
+                        </p>
+                        <div class="math-block">
+                            \[
+                            \text{Given } y = \sin^{-1} x \text{ then, } x= \sin y
+                            \]
+                        </div>
+                        <p>
+                            If you differentiate \(x=\sin y\) implicitly,
+                        </p>
+                        <div class="math-block">
+                            \[
+                            1=\cos y \times\diff{y}{x} \quad \text{ and } \quad \diff{y}{x}=\frac{1}{\cos y}
+                            \]
+                        </div>
+                        <p>
+                            Using \(\cos^2 y +\sin^2 y= 1\), we know that \(\cos^2 y = 1- \sin^2 y\) and \(\cos y =\sqrt{1-\sin^2 y}\). Thus,
+                        </p>
+                        <div class="math-block">
+                            \[
+                            \diff{y}{x} = \frac{1}{\sqrt{1-\sin^2y}}
+                            \]
+                        </div>
+                        <p>
+                            Since \(\sin y = x\), \(\sin^2 y = x^2\), so \(\sqrt{1-\sin^2 y}=\sqrt{1-x^2}\). After substitution,
+                        </p>
+                        <div class="math-block">
+                            \[
+                            \diff{}{x}(\arcsin x)=\frac{1}{\sqrt{1-x^2}}
+                            \]
+                        </div>
+                        </div>
+                        <div class="theorem-box">
+                            <div class="box-title">The Derivative of \(y=\cos^{-1} x\)</div>
+                            <p>Using the inverse derivative equation,</p>
+                            <div class="math-block">
+                                \[
+                                \diff{}{x}(\cos^{-1}x)= \diff{y}{x}=-\frac{1}{\sin y}=-\frac{1}{\sin (\cos^{-1}x )}
+                                \]
+                            </div>
+                            <p>For \(\cos y = x\), let \(x\) be the adjacent side and \(1\) be the hypotenuse. Consider the figure below:</p>
+                            <div class="image-container" style="display: flex; justify-content: center; align-items: center;">
+                                <img src="/assets/images/invcos.svg" alt="inverse cosine diagram" style="max-width: 50%; height: auto;" />
+                            </div>
+                            <div class="math-block">
+                                \[
+                                \boxed{\sin (\cos^{-1}x)=\sqrt{1-x^2}}
+                                \]
+                            </div>
+                            <p>Therefore, if we substitute this third side we get the final derivative of \(\arccos\) as follows:</p>
+                            <div class="math-block">
+                                \[
+                                \boxed{\diff{}{x}(\arccos x)=-\frac{1}{\sqrt{1-x^2}}}
+                                \]
+                            </div>
+                            <p>Using identities:</p>
+                            <div class="math-block">
+                                \[
+                                \text{Given } y =\cos^{-1} x \text{, then } x=\cos y
+                                \]
+                                \[
+                                1 = -\sin y \times \diff{y}{x} \text{ and } \diff{y}{x} = -\frac{1}{\sin y}
+                                \]
+                            </div>
+                            <p>But \(\sin^2 y + \cos ^2 y = 1\), hence, \(\sin y= \sqrt{1-\cos^2 y}\) and \(\sin y = \sqrt{1-x^2}\) because it has been shown from the question that when \(y = \cos^{-1}x\), \(x=\cos y\).</p>
+                            <div class="math-block">
+                                \[
+                                -\frac{1}{\sin y}=-\frac{1}{\sqrt{1-\cos^2 y}}=-\frac{1}{\sqrt{1-x^2}}
+                                \]
+                            </div>
+                            <div class="math-block">
+                                \begin{equation}
+                                    \therefore \boxed{\diff{}{x}(\arccos x)=-\frac{1}{\sqrt{1-x^2}}}
+                                    \label{eqn:inversecos}
+                                \end{equation}
+                            </div>
+                        </div>
+
+                        <div class="theorem-box">
+                            <div class="box-title">The Derivative of \(y=\tan^{-1} x\)</div>
+                            <p>Firstly, we will use the inverse functions derivative equation.</p>
+                                <div class="math-block">
+                                    \[
+                                    \diff{}{x}(\tan^{-1}x)=\diff{y}{x}=\frac{1}{\sec^2y}=\frac{1}{\sec^2(\tan^{-1}x)}
+                                    \]
+                                </div>
+                            <p>After drawing a triangle in the figure below to represent \(\tan y = \frac{x}{1}\):</p>
+                            <div class="image-container" style="display: flex; justify-content: center; align-items: center;">
+                                <img src="/assets/images/invtan.svg" alt="inverse tangent diagram" style="max-width: 50%; height: auto;" />
+                            </div>
+                            <p>Since \(\sec x = \frac{1}{\cos x}\), using <b>SOHCAHTOA</b>, \(\sec x = \frac{\text{Hypotenuse}}{\text{Adjacent}}\). In this case,</p>
+                        <div class="math-block">
+                            \[
+                            \sec (\tan^{-1}x)=\frac{\sqrt{1+x^2}}{1}=\sqrt{1+x^2}
+                            \]
+                            \[
+                            \text{Therefore; } \sec^2 (\tan^{-1}x) = (\sqrt{1+x^2})^2=1+x^2
+                            \]
+                        </div>
+                        <div class="math-block">
+                            \begin{equation}
+                                \therefore\boxed{\diff{}{x}(\arctan x)=\frac{1}{1+x^2}}
+                                \label{eqn:inversetan}
+                            \end{equation}
+                        </div>
+                        </div>
+                         <div style="border: 1px solid #f5c542; background: #fffbe6; color: #856404; padding: 1em 1.5em; border-radius: 6px; margin-bottom: 1.5em; display: flex; align-items: flex-start; gap: 1em;">
+                        <span style="font-size: 1.7em; margin-right: 0.5em;"><i class="fas fa-exclamation-triangle"></i></span>
+                        <div>
+                            <strong>NOTE:</strong>
+                            <p> You can try to use the identities to 
+                                verify this as well. In addition, the 
+                                derivations of the reciprocal functions, 
+                                <b>Secant, Cosecant and Cotangent</b> 
+                                have been intentionally left out 
+                                for your practice.</p>
+                        </div>
+                    </div>
                     <nav class="notes-section-nav">
                         <button href="transcendental functions.html" class="notes-nav-btn">
                             <i class="fas fa-chevron-left"></i>

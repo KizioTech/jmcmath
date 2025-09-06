@@ -33,7 +33,17 @@
             tex: {
                 inlineMath: [['$', '$'], ['\\(', '\\)']],
                 displayMath: [['$$', '$$'], ['\\[', '\\]']],
-                packages: { '[+]': ['ams', 'newcommand', 'configMacros'] }
+                packages: { '[+]': ['ams', 'newcommand', 'configMacros'] },
+                macros: {
+                    // Define the \diff macro to take two arguments
+                    diff: ['\\frac{d#1}{d#2}', 2],
+                    // You can also add other useful derivatives macros
+                    pdiff: ['\\frac{\\partial #1}{\\partial #2}', 2],  // for partial derivatives
+                    ddiff: ['\\frac{d^2#1}{d#2^2}', 2],  // for second derivatives
+                    // Other common calculus macros you might find useful
+                    lint: ['\\int_{#1}^{#2}', 2],  // definite integral with limits
+                    eval: ['\\left.#1\\right|_{#2}', 2]  // evaluation bar
+                }
             },
             svg: {
                 fontCache: 'global'
