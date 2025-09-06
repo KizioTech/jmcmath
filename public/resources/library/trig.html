@@ -392,7 +392,7 @@
                             \end{equation}
                         </div>
                         </div>
-                         <div style="border: 1px solid #f5c542; background: #fffbe6; color: #856404; padding: 1em 1.5em; border-radius: 6px; margin-bottom: 1.5em; display: flex; align-items: flex-start; gap: 1em;">
+                         <div style="border: 1px solid #f54242; background: #ffd0ba; color: #ff2121; padding: 1em 1.5em; border-radius: 6px; margin-bottom: 1.5em; display: flex; align-items: flex-start; gap: 1em;">
                         <span style="font-size: 1.7em; margin-right: 0.5em;"><i class="fas fa-exclamation-triangle"></i></span>
                         <div>
                             <strong>NOTE:</strong>
@@ -402,8 +402,99 @@
                                 <b>Secant, Cosecant and Cotangent</b> 
                                 have been intentionally left out 
                                 for your practice.</p>
-                        </div>
+                        </div>\
                     </div>
+                     <div class="theorem-box">
+                                    <div class="box-title">Summary of Differentiation
+                                        Formulas</div>
+                                    <div class="math-block">$$\begin{array}{l|l}
+                                        	\diff{}{x}(\sin^{-1} u)=\frac{1}{\sqrt{1-u^2}}\cdot \diff{u}{x} &  \diff{}{x}(\cos^{-1} u)=-\frac{1}{\sqrt{1-u^2}}\cdot \diff{u}{x} \\		
+				
+				                            \diff{}{x}(\tan^{-1} u)=\frac{1}{1+u^2}\cdot \diff{u}{x} &  \diff{}{x}(\cot^{-1}u)=-\frac{1}{1+u^2}\cdot \diff{u}{x}\\
+				
+				                            \diff{}{x}(\sec^{-1}u)=\frac{1}{|u|\sqrt{u^2-1}}\cdot \diff{u}{x}	&  \diff{}{x}(\csc^{-1}u)=-\frac{1}{|u|\sqrt{u^2-1}}\cdot \diff{u}{x}\\
+                                            \end{array}$$
+                                    </div>
+                                </div>
+
+                    <div class="example-box">
+                        <div class="box-title">Example 1</div>
+                        <p>Differentiate \(y=\sin^{-1}(x^3)\) with respect to \(x\)</p>
+	                        <strong>Solution</strong>
+                       
+                            <p>We will use chain rule to differentiate this. Thus; </p>
+                            <div class="math-block">
+                            \[
+                            \text{Let } u = x^3; \quad\quad \diff{u}{x}=3x^2
+                            \]
+                            </div>
+                            <p> This leaves us with \(y=\sin^{-1}u\).</p>
+                            <div class="math-block">
+                                \[\diff{y}{x}=\diff{y}{u}\times\diff{u}{x}=\frac{1}{\sqrt{1-u^2}}\times3x^2=\frac{3x^2}{\sqrt{1-(x^3)^2}}\]
+                            \[
+                            \therefore \boxed{\diff{}{x}(\sin^{-1}x^3)=\frac{3x^2}{\sqrt{1-x^6}}}
+                            \]
+                            </div>
+                    </div>
+                    <div class="example-box">
+                    <div class="box-title">Examle 2</div>
+                    <P>Differentiate \(y=\sec^{-1}(e^x)\) with respect to \(x\)</P>
+                    <strong>Solution</strong>
+                    <div class="math-block">\[\text{Let }u=e^x \quad\quad\quad \diff{u}{x}=e^x\]</div>
+                        <p>Since \(\diff{}{x}(\sec^{-1}u)=\frac{1}{|u|\sqrt{u^2-1}}\cdot \diff{u}{x}\); Then,
+                        <div class="math-block">\[
+                        \diff{}{x}(\sec^{-1}(e^x))=\frac{1}{|\cancel{e^x}|\sqrt{(e^x)^2-1}}\cdot \cancel{e^x}
+                        \]
+                        \[
+                        \therefore \boxed{\diff{}{x}(\sec^{-1}(e^x))=\frac{1}{\sqrt{e^{2x}-1}}}
+                        \]</div>
+                    </div>
+
+                    <div class="example-box">
+                    <div class="box-title">Example 3</div>
+                    <p>Find \(\diff{y}{x}  \text{ if } y = x^2(\sin^{-1}x)^3\)</p>
+                    <strong>Solution</strong>
+                    <div class="math-block">
+                    \[
+                    \text{Let }u=\sin^{-1} x \quad\quad\quad \diff{u}{x}=\frac{1}{\sqrt{1=-x^2}}
+                    \] 
+                    </div>
+
+                        <p>This leaves us with \(y=x^2u^3\). Using \textbf{Product rule};
+                        <div class="math-block">\[
+                        \diff{y}{x}=2xu^3+3x^2u^2\diff{u}{x}
+                        \]</div>
+                        <p> Substitute everything back;
+                        <div class="math-block">\[
+                        \therefore\boxed{\diff{y}{x}=2x(\sin^{-1}x)^3+3x^2(\sin^{-1}x)^2\frac{1}{\sqrt{1-x^2}}}
+                        \]</div>
+                        </div>
+
+                        <h3 id="integrals">Integrals Involving Inverse Trigonometric Functions</h3>
+                        	<p> The derivatives on <b>Summary of Derivatives</b>, 
+                                are very useful in integrating some expressions. 
+                                Looking at the derivatives correctly, pairs of 
+                                the derivatives are similar.</p>
+                            <p>As such, only the positive derivatives are used 
+                                for the integrals and the negative ones can 
+                                be solved using the same positive derivatives.</p>
+                            <p>Below are the integral functions we will use.</p>
+
+                           <div class="theorem-box">
+                            <div class="box-title">Integrals Involving Inverse Trig Fns</div>
+                             <div class="math-block">
+                             \begin{equation} 
+                                \begin{aligned}
+                                        &\int \frac{1}{\sqrt{1-u^2}} \, du=\sin^{-1}u + C\\
+                                        &\int \frac{1}{1+u^2}\cdot \diff{u}{x} \, du = \tan^{-1}u + C\\
+                                        &\int \frac{1}{|u|\sqrt{u^2-1}}\, du = \sec^{-1}u + C
+                                \end{aligned}
+                                \label{eqn:inversetrigintegrals}
+                            \end{equation}
+                            </div>
+                           </div>
+
+
                     <nav class="notes-section-nav">
                         <button href="transcendental functions.html" class="notes-nav-btn">
                             <i class="fas fa-chevron-left"></i>
