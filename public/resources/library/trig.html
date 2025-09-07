@@ -138,12 +138,12 @@
                                 </li>
                                 <li class="notes-nav-subitem">
                                     <a href="#multiple" class="notes-nav-link">Products of Multiple Angles</a>
+                                </li>
                              </ul>
                         </li>
                             <li class="notes-nav-item">
                                 <a href="#subs" class="notes-nav-link">Trigonometric Substitutions</a>
                             </li>
-
                         <li class="notes-nav-item">
                             <a href="#review" class="notes-nav-link">Chapter Review</a>
                         </li>
@@ -402,8 +402,8 @@
                                 <b>Secant, Cosecant and Cotangent</b> 
                                 have been intentionally left out 
                                 for your practice.</p>
-                        </div>\
-                    </div>
+                        </div>
+                        </div>
                      <div class="theorem-box">
                                     <div class="box-title">Summary of Differentiation
                                         Formulas</div>
@@ -420,28 +420,28 @@
                     <div class="example-box">
                         <div class="box-title">Example 1</div>
                         <p>Differentiate \(y=\sin^{-1}(x^3)\) with respect to \(x\)</p>
-	                        <strong>Solution</strong>
-                       
-                            <p>We will use chain rule to differentiate this. Thus; </p>
-                            <div class="math-block">
-                            \[
-                            \text{Let } u = x^3; \quad\quad \diff{u}{x}=3x^2
-                            \]
-                            </div>
-                            <p> This leaves us with \(y=\sin^{-1}u\).</p>
-                            <div class="math-block">
-                                \[\diff{y}{x}=\diff{y}{u}\times\diff{u}{x}=\frac{1}{\sqrt{1-u^2}}\times3x^2=\frac{3x^2}{\sqrt{1-(x^3)^2}}\]
-                            \[
-                            \therefore \boxed{\diff{}{x}(\sin^{-1}x^3)=\frac{3x^2}{\sqrt{1-x^6}}}
-                            \]
-                            </div>
+                        <strong>Solution</strong>
+                    
+                        <p>We will use chain rule to differentiate this. Thus; </p>
+                        <div class="math-block">
+                        \[
+                        \text{Let } u = x^3; \quad\quad \diff{u}{x}=3x^2
+                        \]
+                        </div>
+                        <p> This leaves us with \(y=\sin^{-1}u\).</p>
+                        <div class="math-block">
+                            \[\diff{y}{x}=\diff{y}{u}\times\diff{u}{x}=\frac{1}{\sqrt{1-u^2}}\times3x^2=\frac{3x^2}{\sqrt{1-(x^3)^2}}\]
+                        \[
+                        \therefore \boxed{\diff{}{x}(\sin^{-1}x^3)=\frac{3x^2}{\sqrt{1-x^6}}}
+                        \]
+                        </div>
                     </div>
                     <div class="example-box">
                     <div class="box-title">Examle 2</div>
                     <P>Differentiate \(y=\sec^{-1}(e^x)\) with respect to \(x\)</P>
                     <strong>Solution</strong>
                     <div class="math-block">\[\text{Let }u=e^x \quad\quad\quad \diff{u}{x}=e^x\]</div>
-                        <p>Since \(\diff{}{x}(\sec^{-1}u)=\frac{1}{|u|\sqrt{u^2-1}}\cdot \diff{u}{x}\); Then,
+                        <p>Since \(\diff{}{x}(\sec^{-1}u)=\frac{1}{|u|\sqrt{u^2-1}}\cdot \diff{u}{x}\); Then,</p>
                         <div class="math-block">\[
                         \diff{}{x}(\sec^{-1}(e^x))=\frac{1}{|\cancel{e^x}|\sqrt{(e^x)^2-1}}\cdot \cancel{e^x}
                         \]
@@ -449,7 +449,6 @@
                         \therefore \boxed{\diff{}{x}(\sec^{-1}(e^x))=\frac{1}{\sqrt{e^{2x}-1}}}
                         \]</div>
                     </div>
-
                     <div class="example-box">
                     <div class="box-title">Example 3</div>
                     <p>Find \(\diff{y}{x}  \text{ if } y = x^2(\sin^{-1}x)^3\)</p>
@@ -460,15 +459,15 @@
                     \] 
                     </div>
 
-                        <p>This leaves us with \(y=x^2u^3\). Using \textbf{Product rule};
-                        <div class="math-block">\[
-                        \diff{y}{x}=2xu^3+3x^2u^2\diff{u}{x}
-                        \]</div>
-                        <p> Substitute everything back;
-                        <div class="math-block">\[
-                        \therefore\boxed{\diff{y}{x}=2x(\sin^{-1}x)^3+3x^2(\sin^{-1}x)^2\frac{1}{\sqrt{1-x^2}}}
-                        \]</div>
-                        </div>
+                    <p>This leaves us with \(y=x^2u^3\). Using \textbf{Product rule};
+                    <div class="math-block">\[
+                    \diff{y}{x}=2xu^3+3x^2u^2\diff{u}{x}
+                    \]</div>
+                    <p> Substitute everything back;
+                    <div class="math-block">\[
+                    \therefore\boxed{\diff{y}{x}=2x(\sin^{-1}x)^3+3x^2(\sin^{-1}x)^2\frac{1}{\sqrt{1-x^2}}}
+                    \]</div>
+                    </div>
 
                         <h3 id="integrals">Integrals Involving Inverse Trigonometric Functions</h3>
                         	<p> The derivatives on <b>Summary of Derivatives</b>, 
@@ -834,7 +833,6 @@
                             </div>
                             <p>This is the fully reduced expression obtained through repeated applications of the reduction formula.</p>
                         </div>
-                        <h3>Products of Powers | Sine and Cosine</h3>
 
                         <div class="theorem-box">
                             <div class="box-title">
@@ -886,7 +884,7 @@
                                 \]
                             </div>
                             <p>For \(n = 3\):</p>
-                            <div class="math-block"></div>
+                            <div class="math-block">
                                 \[
                                 \int \cos^3 x \, dx = \frac{\cos^2 x \sin x}{3} + \frac{2}{3} \int \cos x \, dx
                                 \]
@@ -943,445 +941,444 @@
                             </div>
                         </div>
                        <h3>Products of Powers | Sine and Cosine</h3>
-                       <!-- Insert this content after the "Products of Powers | Sine and Cosine" heading -->
+                       
 
-<div class="definition-box">
-    <div class="box-title">Old Powers of Sine and Cosine</div>
-    <p>Apart from the <strong>Reduction Formula</strong>, these kind of integrals can be solved with other methods too applied to the specific nature of the power, either even or odd.</p>
-    <p>Our goal here is to reduce the power into a simplified form that allows integration by substitution.</p>
-    <p>In this method, you write the integral of $\sin^n x$ and $\cos^n x$ as $\sin^{n-1} x \sin x$ and $\cos^{n-1} x \cos x$ respectively.</p>
-    <p>Since $n$ is odd, $(n-1)$ will always be even. Hence, the use of the Pythagorean identity, $\cos^2 x + \sin^2 x = 1$ and the u-substitution of $u = \cos x$ or $u = \sin x$ settles the integrand.</p>
-</div>
+                    <div class="definition-box">
+                        <div class="box-title">Old Powers of Sine and Cosine</div>
+                        <p>Apart from the <strong>Reduction Formula</strong>, these kind of integrals can be solved with other methods too applied to the specific nature of the power, either even or odd.</p>
+                        <p>Our goal here is to reduce the power into a simplified form that allows integration by substitution.</p>
+                        <p>In this method, you write the integral of $\sin^n x$ and $\cos^n x$ as $\sin^{n-1} x \sin x$ and $\cos^{n-1} x \cos x$ respectively.</p>
+                        <p>Since $n$ is odd, $(n-1)$ will always be even. Hence, the use of the Pythagorean identity, $\cos^2 x + \sin^2 x = 1$ and the u-substitution of $u = \cos x$ or $u = \sin x$ settles the integrand.</p>
+                    </div>
 
-<div class="example-box">
-    <div class="box-title">Example 13</div>
-    <p>Evaluate $\displaystyle\int \sin^5 \theta \, d\theta$.</p>
-    <strong>Solution:</strong>
-    
-    <p>We know that $\int \sin^5 \theta \, d\theta = \int \sin^4 \theta \sin \theta \, d\theta$</p>
-    
-    <div class="math-block">
-        \[
-        \int \sin^4 \theta \sin \theta \, d\theta = \int (\sin^2 \theta)^2 \sin \theta \, d\theta \text{ since } \sin^2 \theta = 1 - \cos^2\theta
-        \]
-        \[
-        = \int (1 - \cos^2 \theta)^2 \sin \theta \, d\theta = \int (1 - 2\cos^2 \theta + \cos^4 \theta) \sin \theta \, d\theta
-        \]
-    </div>
-    
-    <p>Let $u = \cos \theta$; $du = -\sin \theta \, d\theta$; $d\theta = \frac{du}{-\sin \theta}$</p>
-    
-    <div class="math-block">
-        \[
-        -\int (1 - 2u^2 + u^4) du = -\left(u - \frac{2}{3}u^3 + \frac{1}{5}u^5\right) + c
-        \]
-    </div>
-    
-    <p>Substituting $u$ back:</p>
-    
-    <div class="math-block">
-        \[
-        -\left(u - \frac{2}{3}u^3 + \frac{1}{5}u^5\right) + c = -\left(\cos \theta - \frac{2}{3}\cos^3 \theta + \frac{1}{5}\cos^5 \theta\right) + c
-        \]
-    </div>
-    
-    <p>Therefore:</p>
-    
-    <div class="math-block">
-        \[
-        \boxed{\int \sin^5 \theta \, d\theta = -\cos \theta + \frac{2}{3}\cos^3 \theta - \frac{1}{5}\cos^5 \theta + c}
-        \]
-    </div>
-    
-    <p>For an odd power of cosine apply the same concepts</p>
-</div>
+                    <div class="example-box">
+                        <div class="box-title">Example 13</div>
+                        <p>Evaluate $\displaystyle\int \sin^5 \theta \, d\theta$.</p>
+                        <strong>Solution:</strong>
+                        
+                        <p>We know that $\int \sin^5 \theta \, d\theta = \int \sin^4 \theta \sin \theta \, d\theta$</p>
+                        
+                        <div class="math-block">
+                            \[
+                            \int \sin^4 \theta \sin \theta \, d\theta = \int (\sin^2 \theta)^2 \sin \theta \, d\theta \text{ since } \sin^2 \theta = 1 - \cos^2\theta
+                            \]
+                            \[
+                            = \int (1 - \cos^2 \theta)^2 \sin \theta \, d\theta = \int (1 - 2\cos^2 \theta + \cos^4 \theta) \sin \theta \, d\theta
+                            \]
+                        </div>
+                        
+                        <p>Let $u = \cos \theta$; $du = -\sin \theta \, d\theta$; $d\theta = \frac{du}{-\sin \theta}$</p>
+                        
+                        <div class="math-block">
+                            \[
+                            -\int (1 - 2u^2 + u^4) du = -\left(u - \frac{2}{3}u^3 + \frac{1}{5}u^5\right) + c
+                            \]
+                        </div>
+                        
+                        <p>Substituting $u$ back:</p>
+                        
+                        <div class="math-block">
+                            \[
+                            -\left(u - \frac{2}{3}u^3 + \frac{1}{5}u^5\right) + c = -\left(\cos \theta - \frac{2}{3}\cos^3 \theta + \frac{1}{5}\cos^5 \theta\right) + c
+                            \]
+                        </div>
+                        
+                        <p>Therefore:</p>
+                        
+                        <div class="math-block">
+                            \[
+                            \boxed{\int \sin^5 \theta \, d\theta = -\cos \theta + \frac{2}{3}\cos^3 \theta - \frac{1}{5}\cos^5 \theta + c}
+                            \]
+                        </div>
+                        
+                        <p>For an odd power of cosine apply the same concepts</p>
+                    </div>
 
-<h4>Even Powers for Sine and Cosine</h4>
-<p>For powers that are already even, we apply the double angle formulas for cosine to simplify the integrand.</p>
+                    <h3>Even Powers for Sine and Cosine</h3>
+                    <p>For powers that are already even, we apply the double angle formulas for cosine to simplify the integrand.</p>
 
-<div class="theorem-box">
-    <div class="box-title">Double Angle Formulas</div>
-    <p>Recall, the double angle formulas for cosine as follows:</p>
-    <div class="math-block">
-        \begin{align}
-        \cos 2x &= \cos^2 x - \sin^2 x\\
-        \cos 2x &= 2 \cos^2 x - 1\\
-        \cos 2x &= 1 - 2 \sin^2 x
-        \end{align}
-    </div>
-</div>
+                    <div class="theorem-box">
+                        <div class="box-title">Double Angle Formulas</div>
+                        <p>Recall, the double angle formulas for cosine as follows:</p>
+                        <div class="math-block">
+                            \begin{align}
+                            \cos 2x &= \cos^2 x - \sin^2 x\\
+                            \cos 2x &= 2 \cos^2 x - 1\\
+                            \cos 2x &= 1 - 2 \sin^2 x
+                            \end{align}
+                        </div>
+                    </div>
 
-<p>The u-substitution of angle multiples deals with the integral such that</p>
+                    <p>The u-substitution of angle multiples deals with the integral such that</p>
 
-<div class="math-block">
-    \[
-    \int \sin nx \, dx = \frac{-1}{n} \cos nx + c \text{ and } \int \cos nx \, dx = \frac{1}{n} \sin nx + c
-    \]
-</div>
+                    <div class="math-block">
+                        \[
+                        \int \sin nx \, dx = \frac{-1}{n} \cos nx + c \text{ and } \int \cos nx \, dx = \frac{1}{n} \sin nx + c
+                        \]
+                    </div>
 
-<div class="example-box">
-    <div class="box-title">Example 14</div>
-    <p>Evaluate $\int \cos^4 x \, dx$</p>
-    <strong>Solution:</strong>
-    
-    <p>Since $\cos^4 x$ is in terms of cosine form, we will substitute the identity 2 from the preceding slide. That is, $\cos^2 x = \frac{1}{2}(1 + \cos 2x)$.</p>
-    
-    <div class="math-block">
-        \[
-        \int \cos^4 x \, dx = \int \left(\frac{1}{2}(1 + \cos 2x)\right)^2 dx = \int \frac{1}{4}(1 + 2 \cos 2x + \cos^2 2x) dx
-        \]
-    </div>
-    
-    <p>Manipulating the same identity we get $\cos^2 2x = \frac{1}{2}(1 + \cos 4x)$</p>
-    
-    <div class="math-block">
-        \[
-        = \int \frac{1}{4}\left(1 + 2 \cos 2x + \frac{1}{2}(1 + \cos 4x)\right) dx
-        \]
-        \[
-        \int \frac{1}{4}\left(1 + 2\cos 2x + \frac{1}{2} + \frac{1}{2}\cos 4x\right) dx = \int \left(\frac{3}{8} + \frac{1}{2}\cos 2x + \frac{1}{8}\cos 4x\right) dx
-        \]
-    </div>
-    
-    <p>Therefore:</p>
-    
-    <div class="math-block">
-        \[
-        \boxed{\int \cos^4 x \, dx = \frac{3}{8}x + \frac{1}{4}\sin 2x + \frac{1}{32}\sin 4x + c}
-        \]
-    </div>
-</div>
+                    <div class="example-box">
+                        <div class="box-title">Example 14</div>
+                        <p>Evaluate $\int \cos^4 x \, dx$</p>
+                        <strong>Solution:</strong>
+                        
+                        <p>Since $\cos^4 x$ is in terms of cosine form, we will substitute the identity 2 from the preceding slide. That is, $\cos^2 x = \frac{1}{2}(1 + \cos 2x)$.</p>
+                        
+                        <div class="math-block">
+                            \[
+                            \int \cos^4 x \, dx = \int \left(\frac{1}{2}(1 + \cos 2x)\right)^2 dx = \int \frac{1}{4}(1 + 2 \cos 2x + \cos^2 2x) dx
+                            \]
+                        </div>
+                        
+                        <p>Manipulating the same identity we get $\cos^2 2x = \frac{1}{2}(1 + \cos 4x)$</p>
+                        
+                        <div class="math-block">
+                            \[
+                            = \int \frac{1}{4}\left(1 + 2 \cos 2x + \frac{1}{2}(1 + \cos 4x)\right) dx
+                            \]
+                            \[
+                            \int \frac{1}{4}\left(1 + 2\cos 2x + \frac{1}{2} + \frac{1}{2}\cos 4x\right) dx = \int \left(\frac{3}{8} + \frac{1}{2}\cos 2x + \frac{1}{8}\cos 4x\right) dx
+                            \]
+                        </div>
+                        
+                        <p>Therefore:</p>
+                        
+                        <div class="math-block">
+                            \[
+                            \boxed{\int \cos^4 x \, dx = \frac{3}{8}x + \frac{1}{4}\sin 2x + \frac{1}{32}\sin 4x + c}
+                            \]
+                        </div>
+                    </div>
 
-<div class="theorem-box">
-    <div class="box-title">PROOF: Evaluate $\displaystyle\int \frac{1}{a} \sin nx \, dx$</div>
-    <p>Factor out the constant: 
-    \[
-    \int \frac{1}{a} \sin nx \, dx = \frac{1}{a} \int \sin nx \, dx
-    \]
-    </p>
-    <p>Let $u = nx$ and $du = n \, dx$, so $dx = \frac{du}{n}$</p>
-    <p>Substitute: 
-    \[
-    \frac{1}{a} \int \sin nx \, dx = \frac{1}{a} \int \sin u \cdot \frac{du}{n} = \frac{1}{an} \int \sin u \, du
-    \]
-    </p>
-    <p>Apply basic integral: 
-    \[
-    \int \sin u \, du = -\cos u + C
-    \]
-    </p>
-    <p>Therefore: 
-    \[
-    \frac{1}{an} \int \sin u \, du = -\frac{1}{an} \cos u + C
-    \]
-    </p>
-    <p>Substitute back $u = nx$: 
-    <div class="math-block">
-        \[
-        \boxed{\int \frac{1}{a}\sin nx \, dx=-\frac{1}{an} \cos nx + C}
-        \]
-    </div>
-    </p>
-</div>
+                    <div class="theorem-box">
+                        <div class="box-title">PROOF: Evaluate $\displaystyle\int \frac{1}{a} \sin nx \, dx$</div>
+                        <p>Factor out the constant: 
+                        \[
+                        \int \frac{1}{a} \sin nx \, dx = \frac{1}{a} \int \sin nx \, dx
+                        \]
+                        </p>
+                        <p>Let $u = nx$ and $du = n \, dx$, so $dx = \frac{du}{n}$</p>
+                        <p>Substitute: 
+                        \[
+                        \frac{1}{a} \int \sin nx \, dx = \frac{1}{a} \int \sin u \cdot \frac{du}{n} = \frac{1}{an} \int \sin u \, du
+                        \]
+                        </p>
+                        <p>Apply basic integral: 
+                        \[
+                        \int \sin u \, du = -\cos u + C
+                        \]
+                        </p>
+                        <p>Therefore: 
+                        \[
+                        \frac{1}{an} \int \sin u \, du = -\frac{1}{an} \cos u + C
+                        \]
+                        </p>
+                        <p>Substitute back $u = nx$: 
+                            \[
+                            \boxed{\int \frac{1}{a}\sin nx \, dx=-\frac{1}{an} \cos nx + C}
+                            \]
+                        </p>
+                        
+                    </div>
 
-<div class="theorem-box">
-    <div class="box-title">PROOF: Evaluate $\displaystyle\int \frac{1}{a}\cos nx \, dx$</div>
-    <p>Factor out the constant: 
-    \[
-    \int \frac{1}{a} \cos nx \, dx = \frac{1}{a} \int \cos nx \, dx
-    \]
-    </p>
-    <p>Let $u = nx$ and $du = n \, dx$, so $dx = \frac{du}{n}$</p>
-    <p>Substitute: 
-    \[
-    \int \frac{1}{a}\cos nx \, dx = \frac{1}{a}\int \cos u \cdot \frac{du}{n} = \frac{1}{an} \int \cos u \, du
-    \]
-    </p>
-    <p>Apply basic integral: 
-    \[
-    \int \cos u \, du = \sin u + C
-    \]
-    </p>
-    <p>Therefore: 
-    \[
-    \frac{1}{an} \int \cos u \, du = \frac{1}{an} \sin u + C
-    \]
-    </p>
-    <p>Substitute back $u = nx$: 
-    <div class="math-block">
-        \[
-        \boxed{\int \frac{1}{a}\cos nx \, dx=\frac{1}{an} \sin nx + C}
-        \]
-    </div>
-    </p>
-</div>
+                    <div class="theorem-box">
+                        <div class="box-title">PROOF: Evaluate $\displaystyle\int \frac{1}{a}\cos nx \, dx$</div>
+                        <p>Factor out the constant: 
+                        \[
+                        \int \frac{1}{a} \cos nx \, dx = \frac{1}{a} \int \cos nx \, dx
+                        \]
+                        </p>
+                        <p>Let $u = nx$ and $du = n \, dx$, so $dx = \frac{du}{n}$</p>
+                        <p>Substitute: 
+                        \[
+                        \int \frac{1}{a}\cos nx \, dx = \frac{1}{a}\int \cos u \cdot \frac{du}{n} = \frac{1}{an} \int \cos u \, du
+                        \]
+                        </p>
+                        <p>Apply basic integral: 
+                        \[
+                        \int \cos u \, du = \sin u + C
+                        \]
+                        </p>
+                        <p>Therefore: 
+                        \[
+                        \frac{1}{an} \int \cos u \, du = \frac{1}{an} \sin u + C
+                        \]
+                        </p>
+                        <p>Substitute back $u = nx$: 
+                        <div class="math-block">
+                            \[
+                            \boxed{\int \frac{1}{a}\cos nx \, dx=\frac{1}{an} \sin nx + C}
+                            \]
+                        </div>
+                        </p>
+                    </div>
 
-<p>The reason for knowing these two integrals is that they are very crucial since we can always skip some long processes that can waste our time and directly jump into the answer since these steps are not necessary here but in elementary calculus.</p>
+                    <p>The reason for knowing these two integrals is that they are very crucial since we can always skip some long processes that can waste our time and directly jump into the answer since these steps are not necessary here but in elementary calculus.</p>
 
-<h4>Products of Powers for Sine and Cosine</h4>
-<p>In some questions, you might be given an expression which is the product of sine and cosine. The question comes in this form: $\int \sin^m x \cos^n x \, dx$.</p>
+                    <h3>Products of Powers for Sine and Cosine</h3>
+                    <p>In some questions, you might be given an expression which is the product of sine and cosine. The question comes in this form: $\int \sin^m x \cos^n x \, dx$.</p>
 
-<div class="definition-box">
-    <div class="box-title">Strategy for Products of Powers</div>
-    <p>The approach to this questions changes depending on which one between $m$ and $n$ is even or odd.</p>
-    <p>In this integral if the exponent on the sines ($m$) is odd we can strip out one sine, convert the rest to cosines and then use the substitution $u = \cos x$. Likewise, if the exponent on the cosines ($n$) is odd we can strip out one cosine and convert the rest to sines using and the use the substitution $u = \sin x$.</p>
-    <p>If both of them are odd, just chose one function ($\sin^m x$ or $\cos^n x$) to dissolve into the other.</p>
-    <p>In the case where both of them are even, the technique we used in the first descriptions simply won't work and in fact there really isn't any one set method for doing these integrals. Each integral is different and in some cases there will be more than one way to do the integral.</p>
-</div>
+                    <div class="definition-box">
+                        <div class="box-title">Strategy for Products of Powers</div>
+                        <p>The approach to this questions changes depending on which one between $m$ and $n$ is even or odd.</p>
+                        <p>In this integral if the exponent on the sines ($m$) is odd we can strip out one sine, convert the rest to cosines and then use the substitution $u = \cos x$. Likewise, if the exponent on the cosines ($n$) is odd we can strip out one cosine and convert the rest to sines using and the use the substitution $u = \sin x$.</p>
+                        <p>If both of them are odd, just chose one function ($\sin^m x$ or $\cos^n x$) to dissolve into the other.</p>
+                        <p>In the case where both of them are even, the technique we used in the first descriptions simply won't work and in fact there really isn't any one set method for doing these integrals. Each integral is different and in some cases there will be more than one way to do the integral.</p>
+                    </div>
 
-<div class="example-box">
-    <div class="box-title">Example 15</div>
-    <p>Evaluate $\displaystyle\int \sin^6 x \cos^3 x \, dx$.</p>
-    <strong>Solution:</strong>
-    
-    <p>In this case the exponent on the sine is even while the exponent on the cosine is odd. So, this time we'll strip out a cosine and convert the rest to sines.</p>
-    
-    <div class="math-block">
-        \[
-        \int \sin^6 x \cos^3 x \, dx = \int \sin^6 x \cos^2 x \cos x \, dx \text{ but } \cos^2 x = 1 - \sin^2 x 
-        \]
-        \[
-        = \int \sin^6 x (1 - \sin^2 x) \cos x \, dx = \int (\sin^6 x - \sin^8 x) \cos x \, dx
-        \]
-    </div>
-    
-    <p>Let $u = \sin x$; $du = \cos x \, dx$</p>
-    
-    <div class="math-block">
-        \[
-        \boxed{\therefore\int (u^6 - u^8) du = \frac{1}{7}u^7 - \frac{1}{9}u^9 + c = \frac{1}{7}\sin^7 x - \frac{1}{9}\sin^9 x + c}
-        \]
-    </div>
-</div>
+                    <div class="example-box">
+                        <div class="box-title">Example 15</div>
+                        <p>Evaluate $\displaystyle\int \sin^6 x \cos^3 x \, dx$.</p>
+                        <strong>Solution:</strong>
+                        
+                        <p>In this case the exponent on the sine is even while the exponent on the cosine is odd. So, this time we'll strip out a cosine and convert the rest to sines.</p>
+                        
+                        <div class="math-block">
+                            \[
+                            \int \sin^6 x \cos^3 x \, dx = \int \sin^6 x \cos^2 x \cos x \, dx \text{ but } \cos^2 x = 1 - \sin^2 x 
+                            \]
+                            \[
+                            = \int \sin^6 x (1 - \sin^2 x) \cos x \, dx = \int (\sin^6 x - \sin^8 x) \cos x \, dx
+                            \]
+                        </div>
+                        
+                        <p>Let $u = \sin x$; $du = \cos x \, dx$</p>
+                        
+                        <div class="math-block">
+                            \[
+                            \boxed{\therefore\int (u^6 - u^8) du = \frac{1}{7}u^7 - \frac{1}{9}u^9 + c = \frac{1}{7}\sin^7 x - \frac{1}{9}\sin^9 x + c}
+                            \]
+                        </div>
+                    </div>
 
-<div class="example-box">
-    <div class="box-title">Example 16</div>
-    <p>Evaluate $\displaystyle\int \sin^2 x \cos^2 x \, dx$.</p>
-    
-    <strong>Solution 1:</strong>
-    
-    <p>Write $\sin^2 x$ and $\cos^2 x$ in terms of double angle formulae</p>
-    
-    <div class="math-block">
-        \begin{align}
-        \int \sin^2 x \cos^2 x \, dx &= \int \left(\frac{1-\cos 2x}{2}\right)\left(\frac{1+\cos 2x}{2}\right) dx \quad \text{(diff. of squares)} \\
-        &= \int \frac{1}{4}(1 - \cos^2 2x) \, dx = \int \frac{1}{4}\left(1 - \frac{1 + \cos 4x}{2}\right) dx \quad \text{(since $\cos^2 2x = \frac{1 + \cos 4x}{2}$)} \\
-        &= \int \frac{1}{4}\left(1 - \frac{1}{2} - \frac{1}{2}\cos 4x\right) dx = \int \left(\frac{1}{8} - \frac{1}{8}\cos 4x\right) dx = \frac{1}{8}x - \frac{1}{32}\sin 4x + c
-        \end{align}
-    </div>
-    
-    <strong>Solution 2:</strong>
-    
-    <div class="math-block">
-        \[
-        \int \sin^2 x \cos^2 x \, dx = \int (\sin x \cos x)^2 dx
-        \]
-    </div>
-    
-    <p>Since $2 \sin x \cos x = \sin 2x$, $\sin x \cos x = \frac{1}{2}\sin 2x$</p>
-    
-    <div class="math-block">
-        \begin{align}
-        \int (\sin x \cos x)^2 dx &= \int \left(\frac{1}{2}\sin 2x\right)^2 dx \quad \text{but } \sin^2 2x = \frac{1 - \cos 4x}{2} \\
-        &= \int \frac{1}{4}\left(\frac{1 - \cos 4x}{2}\right) dx = \int \left(\frac{1}{8} - \frac{1}{8}\cos 4x\right) dx
-        \end{align}
-    </div>
-    
-    <p>Therefore:</p>
-    <div class="math-block">
-        \[
-        \boxed{\int \sin^2 x \cos^2 x \, dx = \frac{1}{8}x - \frac{1}{32}\sin 4x + c}
-        \]
-    </div>
-</div>
+                    <div class="example-box">
+                        <div class="box-title">Example 16</div>
+                        <p>Evaluate $\displaystyle\int \sin^2 x \cos^2 x \, dx$.</p>
+                        
+                        <strong>Solution 1:</strong>
+                        
+                        <p>Write $\sin^2 x$ and $\cos^2 x$ in terms of double angle formulae</p>
+                        
+                        <div class="math-block">
+                            \begin{align}
+                            \int \sin^2 x \cos^2 x \, dx &= \int \left(\frac{1-\cos 2x}{2}\right)\left(\frac{1+\cos 2x}{2}\right) dx \quad \text{(diff. of squares)} \\
+                            &= \int \frac{1}{4}(1 - \cos^2 2x) \, dx = \int \frac{1}{4}\left(1 - \frac{1 + \cos 4x}{2}\right) dx \quad \text{(since $\cos^2 2x = \frac{1 + \cos 4x}{2}$)} \\
+                            &= \int \frac{1}{4}\left(1 - \frac{1}{2} - \frac{1}{2}\cos 4x\right) dx = \int \left(\frac{1}{8} - \frac{1}{8}\cos 4x\right) dx = \frac{1}{8}x - \frac{1}{32}\sin 4x + c
+                            \end{align}
+                        </div>
+                        
+                        <strong>Solution 2:</strong>
+                        
+                        <div class="math-block">
+                            \[
+                            \int \sin^2 x \cos^2 x \, dx = \int (\sin x \cos x)^2 dx
+                            \]
+                        </div>
+                        
+                        <p>Since $2 \sin x \cos x = \sin 2x$, $\sin x \cos x = \frac{1}{2}\sin 2x$</p>
+                        
+                        <div class="math-block">
+                            \begin{align}
+                            \int (\sin x \cos x)^2 dx &= \int \left(\frac{1}{2}\sin 2x\right)^2 dx \quad \text{but } \sin^2 2x = \frac{1 - \cos 4x}{2} \\
+                            &= \int \frac{1}{4}\left(\frac{1 - \cos 4x}{2}\right) dx = \int \left(\frac{1}{8} - \frac{1}{8}\cos 4x\right) dx
+                            \end{align}
+                        </div>
+                        
+                        <p>Therefore:</p>
+                        <div class="math-block">
+                            \[
+                            \boxed{\int \sin^2 x \cos^2 x \, dx = \frac{1}{8}x - \frac{1}{32}\sin 4x + c}
+                            \]
+                        </div>
+                    </div>
 
-<h4 id="multiple">Products of Multiple Angles for Sine and Cosine</h4>
-<p>Upon looking at products of powers of sine and cosine, our attention draws to products of sine and cosine which involve multiple angles.</p>
+                    <h3 id="multiple">Products of Multiple Angles for Sine and Cosine</h3>
+                    <p>Upon looking at products of powers of sine and cosine, our attention draws to products of sine and cosine which involve multiple angles.</p>
 
-<p>That is, $\displaystyle\int \sin nx \cos mx \, dx$ where m and n are integers. This type of integrals use the trigonometric product formulae also known as the product-to-sum identities. Recall the product formulae,</p>
+                    <p>That is, $\displaystyle\int \sin nx \cos mx \, dx$ where m and n are integers. This type of integrals use the trigonometric product formulae also known as the product-to-sum identities. Recall the product formulae,</p>
 
-<div class="theorem-box">
-    <div class="box-title">Product-to-Sum Identities</div>
-    <div class="math-block">
-        \begin{align}
-        \sin A \sin B &= \frac{1}{2}[\cos(A - B) - \cos(A + B)]\\
-        \cos A \cos B &= \frac{1}{2}[\cos(A - B) + \cos(A + B)]\\
-        \sin A \cos B &= \frac{1}{2}[\sin(A + B) + \sin(A - B)]\\
-        \cos A \sin B &= \frac{1}{2}[\sin(A + B) - \sin(A - B)]
-        \end{align}
-    </div>
-</div>
+                    <div class="theorem-box">
+                        <div class="box-title">Product-to-Sum Identities</div>
+                        <div class="math-block">
+                            \begin{align}
+                            \sin A \sin B &= \frac{1}{2}[\cos(A - B) - \cos(A + B)]\\
+                            \cos A \cos B &= \frac{1}{2}[\cos(A - B) + \cos(A + B)]\\
+                            \sin A \cos B &= \frac{1}{2}[\sin(A + B) + \sin(A - B)]\\
+                            \cos A \sin B &= \frac{1}{2}[\sin(A + B) - \sin(A - B)]
+                            \end{align}
+                        </div>
+                    </div>
 
-<div class="example-box">
-    <div class="box-title">Example 17</div>
-    <p>Evaluate $\displaystyle\int \sin 5x \cos 3x \, dx$.</p>
-    <strong>Solution:</strong>
-    
-    <p>On this will use $\sin A \cos B = \frac{1}{2}[\sin(A + B) + \sin(A - B)]$ as follows:</p>
-    <div class="math-block">
-        \begin{align}
-        \int \sin 5x \cos 3x \, dx &= \int \frac{1}{2}[\sin(5x + 3x) + \sin(5x - 3x)] \, dx \\
-        &= \int \frac{1}{2} \sin 8x \, dx + \int \frac{1}{2} \sin 2x \, dx \text{ but } \int \frac{1}{a} \sin nx \, dx = -\frac{1}{an} \cos nx + c \\
-        &= \frac{-1}{2 \times 8} \cos 8x - \frac{1}{2 \times 2} \cos 2x + c
-        \end{align}
-    </div>
-    
-    <p>Therefore;</p>
-    <div class="math-block">
-        \[
-        \boxed{\int \sin 5x \cos 3x \, dx = c - \frac{1}{16} \cos 8x - \frac{1}{4} \cos 2x}
-        \]
-    </div>
-</div>
+                    <div class="example-box">
+                        <div class="box-title">Example 17</div>
+                        <p>Evaluate $\displaystyle\int \sin 5x \cos 3x \, dx$.</p>
+                        <strong>Solution:</strong>
+                        
+                        <p>On this will use $\sin A \cos B = \frac{1}{2}[\sin(A + B) + \sin(A - B)]$ as follows:</p>
+                        <div class="math-block">
+                            \begin{align}
+                            \int \sin 5x \cos 3x \, dx &= \int \frac{1}{2}[\sin(5x + 3x) + \sin(5x - 3x)] \, dx \\
+                            &= \int \frac{1}{2} \sin 8x \, dx + \int \frac{1}{2} \sin 2x \, dx \text{ but } \int \frac{1}{a} \sin nx \, dx = -\frac{1}{an} \cos nx + c \\
+                            &= \frac{-1}{2 \times 8} \cos 8x - \frac{1}{2 \times 2} \cos 2x + c
+                            \end{align}
+                        </div>
+                        
+                        <p>Therefore;</p>
+                        <div class="math-block">
+                            \[
+                            \boxed{\int \sin 5x \cos 3x \, dx = c - \frac{1}{16} \cos 8x - \frac{1}{4} \cos 2x}
+                            \]
+                        </div>
+                    </div>
 
-<h3 id="sintan">Products of Powers | Tangent and Secant</h3>
-<p>Powers of tangent functions go hand and hand with powers of secant functions as shown below:</p>
+                    <h3 id="sintan">Products of Powers | Tangent and Secant</h3>
+                    <p>Powers of tangent functions go hand and hand with powers of secant functions as shown below:</p>
 
-<div class="theorem-box">
-    <div class="box-title">General Form</div>
-    <div class="math-block">
-        \[
-        \displaystyle \int \tan^m x \sec^n x \, dx
-        \]
-    </div>
-</div>
+                    <div class="theorem-box">
+                        <div class="box-title">General Form</div>
+                        <div class="math-block">
+                            \[
+                            \displaystyle \int \tan^m x \sec^n x \, dx
+                            \]
+                        </div>
+                    </div>
 
-<p>Differences in approach comes due to changes in the nature of the powers of tangent and secant respectively.</p>
+                    <p>Differences in approach comes due to changes in the nature of the powers of tangent and secant respectively.</p>
 
-<p>$m$ and $n$ can either be even or odd depending on the question given.</p>
+                    <p>$m$ and $n$ can either be even or odd depending on the question given.</p>
 
-<p>In one of the situations, secant will have an even power and tan will have an odd or even power, that is, $n$ is even.</p>
+                    <p>In one of the situations, secant will have an even power and tan will have an odd or even power, that is, $n$ is even.</p>
 
-<p>If this happens you write the integral as</p>
+                    <p>If this happens you write the integral as</p>
 
-<div class="theorem-box">
-    <div class="box-title">When n is even</div>
-    <div class="math-block">
-        \[
-        \displaystyle \int \tan^m x \sec^{n-2} x \sec^2 x \, dx
-        \]
-    </div>
-</div>
+                    <div class="theorem-box">
+                        <div class="box-title">When n is even</div>
+                        <div class="math-block">
+                            \[
+                            \displaystyle \int \tan^m x \sec^{n-2} x \sec^2 x \, dx
+                            \]
+                        </div>
+                    </div>
 
-<p>Then, you have to write $\sec^{n-2} x$ in terms as $\tan x$ using the identity $\sec^2 x = 1 + \tan^2 x$. If $n - 2$ is greater than 2, you will express it as power multiple of since it will be even. Letting $u = \tan x$, the integrand is simplified and $\sec^2 x$ gets eliminated.</p>
+                    <p>Then, you have to write $\sec^{n-2} x$ in terms as $\tan x$ using the identity $\sec^2 x = 1 + \tan^2 x$. If $n - 2$ is greater than 2, you will express it as power multiple of since it will be even. Letting $u = \tan x$, the integrand is simplified and $\sec^2 x$ gets eliminated.</p>
 
-<div class="example-box">
-    <div class="box-title">Example 18</div>
-    <p>Evaluate $\displaystyle \int \tan^2 x \sec^4 x \, dx$.</p>
-    <strong>Solution:</strong>
-    
-    <p>Firstly, we have to simplify $\tan^2 x \sec^4 x$ using the rules provided.</p>
-    
-    <div class="math-block">
-        \[
-        \tan^2 x \sec^4 x = \tan^2 x \sec^{4-2} x \sec^2 x = \tan^2 x \sec^2 x \sec^2 x
-        \]
-    </div>
-    
-    <p>But $\sec^2 x = 1 + \tan^2 x$, we substitute on one $\sec^2 x$ and simplify.</p>
-    
-    <div class="math-block">
-        \[
-        = \tan^2 x (1 + \tan^2 x) \sec^2 x = (\tan^2 x + \tan^4 x) \sec^2 x
-        \]
-    </div>
-    
-    <p>This means that $\displaystyle \int \tan^2 x \sec^4 x \, dx = \int (\tan^2 x + \tan^4 x) \sec^2 x \, dx$. Using substitution method of integration, let $u = \tan x$.</p>
-    
-    <div class="math-block">
-        \[
-        du = \sec^2 x \, dx; \, dx = \frac{du}{\sec^2 x}
-        \]
-    </div>
-    
-    <p>Since the remaining function is $\displaystyle \int (u^2 + u^4) \sec^2 x \, dx$, substitute $dx$.</p>
-    
-    <div class="math-block">
-        \[
-        = \int (u^2 + u^4) \sec^2 x \times \frac{du}{\sec^2 x} = \int (u^2 + u^4) du = \frac{1}{3}u^3 + \frac{1}{5}u^5 + c
-        \]
-    </div>
-    
-    <p>After substituting $u$ back,</p>
-    <div class="math-block">
-        \[
-        \boxed{\displaystyle \int \tan^2 x \sec^4 x \, dx = \frac{1}{3}\tan^3 x + \frac{1}{5}\tan^5 x + c}
-        \]
-    </div>
-</div>
+                    <div class="example-box">
+                        <div class="box-title">Example 18</div>
+                        <p>Evaluate $\displaystyle \int \tan^2 x \sec^4 x \, dx$.</p>
+                        <strong>Solution:</strong>
+                        
+                        <p>Firstly, we have to simplify $\tan^2 x \sec^4 x$ using the rules provided.</p>
+                        
+                        <div class="math-block">
+                            \[
+                            \tan^2 x \sec^4 x = \tan^2 x \sec^{4-2} x \sec^2 x = \tan^2 x \sec^2 x \sec^2 x
+                            \]
+                        </div>
+                        
+                        <p>But $\sec^2 x = 1 + \tan^2 x$, we substitute on one $\sec^2 x$ and simplify.</p>
+                        
+                        <div class="math-block">
+                            \[
+                            = \tan^2 x (1 + \tan^2 x) \sec^2 x = (\tan^2 x + \tan^4 x) \sec^2 x
+                            \]
+                        </div>
+                        
+                        <p>This means that $\displaystyle \int \tan^2 x \sec^4 x \, dx = \int (\tan^2 x + \tan^4 x) \sec^2 x \, dx$. Using substitution method of integration, let $u = \tan x$.</p>
+                        
+                        <div class="math-block">
+                            \[
+                            du = \sec^2 x \, dx; \, dx = \frac{du}{\sec^2 x}
+                            \]
+                        </div>
+                        
+                        <p>Since the remaining function is $\displaystyle \int (u^2 + u^4) \sec^2 x \, dx$, substitute $dx$.</p>
+                        
+                        <div class="math-block">
+                            \[
+                            = \int (u^2 + u^4) \sec^2 x \times \frac{du}{\sec^2 x} = \int (u^2 + u^4) du = \frac{1}{3}u^3 + \frac{1}{5}u^5 + c
+                            \]
+                        </div>
+                        
+                        <p>After substituting $u$ back,</p>
+                        <div class="math-block">
+                            \[
+                            \boxed{\displaystyle \int \tan^2 x \sec^4 x \, dx = \frac{1}{3}\tan^3 x + \frac{1}{5}\tan^5 x + c}
+                            \]
+                        </div>
+                    </div>
 
-<p>Below are the points we should take closer attention at.</p>
+                    <p>Below are the points we should take closer attention at.</p>
 
-<p>When simplifying the function, on the first step we are having 
-$\int \tan^m x \sec^{n-2} x \sec^2 x \, dx$ which is found by applying rules of indices.</p>
+                    <p>When simplifying the function, on the first step we are having 
+                    $\int \tan^m x \sec^{n-2} x \sec^2 x \, dx$ which is found by applying rules of indices.</p>
 
-<p>The other thing we should see is that since $n$ is even, $n - 2$ will always 
-be even. Hence if it is greater than 2, the provided identity will always 
-work e.g. $\sec^{6-2} x \sec^2 x = \sec^4 x \sec^2 x = (1 + \tan^2 x)^2 \sec^2 x$.</p>
+                    <p>The other thing we should see is that since $n$ is even, $n - 2$ will always 
+                    be even. Hence if it is greater than 2, the provided identity will always 
+                    work e.g. $\sec^{6-2} x \sec^2 x = \sec^4 x \sec^2 x = (1 + \tan^2 x)^2 \sec^2 x$.</p>
 
-<p>The idea of taking out $\sec^2 x$ from $\sec^m x$ is brought into account to 
-enable elimination through substituting the differentiation of $\tan x$ which 
-is $\sec^2 x$.</p>
+                    <p>The idea of taking out $\sec^2 x$ from $\sec^m x$ is brought into account to 
+                    enable elimination through substituting the differentiation of $\tan x$ which 
+                    is $\sec^2 x$.</p>
 
-<p>Once the power secant is odd, the preceding method does not work. In this case we consider another situation of having an odd power of tangent.</p>
+                    <p>Once the power secant is odd, the preceding method does not work. In this case we consider another situation of having an odd power of tangent.</p>
 
-<p>In this case you write the integral $\int \tan^m x \sec^n x \, dx$ where m is odd as shown below:</p>
+                    <p>In this case you write the integral $\int \tan^m x \sec^n x \, dx$ where m is odd as shown below:</p>
 
-<div class="theorem-box">
-    <div class="box-title">When m is odd</div>
-    <div class="math-block">
-        \[
-        \int \tan^{m-1} x \sec^{n-1} x \tan x \sec x \, dx
-        \]
-    </div>
-</div>
+                    <div class="theorem-box">
+                        <div class="box-title">When m is odd</div>
+                        <div class="math-block">
+                            \[
+                            \int \tan^{m-1} x \sec^{n-1} x \tan x \sec x \, dx
+                            \]
+                        </div>
+                    </div>
 
-<p>Once this happens, we know that $m - 1$ is now even. That is, we will apply $\sec^2 x = 1 + \tan^2 x$ but this time to write $\tan x$ in terms of $\sec x$. Then the substitution of $u = \sec x$ simplifies the integrand.</p>
+                    <p>Once this happens, we know that $m - 1$ is now even. That is, we will apply $\sec^2 x = 1 + \tan^2 x$ but this time to write $\tan x$ in terms of $\sec x$. Then the substitution of $u = \sec x$ simplifies the integrand.</p>
 
-<div class="example-box">
-    <div class="box-title">Example 19</div>
-    <p>Evaluate $\displaystyle\int \tan^3 x \sec^3 x \, dx$.</p>
-    
-    <strong>Solution:</strong>
-    
-    <p>Firstly, we have to simplify $\tan^3 x \sec^3 x$ using the rules provided.</p>
-    
-    <div class="math-block">
-        \[
-        \tan^3 x \sec^3 x = \tan^{3-1} x \sec^{3-1} x \tan x \sec x = \tan^2 x \sec^2 x \tan x \sec x
-        \]
-    </div>
-    
-    <p>But $\sec^2 x - 1 = \tan^2 x$, we substitute on $\tan^2 x$ and simplify.</p>
-    
-    <div class="math-block">
-        \[
-        = (\sec^2 x - 1) \sec^2 x \tan x \sec x = (\sec^4 x - \sec^2 x) \tan x \sec x
-        \]
-    </div>
-    
-    <p>Thus, $\displaystyle\int \tan^3 x \sec^3 x \, dx = \int (\sec^4 x - \sec^2 x) \tan x \sec x \, dx$</p>
-    
-    <p>Let $u = \sec x$, $du = \tan x \sec x \, dx$; $dx = \frac{du}{\tan x \sec x}$</p>
-    
-    <p>Since the remaining function is $\int (u^4 - u^2) \tan x \sec x \, dx$, substitute $dx$.</p>
-    
-    <div class="math-block">
-        \[
-        = \int (u^4 - u^2) \tan x \sec x \times \frac{du}{\tan x \sec x} = \int (u^4 - u^2) du= \frac{1}{5}u^5 - \frac{1}{3}u^3 + c
-        \]
-    </div>
-    
-    <p>After substituting $u$ back,</p>
-    <div class="math-block">
-        \[
-        \boxed{\int \tan^3 x \sec^3 x \, dx = \frac{1}{5}\sec^5 x - \frac{1}{3}\sec^3 x + c}
-        \]
-    </div>
-</div>
+                    <div class="example-box">
+                        <div class="box-title">Example 19</div>
+                        <p>Evaluate $\displaystyle\int \tan^3 x \sec^3 x \, dx$.</p>
+                        
+                        <strong>Solution:</strong>
+                        
+                        <p>Firstly, we have to simplify $\tan^3 x \sec^3 x$ using the rules provided.</p>
+                        
+                        <div class="math-block">
+                            \[
+                            \tan^3 x \sec^3 x = \tan^{3-1} x \sec^{3-1} x \tan x \sec x = \tan^2 x \sec^2 x \tan x \sec x
+                            \]
+                        </div>
+                        
+                        <p>But $\sec^2 x - 1 = \tan^2 x$, we substitute on $\tan^2 x$ and simplify.</p>
+                        
+                        <div class="math-block">
+                            \[
+                            = (\sec^2 x - 1) \sec^2 x \tan x \sec x = (\sec^4 x - \sec^2 x) \tan x \sec x
+                            \]
+                        </div>
+                        
+                        <p>Thus, $\displaystyle\int \tan^3 x \sec^3 x \, dx = \int (\sec^4 x - \sec^2 x) \tan x \sec x \, dx$</p>
+                        
+                        <p>Let $u = \sec x$, $du = \tan x \sec x \, dx$; $dx = \frac{du}{\tan x \sec x}$</p>
+                        
+                        <p>Since the remaining function is $\int (u^4 - u^2) \tan x \sec x \, dx$, substitute $dx$.</p>
+                        
+                        <div class="math-block">
+                            \[
+                            = \int (u^4 - u^2) \tan x \sec x \times \frac{du}{\tan x \sec x} = \int (u^4 - u^2) du= \frac{1}{5}u^5 - \frac{1}{3}u^3 + c
+                            \]
+                        </div>
+                        
+                        <p>After substituting $u$ back,</p>
+                        <div class="math-block">
+                            \[
+                            \boxed{\int \tan^3 x \sec^3 x \, dx = \frac{1}{5}\sec^5 x - \frac{1}{3}\sec^3 x + c}
+                            \]
+                        </div>
+                    </div>
 
-<p>If n is odd and m is even, this situation do not match any of the presented method.</p>
-<p>In such a case, the use other methods like integration by parts should be used instead.</p>
+                    <p>If n is odd and m is even, this situation do not match any of the presented method.</p>
+                    <p>In such a case, the use other methods like integration by parts should be used instead.</p>
 
                     <nav class="notes-section-nav">
                         <button href="transcendental functions.html" class="notes-nav-btn">
@@ -1398,35 +1395,12 @@ is $\sec^2 x$.</p>
 
                     <div class="theorem-box">
                         <div class="box-title">REFERENCES</div>
-
+                        <p>Stewart, J. (2020). <i>Calculus: Early Transcendentals</i>. 9th Edition. Cengage Learning.</p>
+                        <p>Anton, H., Bivens, I., & Davis, S. (2016). <i>Calculus: Early Transcendentals</i>. 11th Edition. Wiley.</p>
+                        <p>Larson, R., & Edwards, B. H. (2018). <i>Calculus</i>. 11th Edition. Cengage Learning.</p>
                     </div>
+                    
                     <nav class="notes-section-nav">
-                                    <button href="#"
-                                        class="notes-nav-btn"
-                                        disabled>
-                                        <i
-                                            class="fas fa-chevron-left"></i>
-                                        Previous
-                                    </button>
-                                    <span
-                                        class="progress-indicator">Chapter
-                                        2:
-                                        Trigonometric Functions</span>
-                                    <button href="trig.html"
-                                        class="notes-nav-btn">
-                                        Next
-                                        <i
-                                            class="fas fa-chevron-right"></i>
-                                    </button>
-                                </nav>
-                                <div class="theorem-box">
-                                    <div class="box-title">REFERENCES</div>
-                                    <p>Stewart, J. (2020). <i>Calculus: Early Transcendentals</i>. 9th Edition. Cengage Learning.</p>
-                                    <p>Anton, H., Bivens, I., & Davis, S. (2016). <i>Calculus: Early Transcendentals</i>. 11th Edition. Wiley.</p>
-                                    <p>Larson, R., & Edwards, B. H. (2018). <i>Calculus</i>. 11th Edition. Cengage Learning.</p>
-                                </div>
-                                </div>
-                                <nav class="notes-section-nav">
                                     <a
                                         href="/public/resources/library/library.html"
                                         class="notes-nav-btn">
@@ -1447,7 +1421,8 @@ is $\sec^2 x$.</p>
                             </div>
                         </div>
                     </main>
-                </div>
+        </div>
+    </div>
                 <script src="/assets/js/loader.js"></script>
                 <script src="/assets/js/navbar.js"></script>
                 <script src="/assets/js/notes.js"></script>
