@@ -1192,45 +1192,6 @@
                         </div>
                     </div>
 
-                    <h3 id="multiple">Products of Multiple Angles for Sine and Cosine</h3>
-                    <p>Upon looking at products of powers of sine and cosine, our attention draws to products of sine and cosine which involve multiple angles.</p>
-
-                    <p>That is, $\displaystyle\int \sin nx \cos mx \, dx$ where m and n are integers. This type of integrals use the trigonometric product formulae also known as the product-to-sum identities. Recall the product formulae,</p>
-
-                    <div class="theorem-box">
-                        <div class="box-title">Product-to-Sum Identities</div>
-                        <div class="math-block">
-                            \begin{align}
-                            \sin A \sin B &= \frac{1}{2}[\cos(A - B) - \cos(A + B)]\\
-                            \cos A \cos B &= \frac{1}{2}[\cos(A - B) + \cos(A + B)]\\
-                            \sin A \cos B &= \frac{1}{2}[\sin(A + B) + \sin(A - B)]\\
-                            \cos A \sin B &= \frac{1}{2}[\sin(A + B) - \sin(A - B)]
-                            \end{align}
-                        </div>
-                    </div>
-
-                    <div class="example-box">
-                        <div class="box-title">Example 17</div>
-                        <p>Evaluate $\displaystyle\int \sin 5x \cos 3x \, dx$.</p>
-                        <strong>Solution:</strong>
-                        
-                        <p>On this will use $\sin A \cos B = \frac{1}{2}[\sin(A + B) + \sin(A - B)]$ as follows:</p>
-                        <div class="math-block">
-                            \begin{align}
-                            \int \sin 5x \cos 3x \, dx &= \int \frac{1}{2}[\sin(5x + 3x) + \sin(5x - 3x)] \, dx \\
-                            &= \int \frac{1}{2} \sin 8x \, dx + \int \frac{1}{2} \sin 2x \, dx \text{ but } \int \frac{1}{a} \sin nx \, dx = -\frac{1}{an} \cos nx + c \\
-                            &= \frac{-1}{2 \times 8} \cos 8x - \frac{1}{2 \times 2} \cos 2x + c
-                            \end{align}
-                        </div>
-                        
-                        <p>Therefore;</p>
-                        <div class="math-block">
-                            \[
-                            \boxed{\int \sin 5x \cos 3x \, dx = c - \frac{1}{16} \cos 8x - \frac{1}{4} \cos 2x}
-                            \]
-                        </div>
-                    </div>
-
                     <h3 id="sintan">Products of Powers | Tangent and Secant</h3>
                     <p>Powers of tangent functions go hand and hand with powers of secant functions as shown below:</p>
 
@@ -1263,7 +1224,7 @@
                     <p>Then, you have to write $\sec^{n-2} x$ in terms as $\tan x$ using the identity $\sec^2 x = 1 + \tan^2 x$. If $n - 2$ is greater than 2, you will express it as power multiple of since it will be even. Letting $u = \tan x$, the integrand is simplified and $\sec^2 x$ gets eliminated.</p>
 
                     <div class="example-box">
-                        <div class="box-title">Example 18</div>
+                        <div class="box-title">Example 17</div>
                         <p>Evaluate $\displaystyle \int \tan^2 x \sec^4 x \, dx$.</p>
                         <strong>Solution:</strong>
                         
@@ -1336,7 +1297,7 @@
                     <p>Once this happens, we know that $m - 1$ is now even. That is, we will apply $\sec^2 x = 1 + \tan^2 x$ but this time to write $\tan x$ in terms of $\sec x$. Then the substitution of $u = \sec x$ simplifies the integrand.</p>
 
                     <div class="example-box">
-                        <div class="box-title">Example 19</div>
+                        <div class="box-title">Example 18</div>
                         <p>Evaluate $\displaystyle\int \tan^3 x \sec^3 x \, dx$.</p>
                         
                         <strong>Solution:</strong>
@@ -1379,6 +1340,222 @@
 
                     <p>If n is odd and m is even, this situation do not match any of the presented method.</p>
                     <p>In such a case, the use other methods like integration by parts should be used instead.</p>
+
+                    <h3 id="multiple">Products of Multiple Angles for Sine and Cosine</h3>
+                    <p>Upon looking at products of powers of sine and cosine, our attention draws to products of sine and cosine which involve multiple angles.</p>
+
+                    <p>That is, $\displaystyle\int \sin nx \cos mx \, dx$ where m and n are integers. This type of integrals use the trigonometric product formulae also known as the product-to-sum identities. Recall the product formulae,</p>
+
+                    <div class="theorem-box">
+                        <div class="box-title">Product-to-Sum Identities</div>
+                        <div class="math-block">
+                            \begin{align}
+                            \sin A \sin B &= \frac{1}{2}[\cos(A - B) - \cos(A + B)]\\
+                            \cos A \cos B &= \frac{1}{2}[\cos(A - B) + \cos(A + B)]\\
+                            \cos A \sin B &= \frac{1}{2}[\sin(A + B) - \sin(A - B)]
+                            \end{align}
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="box-title">Example 19</div>
+                        <p>Evaluate $\displaystyle\int \sin 5x \cos 3x \, dx$.</p>
+                        <strong>Solution:</strong>
+                        
+                        <p>On this will use $\sin A \cos B = \frac{1}{2}[\sin(A + B) + \sin(A - B)]$ as follows:</p>
+                        <div class="math-block">
+                            \begin{align}
+                            \int \sin 5x \cos 3x \, dx &= \int \frac{1}{2}[\sin(5x + 3x) + \sin(5x - 3x)] \, dx \\
+                            &= \int \frac{1}{2} \sin 8x \, dx + \int \frac{1}{2} \sin 2x \, dx \text{ but } \int \frac{1}{a} \sin nx \, dx = -\frac{1}{an} \cos nx + c \\
+                            &= \frac{-1}{2 \times 8} \cos 8x - \frac{1}{2 \times 2} \cos 2x + c
+                            \end{align}
+                        </div>
+                        
+                        <p>Therefore;</p>
+                        <div class="math-block">
+                            \[
+                            \boxed{\int \sin 5x \cos 3x \, dx = c - \frac{1}{16} \cos 8x - \frac{1}{4} \cos 2x}
+                            \]
+                        </div>
+                    </div>
+
+                    <h2 id="subs">Trigonometric Substitutions</h2>
+
+                    <div class="definition-box">
+                        <div class="box-title">Definition</div>
+                        <p>Integrals involving trigonometric functions may grow complicated to an extent that we apply the identities to simplify them. This is what we have been doing so far.</p>
+                        
+                        <p>But in some occasions, this is not always the story. We might tend to encounter some integrands involving radicals which are seemingly impossible to integrate.</p>
+                        
+                        <p>For example, integrands like \(\sqrt{a^2 - x^2}\), \(\sqrt{a^2 + x^2}\) and \(\sqrt{x^2 - a^2}\) which have no clear way to use in the integration process.</p>
+                        
+                        <p>Therefore, the substitution of a specific trig function helps to eliminate the radicals and usually simplifies the integrand.</p>
+                    </div>
+
+                    <p>Before we dive deep into the process, you might wish to recall the Pythagorean trig identity, \(\cos^2 x + \sin^2 x = 1\) which gives birth to \(1 + \tan^2 x = \sec^2 x\) and \(\cot^2 x + 1 = \csc^2 x\).</p>
+
+                    <p>The table below shows specific trig substitution to match each given radical.</p>
+
+                    <div class="theorem-box">
+                        <div class="box-title">Trigonometric Substitutions</div>
+                        <div style="overflow-x: auto; margin: 1em 0;">
+                            <table style="margin: 0 auto; border-collapse: collapse; width: 100%; max-width: 600px;">
+                                <thead>
+                                    <tr style="background-color: #f8f9fa;">
+                                        <th style="border: 2px solid #dee2e6; padding: 0.75em; text-align: center; font-weight: bold;">Expression Given</th>
+                                        <th style="border: 2px solid #dee2e6; padding: 0.75em; text-align: center; font-weight: bold;">Trig Substitution</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="border: 1px solid #dee2e6; padding: 0.75em; text-align: center;">\(\sqrt{a^2 - x^2}\)</td>
+                                        <td style="border: 1px solid #dee2e6; padding: 0.75em; text-align: center;">\(x = a\sin\theta\)</td>
+                                    </tr>
+                                    <tr style="background-color: #f8f9fa;">
+                                        <td style="border: 1px solid #dee2e6; padding: 0.75em; text-align: center;">\(\sqrt{a^2 + x^2}\)</td>
+                                        <td style="border: 1px solid #dee2e6; padding: 0.75em; text-align: center;">\(x = a\tan\theta\)</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #dee2e6; padding: 0.75em; text-align: center;">\(\sqrt{x^2 - a^2}\)</td>
+                                        <td style="border: 1px solid #dee2e6; padding: 0.75em; text-align: center;">\(x = a\sec\theta\)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div style="border: 1px solid #f54242; background: #ffd0ba; color: #ff2121; padding: 1em 1.5em; border-radius: 6px; margin-top: 1.5em; display: flex; align-items: flex-start; gap: 1em;">
+                            <span style="font-size: 1.2em; margin-right: 0.5em;"><i class="fas fa-exclamation-triangle"></i></span>
+                            <div>
+                                <strong>POINTS TO NOTE:</strong>
+                                <ul style="margin: 0.5em 0; padding-left: 1.2em;">
+                                    <li>When making substitutions we assume that \(\theta\) is in the range of their respective inverse functions.</li>
+                                    <li>If the radicals appear in the denominators, always add a condition restricting the value of the denominator to never be equal to zero. For example, if \(\sqrt{a^2 - x^2}\) is a denominator always say "where \(|x| \neq a\)".</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="box-title">Example 20</div>
+                        <p>Evaluate \(\displaystyle\int \frac{dx}{x^2\sqrt{16-x^2}}\).</p>
+                        <strong>Solution:</strong>
+                        
+                        <p>Let \(a = \sqrt{16} = 4\) and considering the radical, \(x = a\sin \theta = 4\sin \theta\), thus:</p>
+                        
+                        <div class="math-block">
+                            \begin{align}
+                            \int \frac{dx}{x^2\sqrt{16-x^2}} &= \int \frac{dx}{(4\sin \theta)^2\sqrt{16-(4\sin \theta)^2}} \\
+                            &= \int \frac{1}{16\sin^2 \theta \sqrt{16(1-\sin^2 \theta)}} dx \\
+                            &= \int \frac{1}{16\sin^2 \theta \sqrt{16\cos^2 \theta}} dx \quad \text{since } 1-\sin^2 \theta = \cos^2 \theta \\
+                            &= \int \frac{1}{16\sin^2 \theta (4\cos \theta)} dx
+                            \end{align}
+                        </div>
+                        
+                        <p>Since \(x = 4\sin \theta\), \(dx = 4\cos\theta d\theta\). This will eliminate \(dx\) and allow us to integrate with respect to \(\theta\).</p>
+                        
+                        <p><strong>Eliminate dx and simplify:</strong></p>
+                        <div class="math-block">
+                            \[
+                            = \int \frac{1}{16\sin^2 \theta (4\cos \theta)} \times 4\cos \theta \, d\theta = \int \frac{1}{16\sin^2 \theta} d\theta = \int \frac{1}{16} \csc^2 \theta \, d\theta
+                            \]
+                        </div>
+                        
+                        <p>Therefore, it is simple to integrate \(\csc^2 \theta\):</p>
+                        <div class="math-block">
+                            \[
+                            = -\frac{1}{16} \cot \theta + C
+                            \]
+                        </div>
+                        
+                        <p>It is now necessary to get back to the original variable, \(x\). Since \(x = 4\sin \theta\), \(\sin \theta = \frac{x}{4}\).</p>
+                        
+                        <p><em>Therefore,</em> \(\theta = \sin^{-1}\frac{x}{4}\)</p>
+                        
+                        <p>Using the triangle below:</p>
+                        
+                        <div class="image-container"
+                            style="display: flex; justify-content: center; align-items: center;">
+                            <img src="/assets/images/cot.svg" alt="Cotangent Triangle"
+                                style="max-width: 50%; height: auto;" />
+                        </div>
+                        
+                        <div class="math-block">
+                            \[
+                            \cot \theta = \frac{1}{\tan \theta} = \frac{\text{adjacent}}{\text{opposite}}
+                            \]
+                        </div>
+                        
+                        <p>Therefore \(\cot \theta = \frac{\sqrt{16-x^2}}{x}\)</p>
+                        
+                        <p><strong>Finally:</strong></p>
+                        <div class="math-block">
+                            \[
+                            \boxed{\int \frac{dx}{x^2\sqrt{16-x^2}} = -\frac{\sqrt{16-x^2}}{16x} + C}
+                            \]
+                        </div>
+                    </div>
+
+                    <h2 id="review">Chapter Review</h2>
+                    
+                    <div class="definition-box">
+                        <div class="box-title">Practice Problems</div>
+                        <div style="margin: 1em 0;">
+                            <h4>Inverse Trigonometric Functions</h4>
+                            <ol>
+                                <li>Find \(\frac{dy}{dx}\) if \(y = \sin^{-1}(3x^2)\).</li>
+                                <li>Differentiate \(y = x \tan^{-1}(2x)\) using the product rule.</li>
+                                <li>Find the derivative of \(y = \cos^{-1}\left(\frac{x}{\sqrt{1+x^2}}\right)\).</li>
+                                <li>Evaluate \(\displaystyle\int \frac{dx}{\sqrt{4-9x^2}}\).</li>
+                                <li>Find \(\displaystyle\int \frac{dx}{25 + x^2}\).</li>
+                                <li>Compute \(\displaystyle\int \frac{dx}{x\sqrt{x^2-16}}\) where \(|x| > 4\).</li>
+                            </ol>
+                            
+                            <h4>Reduction Formulas</h4>
+                            <ol start="7">
+                                <li>Use the reduction formula to evaluate \(\displaystyle\int \sin^6 x \, dx\).</li>
+                                <li>Apply the reduction formula to find \(\displaystyle\int \cos^5 x \, dx\).</li>
+                                <li>Evaluate \(\displaystyle\int_0^{\pi/2} \sin^4 x \cos^2 x \, dx\) using reduction formulas.</li>
+                                <li>Find \(\displaystyle\int \cos^8 x \, dx\) by applying the reduction formula repeatedly.</li>
+                            </ol>
+                            
+                            <h4>Powers of Trigonometric Functions</h4>
+                            <ol start="11">
+                                <li>Evaluate \(\displaystyle\int \sin^3 x \cos^4 x \, dx\).</li>
+                                <li>Find \(\displaystyle\int \sin^2 x \cos^4 x \, dx\) using double angle formulas.</li>
+                                <li>Compute \(\displaystyle\int \tan^4 x \sec^2 x \, dx\).</li>
+                                <li>Evaluate \(\displaystyle\int \sin^5 x \, dx\).</li>
+                                <li>Find \(\displaystyle\int \cos^6 x \, dx\) using power reduction formulas.</li>
+                                <li>Compute \(\displaystyle\int \tan^3 x \sec^5 x \, dx\).</li>
+                            </ol>
+                            
+                            <h4>Products of Multiple Angles</h4>
+                            <ol start="17">
+                                <li>Evaluate \(\displaystyle\int \sin 7x \cos 3x \, dx\) using product-to-sum formulas.</li>
+                                <li>Find \(\displaystyle\int \cos 4x \cos 2x \, dx\).</li>
+                                <li>Compute \(\displaystyle\int \sin 5x \sin 2x \, dx\).</li>
+                                <li>Evaluate \(\displaystyle\int_0^{\pi} \sin 3x \cos x \, dx\).</li>
+                            </ol>
+                            
+                            <h4>Trigonometric Substitutions</h4>
+                            <ol start="21">
+                                <li>Evaluate \(\displaystyle\int \frac{dx}{\sqrt{9-x^2}}\) using trigonometric substitution.</li>
+                                <li>Find \(\displaystyle\int \frac{x^2}{\sqrt{16-x^2}} \, dx\).</li>
+                                <li>Compute \(\displaystyle\int \frac{dx}{(x^2+4)^{3/2}}\) using \(x = 2\tan\theta\).</li>
+                                <li>Evaluate \(\displaystyle\int \frac{\sqrt{x^2-25}}{x} \, dx\) for \(x > 5\).</li>
+                                <li>Find \(\displaystyle\int \frac{dx}{x^2\sqrt{x^2+9}}\).</li>
+                            </ol>
+                            
+                            <h4>Challenge Problems</h4>
+                            <ol start="26">
+                                <li>Prove that \(\frac{d}{dx}[\sec^{-1}x] = \frac{1}{|x|\sqrt{x^2-1}}\) for \(|x| > 1\).</li>
+                                <li>Show that \(\displaystyle\int_0^{\pi/2} \sin^n x \, dx = \int_0^{\pi/2} \cos^n x \, dx\) for any positive integer \(n\).</li>
+                                <li>Evaluate \(\displaystyle\lim_{x \to 0} \frac{\sin x - x \cos x}{x^3}\).</li>
+                                <li>Find all solutions to \(\sin 2x = \cos 3x\) in the interval \([0, 2\pi)\).</li>
+                                <li>Prove the identity: \(\tan\left(\frac{x}{2}\right) = \frac{\sin x}{1 + \cos x} = \frac{1 - \cos x}{\sin x}\).</li>
+                                <li>Evaluate \(\displaystyle\int \frac{\sin x}{1 + \cos^2 x} \, dx\).</li>
+                            </ol>
+                        </div>
+                    </div>
 
                     <nav class="notes-section-nav">
                         <button href="transcendental functions.html" class="notes-nav-btn">
