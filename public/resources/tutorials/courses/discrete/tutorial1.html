@@ -16,30 +16,63 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4421684242850337"
         crossorigin="anonymous"></script>
     <script type='text/javascript' src='//softballabnegatemailman.com/6b/2c/a0/6b2ca02bc270f48895c176c8ece35046.js'></script>
-    <meta name="description" content="JMC Math & Academics - Discrete Mathematics Tutorial 1: Counting Techniques.">
-    <meta name="keywords" content="Discrete Mathematics, Counting Techniques, JMC Mathematics, Math Tutorials">
-    <link rel="icon" type="image/png" href="/assets/images/favicon.ico">
-    <title>JMC Math & Academics - Discrete Mathematics Tutorial 1</title>
+<meta name="author" content="JMC Academics">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/png" href="/assets/images/favicon.ico">
+
+<!-- Open Graph Base Tags -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="JMC Academics">
+<meta property="og:image" content="https://jmcacademics.netlify.app/assets/images/og-image.png">
+
+<!-- Twitter Base Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://jmcacademics.netlify.app/assets/images/og-image.png">
+<title>Discrete Mathematics Tutorial 1 - Counting Techniques | JMC Academics</title>
+<meta name="description" content="Learn discrete mathematics counting techniques: product rule, sum rule, permutations, combinations, and inclusion-exclusion principle. Free tutorial by JMC Academics.">
+<meta name="keywords" content="discrete mathematics, counting techniques, product rule, sum rule, permutations, combinations, inclusion-exclusion, JMC Academics">
+<link rel="canonical" href="https://jmcacademics.netlify.app/resources/tutorials/courses/discrete/tutorial1.html">
+<meta property="og:url" content="https://jmcacademics.netlify.app/resources/tutorials/courses/discrete/tutorial1.html">
+<meta property="og:title" content="Discrete Mathematics Tutorial 1 - Counting Techniques | JMC Academics">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/styles.css">
     <link rel="stylesheet" href="/assets/css/tutorial.css">
 
-    <!-- MathJax Configuration -->
     <script>
         MathJax = {
             tex: {
                 inlineMath: [['$', '$'], ['\\(', '\\)']],
                 displayMath: [['$$', '$$'], ['\\[', '\\]']],
-                processEscapes: true,
-                processEnvironments: true
+                packages: { '[+]': ['ams', 'newcommand', 'configMacros'] },
+                macros: {
+                    // Define the \diff macro to take two arguments
+                    diff: ['\\frac{d#1}{d#2}', 2],
+                    // You can also add other useful derivatives macros
+                    pdiff: ['\\frac{\\partial #1}{\\partial #2}', 2],  // for partial derivatives
+                    ddiff: ['\\frac{d^2#1}{d#2^2}', 2],  // for second derivatives
+                    // Other common calculus macros you might find useful
+                    lint: ['\\int_{#1}^{#2}', 2],  // definite integral with limits
+                    eval: ['\\left.#1\\right|_{#2}', 2]  // evaluation bar
+                }
             },
-            options: {
-                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            svg: {
+                fontCache: 'global'
             }
         };
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
 
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+            <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "JMC Academics",
+  "url": "https://jmcacademics.netlify.app",
+  "logo": "https://jmcacademics.netlify.app/assets/images/favicon.ico",
+  "description": "Free online mathematics courses and educational resources"
+}
+</script>
 </head>
 
 <body>
